@@ -1,0 +1,47 @@
+[
+  {
+    "listing": "/classes/class-02.html",
+    "items": [
+      "/slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html",
+      "/practice_problems/practice_problems_01.html",
+      "/practice_problems/practice_problems_02.html"
+    ]
+  },
+  {
+    "listing": "/classes/class-01.html",
+    "items": [
+      "/slides/Class_01_Introduction/Class_01_Introduction.html",
+      "/practice_problems/practice_problems_01.html",
+      "/practice_problems/practice_problems_02.html"
+    ]
+  },
+  {
+    "listing": "/classes.html",
+    "items": [
+      "/classes/class_01.html",
+      "/classes/class_02.html",
+      "/classes/class_03.html"
+    ]
+  },
+  {
+    "listing": "/classes/class-03.html",
+    "items": []
+  },
+  {
+    "listing": "/classes/class_01.html",
+    "items": [
+      "/slides/class_01_introduction/class_01_introduction.html",
+      "/practice_problems/practice_problems_01/practice_problems_01.html"
+    ]
+  },
+  {
+    "listing": "/classes/class_02.html",
+    "items": [
+      "/slides/class_02_data_visualization/Class_02_Data_Visualization.html"
+    ]
+  },
+  {
+    "listing": "/classes/class_03.html",
+    "items": []
+  }
+]

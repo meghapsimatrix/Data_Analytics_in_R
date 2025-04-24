@@ -1,0 +1,24 @@
+---
+title: "Classes"
+listing:
+  - id: schedule
+    contents:
+      - classes/class_*.qmd
+    type: table
+    fields: [title, author]
+    field-display-names:
+       title: "Class"
+       author: "Instructor"
+    #  subtitle: "Topic"
+    date-format: "MMMM DD, YYYY"
+    sort: [filename]
+    sort-ui: false
+    filter-ui: false
+ #tbl-colwidths: [5,20,50,25]
+editor: visual
+---
+
+::: {#schedule}
+:::
+
+## 

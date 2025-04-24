@@ -1,0 +1,25 @@
+---
+title: "Practice Problem Set 2"
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+engine: knitr
+editor: visual
+webr:
+  packages: ['dplyr', 'readr', 'ggplot2']
+filters:
+  - webr
+---
+
+1.  Run the following code to load the data:
+
+    ```{webr-r}
+
+    ```
+
+2.  Create a scatterplot:
+
+    ```{webr}
+
+    ```

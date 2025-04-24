@@ -1,0 +1,52 @@
+---
+title: "Practice Problem Set 1"
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+engine: knitr
+editor: visual
+filters:
+  - webr
+---
+
+### Downloading R and R Studio
+
+1.  If you don't have R and R Studio downloaded, please download them:
+
+    -   Download R [here](https://www.r-project.org/).
+    -   Download R Studio [here](https://posit.co/downloads/).
+
+2.  Create an [R project](https://r4ds.hadley.nz/workflow-scripts.html#projects) for this class and open that project.
+
+3.  Open the project and install the following packages:
+
+    ```{r, eval = FALSE}
+    install.packages("tidyverse")
+    install.packages("readxl")
+    install.packages("janitor")
+    install.packages("estimatr")
+    ```
+
+### Working In R
+
+4.  Open an R script.
+5.  Write code to read in \[some data\].
+6.  Using the `summary()` function from base R, write code to look at the summary of the following variables: `attendance`, `date`.
+7.  Using the `table()` function, check the how many matches were hosted by each `Host` country.
+8.  Run a linear regression regressing `home_score` on `away_score` and view the summary of the model.
+
+### Working with Quarto
+
+9.  Download Quarto. Create an `html` Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.
+10. In the document, check where the working directory is now.
+11. Create code snippets on the Quarto document and transfer the code from Question 4 through 7 there.
+12. Render the html file.
+
+### Bonus: Version Control
+
+13. If you don't have a GitHub account, [create an account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+
+14. Create a repository for this class and add the R Project you created for this class to the repository.
+
+15. [Commit and push](https://book.cds101.com/how-to-stage-commit-and-push-to-github-using-rstudio-server.html) changes to remote repository.

@@ -1,0 +1,10 @@
+---
+title: "Teaching Team"
+editor: visual
+---
+
+### Megha Joshi, PhD
+
+![](images/mj.jpeg){width="297"}
+
+[Dr. Megha Joshi](https://meghapsimatrix.com/) has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including [wildmeta](https://meghapsimatrix.github.io/wildmeta/), [simhelpers](https://meghapsimatrix.github.io/simhelpers/index.html), and [metaselection](https://github.com/jepusto/metaselection). She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.

@@ -1,0 +1,460 @@
+[
+  {
+    "objectID": "syllabus.html#recommended-readings",
+    "href": "syllabus.html#recommended-readings",
+    "title": "Syllabus",
+    "section": "Recommended Readings",
+    "text": "Recommended Readings",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#practice-problems",
+    "href": "syllabus.html#practice-problems",
+    "title": "Syllabus",
+    "section": "Practice Problems",
+    "text": "Practice Problems",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#community-of-practice",
+    "href": "syllabus.html#community-of-practice",
+    "title": "Syllabus",
+    "section": "Community of Practice",
+    "text": "Community of Practice",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-this-course",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-this-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to This Course",
+    "text": "Introduction to This Course\n\nSharpen your data analytic skills\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nOne hour lectures once a week for one hour\nPractice problems\nJob search resources"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#instructors",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#instructors",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Instructors",
+    "text": "Instructors\nMegha Joshi, PhD"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#expectations",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#expectations",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Expectations",
+    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nIn the Syllabus, we listed relevant chapters for each class\nOther books/ resources here\n\nPractice problems - practice, practice, practice\nNo grades\nCollaboration - Slack channel"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#overview-of-course",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#overview-of-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Overview of Course",
+    "text": "Overview of Course\n\nData visualization\nData querying and wrangling\nWorking with relational databases\nDealing with different data types\nFunctions\nIteration\nLinear regression and gentle introduction to machine learning"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-r",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-r",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to R",
+    "text": "Introduction to R\n\n\n\n\n\nProgramming language - based on S\nOpen source and FREE\nbase R plus other R packages ~ over 20,000\nUser community\n\nTidy Tuesday\nData Science Learning Community\nStack Overflow"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#downloading",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#downloading",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Downloading",
+    "text": "Downloading\n\n\n\n\n\nDownload R\nDownload R Studio\nDownload Quarto"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#r-projects-and-relative-path",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#r-projects-and-relative-path",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Projects and Relative Path",
+    "text": "R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#basics-of-r-objects-and-assignment",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#basics-of-r-objects-and-assignment",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Basics of R: Objects and Assignment",
+    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_cats &lt;- c(\"Moni\", \"Rumi\")\nmy_cats\n\n[1] \"Moni\" \"Rumi\""
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#r-packages",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#r-packages",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Packages",
+    "text": "R Packages\nPlease install the following packages:\n\ninstall.packages(\"tidyverse\") # data wrangling and viz\ninstall.packages(\"readxl\") # read excel files\ninstall.packages(\"janitor\") # clean messy data\ninstall.packages(\"estimatr\") # robust estimators"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#write-clean-code",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#write-clean-code",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Clean Code",
+    "text": "Write Clean Code\n\nWrite code that is easy to read\nAdd spaces between things\n\na&lt;-c(1,2,3,4,5) # don't do this\na &lt;- c(1, 2, 3, 4, 5) # do this\n\nIn R, please use &lt;- to assign\n\nx = 5 # don't do this\nx &lt;- 5 # do this\n\nUse _ instead of . as separation when naming objects\n\nmy.color &lt;- \"blue\" # don't do this\nmy_color &lt;- \"blue\" # do this\n\nSome packages to help : lintr"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#write-good-documentation",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#write-good-documentation",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Good Documentation",
+    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#conduct-code-review",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#conduct-code-review",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Conduct Code Review",
+    "text": "Conduct Code Review\n\n\n\n\n\nProcess of systematically checking code\nOn your own or by someone else\nCatch errors or suggest better ways to code\nCheck out the Code Check Club by Lisa De Bruine et al."
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#use-version-control",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#use-version-control",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Use Version Control",
+    "text": "Use Version Control\n\n\n\n\n\ngit and GitHub\nTrack changes, merge conflicts, branching to review code before merging\nTrack issues\nA portfolio of your work\nPlease read Vuorre & Curley (2018) to learn more about how to set up git to work with RStudio"
+  },
+  {
+    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-quarto",
+    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-quarto",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to Quarto",
+    "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
+  },
+  {
+    "objectID": "classes/class-02.html",
+    "href": "classes/class-02.html",
+    "title": "Class 02",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization\nIntroduction for Modern Statistics: Chapter 4 - Exploring Categorical Data\nIntroduction to Modern Statistics: Chapter 5- Exploring Numerical Data\n\n\n\n\n\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "classes/class-01.html",
+    "href": "classes/class-01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Lecture\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01.html",
+    "title": "Practice Problem Set 1",
+    "section": "",
+    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "Classes",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02\n\n\n \n\n\n\n\nWeek 03\n\n\n \n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Classes"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Teaching Team",
+    "section": "",
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
+    "crumbs": [
+      "Teaching Team"
+    ]
+  },
+  {
+    "objectID": "classes/class-03.html",
+    "href": "classes/class-03.html",
+    "title": "Week 03",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#expectations",
+    "href": "index.html#expectations",
+    "title": "Data Analytics in R",
+    "section": "Expectations",
+    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades.\nWe will provide a list of recommended readings each week. Most of the readings will be from the R for Data Science book with some other articles and book chapters. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data-visualization",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data-visualization",
+    "title": "Data Visualization with ggplot",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#a-grammar-of-graphics",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#a-grammar-of-graphics",
+    "title": "Data Visualization with ggplot",
+    "section": "A Grammar of Graphics",
+    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#loading-ggplot",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#loading-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Loading ggplot",
+    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#the-grammar-1",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#the-grammar-1",
+    "title": "Data Visualization with ggplot",
+    "section": "The Grammar",
+    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data",
+    "title": "Data Visualization with ggplot",
+    "section": "Data",
+    "text": "Data\n\nData - Information used to create the graphic.\n\n\nggplot(data = mpg)"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#aesthetic-mappings",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#aesthetic-mappings",
+    "title": "Data Visualization with ggplot",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\nAesthetic attributes\nMapping -\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy, \n                color = class))"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#layers",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#layers",
+    "title": "Data Visualization with ggplot",
+    "section": "Layers",
+    "text": "Layers\n\nGeoms- geometric representations of the data.\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point()"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scales",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scales",
+    "title": "Data Visualization with ggplot",
+    "section": "Scales",
+    "text": "Scales"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#facets",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#facets",
+    "title": "Data Visualization with ggplot",
+    "section": "Facets",
+    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point() + \n  facet_grid(year ~ drv)"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#anatomy-of-a-ggplot",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#anatomy-of-a-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Anatomy of a ggplot",
+    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#histogram-continuous-data",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#histogram-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Histogram: Continuous Data",
+    "text": "Histogram: Continuous Data"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#density-plot-continuous-data",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#density-plot-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Density Plot: Continuous Data",
+    "text": "Density Plot: Continuous Data"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data-1",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data-1",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#box-plot",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#box-plot",
+    "title": "Data Visualization with ggplot",
+    "section": "Box Plot",
+    "text": "Box Plot"
+  },
+  {
+    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scatter-plot",
+    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scatter-plot",
+    "title": "Data Visualization with ggplot",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "classes/class_01.html",
+    "href": "classes/class_01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Lecture\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+  },
+  {
+    "objectID": "classes/class_02.html",
+    "href": "classes/class_02.html",
+    "title": "Class 02",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization\nIntroduction for Modern Statistics: Chapter 4 - Exploring Categorical Data\nIntroduction to Modern Statistics: Chapter 5- Exploring Numerical Data\n\n\n\n\n\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1",
+    "section": "",
+    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes/class_03.html",
+    "href": "classes/class_03.html",
+    "title": "Week 03",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to This Course",
+    "text": "Introduction to This Course\n\nSharpen your data analytic skills\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nOne hour lectures once a week for one hour\nPractice problems\nJob search resources"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#instructors",
+    "href": "slides/class_01_introduction/class_01_introduction.html#instructors",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Instructors",
+    "text": "Instructors\nMegha Joshi, PhD"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#expectations",
+    "href": "slides/class_01_introduction/class_01_introduction.html#expectations",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Expectations",
+    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nIn the Syllabus, we listed relevant chapters for each class\nOther books/ resources here\n\nPractice problems - practice, practice, practice\nNo grades\nCollaboration - Slack channel"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#overview-of-course",
+    "href": "slides/class_01_introduction/class_01_introduction.html#overview-of-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Overview of Course",
+    "text": "Overview of Course\n\nData visualization\nData querying and wrangling\nWorking with relational databases\nDealing with different data types\nFunctions\nIteration\nLinear regression and gentle introduction to machine learning"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-r",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-r",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to R",
+    "text": "Introduction to R\n\n\n\n\n\nProgramming language - based on S\nOpen source and FREE\nbase R plus other R packages ~ over 20,000\nUser community\n\nTidy Tuesday\nData Science Learning Community\nStack Overflow"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#downloading",
+    "href": "slides/class_01_introduction/class_01_introduction.html#downloading",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Downloading",
+    "text": "Downloading\n\n\n\n\n\nDownload R\nDownload R Studio\nDownload Quarto"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#r-projects-and-relative-path",
+    "href": "slides/class_01_introduction/class_01_introduction.html#r-projects-and-relative-path",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Projects and Relative Path",
+    "text": "R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
+    "href": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Basics of R: Objects and Assignment",
+    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_cats &lt;- c(\"Moni\", \"Rumi\")\nmy_cats\n\n[1] \"Moni\" \"Rumi\""
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#r-packages",
+    "href": "slides/class_01_introduction/class_01_introduction.html#r-packages",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Packages",
+    "text": "R Packages\nPlease install the following packages:\n\ninstall.packages(\"tidyverse\") # data wrangling and viz\ninstall.packages(\"readxl\") # read excel files\ninstall.packages(\"janitor\") # clean messy data\ninstall.packages(\"estimatr\") # robust estimators"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#write-clean-code",
+    "href": "slides/class_01_introduction/class_01_introduction.html#write-clean-code",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Clean Code",
+    "text": "Write Clean Code\n\nWrite code that is easy to read\nAdd spaces between things\n\na&lt;-c(1,2,3,4,5) # don't do this\na &lt;- c(1, 2, 3, 4, 5) # do this\n\nIn R, please use &lt;- to assign\n\nx = 5 # don't do this\nx &lt;- 5 # do this\n\nUse _ instead of . as separation when naming objects\n\nmy.color &lt;- \"blue\" # don't do this\nmy_color &lt;- \"blue\" # do this\n\nSome packages to help : lintr"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#write-good-documentation",
+    "href": "slides/class_01_introduction/class_01_introduction.html#write-good-documentation",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Good Documentation",
+    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#conduct-code-review",
+    "href": "slides/class_01_introduction/class_01_introduction.html#conduct-code-review",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Conduct Code Review",
+    "text": "Conduct Code Review\n\n\n\n\n\nProcess of systematically checking code\nOn your own or by someone else\nCatch errors or suggest better ways to code\nCheck out the Code Check Club by Lisa De Bruine et al."
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#use-version-control",
+    "href": "slides/class_01_introduction/class_01_introduction.html#use-version-control",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Use Version Control",
+    "text": "Use Version Control\n\n\n\n\n\ngit and GitHub\nTrack changes, merge conflicts, branching to review code before merging\nTrack issues\nA portfolio of your work\nPlease read Vuorre & Curley (2018) to learn more about how to set up git to work with RStudio"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-quarto",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-quarto",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to Quarto",
+    "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
+  }
+]

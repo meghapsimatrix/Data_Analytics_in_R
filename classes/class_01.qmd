@@ -1,0 +1,54 @@
+---
+title: "Class 01: Introduction to the Course and to R"
+subtitle: ""
+author: "Megha Joshi"
+date: "04/23/2025"
+listing:
+  - id: slides
+    contents:
+      - ../slides/class_01_introduction/*.qmd
+    type: table
+    fields: [title, author]
+    date-format: "ddd, MMM DD"
+    field-display-names:
+      title: "Topic"
+      author: "Instructor"
+    sort: [filename]
+    sort-ui: false
+    filter-ui: false
+  - id: problems
+    contents:
+      - ../practice_problems/practice_problems_01/practice_problems_*.qmd
+    type: table
+    fields: [title]
+    date-format: "ddd, MMM DD"
+    field-display-names:
+      title: "Problem Sets"
+    sort: [date]
+    sort-ui: false
+    filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Lecture
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
+# Slides
+
+::: {#slides}
+:::
+
+# Practice Problems
+
+::: {#problems}
+:::
+
+# Recommended Readings
+
+|                                                                                                               |
+|------------------------------------------------------------------------|
+| [R Programming for DS Chapter 2](https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html) |
+| [R4DS Introduction](https://r4ds.hadley.nz/intro.html)                                                        |
+| [R4DS Chapter 6 - Workflow: scripts and projects](https://r4ds.hadley.nz/workflow-scripts.html)               |
+| [R4DS Chapter 28 - Quarto](https://r4ds.hadley.nz/quarto.html)                                                |

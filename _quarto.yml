@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Teach Data Science Course Website"
+  sidebar:
+    background: "#562457"
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/rstudio-conf-2022/teach-ds-course-website
+        text: GitHub
+      - icon: cloud-fill
+        href: https://rstudio.cloud/spaces/237799
+        text: RStudio Cloud
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: instructors.qmd
+        text: Teaching Team
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: classes.qmd
+        text: Classes
+        
+format:
+  html:
+    theme:
+      light: litera
+      #dark: [lux, theme-dark.scss]
+    toc: false
+
+
+

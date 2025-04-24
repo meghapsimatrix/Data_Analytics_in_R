@@ -1,0 +1,263 @@
+---
+title: "Introduction to Data Analytics in R"
+author: "Megha Joshi"
+execute: 
+  echo: TRUE
+format: 
+  revealjs:
+    theme: [../slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    title-slide-attributes:
+      data-background-color: "#562457"
+    preview-links: true
+    footer: |
+      Theme by Beatriz Mills on  [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)
+editor: visual
+---
+
+## Introduction to This Course
+
+-   Sharpen your data analytic skills
+
+-   Prepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist
+
+-   One hour lectures once a week for one hour
+
+-   Practice problems
+
+-   Job search resources
+
+## Instructors
+
+[Megha Joshi, PhD](https://meghapsimatrix.com/)
+
+![](images/mj.jpeg)
+
+## Expectations
+
+::: {.columns style=".smaller"}
+::: {.column width="50%"}
+[![](images/r4ds.jpg){width="382"}](https://r4ds.hadley.nz/)
+:::
+
+::: {.column width="50%"}
+-   Recommended readings
+
+    -   [R4DS](https://r4ds.had.co.nz/) and [R Programming for DS](https://bookdown.org/rdpeng/rprogdatascience/)
+    -   In the Syllabus, we listed relevant chapters for each class
+    -   Other books/ resources here
+
+-   Practice problems - practice, practice, practice
+
+-   No grades
+
+-   Collaboration - Slack channel
+:::
+:::
+
+## Overview of Course
+
+-   Data visualization
+
+-   Data querying and wrangling
+
+-   Working with relational databases
+
+-   Dealing with different data types
+
+-   Functions
+
+-   Iteration
+
+-   Linear regression and gentle introduction to machine learning
+
+## Introduction to R
+
+::: columns
+::: {.column width="40%"}
+![](images/R.png)
+:::
+
+::: {.column width="60%"}
+-   Programming language - based on S
+-   Open source and FREE
+-   `base` R plus other R packages \~ over 20,000
+-   User community
+    -   [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/tree/main)
+
+    -   [Data Science Learning Community](https://dslc.io/)
+
+    -   [Stack Overflow](https://stackoverflow.com/questions/tagged/R)
+:::
+:::
+
+## Downloading
+
+::: columns
+::: {.column width="50%"}
+![](images/RStudio.png)
+:::
+
+::: {.column width="50%"}
+-   Download [R](https://www.r-project.org/)
+
+-   Download [R Studio](https://posit.co/downloads/)
+
+-   Download [Quarto](https://quarto.org/)
+:::
+:::
+
+## R Projects and Relative Path
+
+::: columns
+::: {.column width="20%"}
+![](images/R_project.png)
+:::
+
+::: {.column width="80%"}
+-   Keep all materials related to a project (or a class) together in one place
+
+-   The working directory is set to the base folder
+
+-   You can set relative paths so other users are able to run code without messing too much with the working directory
+
+-   Read more about how to set up projects [here](https://r4ds.had.co.nz/workflow-projects.html)
+:::
+:::
+
+```{r, eval = FALSE}
+# absolute path - this won't work on someone else's computer
+dat <- read.csv("/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv")
+
+# example of relative path
+dat <- read.csv("data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv")
+```
+
+## Basics of R: Objects and Assignment
+
+```{r}
+x <- 5
+x
+```
+
+```{r}
+y <- 2
+x + y
+```
+
+```{r}
+my_cats <- c("Moni", "Rumi")
+my_cats
+```
+
+## R Packages
+
+Please install the following packages:
+
+```{r, eval = FALSE}
+install.packages("tidyverse") # data wrangling and viz
+install.packages("readxl") # read excel files
+install.packages("janitor") # clean messy data
+install.packages("estimatr") # robust estimators
+
+```
+
+# Coding Best Practices {.inverse}
+
+## Write Clean Code
+
+-   Write code that is easy to read
+
+-   Add spaces between things
+
+    ```{r}
+    a<-c(1,2,3,4,5) # don't do this
+    a <- c(1, 2, 3, 4, 5) # do this
+    ```
+
+-   In R, please use `<-` to assign
+
+    ```{r}
+    x = 5 # don't do this
+    x <- 5 # do this
+    ```
+
+-   Use `_` instead of `.` as separation when naming objects
+
+    ```{r}
+    my.color <- "blue" # don't do this
+    my_color <- "blue" # do this
+    ```
+
+-   Some packages to help : [lintr](https://lintr.r-lib.org/)
+
+## Write Good Documentation
+
+-   Helps with reproducibility
+
+-   For yourself and for other people who may use your code
+
+-   Write comments
+
+## Conduct Code Review
+
+::: columns
+::: {.column width="30%"}
+[![](images/code_check.png)](https://debruine.github.io/project/code-check/)
+:::
+
+::: {.column width="70%"}
+-   Process of systematically checking code
+
+-   On your own or by someone else
+
+-   Catch errors or suggest better ways to code
+
+-   Check out the [Code Check Club](https://debruine.github.io/project/code-check/) by Lisa De Bruine et al.
+:::
+:::
+
+## Use Version Control
+
+::: columns
+::: {.column width="30%"}
+![](images/github.png)
+:::
+
+::: {.column width="70%"}
+-   git and GitHub
+
+-   Track changes, merge conflicts, branching to review code before merging
+
+-   Track issues
+
+-   A portfolio of your work
+
+-   Please read [Vuorre & Curley (2018)](https://journals.sagepub.com/doi/pdf/10.1177/2515245918754826) to learn more about how to set up git to work with RStudio
+:::
+:::
+
+# Quarto {.inverse}
+
+## Introduction to Quarto
+
+::: columns
+::: {.column width="50%"}
+![](images/quarto.png){width="723"}
+:::
+
+::: {.column width="50%"}
+-   Integrate text, code, graphs, tables
+
+-   Develop slides, websites, books
+
+-   Use R, Python
+
+-   The slides, practice problems, and the website for this course have been created using Quarto
+
+-   For more information, please visit <https://quarto.org/>
+:::
+:::
+
+# Thank You! {.inverse}

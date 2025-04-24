@@ -1,0 +1,19 @@
+---
+title: "Data Analytics in R"
+---
+
+## Course Description
+
+We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.
+
+This course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.
+
+Additionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings
+
+## Expectations
+
+The more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades.
+
+We will provide a list of recommended readings each week. Most of the readings will be from the [R for Data Science](https://r4ds.hadley.nz/) book with some other articles and book chapters. We encourage you to look through recommended readings to help guide you as you learn R.
+
+We particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.
