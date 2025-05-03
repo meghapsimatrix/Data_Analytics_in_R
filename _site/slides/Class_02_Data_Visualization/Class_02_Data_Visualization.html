@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Megha Joshi">
-  <title>Teach Data Science Course Website – Data Visualization with ggplot</title>
+  <title>Data Analytics in R – Data Visualization with ggplot</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -404,6 +404,34 @@ Megha Joshi
 </section>
 <section id="data-visualization" class="slide level2">
 <h2>Data Visualization</h2>
+<div class="columns">
+<div>
+
+</div><div class="column quarto-layout-panel" data-layout="[[-1], [1], [-1]]" style="width:50%;">
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img data-src="images/motivation.png"></p>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><p>Exploration</p>
+<ul>
+<li><p>Look at distributions</p></li>
+<li><p>Examine relationship between variables</p></li>
+</ul></li>
+<li><p>Communication</p>
+<ul>
+<li><p>Illustrate your findings in ways that are digestible</p></li>
+<li><p>Make or support an argument</p></li>
+</ul></li>
+</ul>
+</div></div>
 </section>
 <section id="a-grammar-of-graphics" class="slide level2">
 <h2>A Grammar of Graphics</h2>
@@ -430,6 +458,33 @@ Megha Joshi
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="example-dataset" class="slide level2" style=".smaller">
+<h2>Example Dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">load</span>(<span class="st">"../../slides/data/bike_sharing_dat.RData"</span>)</span>
+<span id="cb3-2"><a></a><span class="fu">glimpse</span>(bike_sharing_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 731
+Columns: 16
+$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
+$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…
+$ season     &lt;chr&gt; "winter", "winter", "winter", "winter", "winter", "winter",…
+$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…
+$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ holiday    &lt;chr&gt; "No Holiday", "No Holiday", "No Holiday", "No Holiday", "No…
+$ weekday    &lt;chr&gt; "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Th…
+$ workingday &lt;chr&gt; "Holiday", "Holiday", "Working Day", "Working Day", "Workin…
+$ weathersit &lt;chr&gt; "Misty and Cloudy", "Misty and Cloudy", "Clear", "Clear", "…
+$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…
+$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…
+$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…
+$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…
+$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…
+$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…
+$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…</code></pre>
+</div>
+</div>
+</section>
 <section>
 <section id="the-grammar" class="title-slide slide level1 inverse center">
 <h1>The Grammar</h1>
@@ -447,100 +502,225 @@ Megha Joshi
 <section id="data" class="slide level2">
 <h2>Data</h2>
 <ul>
-<li><strong>Data</strong> - Information used to create the graphic.</li>
+<li><strong>Data</strong> - information used to create the graphic</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> bike_sharing_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Class_02_Data_Visualization_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="aesthetic-mappings" class="slide level2">
 <h2>Aesthetic Mappings</h2>
 <ul>
-<li><p><strong>Aesthetic attributes</strong></p></li>
-<li><p><strong>Mapping</strong> -</p></li>
+<li><strong>Aesthetic attributes - x, y, color, size</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
-<span id="cb4-2"><a></a>                <span class="at">y =</span> hwy, </span>
-<span id="cb4-3"><a></a>                <span class="at">color =</span> class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb6-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb6-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb6-4"><a></a>           <span class="at">color =</span> season))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Class_02_Data_Visualization_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="layers" class="slide level2">
 <h2>Layers</h2>
 <ul>
-<li><strong>Geoms</strong>- geometric representations of the data.</li>
+<li><strong>Geoms</strong>- geometric representations of the data</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
-<span id="cb5-2"><a></a>                <span class="at">y =</span> hwy,</span>
-<span id="cb5-3"><a></a>                <span class="at">color =</span> class)) <span class="sc">+</span> </span>
-<span id="cb5-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb7-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb7-4"><a></a>           <span class="at">color =</span> season)) <span class="sc">+</span> </span>
+<span id="cb7-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Class_02_Data_Visualization_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="scales" class="slide level2">
 <h2>Scales</h2>
-</section>
+<p>Scales - translate what is in the graph to what is in the data using legends or axes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb8-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb8-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb8-4"><a></a>           <span class="at">color =</span> season)) <span class="sc">+</span> </span>
+<span id="cb8-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-6"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="facets" class="slide level2">
 <h2>Facets</h2>
 <ul>
 <li>Facets - small multiples</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
-<span id="cb6-2"><a></a>                <span class="at">y =</span> hwy,</span>
-<span id="cb6-3"><a></a>                <span class="at">color =</span> class)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>  <span class="fu">facet_grid</span>(year <span class="sc">~</span> drv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb9-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb9-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb9-4"><a></a>           <span class="at">color =</span> season)) <span class="sc">+</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> season)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Class_02_Data_Visualization_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="theme" class="slide level2">
+<h2>Theme</h2>
+<p>Theme - set overall how the graph looks</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb10-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb10-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb10-4"><a></a>           <span class="at">color =</span> season)) <span class="sc">+</span> </span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> season) <span class="sc">+</span> </span>
+<span id="cb10-7"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="cleaning-up" class="slide level2">
+<h2>Cleaning Up</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb11-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb11-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb11-4"><a></a>           <span class="at">color =</span> season)) <span class="sc">+</span> </span>
+<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> season) <span class="sc">+</span> </span>
+<span id="cb11-7"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature"</span>, <span class="at">y =</span> <span class="st">"Total Rental Bikes"</span>, <span class="at">color =</span> <span class="st">"Season"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb11-10"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">position =</span> <span class="st">"bottom"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="anatomy-of-a-ggplot" class="slide level2">
 <h2>Anatomy of a <code>ggplot</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> [dat], <span class="co"># the data</span></span>
-<span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> [x_var], </span>
-<span id="cb7-3"><a></a>           <span class="at">y =</span> [y_var],</span>
-<span id="cb7-4"><a></a>           <span class="at">color =</span> [color_var], </span>
-<span id="cb7-5"><a></a>           <span class="at">fill =</span> [fill_var])) <span class="sc">+</span> <span class="co"># aesthetic mappings</span></span>
-<span id="cb7-6"><a></a>  geom_[point]() <span class="sc">+</span> <span class="co"># geom</span></span>
-<span id="cb7-7"><a></a>  geom_[smooth]() <span class="sc">+</span> <span class="co"># another layer</span></span>
-<span id="cb7-8"><a></a>  scale_[aesthetic]_[type]() <span class="sc">+</span> <span class="co"># scaling</span></span>
-<span id="cb7-9"><a></a>  <span class="fu">facet_grid</span>([row] <span class="sc">~</span> [col]) <span class="sc">+</span> <span class="co"># faceting</span></span>
-<span id="cb7-10"><a></a>  theme_[theme]() <span class="co"># theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> [dat], <span class="co"># the data</span></span>
+<span id="cb12-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> [x_var], </span>
+<span id="cb12-3"><a></a>           <span class="at">y =</span> [y_var],</span>
+<span id="cb12-4"><a></a>           <span class="at">color =</span> [color_var], </span>
+<span id="cb12-5"><a></a>           <span class="at">fill =</span> [fill_var])) <span class="sc">+</span> <span class="co"># aesthetic mappings</span></span>
+<span id="cb12-6"><a></a>  geom_[point]() <span class="sc">+</span> <span class="co"># geom</span></span>
+<span id="cb12-7"><a></a>  geom_[smooth]() <span class="sc">+</span> <span class="co"># another layer</span></span>
+<span id="cb12-8"><a></a>  scale_[aesthetic]_[type]() <span class="sc">+</span> <span class="co"># scaling</span></span>
+<span id="cb12-9"><a></a>  <span class="fu">facet_grid</span>([row] <span class="sc">~</span> [col]) <span class="sc">+</span> <span class="co"># faceting</span></span>
+<span id="cb12-10"><a></a>  theme_[theme]() <span class="co"># theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
-<section id="one-dimensional-plots" class="title-slide slide level1 inverse center">
-<h1>One Dimensional Plots</h1>
+<section id="working-with-one-variable" class="title-slide slide level1 inverse center">
+<h1>Working with One Variable</h1>
 
 </section>
 <section id="bar-plot-categorical-data" class="slide level2">
 <h2>Bar Plot: Categorical Data</h2>
-</section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> holiday, <span class="at">fill =</span> holiday)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section id="histogram-continuous-data" class="slide level2">
 <h2>Histogram: Continuous Data</h2>
-</section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">theme_grey</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="density-plot-continuous-data" class="slide level2">
 <h2>Density Plot: Continuous Data</h2>
-</section></section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> count)) <span class="sc">+</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">fill =</span> <span class="st">"navy"</span>) <span class="sc">+</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section></section>
 <section>
-<section id="two-dimensional-plots" class="title-slide slide level1 inverse center">
-<h1>Two Dimensional Plots</h1>
+<section id="working-with-two-variables" class="title-slide slide level1 inverse center">
+<h1>Working with Two Variables</h1>
 
 </section>
 <section id="bar-plot-categorical-data-1" class="slide level2">
 <h2>Bar Plot: Categorical Data</h2>
-</section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">fill =</span> weathersit)) <span class="sc">+</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section id="box-plot" class="slide level2">
 <h2>Box Plot</h2>
-</section>
-<section id="scatter-plot" class="slide level2">
-<h2>Scatter Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb17-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> weathersit, </span>
+<span id="cb17-3"><a></a>           <span class="at">y =</span> count, </span>
+<span id="cb17-4"><a></a>           <span class="at">fill =</span> weathersit)) <span class="sc">+</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a></a>  <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="quarto-auto-generated-content">
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<section id="scatter-plot-continuous-data" class="slide level2">
+<h2>Scatter Plot: Continuous Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb18-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb18-3"><a></a>           <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb18-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
+<span id="cb18-5"><a></a>  <span class="fu">theme_dark</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section id="total-rentals-by-season" class="slide level2">
+<h2>Total Rentals by Season</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> count, <span class="at">fill =</span> season)) <span class="sc">+</span></span>
+<span id="cb19-2"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span> </span>
+<span id="cb19-3"><a></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
+<span id="cb19-4"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<section id="total-rentals-by-season-1" class="slide level2">
+<h2>Total Rentals by Season</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, <span class="fu">aes</span>(<span class="at">x =</span> count, <span class="at">fill =</span> season)) <span class="sc">+</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> season) <span class="sc">+</span></span>
+<span id="cb20-4"><a></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> </span>
+<span id="cb20-5"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="introducing-more-variables" class="title-slide slide level1 center">
+<h1>Introducing More Variables</h1>
+
+</section>
+<section id="relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday" class="slide level2">
+<h2>Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(bike_sharing_dat, </span>
+<span id="cb21-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp, </span>
+<span id="cb21-3"><a></a>           <span class="at">y =</span> count,</span>
+<span id="cb21-4"><a></a>           <span class="at">color =</span> weekday,</span>
+<span id="cb21-5"><a></a>           <span class="at">shape =</span> holiday)) <span class="sc">+</span> </span>
+<span id="cb21-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
+<span id="cb21-7"><a></a>  <span class="fu">facet_grid</span>(weathersit <span class="sc">~</span> season) <span class="sc">+</span></span>
+<span id="cb21-8"><a></a>  <span class="fu">theme_test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+
+<img data-src="class_02_data_visualization_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>

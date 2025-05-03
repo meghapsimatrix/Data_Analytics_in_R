@@ -76,7 +76,7 @@ editor: visual
 
 ::: columns
 ::: {.column width="40%"}
-![](images/R.png)
+[![Artwork by \@allison_horst](images/R_love.gif){fig-alt="Animated gif of the R logo with magenta and red hearts moving upward in a loop to the left of the \"R.\""}](https://allisonhorst.com/allison-horst)
 :::
 
 ::: {.column width="60%"}
@@ -222,7 +222,7 @@ install.packages("estimatr") # robust estimators
 
 ::: columns
 ::: {.column width="30%"}
-![](images/github.png)
+[![Artwork by \@allison_horst](images/git_hug.png){fig-alt="Cartoon of the GitHub octocat mascot hugging a very sad looking little furry monster while the monster points accusingly at an open laptop with \"MERGE CONFLICT\" in red across the entire screen. The laptop has angry eyes and claws and a wicked smile. In text across the top reads \"gitHUG\" with a small heart."}](https://allisonhorst.com/allison-horst)
 :::
 
 ::: {.column width="70%"}

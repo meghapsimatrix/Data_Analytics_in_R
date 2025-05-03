@@ -1,7 +1,6 @@
-# Teach DS - Course Website
+# Data Analytics in R - Course Website
 
-Template course website for the Designing a Data Science Classroom workshop at rstudio::conf(2022). 
+We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.
 
-Site published through gh-pages: https://rstudio-conf-2022.github.io/teach-ds-course-website/
-
-Site published through Quarto Pub: https://maria.quarto.pub/teach-data-science-course-website/
+Website is based on template provided by:
+https://maria.quarto.pub/teach-data-science-course-website/

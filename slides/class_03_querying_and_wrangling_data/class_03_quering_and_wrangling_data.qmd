@@ -1,0 +1,139 @@
+---
+title: "Data Visualization with `ggplot`"
+author: "Megha Joshi"
+execute: 
+  echo: TRUE
+format: 
+  revealjs:
+    theme: [../slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    title-slide-attributes:
+      data-background-color: "#562457"
+    preview-links: true
+    footer: |
+      Theme by Beatriz Mills on  [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)
+editor: visual
+---
+
+## Data Visualization
+
+## A Grammar of Graphics
+
+-   Leland Wilkinson wrote [The Grammar of Graphics (2nd edition, 2005)](https://link.springer.com/book/10.1007/0-387-28695-0)
+
+    -   Developed the grammar of graphics
+
+    -   Described fundamental elements that make up a statistical graphic
+
+-   Hadley Wickham created the R package `ggplot2` to create graphs based on Wilkinson's grammar of graphics (gg)
+
+    -   Layers
+
+## Loading `ggplot`
+
+The `ggplot2` package is available as part of the `tidyverse` set of packages:
+
+```{r}
+library(tidyverse)
+```
+
+You can also load the package separately:
+
+```{r}
+library(ggplot2)
+```
+
+# The Grammar {.inverse}
+
+## The Grammar {.smaller}
+
+::: columns
+::: {.column width="50%"}
+[![](images/Picture1.png)](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+:::
+
+::: {.column width="50%" style="font-size: 120%;"}
+"In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars)." - Hadley Wickham
+:::
+:::
+
+## Data
+
+-   **Data** - Information used to create the graphic.
+
+```{r}
+ggplot(data = mpg)
+```
+
+## Aesthetic Mappings
+
+-   **Aesthetic attributes**
+
+-   **Mapping** -
+
+```{r}
+ggplot(mpg, aes(x = displ, 
+                y = hwy, 
+                color = class))
+```
+
+## Layers
+
+-   **Geoms**- geometric representations of the data.
+
+```{r}
+ggplot(mpg, aes(x = displ, 
+                y = hwy,
+                color = class)) + 
+  geom_point()
+```
+
+## Scales
+
+```{r}
+
+```
+
+## Facets
+
+-   Facets - small multiples
+
+```{r}
+ggplot(mpg, aes(x = displ, 
+                y = hwy,
+                color = class)) + 
+  geom_point() + 
+  facet_grid(year ~ drv)
+```
+
+## Anatomy of a `ggplot`
+
+```{r, eval = FALSE}
+ggplot(data = [dat], # the data
+       aes(x = [x_var], 
+           y = [y_var],
+           color = [color_var], 
+           fill = [fill_var])) + # aesthetic mappings
+  geom_[point]() + # geom
+  geom_[smooth]() + # another layer
+  scale_[aesthetic]_[type]() + # scaling
+  facet_grid([row] ~ [col]) + # faceting
+  theme_[theme]() # theme
+```
+
+# One Dimensional Plots {.inverse}
+
+## Bar Plot: Categorical Data
+
+## Histogram: Continuous Data
+
+## Density Plot: Continuous Data
+
+# Two Dimensional Plots {.inverse}
+
+## Bar Plot: Categorical Data
+
+## Box Plot
+
+## Scatter Plot

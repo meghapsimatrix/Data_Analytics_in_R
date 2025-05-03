@@ -2,19 +2,19 @@ project:
   type: website
 
 website:
-  title: "Teach Data Science Course Website"
+  title: "Data Analytics in R"
   sidebar:
     background: "#562457"
     logo: "images/logo.png"
     pinned: true
     align: center
-    tools:
-      - icon: github
-        href: https://github.com/rstudio-conf-2022/teach-ds-course-website
-        text: GitHub
-      - icon: cloud-fill
-        href: https://rstudio.cloud/spaces/237799
-        text: RStudio Cloud
+    # tools:
+    #   - icon: github
+    #     href: https://github.com/rstudio-conf-2022/teach-ds-course-website
+    #     text: GitHub
+    #   - icon: cloud-fill
+    #     href: https://rstudio.cloud/spaces/237799
+    #     text: RStudio Cloud
     style: docked
     contents:
       - href: index.qmd

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
+<meta name="author" content="Megha Joshi">
 
-<title>Class 02 – Teach Data Science Course Website</title>
+<title>Class 02 – Data Analytics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,9 +106,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -184,10 +184,6 @@ window.Quarto = {
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main">
-    <a href="https://github.com/rstudio-conf-2022/teach-ds-course-website" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="https://rstudio.cloud/spaces/237799" title="RStudio Cloud" class="quarto-navigation-tool px-1" aria-label="RStudio Cloud"><i class="bi bi-cloud-fill"></i></a>
-</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -239,6 +235,12 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Megha Joshi </p>
+          </div>
+  </div>
     
   
     
@@ -265,9 +267,9 @@ Instructor
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1744922629598" data-listing-reading-time-sort="3" data-listing-word-count-sort="424" data-listing-title-sort="Data Visualization with `ggplot`" data-listing-filename-sort="class_02_data_visualization.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1746053218906" data-listing-reading-time-sort="5" data-listing-word-count-sort="972" data-listing-title-sort="Data Visualization with `ggplot`" data-listing-filename-sort="class_02_data_visualization.qmd">
 <td>
-<a href="../slides/class_02_data_visualization/Class_02_Data_Visualization.html" class="title listing-title">Data Visualization with <code>ggplot</code></a>
+<a href="../slides/class_02_data_visualization/class_02_data_visualization.html" class="title listing-title">Data Visualization with <code>ggplot</code></a>
 </td>
 <td>
 <span class="listing-author">Megha Joshi</span>
@@ -280,25 +282,9 @@ No matching items
 </div>
 </div>
 </section>
-<section id="assignments" class="level1">
-<h1>Assignments</h1>
-<div id="assignments">
-
-</div>
-</section>
-<section id="readings" class="level1">
-<h1>Readings</h1>
-<ul>
-<li><p><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter 3 - Data Visualization</a></p></li>
-<li><p><a href="https://openintro-ims.netlify.app/explore-categorical.html">Introduction for Modern Statistics: Chapter 4 - Exploring Categorical Data</a></p></li>
-<li><p><a href="https://openintro-ims.netlify.app/explore-numerical.html">Introduction to Modern Statistics: Chapter 5- Exploring Numerical Data</a></p></li>
-</ul>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-problems">
+<section id="practice-problems" class="level1">
+<h1>Practice Problems</h1>
+<div id="listing-problems" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -308,12 +294,29 @@ Problem Sets
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1745458772352" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="Practice Problem Set 2" data-listing-filename-sort="practice_problems_02.qmd">
+<td>
+<a href="../practice_problems/practice_problems_02/practice_problems_02.html" class="title listing-title">Practice Problem Set 2</a>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+</section>
+<section id="readings" class="level1">
+<h1>Readings</h1>
+<ul>
+<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter 3 - Data Visualization</a></li>
+</ul>
+
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

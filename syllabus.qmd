@@ -4,10 +4,24 @@ title: "Syllabus"
 
 ## Learning Objectives
 
+-   Form a community of practice to learn R
+
+-   Learn and/or sharpen data wrangling, cleaning, analysis and visualization skills
+
+-   Equip you to be able to pass technical interviews
+
 ## Recommended Readings
+
+Healy, K. (2018). *Data Visualization: A Practical Introduction.* Princeton University Press. Free version [here](https://socviz.co/).
+
+Ismay, C., & Kim, A. Y. (2019). *Statistical inference via data science: A ModernDive into R and the tidyverse*. Chapman and Hall/CRC. Free version [here](https://moderndive.com/v2/index.html).
+
+Peng, R. D. (2016). *R programming for data science* (pp. 86-181). Victoria, BC, Canada: Leanpub. Free version [here](https://bookdown.org/rdpeng/rprogdatascience/).
+
+Wickham, H., Cetinkaya-Rundel, M. & Grolemund, G (2023). *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (2e) R for Data Science (2e).* O’Reilly Media, Inc. Free version [here](https://r4ds.hadley.nz/).
 
 ## Practice Problems
 
-## Community of Practice 
+## Community of Practice
 
 ## 

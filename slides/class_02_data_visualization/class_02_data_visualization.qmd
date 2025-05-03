@@ -18,6 +18,26 @@ editor: visual
 
 ## Data Visualization
 
+::: columns
+::: {.column width="50%" layout="[[-1], [1], [-1]]"}
+![](images/motivation.png)
+:::
+
+::: {.column width="40%"}
+-   Exploration
+
+    -   Look at distributions
+
+    -   Examine relationship between variables
+
+-   Communication
+
+    -   Illustrate your findings in ways that are digestible
+
+    -   Make or support an argument
+:::
+:::
+
 ## A Grammar of Graphics
 
 -   Leland Wilkinson wrote [The Grammar of Graphics (2nd edition, 2005)](https://link.springer.com/book/10.1007/0-387-28695-0)
@@ -44,6 +64,13 @@ You can also load the package separately:
 library(ggplot2)
 ```
 
+## Example Dataset {style=".smaller"}
+
+```{r}
+load("../../slides/data/bike_sharing_dat.RData")
+glimpse(bike_sharing_dat)
+```
+
 # The Grammar {.inverse}
 
 ## The Grammar {.smaller}
@@ -60,39 +87,46 @@ library(ggplot2)
 
 ## Data
 
--   **Data** - Information used to create the graphic.
+-   **Data** - information used to create the graphic
 
 ```{r}
-ggplot(data = mpg)
+ggplot(data = bike_sharing_dat)
 ```
 
 ## Aesthetic Mappings
 
--   **Aesthetic attributes**
-
--   **Mapping** -
+-   **Aesthetic attributes - x, y, color, size**
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy, 
-                color = class))
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season))
 ```
 
 ## Layers
 
--   **Geoms**- geometric representations of the data.
+-   **Geoms**- geometric representations of the data
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy,
-                color = class)) + 
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season)) + 
   geom_point()
 ```
 
 ## Scales
 
-```{r}
+Scales - translate what is in the graph to what is in the data using legends or axes
 
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season)) + 
+  geom_point() + 
+  scale_color_brewer(palette = "Dark2")
 ```
 
 ## Facets
@@ -100,11 +134,41 @@ ggplot(mpg, aes(x = displ,
 -   Facets - small multiples
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy,
-                color = class)) + 
-  geom_point() + 
-  facet_grid(year ~ drv)
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season)) + 
+  geom_point() +
+  facet_grid(~ season)
+```
+
+## Theme
+
+Theme - set overall how the graph looks
+
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season)) + 
+  geom_point() +
+  facet_grid(~ season) + 
+  theme_bw()
+```
+
+## Cleaning Up
+
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count, 
+           color = season)) + 
+  geom_point(alpha = .5) +
+  facet_grid(~ season) + 
+  scale_color_brewer(palette = "Dark2") +
+  labs(x = "Temperature", y = "Total Rental Bikes", color = "Season") +
+  theme_bw() + 
+  guides(color = guide_legend(position = "bottom")) 
 ```
 
 ## Anatomy of a `ggplot`
@@ -122,18 +186,95 @@ ggplot(data = [dat], # the data
   theme_[theme]() # theme
 ```
 
-# One Dimensional Plots {.inverse}
+# Working with One Variable {.inverse}
 
 ## Bar Plot: Categorical Data
+
+```{r}
+ggplot(bike_sharing_dat, aes(x = holiday, fill = holiday)) + 
+  geom_bar() +
+  theme_minimal()
+```
 
 ## Histogram: Continuous Data
 
+```{r}
+ggplot(bike_sharing_dat, aes(x = temp)) + 
+  geom_histogram(fill = "darkred", alpha = .8, bins = 15) +
+  theme_grey()
+```
+
 ## Density Plot: Continuous Data
 
-# Two Dimensional Plots {.inverse}
+```{r}
+ggplot(bike_sharing_dat, aes(x = count)) +
+  geom_density(alpha = .8, fill = "navy") + 
+  theme(legend.position = "none") +
+  theme_bw()
+```
+
+# Working with Two Variables {.inverse}
 
 ## Bar Plot: Categorical Data
 
+```{r}
+ggplot(bike_sharing_dat, aes(x = season, fill = weathersit)) +
+  geom_bar(position = "fill") +
+  theme_classic()
+```
+
 ## Box Plot
 
-## Scatter Plot
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = weathersit, 
+           y = count, 
+           fill = weathersit)) +
+  geom_boxplot(alpha = .7) +
+  theme(legend.position = "none") +
+  theme_linedraw()
+```
+
+## Scatter Plot: Continuous Data
+
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count)) + 
+  geom_point(alpha = .7) + 
+  theme_dark()
+```
+
+## Total Rentals by Season
+
+```{r}
+ggplot(bike_sharing_dat, aes(x = count, fill = season)) +
+  geom_density(alpha = .8) + 
+  theme_light() + 
+  guides(fill = FALSE)
+```
+
+## Total Rentals by Season
+
+```{r}
+ggplot(bike_sharing_dat, aes(x = count, fill = season)) +
+  geom_density(alpha = .8) + 
+  facet_wrap(~ season) +
+  theme_void() + 
+  guides(fill = FALSE)
+```
+
+# Introducing More Variables
+
+## Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday
+
+```{r}
+ggplot(bike_sharing_dat, 
+       aes(x = temp, 
+           y = count,
+           color = weekday,
+           shape = holiday)) + 
+  geom_point(alpha = .7) + 
+  facet_grid(weathersit ~ season) +
+  theme_test()
+```
