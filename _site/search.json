@@ -1,5 +1,25 @@
 [
   {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
     "objectID": "syllabus.html#recommended-readings",
     "href": "syllabus.html#recommended-readings",
     "title": "Syllabus",
@@ -30,157 +50,158 @@
     ]
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-this-course",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-this-course",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Introduction to This Course",
-    "text": "Introduction to This Course\n\nSharpen your data analytic skills\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nOne hour lectures once a week for one hour\nPractice problems\nJob search resources"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
+    "title": "Data Visualization with ggplot",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nExploration\n\nLook at distributions\nExamine relationship between variables\n\nCommunication\n\nIllustrate your findings in ways that are digestible\nMake or support an argument"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#instructors",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#instructors",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Instructors",
-    "text": "Instructors\nMegha Joshi, PhD"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
+    "title": "Data Visualization with ggplot",
+    "section": "A Grammar of Graphics",
+    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#expectations",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#expectations",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Expectations",
-    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nIn the Syllabus, we listed relevant chapters for each class\nOther books/ resources here\n\nPractice problems - practice, practice, practice\nNo grades\nCollaboration - Slack channel"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Loading ggplot",
+    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#overview-of-course",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#overview-of-course",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Overview of Course",
-    "text": "Overview of Course\n\nData visualization\nData querying and wrangling\nWorking with relational databases\nDealing with different data types\nFunctions\nIteration\nLinear regression and gentle introduction to machine learning"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset",
+    "title": "Data Visualization with ggplot",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nload(\"../../slides/data/bike_sharing_dat.RData\")\nglimpse(bike_sharing_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;chr&gt; \"winter\", \"winter\", \"winter\", \"winter\", \"winter\", \"winter\",…\n$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;chr&gt; \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No…\n$ weekday    &lt;chr&gt; \"Saturday\", \"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Th…\n$ workingday &lt;chr&gt; \"Holiday\", \"Holiday\", \"Working Day\", \"Working Day\", \"Workin…\n$ weathersit &lt;chr&gt; \"Misty and Cloudy\", \"Misty and Cloudy\", \"Clear\", \"Clear\", \"…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-r",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-r",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Introduction to R",
-    "text": "Introduction to R\n\n\n\n\n\nProgramming language - based on S\nOpen source and FREE\nbase R plus other R packages ~ over 20,000\nUser community\n\nTidy Tuesday\nData Science Learning Community\nStack Overflow"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
+    "title": "Data Visualization with ggplot",
+    "section": "The Grammar",
+    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#downloading",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#downloading",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Downloading",
-    "text": "Downloading\n\n\n\n\n\nDownload R\nDownload R Studio\nDownload Quarto"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
+    "title": "Data Visualization with ggplot",
+    "section": "Data",
+    "text": "Data\n\nData - information used to create the graphic\n\n\nggplot(data = bike_sharing_dat)"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#r-projects-and-relative-path",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#r-projects-and-relative-path",
-    "title": "Introduction to Data Analytics in R",
-    "section": "R Projects and Relative Path",
-    "text": "R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
+    "title": "Data Visualization with ggplot",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\nAesthetic attributes - x, y, color, size\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season))"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#basics-of-r-objects-and-assignment",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#basics-of-r-objects-and-assignment",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Basics of R: Objects and Assignment",
-    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_cats &lt;- c(\"Moni\", \"Rumi\")\nmy_cats\n\n[1] \"Moni\" \"Rumi\""
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
+    "title": "Data Visualization with ggplot",
+    "section": "Layers",
+    "text": "Layers\n\nGeoms- geometric representations of the data\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point()"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#r-packages",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#r-packages",
-    "title": "Introduction to Data Analytics in R",
-    "section": "R Packages",
-    "text": "R Packages\nPlease install the following packages:\n\ninstall.packages(\"tidyverse\") # data wrangling and viz\ninstall.packages(\"readxl\") # read excel files\ninstall.packages(\"janitor\") # clean messy data\ninstall.packages(\"estimatr\") # robust estimators"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
+    "title": "Data Visualization with ggplot",
+    "section": "Scales",
+    "text": "Scales\nScales - translate what is in the graph to what is in the data using legends or axes\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() + \n  scale_color_brewer(palette = \"Dark2\")"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#write-clean-code",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#write-clean-code",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Write Clean Code",
-    "text": "Write Clean Code\n\nWrite code that is easy to read\nAdd spaces between things\n\na&lt;-c(1,2,3,4,5) # don't do this\na &lt;- c(1, 2, 3, 4, 5) # do this\n\nIn R, please use &lt;- to assign\n\nx = 5 # don't do this\nx &lt;- 5 # do this\n\nUse _ instead of . as separation when naming objects\n\nmy.color &lt;- \"blue\" # don't do this\nmy_color &lt;- \"blue\" # do this\n\nSome packages to help : lintr"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
+    "title": "Data Visualization with ggplot",
+    "section": "Facets",
+    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season)"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#write-good-documentation",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#write-good-documentation",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Write Good Documentation",
-    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
+    "title": "Data Visualization with ggplot",
+    "section": "Theme",
+    "text": "Theme\nTheme - set overall how the graph looks\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season) + \n  theme_bw()"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#conduct-code-review",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#conduct-code-review",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Conduct Code Review",
-    "text": "Conduct Code Review\n\n\n\n\n\nProcess of systematically checking code\nOn your own or by someone else\nCatch errors or suggest better ways to code\nCheck out the Code Check Club by Lisa De Bruine et al."
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
+    "title": "Data Visualization with ggplot",
+    "section": "Cleaning Up",
+    "text": "Cleaning Up\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point(alpha = .5) +\n  facet_grid(~ season) + \n  scale_color_brewer(palette = \"Dark2\") +\n  labs(x = \"Temperature\", y = \"Total Rental Bikes\", color = \"Season\") +\n  theme_bw() + \n  guides(color = guide_legend(position = \"bottom\"))"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#use-version-control",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#use-version-control",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Use Version Control",
-    "text": "Use Version Control\n\n\n\n\n\ngit and GitHub\nTrack changes, merge conflicts, branching to review code before merging\nTrack issues\nA portfolio of your work\nPlease read Vuorre & Curley (2018) to learn more about how to set up git to work with RStudio"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Anatomy of a ggplot",
+    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
   },
   {
-    "objectID": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-quarto",
-    "href": "slides/Class_01_Introduction/Class_01_Introduction.html#introduction-to-quarto",
-    "title": "Introduction to Data Analytics in R",
-    "section": "Introduction to Quarto",
-    "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = holiday, fill = holiday)) + \n  geom_bar() +\n  theme_minimal()"
   },
   {
-    "objectID": "classes/class-02.html",
-    "href": "classes/class-02.html",
-    "title": "Class 02",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization\nIntroduction for Modern Statistics: Chapter 4 - Exploring Categorical Data\nIntroduction to Modern Statistics: Chapter 5- Exploring Numerical Data\n\n\n\n\n\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Histogram: Continuous Data",
+    "text": "Histogram: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = temp)) + \n  geom_histogram(fill = \"darkred\", alpha = .8, bins = 15) +\n  theme_grey()"
   },
   {
-    "objectID": "classes/class-01.html",
-    "href": "classes/class-01.html",
-    "title": "Class 01: Introduction to the Course and to R",
-    "section": "",
-    "text": "Lecture\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Density Plot: Continuous Data",
+    "text": "Density Plot: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = count)) +\n  geom_density(alpha = .8, fill = \"navy\") + \n  theme(legend.position = \"none\") +\n  theme_bw()"
   },
   {
-    "objectID": "practice_problems/practice_problems_01.html",
-    "href": "practice_problems/practice_problems_01.html",
-    "title": "Practice Problem Set 1",
-    "section": "",
-    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = season, fill = weathersit)) +\n  geom_bar(position = \"fill\") +\n  theme_classic()"
   },
   {
-    "objectID": "classes.html",
-    "href": "classes.html",
-    "title": "Classes",
-    "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02\n\n\nMegha Joshi\n\n\n\n\nClass 03\n\n\n \n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Classes"
-    ]
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
+    "title": "Data Visualization with ggplot",
+    "section": "Box Plot",
+    "text": "Box Plot\n\nggplot(bike_sharing_dat, \n       aes(x = weathersit, \n           y = count, \n           fill = weathersit)) +\n  geom_boxplot(alpha = .7) +\n  theme(legend.position = \"none\") +\n  theme_linedraw()"
   },
   {
-    "objectID": "practice_problems/practice_problems_02.html",
-    "href": "practice_problems/practice_problems_02.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Scatter Plot: Continuous Data",
+    "text": "Scatter Plot: Continuous Data\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count)) + \n  geom_point(alpha = .7) + \n  theme_dark()"
   },
   {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Teaching Team",
-    "section": "",
-    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
-    "crumbs": [
-      "Teaching Team"
-    ]
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
+    "title": "Data Visualization with ggplot",
+    "section": "Total Rentals by Season",
+    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  theme_light() + \n  guides(fill = FALSE)"
   },
   {
-    "objectID": "classes/class-03.html",
-    "href": "classes/class-03.html",
-    "title": "Week 03",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
+    "title": "Data Visualization with ggplot",
+    "section": "Total Rentals by Season",
+    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  facet_wrap(~ season) +\n  theme_void() + \n  guides(fill = FALSE)"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
+    "title": "Data Visualization with ggplot",
+    "section": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday",
+    "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   },
   {
     "objectID": "index.html",
@@ -213,137 +234,21 @@
     ]
   },
   {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data-visualization",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data-visualization",
-    "title": "Data Visualization with ggplot",
-    "section": "Data Visualization",
-    "text": "Data Visualization"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#a-grammar-of-graphics",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#a-grammar-of-graphics",
-    "title": "Data Visualization with ggplot",
-    "section": "A Grammar of Graphics",
-    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#loading-ggplot",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#loading-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Loading ggplot",
-    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#the-grammar-1",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#the-grammar-1",
-    "title": "Data Visualization with ggplot",
-    "section": "The Grammar",
-    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#data",
-    "title": "Data Visualization with ggplot",
-    "section": "Data",
-    "text": "Data\n\nData - Information used to create the graphic.\n\n\nggplot(data = mpg)"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#aesthetic-mappings",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#aesthetic-mappings",
-    "title": "Data Visualization with ggplot",
-    "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAesthetic attributes\nMapping -\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy, \n                color = class))"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#layers",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#layers",
-    "title": "Data Visualization with ggplot",
-    "section": "Layers",
-    "text": "Layers\n\nGeoms- geometric representations of the data.\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point()"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scales",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scales",
-    "title": "Data Visualization with ggplot",
-    "section": "Scales",
-    "text": "Scales"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#facets",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#facets",
-    "title": "Data Visualization with ggplot",
-    "section": "Facets",
-    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point() + \n  facet_grid(year ~ drv)"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#anatomy-of-a-ggplot",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#anatomy-of-a-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Anatomy of a ggplot",
-    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#histogram-continuous-data",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#histogram-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Histogram: Continuous Data",
-    "text": "Histogram: Continuous Data"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#density-plot-continuous-data",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#density-plot-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Density Plot: Continuous Data",
-    "text": "Density Plot: Continuous Data"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data-1",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#bar-plot-categorical-data-1",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#box-plot",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#box-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Box Plot",
-    "text": "Box Plot"
-  },
-  {
-    "objectID": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scatter-plot",
-    "href": "slides/Class_02_Data_Visualization/Class_02_Data_Visualization.html#scatter-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Scatter Plot",
-    "text": "Scatter Plot\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "classes/class_01.html",
-    "href": "classes/class_01.html",
-    "title": "Class 01: Introduction to the Course and to R",
-    "section": "",
-    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
-  },
-  {
     "objectID": "classes/class_02.html",
     "href": "classes/class_02.html",
-    "title": "Class 02",
+    "title": "Class 02: Data Visualization with ggplot",
     "section": "",
     "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
   },
   {
-    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "title": "Practice Problem Set 2",
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Teaching Team",
     "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
+    "crumbs": [
+      "Teaching Team"
+    ]
   },
   {
     "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
@@ -353,11 +258,35 @@
     "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
   },
   {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "Classes",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03\n\n\n \n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Classes"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
     "objectID": "classes/class_03.html",
     "href": "classes/class_03.html",
-    "title": "Week 03",
+    "title": "Class 03",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+  },
+  {
+    "objectID": "classes/class_01.html",
+    "href": "classes/class_01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
@@ -458,192 +387,11 @@
     "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
   },
   {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
-    "objectID": "syllabus.html#learning-objectives",
-    "href": "syllabus.html#learning-objectives",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data-visualization",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data-visualization",
     "title": "Data Visualization with ggplot",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nExploration\n\nLook at distributions\nExamine relationship between variables\n\nCommunication\n\nIllustrate your findings in ways that are digestible\nMake or support an argument"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
-    "title": "Data Visualization with ggplot",
-    "section": "A Grammar of Graphics",
-    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Loading ggplot",
-    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
-    "title": "Data Visualization with ggplot",
-    "section": "The Grammar",
-    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
-    "title": "Data Visualization with ggplot",
-    "section": "Data",
-    "text": "Data\n\nData - information used to create the graphic\n\n\nggplot(data = bike_sharing_dat)"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
-    "title": "Data Visualization with ggplot",
-    "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAesthetic attributes - x, y, color, size\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season))"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
-    "title": "Data Visualization with ggplot",
-    "section": "Layers",
-    "text": "Layers\n\nGeoms- geometric representations of the data\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
-    "title": "Data Visualization with ggplot",
-    "section": "Scales",
-    "text": "Scales\nScales - translate what is in the graph to what is in the data using legends or axes\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() + \n  scale_color_brewer(palette = \"Dark2\")"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
-    "title": "Data Visualization with ggplot",
-    "section": "Facets",
-    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season)"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Anatomy of a ggplot",
-    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = holiday, fill = holiday)) + \n  geom_bar() +\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Histogram: Continuous Data",
-    "text": "Histogram: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = temp)) + \n  geom_histogram(fill = \"darkred\", alpha = .8, bins = 15) +\n  theme_grey()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Density Plot: Continuous Data",
-    "text": "Density Plot: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = count)) +\n  geom_density(alpha = .8, fill = \"navy\") + \n  theme(legend.position = \"none\") +\n  theme_bw()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = season, fill = weathersit)) +\n  geom_bar(position = \"fill\") +\n  theme_classic()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Box Plot",
-    "text": "Box Plot\n\nggplot(bike_sharing_dat, \n       aes(x = weathersit, \n           y = count, \n           fill = weathersit)) +\n  geom_boxplot(alpha = .7) +\n  theme(legend.position = \"none\") +\n  theme_linedraw()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Scatter Plot",
-    "text": "Scatter Plot\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset",
-    "title": "Data Visualization with ggplot",
-    "section": "Example Dataset",
-    "text": "Example Dataset\n\nload(\"../../slides/data/bike_sharing_dat.RData\")\nglimpse(bike_sharing_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;chr&gt; \"winter\", \"winter\", \"winter\", \"winter\", \"winter\", \"winter\",…\n$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;chr&gt; \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No…\n$ weekday    &lt;chr&gt; \"Saturday\", \"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Th…\n$ workingday &lt;chr&gt; \"Holiday\", \"Holiday\", \"Working Day\", \"Working Day\", \"Workin…\n$ weathersit &lt;chr&gt; \"Misty and Cloudy\", \"Misty and Cloudy\", \"Clear\", \"Clear\", \"…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
-    "title": "Data Visualization with ggplot",
-    "section": "Theme",
-    "text": "Theme\nTheme - set overall how the graph looks\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season) + \n  theme_bw()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
-    "title": "Data Visualization with ggplot",
-    "section": "Cleaning Up",
-    "text": "Cleaning Up\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point(alpha = .5) +\n  facet_grid(~ season) + \n  scale_color_brewer(palette = \"Dark2\") +\n  labs(x = \"Temperature\", y = \"Total Rental Bikes\", color = \"Season\") +\n  theme_bw() + \n  guides(color = guide_legend(position = \"bottom\"))"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Scatter Plot: Continuous Data",
-    "text": "Scatter Plot: Continuous Data\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count)) + \n  geom_point(alpha = .7) + \n  theme_dark()"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
-    "title": "Data Visualization with ggplot",
-    "section": "Total Rentals by Season",
-    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  theme_light() + \n  guides(fill = FALSE)"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
-    "title": "Data Visualization with ggplot",
-    "section": "Total Rentals by Season",
-    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  facet_wrap(~ season) +\n  theme_void() + \n  guides(fill = FALSE)"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather",
-    "title": "Data Visualization with ggplot",
-    "section": "Relationship Between Temperature and Total Rentals by Season and Weather",
-    "text": "Relationship Between Temperature and Total Rentals by Season and Weather\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
-    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
-    "title": "Data Visualization with ggplot",
-    "section": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday",
-    "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "text": "Data Visualization"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#a-grammar-of-graphics",
@@ -657,7 +405,7 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#loading-ggplot",
     "title": "Data Visualization with ggplot",
     "section": "Loading ggplot",
-    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.2\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
+    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#the-grammar-1",
@@ -748,6 +496,83 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#scatter-plot",
     "title": "Data Visualization with ggplot",
     "section": "Scatter Plot",
-    "text": "Scatter Plot"
+    "text": "Scatter Plot\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#example-to-understand-relational-data",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#example-to-understand-relational-data",
+    "title": "Relational Datasets",
+    "section": "Example To Understand Relational Data",
+    "text": "Example To Understand Relational Data"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#introduction-to-relational-data",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#introduction-to-relational-data",
+    "title": "Relational Datasets",
+    "section": "Introduction To Relational Data",
+    "text": "Introduction To Relational Data"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#databases",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#databases",
+    "title": "Relational Datasets",
+    "section": "Databases",
+    "text": "Databases"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#football-database",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#football-database",
+    "title": "Relational Datasets",
+    "section": "Football Database",
+    "text": "Football Database\n\nlibrary(dm)\n\nload(\"../data/football_database/football_data.RData\")"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#primary-key",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#primary-key",
+    "title": "Relational Datasets",
+    "section": "Primary Key",
+    "text": "Primary Key\n\nEvery table needs to have a primary key\nHas to be unique - no duplicated key"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#foreign-keys",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#foreign-keys",
+    "title": "Relational Datasets",
+    "section": "Foreign Keys",
+    "text": "Foreign Keys"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#section",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#section",
+    "title": "Relational Datasets",
+    "section": "",
+    "text": "Theme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#relational-data",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#relational-data",
+    "title": "Relational Datasets",
+    "section": "Relational Data",
+    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nStudent data:\n\n\n# A tibble: 10 × 3\n   student_id score school_id\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;    \n 1          1    80 A        \n 2          2    71 A        \n 3          3    69 A        \n 4          4    88 A        \n 5          5    78 A        \n 6          6    84 B        \n 7          7    82 B        \n 8          8    79 B        \n 9          9    85 B        \n10         10    71 B        \n\n\n\nSchool data:\n\n\n# A tibble: 2 × 2\n  school_id school_locale\n  &lt;chr&gt;     &lt;chr&gt;        \n1 A         Rural        \n2 B         City"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#a-data-frame",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#a-data-frame",
+    "title": "Relational Datasets",
+    "section": "A Data Frame",
+    "text": "A Data Frame\n\n\n\nData frames represent data as a table with rows and columns\n\nRows represent observations or record (e.g., each row contains data on each student)\nColumns typically contain variables (e.g., columns contain information like test scores and what school they attended)\n\nA tibble is a modern data frame - Chapter 10 of R4DS\n\n\n\n\n# A tibble: 10 × 4\n   student_id score school_id school_locale\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        \n 1          1    80 A         Rural        \n 2          2    71 A         Rural        \n 3          3    69 A         Rural        \n 4          4    88 A         Rural        \n 5          5    78 A         Rural        \n 6          6    84 B         City         \n 7          7    82 B         City         \n 8          8    79 B         City         \n 9          9    85 B         City         \n10         10    71 B         City"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#limitations-of-data-frames",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#limitations-of-data-frames",
+    "title": "Relational Datasets",
+    "section": "Limitations of Data Frames",
+    "text": "Limitations of Data Frames\n\n\n\nRedundant information\n\nIn the example data, note that school name and school level information is same for the first five and last five students ~ same information is repeated across 5 rows\n\nStorage and memory issues\n\n\n\n\n# A tibble: 10 × 4\n   student_id score school_id school_locale\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        \n 1          1    80 A         Rural        \n 2          2    71 A         Rural        \n 3          3    69 A         Rural        \n 4          4    88 A         Rural        \n 5          5    78 A         Rural        \n 6          6    84 B         City         \n 7          7    82 B         City         \n 8          8    79 B         City         \n 9          9    85 B         City         \n10         10    71 B         City"
+  },
+  {
+    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#section-1",
+    "href": "slides/class_06_relational_databases/class_06_relational_data.html#section-1",
+    "title": "Relational Datasets",
+    "section": "",
+    "text": "Theme by Beatriz Mills on GitHub"
   }
 ]

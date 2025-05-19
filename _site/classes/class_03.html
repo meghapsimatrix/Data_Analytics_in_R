@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="">
-<meta name="description" content="Sep 12 - 16">
 
-<title>Week 03 – Teach Data Science Course Website</title>
+<title>Class 03 – Data Analytics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -100,20 +99,20 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-assignments .list');
+    const listingTargetEl = window.document.querySelector('#listing-problems .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-categories','listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-assignments'] = new List('listing-assignments', options);
+    window['quarto-listings']['listing-problems'] = new List('listing-problems', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -168,7 +167,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 03</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Class 03</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -185,10 +184,6 @@ window.Quarto = {
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main">
-    <a href="https://github.com/rstudio-conf-2022/teach-ds-course-website" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="https://rstudio.cloud/spaces/237799" title="RStudio Cloud" class="quarto-navigation-tool px-1" aria-label="RStudio Cloud"><i class="bi bi-cloud-fill"></i></a>
-</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -232,15 +227,10 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 03</h1>
+<h1 class="title">Class 03</h1>
 <p class="subtitle lead">Wrangling Data</p>
 </div>
 
-<div>
-  <div class="description">
-    Sep 12 - 16
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -255,6 +245,7 @@ window.Quarto = {
 </header>
 
 
+<hr>
 <section id="lectures" class="level1">
 <h1>Lectures</h1>
 <div id="listing-slides" class="quarto-listing quarto-listing-container-table">
@@ -265,11 +256,19 @@ window.Quarto = {
 Topic
 </th>
 <th>
-Date
+Instructor
 </th>
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1746053218906" data-listing-reading-time-sort="5" data-listing-word-count-sort="972" data-listing-title-sort="Data Visualization with `ggplot`" data-listing-filename-sort="class_02_data_visualization.qmd">
+<td>
+<a href="../slides/class_02_data_visualization/class_02_data_visualization.html" class="title listing-title">Data Visualization with <code>ggplot</code></a>
+</td>
+<td>
+<span class="listing-author">Megha Joshi</span>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">
@@ -277,24 +276,23 @@ No matching items
 </div>
 </div>
 </section>
-<section id="assignments" class="level1">
-<h1>Assignments</h1>
-<div id="listing-assignments" class="quarto-listing quarto-listing-container-table">
+<section id="practice-problems" class="level1">
+<h1>Practice Problems</h1>
+<div id="listing-problems" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
 <thead>
 <tr>
 <th>
-Assignment
-</th>
-<th>
-Title
-</th>
-<th>
-Due
+Problem Sets
 </th>
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1745458772352" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="Practice Problem Set 2" data-listing-filename-sort="practice_problems_02.qmd">
+<td>
+<a href="../practice_problems/practice_problems_02/practice_problems_02.html" class="title listing-title">Practice Problem Set 2</a>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">
@@ -304,6 +302,9 @@ No matching items
 </section>
 <section id="readings" class="level1">
 <h1>Readings</h1>
+<ul>
+<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter 3 - Data Visualization</a></li>
+</ul>
 
 
 
@@ -402,7 +403,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/5115bf1c-b8c4-4d3b-b7f3-d23cfd0f460d\.netlify\.app\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

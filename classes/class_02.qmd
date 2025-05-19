@@ -1,6 +1,6 @@
 ---
-title: "Class 02"
-subtitle: "Data Visualization with ggplot"
+title: "Class 02: Data Visualization with ggplot"
+subtitle: ""
 description: ""
 author: "Megha Joshi"
 date: ""

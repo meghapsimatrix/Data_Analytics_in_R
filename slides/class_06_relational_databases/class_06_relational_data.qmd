@@ -1,0 +1,114 @@
+---
+title: "Relational Datasets"
+author: "Megha Joshi"
+execute: 
+  echo: TRUE
+format: 
+  revealjs:
+    theme: [../slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    title-slide-attributes:
+      data-background-color: "#562457"
+    preview-links: true
+    footer: |
+      Theme by Beatriz Mills on  [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)
+editor: visual
+---
+
+## A Data Frame
+
+::: columns
+::: {.column width="50%; font-size: 85%"}
+-   Data frames represent data as a table with rows and columns
+
+    -   Rows represent observations or record (e.g., each row contains data on each student)
+
+    -   Columns typically contain variables (e.g., columns contain information like test scores and what school they attended)
+
+-   A tibble is a modern data frame - [Chapter 10 of R4DS](https://r4ds.had.co.nz/tibbles.html)
+:::
+
+::: {.column width="50%"}
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+
+set.seed(20250519)
+
+student_dat <- tibble(student_id = c(1:10), 
+                      score = round(rnorm(10, 80, 5)), 
+                      school_id = c(rep("A", 5),
+                                    rep("B", 5)),
+                      school_locale = c(rep("Rural", 5),
+                                        rep("City", 5)))
+
+student_dat
+```
+:::
+:::
+
+## Limitations of Data Frames
+
+::: columns
+::: {.column width="50%"}
+-   Redundant information
+
+    -   In the example data, note that school name and school level information is same for the first five and last five students \~ same information is repeated across 5 rows
+
+-   Storage and memory issues
+:::
+
+::: {.column width="50%"}
+```{r, echo = FALSE}
+student_dat
+```
+:::
+:::
+
+## Relational Data
+
+-   Like data frames but now we split the data into multiple tables
+
+-   Cut redundant information, optimize storage and memory, organize the information better
+
+::: columns
+::: {.column width="50%"}
+Student data:
+
+```{r, echo = FALSE}
+student_dat %>% select(student_id, score, school_id)
+```
+:::
+
+::: {.column width="50%"}
+School data:
+
+```{r, echo = FALSE}
+student_dat %>%
+  select(school_id, school_locale) %>%
+  distinct()
+```
+:::
+:::
+
+## Databases
+
+## Football Database
+
+```{r, warning = FALSE, message = FALSE}
+library(dm)
+
+load("../data/football_database/football_data.RData")
+```
+
+![](/slides/images/football.png)
+
+## Primary Key
+
+-   Every table needs to have a primary key
+
+-   Has to be unique - no duplicated key
+
+## Foreign Keys
+
+## 
