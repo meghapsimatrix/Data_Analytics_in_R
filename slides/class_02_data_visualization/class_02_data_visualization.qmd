@@ -67,7 +67,7 @@ library(ggplot2)
 ## Example Dataset {style=".smaller"}
 
 ```{r}
-load("../../slides/data/bike_sharing_dat.RData")
+load("../../slides/data/capital_bike_sharing_data/bike_sharing_dat.RData")
 glimpse(bike_sharing_dat)
 ```
 

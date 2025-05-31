@@ -1,5 +1,5 @@
 ---
-title: "Data Visualization with `ggplot`"
+title: "Querying and Wrangling Data"
 author: "Megha Joshi"
 execute: 
   echo: TRUE
@@ -16,124 +16,163 @@ format:
 editor: visual
 ---
 
-## Data Visualization
-
-## A Grammar of Graphics
-
--   Leland Wilkinson wrote [The Grammar of Graphics (2nd edition, 2005)](https://link.springer.com/book/10.1007/0-387-28695-0)
-
-    -   Developed the grammar of graphics
-
-    -   Described fundamental elements that make up a statistical graphic
-
--   Hadley Wickham created the R package `ggplot2` to create graphs based on Wilkinson's grammar of graphics (gg)
-
-    -   Layers
-
-## Loading `ggplot`
-
-The `ggplot2` package is available as part of the `tidyverse` set of packages:
-
-```{r}
-library(tidyverse)
-```
-
-You can also load the package separately:
-
-```{r}
-library(ggplot2)
-```
-
-# The Grammar {.inverse}
-
-## The Grammar {.smaller}
+## Introduction to the `tidyverse`
 
 ::: columns
 ::: {.column width="50%"}
-[![](images/Picture1.png)](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+[![Source: https://www.tidyverse.org/](images/clipboard-661628822.png){fig-alt="Hex stickers for all the packages that make up the tidyverse"}](https://www.tidyverse.org/)
 :::
 
-::: {.column width="50%" style="font-size: 120%;"}
-"In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars)." - Hadley Wickham
+::: {.column width="50%"}
+-   Set of packages for
+    -   wrangling
+    -   cleaning
+    -   organizing
+    -   summarizing
+    -   visualizing data
 :::
 :::
 
-## Data
+## Example Dataset: Men's World Cup Matches
 
--   **Data** - Information used to create the graphic.
+Source: [`tidytuesdayR`](https://dslc-io.github.io/tidytuesdayR/)
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(tidyverse)
+library(tidytuesdayR)
+
+
+tt <- tt_load("2022-11-29")
+tt
+
+wc_matches <- tt$wcmatches
+glimpse(matches)
+```
+
+# `dplyr` {.inverse}
+
+## Verbs
+
+| Verb          | Definition |
+|---------------|------------|
+| `select()`    |            |
+| `filter()`    |            |
+| `mutate()`    |            |
+| `group_by()`  |            |
+| `summarize()` |            |
+| `arrange()`   |            |
+| `slice()`     |            |
+
+## `select()`
+
+wnba_draft
 
 ```{r}
-ggplot(data = mpg)
+wc_matches %>%
+  select(year, country, stage, home_team, away_team)
 ```
 
-## Aesthetic Mappings
-
--   **Aesthetic attributes**
-
--   **Mapping** -
+## `filter()`
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy, 
-                color = class))
+wc_matches %>%
+  filter(stage == "Final")
 ```
 
-## Layers
-
--   **Geoms**- geometric representations of the data.
+## `mutate()`
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy,
-                color = class)) + 
-  geom_point()
+wc_matches <- 
+  wc_matches %>%
+  mutate(stage = ifelse(stage == "Final Round", 
+                        "Final", stage),
+         score_diff = abs(home_score - away_score)) 
+
+wc_matches %>%
+  select(year, stage, home_team, away_team, score_diff)
 ```
 
-## Scales
+## `group_by()` and `summarize()`
 
 ```{r}
+avg_score_diff <- 
+  wc_matches %>%
+  filter(stage %in% c("Final", 
+                      "Semifinals", 
+                      "Quarterfinals", 
+                      "Round of 16")) %>%
+  group_by(stage) %>%
+  summarize(n_matches = n(),
+            mean_diff = mean(score_diff),
+            sd_diff = sd(score_diff))
 
+avg_score_diff
 ```
 
-## Facets
-
--   Facets - small multiples
+## `arrange()`
 
 ```{r}
-ggplot(mpg, aes(x = displ, 
-                y = hwy,
-                color = class)) + 
-  geom_point() + 
-  facet_grid(year ~ drv)
+avg_score_diff <- 
+  avg_score_diff %>%
+  ungroup() %>%
+  mutate(order = case_when(stage == "Round of 16" ~ 1,
+                           stage == "Quarterfinals" ~ 2, 
+                           stage == "Semifinals" ~ 3, 
+                           stage == "Final" ~ 4)) %>%
+  arrange(order)
+
+avg_score_diff
 ```
 
-## Anatomy of a `ggplot`
+## `slice()`
 
-```{r, eval = FALSE}
-ggplot(data = [dat], # the data
-       aes(x = [x_var], 
-           y = [y_var],
-           color = [color_var], 
-           fill = [fill_var])) + # aesthetic mappings
-  geom_[point]() + # geom
-  geom_[smooth]() + # another layer
-  scale_[aesthetic]_[type]() + # scaling
-  facet_grid([row] ~ [col]) + # faceting
-  theme_[theme]() # theme
+```{r}
+avg_score_diff %>%
+  arrange(desc(mean_diff)) %>%
+  slice(1)
 ```
 
-# One Dimensional Plots {.inverse}
+# `tidyr` {.inverse}
 
-## Bar Plot: Categorical Data
+## `pivot_longer()`
 
-## Histogram: Continuous Data
+```{r}
+long_dat <- 
+  avg_score_diff %>%
+  select(-order) %>%
+  pivot_longer(n_matches:sd_diff,
+               names_to = 'stat', 
+               values_to = 'val')
 
-## Density Plot: Continuous Data
+long_dat
+```
 
-# Two Dimensional Plots {.inverse}
+## `separate()`
 
-## Bar Plot: Categorical Data
+```{r}
+long_dat_clean <- 
+  long_dat %>%
+  separate(stat, into = c("stat", "var"), sep = "_") 
 
-## Box Plot
+long_dat_clean
+```
 
-## Scatter Plot
+## `pivot_wider()`
+
+```{r}
+long_dat_clean %>%
+  select(-var) %>%
+  pivot_wider(names_from = stat, values_from = val) %>%
+  rename(Stage = stage, `Number of Matches` = n,
+         `Average Difference in Goals` = mean,
+         `SD of Difference in Goals` = sd)
+```
+
+## `unite()`
+
+```{r}
+wc_matches %>%
+  unite(world_cup, year, country, sep =  ": ") %>%
+  filter(stage == "Final")
+```

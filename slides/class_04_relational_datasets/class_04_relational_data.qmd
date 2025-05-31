@@ -1,0 +1,184 @@
+---
+title: "Relational Datasets"
+author: "Megha Joshi"
+execute: 
+  echo: TRUE
+format: 
+  revealjs:
+    theme: [../slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    title-slide-attributes:
+      data-background-color: "#562457"
+    preview-links: true
+    footer: |
+      Theme by Beatriz Mills on  [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)
+editor: visual
+---
+
+## A Data Frame
+
+::: columns
+::: {.column width="50%; font-size: 85%"}
+-   Data frames represent data as a table with rows and columns
+
+    -   Rows represent observations or record (e.g., each row contains data on each student)
+
+    -   Columns typically contain variables (e.g., columns contain information like test scores and what school they attended)
+
+-   A tibble is a modern data frame - [Chapter 10 of R4DS](https://r4ds.had.co.nz/tibbles.html)
+:::
+
+::: {.column width="50%"}
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+
+set.seed(20250519)
+
+employee_dat <- tibble(employee_id = c(1:10), 
+                       survey_score = round(rnorm(10, 80, 5)), 
+                       department_id = c(rep("A", 5),
+                                    rep("B", 5)),
+                       department_name = c(rep("IT", 5),
+                                        rep("Analytics", 5)),
+                       department_manager = c(rep("Woof", 5),
+                                              rep("Meow", 5)))
+
+employee_dat
+```
+:::
+:::
+
+## Limitations of Data Frames
+
+::: columns
+::: {.column width="50%"}
+-   Redundant information
+
+    -   In the example data, note that school name and school level information is same for the first five and last five students \~ same information is repeated across 5 rows
+
+-   Storage and memory issues
+:::
+
+::: {.column width="50%"}
+```{r, echo = FALSE}
+employee_dat
+```
+:::
+:::
+
+## Relational Data
+
+-   Like data frames but now we split the data into multiple tables
+
+-   Cut redundant information, optimize storage and memory, organize the information better
+
+::: columns
+::: {.column width="50%"}
+Employee data:
+
+```{r, echo = FALSE}
+employee_dat %>% select(employee_id, survey_score, department_id)
+```
+:::
+
+::: {.column width="50%"}
+Department data:
+
+```{r, echo = FALSE}
+employee_dat %>%
+  select(department_id, department_name, department_manager) %>%
+  distinct()
+```
+:::
+:::
+
+## Databases
+
+-   Collection of multiple data
+
+-   **D**ata**b**ase **M**anagement **S**ystem
+
+    -   MySQL
+
+    -   
+
+## Employee Database
+
+```{r, warning = FALSE, message = FALSE}
+library(dm)
+```
+
+![](/slides/images/football.png)
+
+## Primary Key
+
+-   Every table needs to have a primary key
+
+-   Has to be unique - no duplicated key
+
+-   Cannot have missing data for primary key - we need an identifier
+
+## Foreign Keys
+
+# Mutating Joins {.inverse}
+
+## Definition
+
+## Full Outer Join
+
+Join all the rows of both tables as long as there is a matching record in either table.
+
+## [![Source: R4DS Chapter 19](images/clipboard-1329201745.png)](https://r4ds.hadley.nz/joins#how-do-joins-work)
+
+## Left Outer Join or Left Join
+
+Join all the rows of the left table and the matching rows in the right table.
+
+[![Source: R4DS Chapter 19](images/clipboard-990860069.png){width="580"}](https://r4ds.hadley.nz/joins#how-do-joins-work)
+
+## `left_join()`
+
+```{r}
+
+```
+
+## Right Outer Join
+
+Join all the rows of the right table and the matching rows in the left table.
+
+## [![R4DS Chapter 19](images/clipboard-1592259064.png)](https://r4ds.hadley.nz/joins#how-do-joins-work)Inner Join
+
+Join the rows which are present in both tables.
+
+## ![](images/clipboard-1345908494.png)Self Join
+
+Join a table with itself.
+
+## Cross Join or Cartesian Join
+
+Returns all possible combinations of all rows.
+
+![](images/clipboard-3448121650.png)
+
+# Filtering Joins {.inverse}
+
+## Semi Join
+
+Filter records from left table that has matching records in right table.
+
+![](images/clipboard-381782884.png)
+
+## Anti Join
+
+Filter records from left table that do not have matching records in right table.
+
+# ![](images/clipboard-3490231510.png) {.inverse}
+
+# Set {.inverse}
+
+## Intersect
+
+## Union
+
+## Difference or Minus
