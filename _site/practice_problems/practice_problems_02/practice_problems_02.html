@@ -4981,7 +4981,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-height":"","output":"true","editor-quick-suggestions":"false","read-only":"false","results":"markup","message":"true","editor-max-height":"","editor-font-scale":"1","context":"interactive","fig-height":5,"comment":"","autorun":"false","warning":"true","editor-word-wrap":"true","fig-width":7,"label":"unnamed-chunk-1","fig-cap":"","out-width":"700px","dpi":72,"classes":""},"code":""},{"id":2,"options":{"out-height":"","output":"true","editor-quick-suggestions":"false","read-only":"false","results":"markup","message":"true","editor-max-height":"","editor-font-scale":"1","context":"interactive","fig-height":5,"comment":"","autorun":"false","warning":"true","editor-word-wrap":"true","fig-width":7,"label":"unnamed-chunk-2","fig-cap":"","out-width":"700px","dpi":72,"classes":""},"code":""}];
+globalThis.qwebrCellDetails = [{"code":"","options":{"fig-cap":"","fig-height":5,"editor-word-wrap":"true","out-width":"700px","dpi":72,"output":"true","read-only":"false","results":"markup","editor-quick-suggestions":"false","context":"interactive","out-height":"","comment":"","warning":"true","classes":"","editor-max-height":"","label":"unnamed-chunk-1","editor-font-scale":"1","fig-width":7,"autorun":"false","message":"true"},"id":1},{"code":"","options":{"fig-cap":"","fig-height":5,"editor-word-wrap":"true","out-width":"700px","dpi":72,"output":"true","read-only":"false","results":"markup","editor-quick-suggestions":"false","context":"interactive","out-height":"","comment":"","warning":"true","classes":"","editor-max-height":"","label":"unnamed-chunk-2","editor-font-scale":"1","fig-width":7,"autorun":"false","message":"true"},"id":2}];
 
 </script>
 <script type="module">
@@ -6777,7 +6777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/quartopub\.org\/sites\/maria\/teach-data-science-course-website");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
