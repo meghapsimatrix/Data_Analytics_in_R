@@ -32,6 +32,8 @@ editor: visual
 ::: {.column width="50%"}
 ```{r, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
+library(knitr)
+library(kableExtra)
 
 set.seed(20250519)
 
@@ -44,7 +46,8 @@ employee_dat <- tibble(employee_id = c(1:10),
                        department_manager = c(rep("Woof", 5),
                                               rep("Meow", 5)))
 
-employee_dat
+employee_dat %>% 
+  kbl()
 ```
 :::
 :::
@@ -62,7 +65,8 @@ employee_dat
 
 ::: {.column width="50%"}
 ```{r, echo = FALSE}
-employee_dat
+employee_dat %>%
+  kbl()
 ```
 :::
 :::
@@ -78,7 +82,9 @@ employee_dat
 Employee data:
 
 ```{r, echo = FALSE}
-employee_dat %>% select(employee_id, survey_score, department_id)
+employee_dat %>% 
+  select(employee_id, survey_score, department_id) %>%
+  kbl()
 ```
 :::
 
@@ -87,8 +93,10 @@ Department data:
 
 ```{r, echo = FALSE}
 employee_dat %>%
-  select(department_id, department_name, department_manager) %>%
-  distinct()
+  select(department_id, department_name,
+         department_manager) %>%
+  distinct() %>%
+  kbl()
 ```
 :::
 :::
@@ -103,13 +111,9 @@ employee_dat %>%
 
     -   
 
-## Employee Database
+## Example Database: Employee Database
 
-```{r, warning = FALSE, message = FALSE}
-library(dm)
-```
-
-![](/slides/images/football.png)
+![](images/employees.png)
 
 ## Primary Key
 
