@@ -37,17 +37,16 @@ library(kableExtra)
 
 set.seed(20250519)
 
-employee_dat <- tibble(employee_id = c(1:10), 
-                       survey_score = round(rnorm(10, 80, 5)), 
-                       department_id = c(rep("A", 5),
+employee_dat <- tibble(emp_id = c(1:10), 
+                       surv_scr = round(rnorm(10, 80, 5)), 
+                       dept_id = c(rep("A", 5),
                                     rep("B", 5)),
-                       department_name = c(rep("IT", 5),
+                       dept_name = c(rep("IT", 5),
                                         rep("Analytics", 5)),
-                       department_manager = c(rep("Woof", 5),
+                       dept_mgr = c(rep("Woof", 5),
                                               rep("Meow", 5)))
 
-employee_dat %>% 
-  kbl()
+employee_dat 
 ```
 :::
 :::
@@ -65,8 +64,7 @@ employee_dat %>%
 
 ::: {.column width="50%"}
 ```{r, echo = FALSE}
-employee_dat %>%
-  kbl()
+employee_dat 
 ```
 :::
 :::
@@ -82,9 +80,7 @@ employee_dat %>%
 Employee data:
 
 ```{r, echo = FALSE}
-employee_dat %>% 
-  select(employee_id, survey_score, department_id) %>%
-  kbl()
+employee_dat 
 ```
 :::
 
@@ -93,10 +89,9 @@ Department data:
 
 ```{r, echo = FALSE}
 employee_dat %>%
-  select(department_id, department_name,
-         department_manager) %>%
-  distinct() %>%
-  kbl()
+  select(dept_id, dept_name,
+         dept_mgr) %>%
+  distinct() 
 ```
 :::
 :::
