@@ -1,1 +1,0 @@
-Sitemap: https://meghapsimatrix.quarto.pub/data-analytics-in-r/sitemap.xml
