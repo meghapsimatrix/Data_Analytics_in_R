@@ -75,7 +75,7 @@
     "href": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset",
     "title": "Data Visualization with ggplot",
     "section": "Example Dataset",
-    "text": "Example Dataset\n\nload(\"../../slides/data/bike_sharing_dat.RData\")\nglimpse(bike_sharing_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;chr&gt; \"winter\", \"winter\", \"winter\", \"winter\", \"winter\", \"winter\",…\n$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;chr&gt; \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No…\n$ weekday    &lt;chr&gt; \"Saturday\", \"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Th…\n$ workingday &lt;chr&gt; \"Holiday\", \"Holiday\", \"Working Day\", \"Working Day\", \"Workin…\n$ weathersit &lt;chr&gt; \"Misty and Cloudy\", \"Misty and Cloudy\", \"Clear\", \"Clear\", \"…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…"
+    "text": "Example Dataset\n\nload(\"../../slides/data/capital_bike_sharing_data/bike_sharing_dat.RData\")\nglimpse(bike_sharing_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;chr&gt; \"winter\", \"winter\", \"winter\", \"winter\", \"winter\", \"winter\",…\n$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;chr&gt; \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No…\n$ weekday    &lt;chr&gt; \"Saturday\", \"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Th…\n$ workingday &lt;chr&gt; \"Holiday\", \"Holiday\", \"Working Day\", \"Working Day\", \"Workin…\n$ weathersit &lt;chr&gt; \"Misty and Cloudy\", \"Misty and Cloudy\", \"Clear\", \"Clear\", \"…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…"
   },
   {
     "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
@@ -204,6 +204,208 @@
     "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   },
   {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
+    "title": "Relational Datasets",
+    "section": "A Data Frame",
+    "text": "A Data Frame\n\n\n\nData frames represent data as a table with rows and columns\n\nRows represent observations or record (e.g., each row contains data on each student)\nColumns typically contain variables (e.g., columns contain information like test scores and what school they attended)\n\nA tibble is a modern data frame - Chapter 10 of R4DS\n\n\n\n\n# A tibble: 10 × 5\n   employee_id survey_score department_id department_name department_manager\n         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             \n 1           1           80 A             IT              Woof              \n 2           2           71 A             IT              Woof              \n 3           3           69 A             IT              Woof              \n 4           4           88 A             IT              Woof              \n 5           5           78 A             IT              Woof              \n 6           6           84 B             Analytics       Meow              \n 7           7           82 B             Analytics       Meow              \n 8           8           79 B             Analytics       Meow              \n 9           9           85 B             Analytics       Meow              \n10          10           71 B             Analytics       Meow"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#limitations-of-data-frames",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#limitations-of-data-frames",
+    "title": "Relational Datasets",
+    "section": "Limitations of Data Frames",
+    "text": "Limitations of Data Frames\n\n\n\nRedundant information\n\nIn the example data, note that school name and school level information is same for the first five and last five students ~ same information is repeated across 5 rows\n\nStorage and memory issues\n\n\n\n\n# A tibble: 10 × 5\n   employee_id survey_score department_id department_name department_manager\n         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             \n 1           1           80 A             IT              Woof              \n 2           2           71 A             IT              Woof              \n 3           3           69 A             IT              Woof              \n 4           4           88 A             IT              Woof              \n 5           5           78 A             IT              Woof              \n 6           6           84 B             Analytics       Meow              \n 7           7           82 B             Analytics       Meow              \n 8           8           79 B             Analytics       Meow              \n 9           9           85 B             Analytics       Meow              \n10          10           71 B             Analytics       Meow"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#relational-data",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#relational-data",
+    "title": "Relational Datasets",
+    "section": "Relational Data",
+    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nEmployee data:\n\n\n# A tibble: 10 × 3\n   employee_id survey_score department_id\n         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;        \n 1           1           80 A            \n 2           2           71 A            \n 3           3           69 A            \n 4           4           88 A            \n 5           5           78 A            \n 6           6           84 B            \n 7           7           82 B            \n 8           8           79 B            \n 9           9           85 B            \n10          10           71 B            \n\n\n\nDepartment data:\n\n\n# A tibble: 2 × 3\n  department_id department_name department_manager\n  &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             \n1 A             IT              Woof              \n2 B             Analytics       Meow"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#databases",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#databases",
+    "title": "Relational Datasets",
+    "section": "Databases",
+    "text": "Databases\n\nCollection of multiple data\nDatabase Management System\n\nMySQL"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#employee-database",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#employee-database",
+    "title": "Relational Datasets",
+    "section": "Employee Database",
+    "text": "Employee Database\n\nlibrary(dm)"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
+    "title": "Relational Datasets",
+    "section": "Primary Key",
+    "text": "Primary Key\n\nEvery table needs to have a primary key\nHas to be unique - no duplicated key\nCannot have missing data for primary key - we need an identifier"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
+    "title": "Relational Datasets",
+    "section": "Foreign Keys",
+    "text": "Foreign Keys"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#definition",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#definition",
+    "title": "Relational Datasets",
+    "section": "Definition",
+    "text": "Definition"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
+    "title": "Relational Datasets",
+    "section": "Full Outer Join",
+    "text": "Full Outer Join\nJoin all the rows of both tables as long as there is a matching record in either table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
+    "title": "Relational Datasets",
+    "section": "Left Outer Join or Left Join",
+    "text": "Left Outer Join or Left Join\nJoin all the rows of the left table and the matching rows in the right table.\n\n\n\nSource: R4DS Chapter 19"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#left_join",
+    "title": "Relational Datasets",
+    "section": "left_join()",
+    "text": "left_join()"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#right-outer-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#right-outer-join",
+    "title": "Relational Datasets",
+    "section": "Right Outer Join",
+    "text": "Right Outer Join\nJoin all the rows of the right table and the matching rows in the left table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#r4ds-chapter-19inner-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#r4ds-chapter-19inner-join",
+    "title": "Relational Datasets",
+    "section": "Inner Join",
+    "text": "Inner Join\nJoin the rows which are present in both tables."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#self-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#self-join",
+    "title": "Relational Datasets",
+    "section": "Self Join",
+    "text": "Self Join\nJoin a table with itself."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross-join-or-cartesian-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#cross-join-or-cartesian-join",
+    "title": "Relational Datasets",
+    "section": "Cross Join or Cartesian Join",
+    "text": "Cross Join or Cartesian Join\nReturns all possible combinations of all rows."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
+    "title": "Relational Datasets",
+    "section": "Semi Join",
+    "text": "Semi Join\nFilter records from left table that has matching records in right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#anti-join",
+    "title": "Relational Datasets",
+    "section": "Anti Join",
+    "text": "Anti Join\nFilter records from left table that do not have matching records in right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#intersect",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#intersect",
+    "title": "Relational Datasets",
+    "section": "Intersect",
+    "text": "Intersect"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#union",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#union",
+    "title": "Relational Datasets",
+    "section": "Union",
+    "text": "Union"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#difference-or-minus",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#difference-or-minus",
+    "title": "Relational Datasets",
+    "section": "Difference or Minus",
+    "text": "Difference or Minus\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "classes/class_01.html",
+    "href": "classes/class_01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+  },
+  {
+    "objectID": "classes/class_03.html",
+    "href": "classes/class_03.html",
+    "title": "Class 03",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Teaching Team",
+    "section": "",
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
+    "crumbs": [
+      "Teaching Team"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1",
+    "section": "",
+    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "Classes",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03\n\n\n \n\n\n\n\nClass 04\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Classes"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "classes/class_04.html",
+    "href": "classes/class_04.html",
+    "title": "Class 04",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "classes/class_02.html",
+    "href": "classes/class_02.html",
+    "title": "Class 02: Data Visualization with ggplot",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Data Analytics in R",
@@ -232,61 +434,6 @@
     "crumbs": [
       "Home"
     ]
-  },
-  {
-    "objectID": "classes/class_02.html",
-    "href": "classes/class_02.html",
-    "title": "Class 02: Data Visualization with ggplot",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Teaching Team",
-    "section": "",
-    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
-    "crumbs": [
-      "Teaching Team"
-    ]
-  },
-  {
-    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "title": "Practice Problem Set 1",
-    "section": "",
-    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
-  },
-  {
-    "objectID": "classes.html",
-    "href": "classes.html",
-    "title": "Classes",
-    "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03\n\n\n \n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Classes"
-    ]
-  },
-  {
-    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "classes/class_03.html",
-    "href": "classes/class_03.html",
-    "title": "Class 03",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
-  },
-  {
-    "objectID": "classes/class_01.html",
-    "href": "classes/class_01.html",
-    "title": "Class 01: Introduction to the Course and to R",
-    "section": "",
-    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
@@ -387,192 +534,94 @@
     "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data-visualization",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data-visualization",
-    "title": "Data Visualization with ggplot",
-    "section": "Data Visualization",
-    "text": "Data Visualization"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",
+    "title": "Querying and Wrangling Data",
+    "section": "Introduction to the tidyverse",
+    "text": "Introduction to the tidyverse\n\n\n\n\n\nSource: https://www.tidyverse.org/\n\n\n\n\nSet of packages for\n\nwrangling\ncleaning\norganizing\nsummarizing\nvisualizing data"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#a-grammar-of-graphics",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#a-grammar-of-graphics",
-    "title": "Data Visualization with ggplot",
-    "section": "A Grammar of Graphics",
-    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
+    "title": "Querying and Wrangling Data",
+    "section": "Example Dataset: Men’s World Cup Matches",
+    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches\nglimpse(matches)\n\nfunction (match, ignore.case = TRUE, perl = FALSE, vars = NULL)"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#loading-ggplot",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#loading-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Loading ggplot",
-    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
+    "title": "Querying and Wrangling Data",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nselect()\n\n\n\nfilter()\n\n\n\nmutate()\n\n\n\ngroup_by()\n\n\n\nsummarize()\n\n\n\narrange()\n\n\n\nslice()"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#the-grammar-1",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#the-grammar-1",
-    "title": "Data Visualization with ggplot",
-    "section": "The Grammar",
-    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
+    "title": "Querying and Wrangling Data",
+    "section": "select()",
+    "text": "select()\nwnba_draft\n\nwc_matches %&gt;%\n  select(year, country, stage, home_team, away_team)\n\n# A tibble: 900 × 5\n    year country stage   home_team away_team    \n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        \n 1  1930 Uruguay Group 1 France    Mexico       \n 2  1930 Uruguay Group 4 Belgium   United States\n 3  1930 Uruguay Group 2 Brazil    Yugoslavia   \n 4  1930 Uruguay Group 3 Peru      Romania      \n 5  1930 Uruguay Group 1 Argentina France       \n 6  1930 Uruguay Group 1 Chile     Mexico       \n 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   \n 8  1930 Uruguay Group 4 Paraguay  United States\n 9  1930 Uruguay Group 3 Uruguay   Peru         \n10  1930 Uruguay Group 1 Argentina Mexico       \n# ℹ 890 more rows"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#data",
-    "title": "Data Visualization with ggplot",
-    "section": "Data",
-    "text": "Data\n\nData - Information used to create the graphic.\n\n\nggplot(data = mpg)"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#filter",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#filter",
+    "title": "Querying and Wrangling Data",
+    "section": "filter()",
+    "text": "filter()\n\nwc_matches %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 20 × 15\n    year country   city  stage home_team away_team home_score away_score outcome\n   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1  1930 Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2  1934 Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3  1938 France    Colo… Final Hungary   Italy              2          4 A      \n 4  1954 Switzerl… Berne Final West Ger… Hungary            3          2 H      \n 5  1958 Sweden    Solna Final Sweden    Brazil             2          5 A      \n 6  1962 Chile     Sant… Final Brazil    Czechosl…          3          1 H      \n 7  1966 England   Lond… Final England   West Ger…          4          2 H      \n 8  1970 Mexico    Mexi… Final Brazil    Italy              4          1 H      \n 9  1974 Germany   Muni… Final West Ger… Netherla…          2          1 H      \n10  1978 Argentina Buen… Final Argentina Netherla…          3          1 H      \n11  1982 Spain     Madr… Final Italy     West Ger…          3          1 H      \n12  1986 Mexico    Mexi… Final Argentina West Ger…          3          2 H      \n13  1990 Italy     Rome  Final West Ger… Argentina          1          0 H      \n14  1994 United S… Pasa… Final Brazil    Italy              0          0 H      \n15  1998 France    Sain… Final France    Brazil             3          0 H      \n16  2002 Japan     Yoko… Final Germany   Brazil             0          2 A      \n17  2006 Germany   Berl… Final Italy     France             1          1 H      \n18  2010 South Af… Joha… Final Netherla… Spain              0          1 A      \n19  2014 Brazil    Rio … Final Germany   Argentina          1          0 H      \n20  2018 Russia    Mosc… Final France    Croatia            4          2 H      \n# ℹ 6 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#aesthetic-mappings",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#aesthetic-mappings",
-    "title": "Data Visualization with ggplot",
-    "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAesthetic attributes\nMapping -\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy, \n                color = class))"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#mutate",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#mutate",
+    "title": "Querying and Wrangling Data",
+    "section": "mutate()",
+    "text": "mutate()\n\nwc_matches &lt;- \n  wc_matches %&gt;%\n  mutate(stage = ifelse(stage == \"Final Round\", \n                        \"Final\", stage),\n         score_diff = abs(home_score - away_score)) \n\nwc_matches %&gt;%\n  select(year, stage, home_team, away_team, score_diff)\n\n# A tibble: 900 × 5\n    year stage   home_team away_team     score_diff\n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;\n 1  1930 Group 1 France    Mexico                 3\n 2  1930 Group 4 Belgium   United States          3\n 3  1930 Group 2 Brazil    Yugoslavia             1\n 4  1930 Group 3 Peru      Romania                2\n 5  1930 Group 1 Argentina France                 1\n 6  1930 Group 1 Chile     Mexico                 3\n 7  1930 Group 2 Bolivia   Yugoslavia             4\n 8  1930 Group 4 Paraguay  United States          3\n 9  1930 Group 3 Uruguay   Peru                   1\n10  1930 Group 1 Argentina Mexico                 3\n# ℹ 890 more rows"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#layers",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#layers",
-    "title": "Data Visualization with ggplot",
-    "section": "Layers",
-    "text": "Layers\n\nGeoms- geometric representations of the data.\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point()"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#group_by-and-summarize",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#group_by-and-summarize",
+    "title": "Querying and Wrangling Data",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\n\navg_score_diff &lt;- \n  wc_matches %&gt;%\n  filter(stage %in% c(\"Final\", \n                      \"Semifinals\", \n                      \"Quarterfinals\", \n                      \"Round of 16\")) %&gt;%\n  group_by(stage) %&gt;%\n  summarize(n_matches = n(),\n            mean_diff = mean(score_diff),\n            sd_diff = sd(score_diff))\n\navg_score_diff\n\n# A tibble: 4 × 4\n  stage         n_matches mean_diff sd_diff\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 Final                26      1.81    1.39\n2 Quarterfinals        66      1.30    1.29\n3 Round of 16          89      1.47    1.18\n4 Semifinals           36      1.75    1.52"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#scales",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#scales",
-    "title": "Data Visualization with ggplot",
-    "section": "Scales",
-    "text": "Scales"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange",
+    "title": "Querying and Wrangling Data",
+    "section": "arrange()",
+    "text": "arrange()\n\navg_score_diff &lt;- \n  avg_score_diff %&gt;%\n  ungroup() %&gt;%\n  mutate(order = case_when(stage == \"Round of 16\" ~ 1,\n                           stage == \"Quarterfinals\" ~ 2, \n                           stage == \"Semifinals\" ~ 3, \n                           stage == \"Final\" ~ 4)) %&gt;%\n  arrange(order)\n\navg_score_diff\n\n# A tibble: 4 × 5\n  stage         n_matches mean_diff sd_diff order\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Round of 16          89      1.47    1.18     1\n2 Quarterfinals        66      1.30    1.29     2\n3 Semifinals           36      1.75    1.52     3\n4 Final                26      1.81    1.39     4"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#facets",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#facets",
-    "title": "Data Visualization with ggplot",
-    "section": "Facets",
-    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(mpg, aes(x = displ, \n                y = hwy,\n                color = class)) + \n  geom_point() + \n  facet_grid(year ~ drv)"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#slice",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#slice",
+    "title": "Querying and Wrangling Data",
+    "section": "slice()",
+    "text": "slice()\n\navg_score_diff %&gt;%\n  arrange(desc(mean_diff)) %&gt;%\n  slice(1)\n\n# A tibble: 1 × 5\n  stage n_matches mean_diff sd_diff order\n  &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Final        26      1.81    1.39     4"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#anatomy-of-a-ggplot",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#anatomy-of-a-ggplot",
-    "title": "Data Visualization with ggplot",
-    "section": "Anatomy of a ggplot",
-    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\nlong_dat &lt;- \n  avg_score_diff %&gt;%\n  select(-order) %&gt;%\n  pivot_longer(n_matches:sd_diff,\n               names_to = 'stat', \n               values_to = 'val')\n\nlong_dat\n\n# A tibble: 12 × 3\n   stage         stat        val\n   &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;\n 1 Round of 16   n_matches 89   \n 2 Round of 16   mean_diff  1.47\n 3 Round of 16   sd_diff    1.18\n 4 Quarterfinals n_matches 66   \n 5 Quarterfinals mean_diff  1.30\n 6 Quarterfinals sd_diff    1.29\n 7 Semifinals    n_matches 36   \n 8 Semifinals    mean_diff  1.75\n 9 Semifinals    sd_diff    1.52\n10 Final         n_matches 26   \n11 Final         mean_diff  1.81\n12 Final         sd_diff    1.39"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#bar-plot-categorical-data",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#bar-plot-categorical-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#separate",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#separate",
+    "title": "Querying and Wrangling Data",
+    "section": "separate()",
+    "text": "separate()\n\nlong_dat_clean &lt;- \n  long_dat %&gt;%\n  separate(stat, into = c(\"stat\", \"var\"), sep = \"_\") \n\nlong_dat_clean\n\n# A tibble: 12 × 4\n   stage         stat  var       val\n   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;\n 1 Round of 16   n     matches 89   \n 2 Round of 16   mean  diff     1.47\n 3 Round of 16   sd    diff     1.18\n 4 Quarterfinals n     matches 66   \n 5 Quarterfinals mean  diff     1.30\n 6 Quarterfinals sd    diff     1.29\n 7 Semifinals    n     matches 36   \n 8 Semifinals    mean  diff     1.75\n 9 Semifinals    sd    diff     1.52\n10 Final         n     matches 26   \n11 Final         mean  diff     1.81\n12 Final         sd    diff     1.39"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#histogram-continuous-data",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#histogram-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Histogram: Continuous Data",
-    "text": "Histogram: Continuous Data"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_wider",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_wider",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\nlong_dat_clean %&gt;%\n  select(-var) %&gt;%\n  pivot_wider(names_from = stat, values_from = val) %&gt;%\n  rename(Stage = stage, `Number of Matches` = n,\n         `Average Difference in Goals` = mean,\n         `SD of Difference in Goals` = sd)\n\n# A tibble: 4 × 4\n  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²\n  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;\n1 Round of 16                   89                   1.47                   1.18\n2 Quarterfina…                  66                   1.30                   1.29\n3 Semifinals                    36                   1.75                   1.52\n4 Final                         26                   1.81                   1.39\n# ℹ abbreviated names: ¹​`Average Difference in Goals`,\n#   ²​`SD of Difference in Goals`"
   },
   {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#density-plot-continuous-data",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#density-plot-continuous-data",
-    "title": "Data Visualization with ggplot",
-    "section": "Density Plot: Continuous Data",
-    "text": "Density Plot: Continuous Data"
-  },
-  {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#bar-plot-categorical-data-1",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#bar-plot-categorical-data-1",
-    "title": "Data Visualization with ggplot",
-    "section": "Bar Plot: Categorical Data",
-    "text": "Bar Plot: Categorical Data"
-  },
-  {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#box-plot",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#box-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Box Plot",
-    "text": "Box Plot"
-  },
-  {
-    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#scatter-plot",
-    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#scatter-plot",
-    "title": "Data Visualization with ggplot",
-    "section": "Scatter Plot",
-    "text": "Scatter Plot\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#example-to-understand-relational-data",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#example-to-understand-relational-data",
-    "title": "Relational Datasets",
-    "section": "Example To Understand Relational Data",
-    "text": "Example To Understand Relational Data"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#introduction-to-relational-data",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#introduction-to-relational-data",
-    "title": "Relational Datasets",
-    "section": "Introduction To Relational Data",
-    "text": "Introduction To Relational Data"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#databases",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#databases",
-    "title": "Relational Datasets",
-    "section": "Databases",
-    "text": "Databases"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#football-database",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#football-database",
-    "title": "Relational Datasets",
-    "section": "Football Database",
-    "text": "Football Database\n\nlibrary(dm)\n\nload(\"../data/football_database/football_data.RData\")"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#primary-key",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#primary-key",
-    "title": "Relational Datasets",
-    "section": "Primary Key",
-    "text": "Primary Key\n\nEvery table needs to have a primary key\nHas to be unique - no duplicated key"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#foreign-keys",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#foreign-keys",
-    "title": "Relational Datasets",
-    "section": "Foreign Keys",
-    "text": "Foreign Keys"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#section",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#section",
-    "title": "Relational Datasets",
-    "section": "",
-    "text": "Theme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#relational-data",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#relational-data",
-    "title": "Relational Datasets",
-    "section": "Relational Data",
-    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nStudent data:\n\n\n# A tibble: 10 × 3\n   student_id score school_id\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;    \n 1          1    80 A        \n 2          2    71 A        \n 3          3    69 A        \n 4          4    88 A        \n 5          5    78 A        \n 6          6    84 B        \n 7          7    82 B        \n 8          8    79 B        \n 9          9    85 B        \n10         10    71 B        \n\n\n\nSchool data:\n\n\n# A tibble: 2 × 2\n  school_id school_locale\n  &lt;chr&gt;     &lt;chr&gt;        \n1 A         Rural        \n2 B         City"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#a-data-frame",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#a-data-frame",
-    "title": "Relational Datasets",
-    "section": "A Data Frame",
-    "text": "A Data Frame\n\n\n\nData frames represent data as a table with rows and columns\n\nRows represent observations or record (e.g., each row contains data on each student)\nColumns typically contain variables (e.g., columns contain information like test scores and what school they attended)\n\nA tibble is a modern data frame - Chapter 10 of R4DS\n\n\n\n\n# A tibble: 10 × 4\n   student_id score school_id school_locale\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        \n 1          1    80 A         Rural        \n 2          2    71 A         Rural        \n 3          3    69 A         Rural        \n 4          4    88 A         Rural        \n 5          5    78 A         Rural        \n 6          6    84 B         City         \n 7          7    82 B         City         \n 8          8    79 B         City         \n 9          9    85 B         City         \n10         10    71 B         City"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#limitations-of-data-frames",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#limitations-of-data-frames",
-    "title": "Relational Datasets",
-    "section": "Limitations of Data Frames",
-    "text": "Limitations of Data Frames\n\n\n\nRedundant information\n\nIn the example data, note that school name and school level information is same for the first five and last five students ~ same information is repeated across 5 rows\n\nStorage and memory issues\n\n\n\n\n# A tibble: 10 × 4\n   student_id score school_id school_locale\n        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        \n 1          1    80 A         Rural        \n 2          2    71 A         Rural        \n 3          3    69 A         Rural        \n 4          4    88 A         Rural        \n 5          5    78 A         Rural        \n 6          6    84 B         City         \n 7          7    82 B         City         \n 8          8    79 B         City         \n 9          9    85 B         City         \n10         10    71 B         City"
-  },
-  {
-    "objectID": "slides/class_06_relational_databases/class_06_relational_data.html#section-1",
-    "href": "slides/class_06_relational_databases/class_06_relational_data.html#section-1",
-    "title": "Relational Datasets",
-    "section": "",
-    "text": "Theme by Beatriz Mills on GitHub"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
+    "title": "Querying and Wrangling Data",
+    "section": "unite()",
+    "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   }
 ]

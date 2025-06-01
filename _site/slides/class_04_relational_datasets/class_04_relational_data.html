@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Megha Joshi">
-  <title>Data Analytics in R – Querying and Wrangling Data</title>
+  <title>Data Analytics in R – Relational Datasets</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,7 +391,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#562457" class="quarto-title-block center">
-  <h1 class="title">Querying and Wrangling Data</h1>
+  <h1 class="title">Relational Datasets</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -402,355 +402,214 @@ Megha Joshi
 </div>
 
 </section>
-<section id="introduction-to-the-tidyverse" class="slide level2">
-<h2>Introduction to the <code>tidyverse</code></h2>
+<section id="a-data-frame" class="slide level2">
+<h2>A Data Frame</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://www.tidyverse.org/"><img data-src="images/clipboard-661628822.png" alt="Hex stickers for all the packages that make up the tidyverse"></a></p>
-<figcaption>Source: https://www.tidyverse.org/</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:50%; font-size: 85%;">
 <ul>
-<li>Set of packages for
+<li><p>Data frames represent data as a table with rows and columns</p>
 <ul>
-<li>wrangling</li>
-<li>cleaning</li>
-<li>organizing</li>
-<li>summarizing</li>
-<li>visualizing data</li>
+<li><p>Rows represent observations or record (e.g., each row contains data on each student)</p></li>
+<li><p>Columns typically contain variables (e.g., columns contain information like test scores and what school they attended)</p></li>
 </ul></li>
+<li><p>A tibble is a modern data frame - <a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10 of R4DS</a></p></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   employee_id survey_score department_id department_name department_manager
+         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             
+ 1           1           80 A             IT              Woof              
+ 2           2           71 A             IT              Woof              
+ 3           3           69 A             IT              Woof              
+ 4           4           88 A             IT              Woof              
+ 5           5           78 A             IT              Woof              
+ 6           6           84 B             Analytics       Meow              
+ 7           7           82 B             Analytics       Meow              
+ 8           8           79 B             Analytics       Meow              
+ 9           9           85 B             Analytics       Meow              
+10          10           71 B             Analytics       Meow              </code></pre>
+</div>
+</div>
 </div></div>
 </section>
-<section id="example-dataset-mens-world-cup-matches" class="slide level2">
-<h2>Example Dataset: Men’s World Cup Matches</h2>
-<p>Source: <a href="https://dslc-io.github.io/tidytuesdayR/"><code>tidytuesdayR</code></a></p>
+<section id="limitations-of-data-frames" class="slide level2">
+<h2>Limitations of Data Frames</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Redundant information</p>
+<ul>
+<li>In the example data, note that school name and school level information is same for the first five and last five students ~ same information is repeated across 5 rows</li>
+</ul></li>
+<li><p>Storage and memory issues</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>tt <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(<span class="st">"2022-11-29"</span>)</span>
-<span id="cb1-7"><a></a>tt</span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a>wc_matches <span class="ot">&lt;-</span> tt<span class="sc">$</span>wcmatches</span>
-<span id="cb1-10"><a></a><span class="fu">glimpse</span>(matches)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>function (match, ignore.case = TRUE, perl = FALSE, vars = NULL)  </code></pre>
+<pre><code># A tibble: 10 × 5
+   employee_id survey_score department_id department_name department_manager
+         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             
+ 1           1           80 A             IT              Woof              
+ 2           2           71 A             IT              Woof              
+ 3           3           69 A             IT              Woof              
+ 4           4           88 A             IT              Woof              
+ 5           5           78 A             IT              Woof              
+ 6           6           84 B             Analytics       Meow              
+ 7           7           82 B             Analytics       Meow              
+ 8           8           79 B             Analytics       Meow              
+ 9           9           85 B             Analytics       Meow              
+10          10           71 B             Analytics       Meow              </code></pre>
 </div>
 </div>
+</div></div>
+</section>
+<section id="relational-data" class="slide level2">
+<h2>Relational Data</h2>
+<ul>
+<li><p>Like data frames but now we split the data into multiple tables</p></li>
+<li><p>Cut redundant information, optimize storage and memory, organize the information better</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Employee data:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   employee_id survey_score department_id
+         &lt;int&gt;        &lt;dbl&gt; &lt;chr&gt;        
+ 1           1           80 A            
+ 2           2           71 A            
+ 3           3           69 A            
+ 4           4           88 A            
+ 5           5           78 A            
+ 6           6           84 B            
+ 7           7           82 B            
+ 8           8           79 B            
+ 9           9           85 B            
+10          10           71 B            </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Department data:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  department_id department_name department_manager
+  &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;             
+1 A             IT              Woof              
+2 B             Analytics       Meow              </code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="databases" class="slide level2">
+<h2>Databases</h2>
+<ul>
+<li><p>Collection of multiple data</p></li>
+<li><p><strong>D</strong>ata<strong>b</strong>ase <strong>M</strong>anagement <strong>S</strong>ystem</p>
+<ul>
+<li><p>MySQL</p></li>
+<li></li>
+</ul></li>
+</ul>
+</section>
+<section id="employee-database" class="slide level2">
+<h2>Employee Database</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(dm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="../../slides/images/football.png" class="r-stretch"></section>
+<section id="primary-key" class="slide level2">
+<h2>Primary Key</h2>
+<ul>
+<li><p>Every table needs to have a primary key</p></li>
+<li><p>Has to be unique - no duplicated key</p></li>
+<li><p>Cannot have missing data for primary key - we need an identifier</p></li>
+</ul>
+</section>
+<section id="foreign-keys" class="slide level2">
+<h2>Foreign Keys</h2>
 </section>
 <section>
-<section id="dplyr" class="title-slide slide level1 inverse center">
-<h1><code>dplyr</code></h1>
+<section id="mutating-joins" class="title-slide slide level1 inverse center">
+<h1>Mutating Joins</h1>
 
 </section>
-<section id="verbs" class="slide level2">
-<h2>Verbs</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Verb</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>select()</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>filter()</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>mutate()</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>group_by()</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>summarize()</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>arrange()</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>slice()</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<section id="definition" class="slide level2">
+<h2>Definition</h2>
 </section>
-<section id="select" class="slide level2">
-<h2><code>select()</code></h2>
-<p>wnba_draft</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">select</span>(year, country, stage, home_team, away_team)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 900 × 5
-    year country stage   home_team away_team    
-   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        
- 1  1930 Uruguay Group 1 France    Mexico       
- 2  1930 Uruguay Group 4 Belgium   United States
- 3  1930 Uruguay Group 2 Brazil    Yugoslavia   
- 4  1930 Uruguay Group 3 Peru      Romania      
- 5  1930 Uruguay Group 1 Argentina France       
- 6  1930 Uruguay Group 1 Chile     Mexico       
- 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   
- 8  1930 Uruguay Group 4 Paraguay  United States
- 9  1930 Uruguay Group 3 Uruguay   Peru         
-10  1930 Uruguay Group 1 Argentina Mexico       
-# ℹ 890 more rows</code></pre>
-</div>
+<section id="full-outer-join" class="slide level2">
+<h2>Full Outer Join</h2>
+<p>Join all the rows of both tables as long as there is a matching record in either table.</p>
+</section>
+<section id="source-r4ds-chapter-19" class="slide level2">
+<h2><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-1329201745.png" alt="Source: R4DS Chapter 19"></a></h2>
+</section>
+<section id="left-outer-join-or-left-join" class="slide level2">
+<h2>Left Outer Join or Left Join</h2>
+<p>Join all the rows of the left table and the matching rows in the right table.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-990860069.png" width="580" alt="Source: R4DS Chapter 19"></a></p>
+<figcaption>Source: R4DS Chapter 19</figcaption>
+</figure>
 </div>
 </section>
-<section id="filter" class="slide level2">
-<h2><code>filter()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 15
-    year country   city  stage home_team away_team home_score away_score outcome
-   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  
- 1  1930 Uruguay   Mont… Final Uruguay   Argentina          4          2 H      
- 2  1934 Italy     Rome  Final Italy     Czechosl…          2          1 H      
- 3  1938 France    Colo… Final Hungary   Italy              2          4 A      
- 4  1954 Switzerl… Berne Final West Ger… Hungary            3          2 H      
- 5  1958 Sweden    Solna Final Sweden    Brazil             2          5 A      
- 6  1962 Chile     Sant… Final Brazil    Czechosl…          3          1 H      
- 7  1966 England   Lond… Final England   West Ger…          4          2 H      
- 8  1970 Mexico    Mexi… Final Brazil    Italy              4          1 H      
- 9  1974 Germany   Muni… Final West Ger… Netherla…          2          1 H      
-10  1978 Argentina Buen… Final Argentina Netherla…          3          1 H      
-11  1982 Spain     Madr… Final Italy     West Ger…          3          1 H      
-12  1986 Mexico    Mexi… Final Argentina West Ger…          3          2 H      
-13  1990 Italy     Rome  Final West Ger… Argentina          1          0 H      
-14  1994 United S… Pasa… Final Brazil    Italy              0          0 H      
-15  1998 France    Sain… Final France    Brazil             3          0 H      
-16  2002 Japan     Yoko… Final Germany   Brazil             0          2 A      
-17  2006 Germany   Berl… Final Italy     France             1          1 H      
-18  2010 South Af… Joha… Final Netherla… Spain              0          1 A      
-19  2014 Brazil    Rio … Final Germany   Argentina          1          0 H      
-20  2018 Russia    Mosc… Final France    Croatia            4          2 H      
-# ℹ 6 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,
-#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;</code></pre>
-</div>
-</div>
+<section id="left_join" class="slide level2">
+<h2><code>left_join()</code></h2>
 </section>
-<section id="mutate" class="slide level2">
-<h2><code>mutate()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>wc_matches <span class="ot">&lt;-</span> </span>
-<span id="cb7-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">ifelse</span>(stage <span class="sc">==</span> <span class="st">"Final Round"</span>, </span>
-<span id="cb7-4"><a></a>                        <span class="st">"Final"</span>, stage),</span>
-<span id="cb7-5"><a></a>         <span class="at">score_diff =</span> <span class="fu">abs</span>(home_score <span class="sc">-</span> away_score)) </span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a></a>  <span class="fu">select</span>(year, stage, home_team, away_team, score_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 900 × 5
-    year stage   home_team away_team     score_diff
-   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;
- 1  1930 Group 1 France    Mexico                 3
- 2  1930 Group 4 Belgium   United States          3
- 3  1930 Group 2 Brazil    Yugoslavia             1
- 4  1930 Group 3 Peru      Romania                2
- 5  1930 Group 1 Argentina France                 1
- 6  1930 Group 1 Chile     Mexico                 3
- 7  1930 Group 2 Bolivia   Yugoslavia             4
- 8  1930 Group 4 Paraguay  United States          3
- 9  1930 Group 3 Uruguay   Peru                   1
-10  1930 Group 1 Argentina Mexico                 3
-# ℹ 890 more rows</code></pre>
-</div>
-</div>
+<section id="right-outer-join" class="slide level2">
+<h2>Right Outer Join</h2>
+<p>Join all the rows of the right table and the matching rows in the left table.</p>
 </section>
-<section id="group_by-and-summarize" class="slide level2">
-<h2><code>group_by()</code> and <code>summarize()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb9-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Final"</span>, </span>
-<span id="cb9-4"><a></a>                      <span class="st">"Semifinals"</span>, </span>
-<span id="cb9-5"><a></a>                      <span class="st">"Quarterfinals"</span>, </span>
-<span id="cb9-6"><a></a>                      <span class="st">"Round of 16"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a></a>  <span class="fu">group_by</span>(stage) <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">summarize</span>(<span class="at">n_matches =</span> <span class="fu">n</span>(),</span>
-<span id="cb9-9"><a></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(score_diff),</span>
-<span id="cb9-10"><a></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(score_diff))</span>
-<span id="cb9-11"><a></a></span>
-<span id="cb9-12"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  stage         n_matches mean_diff sd_diff
-  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 Final                26      1.81    1.39
-2 Quarterfinals        66      1.30    1.29
-3 Round of 16          89      1.47    1.18
-4 Semifinals           36      1.75    1.52</code></pre>
-</div>
-</div>
+<section id="r4ds-chapter-19inner-join" class="slide level2">
+<h2><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-1592259064.png" alt="R4DS Chapter 19"></a>Inner Join</h2>
+<p>Join the rows which are present in both tables.</p>
 </section>
-<section id="arrange" class="slide level2">
-<h2><code>arrange()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">mutate</span>(<span class="at">order =</span> <span class="fu">case_when</span>(stage <span class="sc">==</span> <span class="st">"Round of 16"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb11-5"><a></a>                           stage <span class="sc">==</span> <span class="st">"Quarterfinals"</span> <span class="sc">~</span> <span class="dv">2</span>, </span>
-<span id="cb11-6"><a></a>                           stage <span class="sc">==</span> <span class="st">"Semifinals"</span> <span class="sc">~</span> <span class="dv">3</span>, </span>
-<span id="cb11-7"><a></a>                           stage <span class="sc">==</span> <span class="st">"Final"</span> <span class="sc">~</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">arrange</span>(order)</span>
-<span id="cb11-9"><a></a></span>
-<span id="cb11-10"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
-  stage         n_matches mean_diff sd_diff order
-  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 Round of 16          89      1.47    1.18     1
-2 Quarterfinals        66      1.30    1.29     2
-3 Semifinals           36      1.75    1.52     3
-4 Final                26      1.81    1.39     4</code></pre>
-</div>
-</div>
+<section id="self-join" class="slide level2">
+<h2><img data-src="images/clipboard-1345908494.png">Self Join</h2>
+<p>Join a table with itself.</p>
 </section>
-<section id="slice" class="slide level2">
-<h2><code>slice()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_diff)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  stage n_matches mean_diff sd_diff order
-  &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 Final        26      1.81    1.39     4</code></pre>
-</div>
-</div>
+<section id="cross-join-or-cartesian-join" class="slide level2">
+<h2>Cross Join or Cartesian Join</h2>
+<p>Returns all possible combinations of all rows.</p>
+
+<img data-src="images/clipboard-3448121650.png" class="r-stretch"></section></section>
+<section>
+<section id="filtering-joins" class="title-slide slide level1 inverse center">
+<h1>Filtering Joins</h1>
+
+</section>
+<section id="semi-join" class="slide level2">
+<h2>Semi Join</h2>
+<p>Filter records from left table that has matching records in right table.</p>
+
+<img data-src="images/clipboard-381782884.png" class="r-stretch"></section>
+<section id="anti-join" class="slide level2">
+<h2>Anti Join</h2>
+<p>Filter records from left table that do not have matching records in right table.</p>
 </section></section>
-<section>
-<section id="tidyr" class="title-slide slide level1 inverse center">
-<h1><code>tidyr</code></h1>
+<section id="section" class="title-slide slide level1 inverse center">
+<h1><img data-src="images/clipboard-3490231510.png"></h1>
 
 </section>
-<section id="pivot_longer" class="slide level2">
-<h2><code>pivot_longer()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>long_dat <span class="ot">&lt;-</span> </span>
-<span id="cb15-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>order) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">pivot_longer</span>(n_matches<span class="sc">:</span>sd_diff,</span>
-<span id="cb15-5"><a></a>               <span class="at">names_to =</span> <span class="st">'stat'</span>, </span>
-<span id="cb15-6"><a></a>               <span class="at">values_to =</span> <span class="st">'val'</span>)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>long_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
-   stage         stat        val
-   &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
- 1 Round of 16   n_matches 89   
- 2 Round of 16   mean_diff  1.47
- 3 Round of 16   sd_diff    1.18
- 4 Quarterfinals n_matches 66   
- 5 Quarterfinals mean_diff  1.30
- 6 Quarterfinals sd_diff    1.29
- 7 Semifinals    n_matches 36   
- 8 Semifinals    mean_diff  1.75
- 9 Semifinals    sd_diff    1.52
-10 Final         n_matches 26   
-11 Final         mean_diff  1.81
-12 Final         sd_diff    1.39</code></pre>
-</div>
-</div>
+
+<section>
+<section id="set" class="title-slide slide level1 inverse center">
+<h1>Set</h1>
+
 </section>
-<section id="separate" class="slide level2">
-<h2><code>separate()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>long_dat_clean <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a></a>  long_dat <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">separate</span>(stat, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"var"</span>), <span class="at">sep =</span> <span class="st">"_"</span>) </span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a>long_dat_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   stage         stat  var       val
-   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
- 1 Round of 16   n     matches 89   
- 2 Round of 16   mean  diff     1.47
- 3 Round of 16   sd    diff     1.18
- 4 Quarterfinals n     matches 66   
- 5 Quarterfinals mean  diff     1.30
- 6 Quarterfinals sd    diff     1.29
- 7 Semifinals    n     matches 36   
- 8 Semifinals    mean  diff     1.75
- 9 Semifinals    sd    diff     1.52
-10 Final         n     matches 26   
-11 Final         mean  diff     1.81
-12 Final         sd    diff     1.39</code></pre>
-</div>
-</div>
+<section id="intersect" class="slide level2">
+<h2>Intersect</h2>
 </section>
-<section id="pivot_wider" class="slide level2">
-<h2><code>pivot_wider()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>long_dat_clean <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>var) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stat, <span class="at">values_from =</span> val) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">rename</span>(<span class="at">Stage =</span> stage, <span class="st">`</span><span class="at">Number of Matches</span><span class="st">`</span> <span class="ot">=</span> n,</span>
-<span id="cb19-5"><a></a>         <span class="st">`</span><span class="at">Average Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> mean,</span>
-<span id="cb19-6"><a></a>         <span class="st">`</span><span class="at">SD of Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²
-  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
-1 Round of 16                   89                   1.47                   1.18
-2 Quarterfina…                  66                   1.30                   1.29
-3 Semifinals                    36                   1.75                   1.52
-4 Final                         26                   1.81                   1.39
-# ℹ abbreviated names: ¹​`Average Difference in Goals`,
-#   ²​`SD of Difference in Goals`</code></pre>
-</div>
-</div>
+<section id="union" class="slide level2">
+<h2>Union</h2>
 </section>
-<section id="unite" class="slide level2">
-<h2><code>unite()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">unite</span>(world_cup, year, country, <span class="at">sep =</span>  <span class="st">": "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26 × 15
-   world_cup       city  stage home_team away_team home_score away_score outcome
-   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  
- 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      
- 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      
- 3 1938: France    Colo… Final Hungary   Italy              2          4 A      
- 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      
- 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      
- 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      
- 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      
- 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      
- 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      
-10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      
-# ℹ 16 more rows
-# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,
-#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,
-#   score_diff &lt;dbl&gt;</code></pre>
-</div>
-</div>
+<section id="difference-or-minus" class="slide level2">
+<h2>Difference or Minus</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
