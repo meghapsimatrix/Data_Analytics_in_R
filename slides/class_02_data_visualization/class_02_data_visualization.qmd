@@ -64,7 +64,9 @@ You can also load the package separately:
 library(ggplot2)
 ```
 
-## Example Dataset {style=".smaller"}
+## Example Dataset: Capital Bike Sharing Data {style=".smaller"}
+
+Source: [UCI Repository](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)
 
 ```{r}
 load("../../slides/data/capital_bike_sharing_data/bike_sharing_dat.RData")
