@@ -9,8 +9,8 @@
   {
     "listing": "/classes/class_03.html",
     "items": [
-      "/slides/class_02_data_visualization/class_02_data_visualization.html",
-      "/practice_problems/practice_problems_02/practice_problems_02.html"
+      "/slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html",
+      "/practice_problems/practice_problems_03/practice_problems_03.html"
     ]
   },
   {
@@ -24,7 +24,10 @@
   },
   {
     "listing": "/classes/class_04.html",
-    "items": []
+    "items": [
+      "/slides/class_04_relational_datasets/class_04_relational_data.html",
+      "/practice_problems/practice_problems_04/practice_problems_04.html"
+    ]
   },
   {
     "listing": "/classes/class_02.html",

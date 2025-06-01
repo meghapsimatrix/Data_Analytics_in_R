@@ -1,13 +1,13 @@
 ---
-title: "Class 03"
-subtitle: "Wrangling Data"
+title: "Class 03: Querying and Wrangling Data"
+subtitle: ""
 description: ""
-author: ""
+author: "Megha Joshi"
 date: ""
 listing:
   - id: slides
     contents:
-      - ../slides/class_02_data_visualization/*.qmd
+      - ../slides/class_03_querying_and_wrangling_data/*.qmd
     type: table
     fields: [title, author]
     date-format: "ddd, MMM DD"
@@ -19,7 +19,7 @@ listing:
     filter-ui: false
   - id: problems
     contents:
-      - ../practice_problems/practice_problems_02/practice_problems_*.qmd
+      - ../practice_problems/practice_problems_03/practice_problems_*.qmd
     type: table
     fields: [title]
     date-format: "ddd, MMM DD"
@@ -44,5 +44,5 @@ tbl-colwidths: [10,50,40]
 
 # Readings
 
--   [R for Data Science: Chapter 3 - Data Visualization](https://r4ds.had.co.nz/data-visualisation.html)
+
 

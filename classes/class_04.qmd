@@ -1,13 +1,13 @@
 ---
-title: "Class 04"
-subtitle: "Relational Datasets"
+title: "Class 04: Relational Datasets"
+subtitle: ""
 description: ""
 author: "Megha Joshi"
 date: ""
 listing:
   - id: slides
     contents:
-      - ../slides/class_06_relational_datasets/*.qmd
+      - ../slides/class_04_relational_datasets/*.qmd
     type: table
     fields: [title, author]
     date-format: "ddd, MMM DD"

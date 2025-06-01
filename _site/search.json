@@ -353,9 +353,9 @@
   {
     "objectID": "classes/class_03.html",
     "href": "classes/class_03.html",
-    "title": "Class 03",
+    "title": "Class 03: Querying and Wrangling Data",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
     "objectID": "instructors.html",
@@ -366,6 +366,13 @@
     "crumbs": [
       "Teaching Team"
     ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
@@ -379,10 +386,17 @@
     "href": "classes.html",
     "title": "Classes",
     "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03\n\n\n \n\n\n\n\nClass 04\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Classes"
     ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
@@ -394,9 +408,9 @@
   {
     "objectID": "classes/class_04.html",
     "href": "classes/class_04.html",
-    "title": "Class 04",
+    "title": "Class 04: Relational Datasets",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
     "objectID": "classes/class_02.html",
