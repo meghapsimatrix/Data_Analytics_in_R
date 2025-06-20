@@ -22,9 +22,9 @@ editor: visual
 ::: {.column width="50%; font-size: 85%"}
 -   Data frames represent data as a table with rows and columns
 
-    -   Rows represent observations or record (e.g., each row contains data on each student)
+    -   Rows represent observations or record (e.g., each row contains data on employee)
 
-    -   Columns typically contain variables (e.g., columns contain information like test scores and what school they attended)
+    -   Columns typically contain variables (e.g., columns contain information like score on employee satisfaction survey, what department the employee belongs to etc.)
 
 -   A tibble is a modern data frame - [Chapter 10 of R4DS](https://r4ds.had.co.nz/tibbles.html)
 :::
@@ -57,7 +57,7 @@ employee_dat
 ::: {.column width="50%"}
 -   Redundant information
 
-    -   In the example data, note that school name and school level information is same for the first five and last five students \~ same information is repeated across 5 rows
+    -   In the example data, note that department name and department manager repeats \~ same information is repeated across 5 rows
 
 -   Storage and memory issues
 :::
@@ -80,7 +80,8 @@ employee_dat
 Employee data:
 
 ```{r, echo = FALSE}
-employee_dat 
+employee_dat %>%
+  select(emp_id:dept_id)
 ```
 :::
 
@@ -104,7 +105,7 @@ employee_dat %>%
 
     -   MySQL
 
-    -   
+    -   DuckDB
 
 ## Example Database: Employee Database
 
@@ -116,25 +117,43 @@ employee_dat %>%
 
 -   Has to be unique - no duplicated key
 
--   Cannot have missing data for primary key - we need an identifier
+-   Should not have missing data for primary key - we need an identifier
+
+    -   Example:
+
+        -   Employee ID in the employee dataset (`dept_emp`)
+
+        -   Department number in the department manager dataset (`dept_manager`)
 
 ## Foreign Keys
 
-# Mutating Joins {.inverse}
+-   Counterpart to the primary key
 
-## Definition
+-   An identifier in a another table that matches with the primary key in a table
+
+    -   Example:
+
+        -   Department number is a foreign key in `dept_emp` data that matches with the primary key department number in the `dept_manager` data
+
+# Mutating Joins {.inverse}
 
 ## Full Outer Join
 
 Join all the rows of both tables as long as there is a matching record in either table.
 
-## [![Source: R4DS Chapter 19](images/clipboard-1329201745.png)](https://r4ds.hadley.nz/joins#how-do-joins-work)
+![Source: R4DS Chapter 19](images/clipboard-3760552345.png){width="568"}
+
+## `full_join`
+
+```{r}
+
+```
 
 ## Left Outer Join or Left Join
 
 Join all the rows of the left table and the matching rows in the right table.
 
-[![Source: R4DS Chapter 19](images/clipboard-990860069.png){width="580"}](https://r4ds.hadley.nz/joins#how-do-joins-work)
+[![Source: R4DS Chapter 19](images/clipboard-990860069.png){width="638"}](https://r4ds.hadley.nz/joins#how-do-joins-work)
 
 ## `left_join()`
 

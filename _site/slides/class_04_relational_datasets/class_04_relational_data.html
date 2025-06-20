@@ -344,8 +344,8 @@ Megha Joshi
 <ul>
 <li><p>Data frames represent data as a table with rows and columns</p>
 <ul>
-<li><p>Rows represent observations or record (e.g., each row contains data on each student)</p></li>
-<li><p>Columns typically contain variables (e.g., columns contain information like test scores and what school they attended)</p></li>
+<li><p>Rows represent observations or record (e.g., each row contains data on employee)</p></li>
+<li><p>Columns typically contain variables (e.g., columns contain information like score on employee satisfaction survey, what department the employee belongs to etc.)</p></li>
 </ul></li>
 <li><p>A tibble is a modern data frame - <a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10 of R4DS</a></p></li>
 </ul>
@@ -376,7 +376,7 @@ Megha Joshi
 <ul>
 <li><p>Redundant information</p>
 <ul>
-<li>In the example data, note that school name and school level information is same for the first five and last five students ~ same information is repeated across 5 rows</li>
+<li>In the example data, note that department name and department manager repeats ~ same information is repeated across 5 rows</li>
 </ul></li>
 <li><p>Storage and memory issues</p></li>
 </ul>
@@ -411,19 +411,19 @@ Megha Joshi
 <p>Employee data:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   emp_id surv_scr dept_id dept_name dept_mgr
-    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
- 1      1       80 A       IT        Woof    
- 2      2       71 A       IT        Woof    
- 3      3       69 A       IT        Woof    
- 4      4       88 A       IT        Woof    
- 5      5       78 A       IT        Woof    
- 6      6       84 B       Analytics Meow    
- 7      7       82 B       Analytics Meow    
- 8      8       79 B       Analytics Meow    
- 9      9       85 B       Analytics Meow    
-10     10       71 B       Analytics Meow    </code></pre>
+<pre><code># A tibble: 10 × 3
+   emp_id surv_scr dept_id
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+ 1      1       80 A      
+ 2      2       71 A      
+ 3      3       69 A      
+ 4      4       88 A      
+ 5      5       78 A      
+ 6      6       84 B      
+ 7      7       82 B      
+ 8      8       79 B      
+ 9      9       85 B      
+10     10       71 B      </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -446,7 +446,7 @@ Megha Joshi
 <li><p><strong>D</strong>ata<strong>b</strong>ase <strong>M</strong>anagement <strong>S</strong>ystem</p>
 <ul>
 <li><p>MySQL</p></li>
-<li></li>
+<li><p>DuckDB</p></li>
 </ul></li>
 </ul>
 </section>
@@ -459,27 +459,39 @@ Megha Joshi
 <ul>
 <li><p>Every table needs to have a primary key</p></li>
 <li><p>Has to be unique - no duplicated key</p></li>
-<li><p>Cannot have missing data for primary key - we need an identifier</p></li>
+<li><p>Should not have missing data for primary key - we need an identifier</p>
+<ul>
+<li><p>Example:</p>
+<ul>
+<li><p>Employee ID in the employee dataset (<code>dept_emp</code>)</p></li>
+<li><p>Department number in the department manager dataset (<code>dept_manager</code>)</p></li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="foreign-keys" class="slide level2">
 <h2>Foreign Keys</h2>
+<ul>
+<li><p>Counterpart to the primary key</p></li>
+<li><p>An identifier in a another table that matches with the primary key in a table</p>
+<ul>
+<li><p>Example:</p>
+<ul>
+<li>Department number is a foreign key in <code>dept_emp</code> data that matches with the primary key department number in the <code>dept_manager</code> data</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 <section>
 <section id="mutating-joins" class="title-slide slide level1 inverse center">
 <h1>Mutating Joins</h1>
 
 </section>
-<section id="definition" class="slide level2">
-<h2>Definition</h2>
-</section>
 <section id="full-outer-join" class="slide level2">
 <h2>Full Outer Join</h2>
 <p>Join all the rows of both tables as long as there is a matching record in either table.</p>
-</section>
-<section id="source-r4ds-chapter-19" class="slide level2">
-<h2><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-1329201745.png" alt="Source: R4DS Chapter 19"></a></h2>
-</section>
+
+<img data-src="images/clipboard-3760552345.png" width="568" class="r-stretch"></section>
 <section id="left-outer-join-or-left-join" class="slide level2">
 <h2>Left Outer Join or Left Join</h2>
 <p>Join all the rows of the left table and the matching rows in the right table.</p>
@@ -886,7 +898,7 @@ Megha Joshi
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

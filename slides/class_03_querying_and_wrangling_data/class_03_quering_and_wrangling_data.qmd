@@ -54,15 +54,15 @@ glimpse(matches)
 
 ## Verbs
 
-| Verb          | Definition |
-|---------------|------------|
-| `select()`    |            |
-| `filter()`    |            |
-| `mutate()`    |            |
-| `group_by()`  |            |
-| `summarize()` |            |
-| `arrange()`   |            |
-| `slice()`     |            |
+| Verb          | Definition                                                |
+|---------------|-----------------------------------------------------------|
+| `select()`    | Retrieve particular variables by their name or position   |
+| `filter()`    | Retrieve rows meeting condition(s)                        |
+| `mutate()`    | Add a variable or transform existing ones                 |
+| `group_by()`  | Groups rows that have same value on one or more variables |
+| `summarize()` | Run functions on aggregated data                          |
+| `arrange()`   | Sort based on a variable in ascending or descending order |
+| `slice()`     | Retrieve rows of the data based on their location         |
 
 ## `select()`
 
@@ -134,6 +134,15 @@ avg_score_diff %>%
 ```
 
 # `tidyr` {.inverse}
+
+## Verbs
+
+| Verb             | Definition                              |
+|------------------|-----------------------------------------|
+| `pivot_longer()` | Transform data to long format           |
+| `pivot_wider()`  | Transform data to wide format           |
+| `separate()`     | Separate a column into multiple columns |
+| `unite()`        | Unite multiple columns into one column  |
 
 ## `pivot_longer()`
 

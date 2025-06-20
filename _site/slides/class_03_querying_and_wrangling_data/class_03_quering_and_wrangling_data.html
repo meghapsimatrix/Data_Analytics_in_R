@@ -452,6 +452,10 @@ Megha Joshi
 <section id="verbs" class="slide level2">
 <h2>Verbs</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 79%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Verb</th>
@@ -461,31 +465,31 @@ Megha Joshi
 <tbody>
 <tr class="odd">
 <td><code>select()</code></td>
-<td></td>
+<td>Retrieve particular variables by their name or position</td>
 </tr>
 <tr class="even">
 <td><code>filter()</code></td>
-<td></td>
+<td>Retrieve rows meeting condition(s)</td>
 </tr>
 <tr class="odd">
 <td><code>mutate()</code></td>
-<td></td>
+<td>Add a variable or transform existing ones</td>
 </tr>
 <tr class="even">
 <td><code>group_by()</code></td>
-<td></td>
+<td>Groups rows that have same value on one or more variables</td>
 </tr>
 <tr class="odd">
 <td><code>summarize()</code></td>
-<td></td>
+<td>Run functions on aggregated data</td>
 </tr>
 <tr class="even">
 <td><code>arrange()</code></td>
-<td></td>
+<td>Sort based on a variable in ascending or descending order</td>
 </tr>
 <tr class="odd">
 <td><code>slice()</code></td>
-<td></td>
+<td>Retrieve rows of the data based on their location</td>
 </tr>
 </tbody>
 </table>
@@ -645,6 +649,35 @@ Megha Joshi
 <section id="tidyr" class="title-slide slide level1 inverse center">
 <h1><code>tidyr</code></h1>
 
+</section>
+<section id="verbs-1" class="slide level2">
+<h2>Verbs</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Verb</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pivot_longer()</code></td>
+<td>Transform data to long format</td>
+</tr>
+<tr class="even">
+<td><code>pivot_wider()</code></td>
+<td>Transform data to wide format</td>
+</tr>
+<tr class="odd">
+<td><code>separate()</code></td>
+<td>Separate a column into multiple columns</td>
+</tr>
+<tr class="even">
+<td><code>unite()</code></td>
+<td>Unite multiple columns into one column</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="pivot_longer" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
@@ -1095,7 +1128,7 @@ Megha Joshi
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
