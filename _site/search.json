@@ -232,11 +232,11 @@
     "text": "Databases\n\nCollection of multiple data\nDatabase Management System\n\nMySQL\nDuckDB"
   },
   {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#example-database-employee-database",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#example-database-employee-database",
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
     "title": "Relational Datasets",
-    "section": "Example Database: Employee Database",
-    "text": "Example Database: Employee Database"
+    "section": "Example Dataset Full",
+    "text": "Example Dataset Full\n\n\n\nemployee_dat\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\n\ndepartment_dat\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin    \n\n\n\n\nWhat do you notice about the relationship between the two datasets?"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
@@ -260,13 +260,6 @@
     "text": "Full Outer Join\nJoin all the rows of both tables as long as there is a matching record in either table.\n\nfull_join\n\nfull_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 14 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;     \n13     NA       NA D       HR       \n14     NA       NA E       Admin"
   },
   {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
-    "title": "Relational Datasets",
-    "section": "full_join",
-    "text": "full_join\n\nfull_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 14 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;     \n13     NA       NA D       HR       \n14     NA       NA E       Admin"
-  },
-  {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
     "title": "Relational Datasets",
@@ -288,18 +281,25 @@
     "text": "Right Outer Join\nJoin all the rows of the right table and the matching rows in the left table."
   },
   {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#r4ds-chapter-19inner-join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#r4ds-chapter-19inner-join",
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
+    "title": "Relational Datasets",
+    "section": "right_join()",
+    "text": "right_join()\n\nright_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 10 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9     NA       NA D       HR       \n10     NA       NA E       Admin"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
     "title": "Relational Datasets",
     "section": "Inner Join",
     "text": "Inner Join\nJoin the rows which are present in both tables."
   },
   {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#self-join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#self-join",
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
     "title": "Relational Datasets",
-    "section": "Self Join",
-    "text": "Self Join\nJoin a table with itself."
+    "section": "inner_join()",
+    "text": "inner_join()\n\ninner_join(department_dat, employee_dat, by = \"dept_id\")\n\n# A tibble: 8 × 4\n  dept_id dept_name emp_id surv_scr\n  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;\n1 A       Analytics      1       73\n2 A       Analytics      2       75\n3 A       Analytics      3       90\n4 A       Analytics      4       79\n5 B       Research       5       86\n6 B       Research       6       83\n7 B       Research       7       83\n8 B       Research       8       85"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross-join-or-cartesian-join",
@@ -309,11 +309,25 @@
     "text": "Cross Join or Cartesian Join\nReturns all possible combinations of all rows."
   },
   {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
+    "title": "Relational Datasets",
+    "section": "cross_join()",
+    "text": "cross_join()\n\ncross_join(employee_dat, department_dat)\n\n# A tibble: 48 × 5\n   emp_id surv_scr dept_id.x dept_id.y dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    \n 1      1       73 A         A         Analytics\n 2      1       73 A         B         Research \n 3      1       73 A         D         HR       \n 4      1       73 A         E         Admin    \n 5      2       75 A         A         Analytics\n 6      2       75 A         B         Research \n 7      2       75 A         D         HR       \n 8      2       75 A         E         Admin    \n 9      3       90 A         A         Analytics\n10      3       90 A         B         Research \n# ℹ 38 more rows"
+  },
+  {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
     "title": "Relational Datasets",
     "section": "Semi Join",
     "text": "Semi Join\nFilter records from left table that has matching records in right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
+    "title": "Relational Datasets",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nsemi_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 8 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      1       73 A      \n2      2       75 A      \n3      3       90 A      \n4      4       79 A      \n5      5       86 B      \n6      6       83 B      \n7      7       83 B      \n8      8       85 B"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti-join",
@@ -323,25 +337,11 @@
     "text": "Anti Join\nFilter records from left table that do not have matching records in right table."
   },
   {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#intersect",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#intersect",
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
     "title": "Relational Datasets",
-    "section": "Intersect",
-    "text": "Intersect"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#union",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#union",
-    "title": "Relational Datasets",
-    "section": "Union",
-    "text": "Union"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#difference-or-minus",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#difference-or-minus",
-    "title": "Relational Datasets",
-    "section": "Difference or Minus",
-    "text": "Difference or Minus\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "section": "anti_join()",
+    "text": "anti_join()\n\nanti_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 4 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      9       81 C      \n2     10       83 C      \n3     11       90 C      \n4     12       84 C"
   },
   {
     "objectID": "classes/class_01.html",
@@ -644,54 +644,5 @@
     "title": "Querying and Wrangling Data",
     "section": "unite()",
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
-    "title": "Relational Datasets",
-    "section": "Example Dataset Full",
-    "text": "Example Dataset Full\n\n\n\nemployee_dat\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\n\ndepartment_dat\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin    \n\n\n\n\nWhat do you notice about the relationship between the two datasets?"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
-    "title": "Relational Datasets",
-    "section": "right_join()",
-    "text": "right_join()\n\nright_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 10 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9     NA       NA D       HR       \n10     NA       NA E       Admin"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
-    "title": "Relational Datasets",
-    "section": "Inner Join",
-    "text": "Inner Join\nJoin the rows which are present in both tables."
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
-    "title": "Relational Datasets",
-    "section": "inner_join()",
-    "text": "inner_join()\n\ninner_join(department_dat, employee_dat, by = \"dept_id\")\n\n# A tibble: 8 × 4\n  dept_id dept_name emp_id surv_scr\n  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;\n1 A       Analytics      1       73\n2 A       Analytics      2       75\n3 A       Analytics      3       90\n4 A       Analytics      4       79\n5 B       Research       5       86\n6 B       Research       6       83\n7 B       Research       7       83\n8 B       Research       8       85"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
-    "title": "Relational Datasets",
-    "section": "cross_join()",
-    "text": "cross_join()\n\ncross_join(employee_dat, department_dat)\n\n# A tibble: 48 × 5\n   emp_id surv_scr dept_id.x dept_id.y dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    \n 1      1       73 A         A         Analytics\n 2      1       73 A         B         Research \n 3      1       73 A         D         HR       \n 4      1       73 A         E         Admin    \n 5      2       75 A         A         Analytics\n 6      2       75 A         B         Research \n 7      2       75 A         D         HR       \n 8      2       75 A         E         Admin    \n 9      3       90 A         A         Analytics\n10      3       90 A         B         Research \n# ℹ 38 more rows"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
-    "title": "Relational Datasets",
-    "section": "semi_join()",
-    "text": "semi_join()\n\nsemi_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 8 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      1       73 A      \n2      2       75 A      \n3      3       90 A      \n4      4       79 A      \n5      5       86 B      \n6      6       83 B      \n7      7       83 B      \n8      8       85 B"
-  },
-  {
-    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
-    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
-    "title": "Relational Datasets",
-    "section": "anti_join()",
-    "text": "anti_join()\n\nanti_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 4 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      9       81 C      \n2     10       83 C      \n3     11       90 C      \n4     12       84 C"
   }
 ]
