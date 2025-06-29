@@ -3,6 +3,7 @@ library(tidyverse)
 library(RSQLite)
 library(dbplyr)
 library(dm)
+library(janitor)
 
 # connect to sqlite database
 my_db <- dbConnect(
@@ -29,6 +30,16 @@ dept_emp <- as_tibble(dept_emp)
 titles <- as_tibble(titles)
 departments <- as_tibble(departments)
 
+
+write_csv(employees, "slides/data/employee_maria_db/employees.csv")
+write_csv(salaries, "slides/data/employee_maria_db/salaries.csv")
+write_csv(dept_manager, "slides/data/employee_maria_db/dept_manager.csv")
+write_csv(dept_emp, "slides/data/employee_maria_db/dept_emp.csv")
+write_csv(titles, "slides/data/employee_maria_db/titles.csv")
+write_csv(departments, "slides/data/employee_maria_db/departments.csv")
+
+dept_manager
+departments
 
 my_dm <- dm_from_src(my_db)
 

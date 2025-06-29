@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -352,19 +417,17 @@ Megha Joshi
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   emp_id surv_scr dept_id dept_name dept_mgr
-    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
- 1      1       80 A       IT        Woof    
- 2      2       71 A       IT        Woof    
- 3      3       69 A       IT        Woof    
- 4      4       88 A       IT        Woof    
- 5      5       78 A       IT        Woof    
- 6      6       84 B       Analytics Meow    
- 7      7       82 B       Analytics Meow    
- 8      8       79 B       Analytics Meow    
- 9      9       85 B       Analytics Meow    
-10     10       71 B       Analytics Meow    </code></pre>
+<pre><code># A tibble: 8 × 4
+  dept_id dept_name emp_id surv_scr
+  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;
+1 A       Analytics      1       73
+2 A       Analytics      2       75
+3 A       Analytics      3       90
+4 A       Analytics      4       79
+5 B       Research       5       86
+6 B       Research       6       83
+7 B       Research       7       83
+8 B       Research       8       85</code></pre>
 </div>
 </div>
 </div></div>
@@ -376,26 +439,24 @@ Megha Joshi
 <ul>
 <li><p>Redundant information</p>
 <ul>
-<li>In the example data, note that department name and department manager repeats ~ same information is repeated across 5 rows</li>
+<li>In the example data, note that department name repeats ~ same information is repeated across 4 rows</li>
 </ul></li>
 <li><p>Storage and memory issues</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   emp_id surv_scr dept_id dept_name dept_mgr
-    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
- 1      1       80 A       IT        Woof    
- 2      2       71 A       IT        Woof    
- 3      3       69 A       IT        Woof    
- 4      4       88 A       IT        Woof    
- 5      5       78 A       IT        Woof    
- 6      6       84 B       Analytics Meow    
- 7      7       82 B       Analytics Meow    
- 8      8       79 B       Analytics Meow    
- 9      9       85 B       Analytics Meow    
-10     10       71 B       Analytics Meow    </code></pre>
+<pre><code># A tibble: 8 × 4
+  dept_id dept_name emp_id surv_scr
+  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;
+1 A       Analytics      1       73
+2 A       Analytics      2       75
+3 A       Analytics      3       90
+4 A       Analytics      4       79
+5 B       Research       5       86
+6 B       Research       6       83
+7 B       Research       7       83
+8 B       Research       8       85</code></pre>
 </div>
 </div>
 </div></div>
@@ -411,30 +472,28 @@ Megha Joshi
 <p>Employee data:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-   emp_id surv_scr dept_id
-    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
- 1      1       80 A      
- 2      2       71 A      
- 3      3       69 A      
- 4      4       88 A      
- 5      5       78 A      
- 6      6       84 B      
- 7      7       82 B      
- 8      8       79 B      
- 9      9       85 B      
-10     10       71 B      </code></pre>
+<pre><code># A tibble: 8 × 3
+  emp_id dept_name dept_id
+   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  
+1      1 Analytics A      
+2      2 Analytics A      
+3      3 Analytics A      
+4      4 Analytics A      
+5      5 Research  B      
+6      6 Research  B      
+7      7 Research  B      
+8      8 Research  B      </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Department data:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  dept_id dept_name dept_mgr
-  &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
-1 A       IT        Woof    
-2 B       Analytics Meow    </code></pre>
+<pre><code># A tibble: 2 × 2
+  dept_id dept_name
+  &lt;chr&gt;   &lt;chr&gt;    
+1 A       Analytics
+2 B       Research </code></pre>
 </div>
 </div>
 </div></div>
@@ -450,10 +509,58 @@ Megha Joshi
 </ul></li>
 </ul>
 </section>
-<section id="example-database-employee-database" class="slide level2">
-<h2>Example Database: Employee Database</h2>
-
-<img data-src="images/employees.png" class="r-stretch"></section>
+<section id="example-dataset-full" class="slide level2">
+<h2>Example Dataset Full</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>employee_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   emp_id surv_scr dept_id
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+ 1      1       73 A      
+ 2      2       75 A      
+ 3      3       90 A      
+ 4      4       79 A      
+ 5      5       86 B      
+ 6      6       83 B      
+ 7      7       83 B      
+ 8      8       85 B      
+ 9      9       81 C      
+10     10       83 C      
+11     11       90 C      
+12     12       84 C      </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>department_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  dept_id dept_name
+  &lt;chr&gt;   &lt;chr&gt;    
+1 A       Analytics
+2 B       Research 
+3 D       HR       
+4 E       Admin    </code></pre>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>What do you notice about the relationship between the two datasets?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="primary-key" class="slide level2">
 <h2>Primary Key</h2>
 <ul>
@@ -491,37 +598,135 @@ Megha Joshi
 <h2>Full Outer Join</h2>
 <p>Join all the rows of both tables as long as there is a matching record in either table.</p>
 
-<img data-src="images/clipboard-3760552345.png" width="568" class="r-stretch"></section>
+<img data-src="images/full_join.png" width="533" class="r-stretch"><p><code>full_join</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">full_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 4
+   emp_id surv_scr dept_id dept_name
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    
+ 1      1       73 A       Analytics
+ 2      2       75 A       Analytics
+ 3      3       90 A       Analytics
+ 4      4       79 A       Analytics
+ 5      5       86 B       Research 
+ 6      6       83 B       Research 
+ 7      7       83 B       Research 
+ 8      8       85 B       Research 
+ 9      9       81 C       &lt;NA&gt;     
+10     10       83 C       &lt;NA&gt;     
+11     11       90 C       &lt;NA&gt;     
+12     12       84 C       &lt;NA&gt;     
+13     NA       NA D       HR       
+14     NA       NA E       Admin    </code></pre>
+</div>
+</div>
+</section>
 <section id="left-outer-join-or-left-join" class="slide level2">
 <h2>Left Outer Join or Left Join</h2>
 <p>Join all the rows of the left table and the matching rows in the right table.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-990860069.png" width="580" alt="Source: R4DS Chapter 19"></a></p>
-<figcaption>Source: R4DS Chapter 19</figcaption>
-</figure>
-</div>
-</section>
+
+<img data-src="images/left_join.png" class="r-stretch"></section>
 <section id="left_join" class="slide level2">
 <h2><code>left_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">left_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+   emp_id surv_scr dept_id dept_name
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    
+ 1      1       73 A       Analytics
+ 2      2       75 A       Analytics
+ 3      3       90 A       Analytics
+ 4      4       79 A       Analytics
+ 5      5       86 B       Research 
+ 6      6       83 B       Research 
+ 7      7       83 B       Research 
+ 8      8       85 B       Research 
+ 9      9       81 C       &lt;NA&gt;     
+10     10       83 C       &lt;NA&gt;     
+11     11       90 C       &lt;NA&gt;     
+12     12       84 C       &lt;NA&gt;     </code></pre>
+</div>
+</div>
 </section>
 <section id="right-outer-join" class="slide level2">
 <h2>Right Outer Join</h2>
 <p>Join all the rows of the right table and the matching rows in the left table.</p>
+
+<img data-src="images/right_join.png" width="533" class="r-stretch"></section>
+<section id="right_join" class="slide level2">
+<h2><code>right_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">right_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   emp_id surv_scr dept_id dept_name
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    
+ 1      1       73 A       Analytics
+ 2      2       75 A       Analytics
+ 3      3       90 A       Analytics
+ 4      4       79 A       Analytics
+ 5      5       86 B       Research 
+ 6      6       83 B       Research 
+ 7      7       83 B       Research 
+ 8      8       85 B       Research 
+ 9     NA       NA D       HR       
+10     NA       NA E       Admin    </code></pre>
+</div>
+</div>
 </section>
-<section id="r4ds-chapter-19inner-join" class="slide level2">
-<h2><a href="https://r4ds.hadley.nz/joins#how-do-joins-work"><img data-src="images/clipboard-1592259064.png" alt="R4DS Chapter 19"></a>Inner Join</h2>
+<section id="inner-join" class="slide level2">
+<h2>Inner Join</h2>
 <p>Join the rows which are present in both tables.</p>
-</section>
-<section id="self-join" class="slide level2">
-<h2><img data-src="images/clipboard-1345908494.png">Self Join</h2>
-<p>Join a table with itself.</p>
+
+<img data-src="images/inner_join.png" width="533" class="r-stretch"></section>
+<section id="inner_join" class="slide level2">
+<h2><code>inner_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">inner_join</span>(department_dat, employee_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  dept_id dept_name emp_id surv_scr
+  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;
+1 A       Analytics      1       73
+2 A       Analytics      2       75
+3 A       Analytics      3       90
+4 A       Analytics      4       79
+5 B       Research       5       86
+6 B       Research       6       83
+7 B       Research       7       83
+8 B       Research       8       85</code></pre>
+</div>
+</div>
 </section>
 <section id="cross-join-or-cartesian-join" class="slide level2">
 <h2>Cross Join or Cartesian Join</h2>
 <p>Returns all possible combinations of all rows.</p>
 
-<img data-src="images/clipboard-3448121650.png" class="r-stretch"></section></section>
+<img data-src="images/cross_join.png" width="421" class="r-stretch"></section>
+<section id="cross_join" class="slide level2">
+<h2><code>cross_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">cross_join</span>(employee_dat, department_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 5
+   emp_id surv_scr dept_id.x dept_id.y dept_name
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    
+ 1      1       73 A         A         Analytics
+ 2      1       73 A         B         Research 
+ 3      1       73 A         D         HR       
+ 4      1       73 A         E         Admin    
+ 5      2       75 A         A         Analytics
+ 6      2       75 A         B         Research 
+ 7      2       75 A         D         HR       
+ 8      2       75 A         E         Admin    
+ 9      3       90 A         A         Analytics
+10      3       90 A         B         Research 
+# ℹ 38 more rows</code></pre>
+</div>
+</div>
+</section></section>
 <section>
 <section id="filtering-joins" class="title-slide slide level1 inverse center">
 <h1>Filtering Joins</h1>
@@ -531,36 +736,55 @@ Megha Joshi
 <h2>Semi Join</h2>
 <p>Filter records from left table that has matching records in right table.</p>
 
-<img data-src="images/clipboard-381782884.png" class="r-stretch"></section>
+<img data-src="images/semi_join.png" width="534" class="r-stretch"></section>
+<section id="semi_join" class="slide level2">
+<h2><code>semi_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">semi_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+  emp_id surv_scr dept_id
+   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+1      1       73 A      
+2      2       75 A      
+3      3       90 A      
+4      4       79 A      
+5      5       86 B      
+6      6       83 B      
+7      7       83 B      
+8      8       85 B      </code></pre>
+</div>
+</div>
+</section>
 <section id="anti-join" class="slide level2">
 <h2>Anti Join</h2>
 <p>Filter records from left table that do not have matching records in right table.</p>
+
+<img data-src="images/anti_join.png" class="r-stretch"></section>
+<section id="anti_join" class="slide level2">
+<h2><code>anti_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">anti_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  emp_id surv_scr dept_id
+   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+1      9       81 C      
+2     10       83 C      
+3     11       90 C      
+4     12       84 C      </code></pre>
+</div>
+</div>
 </section></section>
-<section id="section" class="title-slide slide level1 inverse center">
-<h1><img data-src="images/clipboard-3490231510.png"></h1>
-
-</section>
-
-<section>
-<section id="set" class="title-slide slide level1 inverse center">
-<h1>Set</h1>
-
-</section>
-<section id="intersect" class="slide level2">
-<h2>Intersect</h2>
-</section>
-<section id="union" class="slide level2">
-<h2>Union</h2>
-</section>
-<section id="difference-or-minus" class="slide level2">
-<h2>Difference or Minus</h2>
+<section id="thank-you" class="title-slide slide level1 inverse center">
+<h1>Thank you!</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
