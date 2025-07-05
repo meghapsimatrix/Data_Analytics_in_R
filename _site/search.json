@@ -386,7 +386,7 @@
     "href": "classes.html",
     "title": "Classes",
     "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: String Manipulation\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Classes"
     ]
@@ -644,5 +644,138 @@
     "title": "Querying and Wrangling Data",
     "section": "unite()",
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#introduction-to-stringr",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#introduction-to-stringr",
+    "title": "String Manipulation",
+    "section": "Introduction to stringr",
+    "text": "Introduction to stringr\n\n\n\n\n\n\nPackage in tidyverse"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#verbs",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#verbs",
+    "title": "String Manipulation",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#example-dataset",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#example-dataset",
+    "title": "String Manipulation",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_datasets &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_datasets)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect",
+    "title": "String Manipulation",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nhead(str_detect(cdc_datasets$tags, \"covid\"))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect-with-filter",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect-with-filter",
+    "title": "String Manipulation",
+    "section": "str_detect() with filter()",
+    "text": "str_detect() with filter()\n\ncdc_datasets %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_split",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_split",
+    "title": "String Manipulation",
+    "section": "str_split()",
+    "text": "str_split()\n\nemails &lt;- cdc_datasets$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_remove",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_remove",
+    "title": "String Manipulation",
+    "section": "str_remove()",
+    "text": "str_remove()\n\ncdc_datasets %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_sub",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_sub",
+    "title": "String Manipulation",
+    "section": "str_sub()",
+    "text": "str_sub()\n\ncdc_datasets %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_wrap",
+    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_wrap",
+    "title": "String Manipulation",
+    "section": "str_wrap()",
+    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_datasets %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\nggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "classes/class_05.html",
+    "href": "classes/class_05.html",
+    "title": "Class 05: String Manipulation",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nString Manipulation\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
+    "title": "Strings, Factors and Dates",
+    "section": "Introduction to stringr",
+    "text": "Introduction to stringr\n\n\n\n\n\n\nPackage in tidyverse"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
+    "title": "Strings, Factors and Dates",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
+    "title": "Strings, Factors and Dates",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_datasets &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_datasets)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
+    "title": "Strings, Factors and Dates",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nhead(str_detect(cdc_datasets$tags, \"covid\"))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
+    "title": "Strings, Factors and Dates",
+    "section": "str_detect() with filter()",
+    "text": "str_detect() with filter()\n\ncdc_datasets %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
+    "title": "Strings, Factors and Dates",
+    "section": "str_split()",
+    "text": "str_split()\n\nemails &lt;- cdc_datasets$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
+    "title": "Strings, Factors and Dates",
+    "section": "str_remove()",
+    "text": "str_remove()\n\ncdc_datasets %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
+    "title": "Strings, Factors and Dates",
+    "section": "str_sub()",
+    "text": "str_sub()\n\ncdc_datasets %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
+    "title": "Strings, Factors and Dates",
+    "section": "str_wrap()",
+    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_datasets %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\nggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()"
   }
 ]

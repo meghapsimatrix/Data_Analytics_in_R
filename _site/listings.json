@@ -19,7 +19,8 @@
       "/classes/class_01.html",
       "/classes/class_02.html",
       "/classes/class_03.html",
-      "/classes/class_04.html"
+      "/classes/class_04.html",
+      "/classes/class_05.html"
     ]
   },
   {
@@ -34,6 +35,13 @@
     "items": [
       "/slides/class_02_data_visualization/class_02_data_visualization.html",
       "/practice_problems/practice_problems_02/practice_problems_02.html"
+    ]
+  },
+  {
+    "listing": "/classes/class_05.html",
+    "items": [
+      "/slides/class_05_string_manipulation/class_05_string_manipulation.html",
+      "/practice_problems/practice_problems_04/practice_problems_04.html"
     ]
   }
 ]

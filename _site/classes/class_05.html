@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Megha Joshi">
 
-<title>Classes – Data Analytics in R</title>
+<title>Class 05: String Manipulation – Data Analytics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-schedule .list');
+    const listingTargetEl = window.document.querySelector('#listing-slides .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -79,11 +80,39 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-schedule'] = new List('listing-schedule', options);
+    window['quarto-listings']['listing-slides'] = new List('listing-slides', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-problems .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-problems'] = new List('listing-problems', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -138,7 +167,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./classes.html">Classes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Class 05: String Manipulation</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,8 +181,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -165,25 +194,25 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instructors.html" class="sidebar-item-text sidebar-link">
+  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching Team</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./classes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../classes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classes</span></a>
   </div>
 </li>
@@ -198,13 +227,19 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Classes</h1>
+<h1 class="title">Class 05: String Manipulation</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Megha Joshi </p>
+          </div>
+  </div>
     
   
     
@@ -215,12 +250,14 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-schedule" class="quarto-listing quarto-listing-container-table">
+<section id="lectures" class="level1">
+<h1>Lectures</h1>
+<div id="listing-slides" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
 <thead>
 <tr>
 <th>
-Class
+Topic
 </th>
 <th>
 Instructor
@@ -228,41 +265,9 @@ Instructor
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1745384400000" data-listing-file-modified-sort="1745533010003" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="274" data-listing-title-sort="Class 01: Introduction to the Course and to R" data-listing-filename-sort="class_01.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1751750064265" data-listing-reading-time-sort="2" data-listing-word-count-sort="314" data-listing-title-sort="String Manipulation" data-listing-filename-sort="class_05_string_manipulation.qmd">
 <td>
-<a href="./classes/class_01.html" class="title listing-title">Class 01: Introduction to the Course and to R</a>
-</td>
-<td>
-<span class="listing-author">Megha Joshi</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1746666914507" data-listing-reading-time-sort="1" data-listing-word-count-sort="17" data-listing-title-sort="Class 02: Data Visualization with ggplot" data-listing-filename-sort="class_02.qmd">
-<td>
-<a href="./classes/class_02.html" class="title listing-title">Class 02: Data Visualization with ggplot</a>
-</td>
-<td>
-<span class="listing-author">Megha Joshi</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1748794133405" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="Class 03: Querying and Wrangling Data" data-listing-filename-sort="class_03.qmd">
-<td>
-<a href="./classes/class_03.html" class="title listing-title">Class 03: Querying and Wrangling Data</a>
-</td>
-<td>
-<span class="listing-author">Megha Joshi</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1748794142155" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="Class 04: Relational Datasets" data-listing-filename-sort="class_04.qmd">
-<td>
-<a href="./classes/class_04.html" class="title listing-title">Class 04: Relational Datasets</a>
-</td>
-<td>
-<span class="listing-author">Megha Joshi</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1751750214126" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="Class 05: String Manipulation" data-listing-filename-sort="class_05.qmd">
-<td>
-<a href="./classes/class_05.html" class="title listing-title">Class 05: String Manipulation</a>
+<a href="../slides/class_05_string_manipulation/class_05_string_manipulation.html" class="title listing-title">String Manipulation</a>
 </td>
 <td>
 <span class="listing-author">Megha Joshi</span>
@@ -274,8 +279,33 @@ Instructor
 No matching items
 </div>
 </div>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
+<section id="practice-problems" class="level1">
+<h1>Practice Problems</h1>
+<div id="listing-problems" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Problem Sets
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1748785151040" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="Practice Problem Set 2" data-listing-filename-sort="practice_problems_04.qmd">
+<td>
+<a href="../practice_problems/practice_problems_04/practice_problems_04.html" class="title listing-title">Practice Problem Set 2</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="readings" class="level1">
+<h1>Readings</h1>
 
 
 
