@@ -153,7 +153,7 @@ Join all the rows of both tables as long as there is a matching record in either
 
 ![](images/full_join.png){width="533"}
 
-`full_join`
+## `full_join()`
 
 ```{r}
 full_join(employee_dat, department_dat, by = "dept_id")

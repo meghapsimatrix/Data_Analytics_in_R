@@ -598,7 +598,9 @@ Megha Joshi
 <h2>Full Outer Join</h2>
 <p>Join all the rows of both tables as long as there is a matching record in either table.</p>
 
-<img data-src="images/full_join.png" width="533" class="r-stretch"><p><code>full_join</code></p>
+<img data-src="images/full_join.png" width="533" class="r-stretch"></section>
+<section id="full_join" class="slide level2">
+<h2><code>full_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">full_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1122,7 +1124,7 @@ Megha Joshi
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

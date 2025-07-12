@@ -1,5 +1,5 @@
 ---
-title: "Class 05: Strings, Factors, and Dates"
+title: "Class 05: Strings and Factors"
 subtitle: ""
 description: ""
 author: "Megha Joshi"
@@ -7,7 +7,7 @@ date: ""
 listing:
   - id: slides
     contents:
-      - ../slides/class_05_string_manipulation/*.qmd
+      - ../slides/class_05_strings_and_factors/*.qmd
     type: table
     fields: [title, author]
     date-format: "ddd, MMM DD"

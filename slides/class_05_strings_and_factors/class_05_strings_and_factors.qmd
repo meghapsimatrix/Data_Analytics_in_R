@@ -1,0 +1,205 @@
+---
+title: "Strings and Factors"
+author: "Megha Joshi"
+execute: 
+  echo: TRUE
+format: 
+  revealjs:
+    theme: [../slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    title-slide-attributes:
+      data-background-color: "#562457"
+    preview-links: true
+    footer: |
+      Theme by Beatriz Mills on  [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)
+editor: visual
+---
+
+# Strings {.inverse}
+
+## Introduction to `stringr`
+
+::: columns
+::: {.column width="50%"}
+![Source: https://stringr.tidyverse.org/](/slides/images/stringr.png){fig-alt="Hexagon logo of the stringr package with a violin in the middle"}
+:::
+
+::: {.column width="50%"}
+-   What are **strings**?
+
+    -   Character(s) inside '..' or ".."
+
+-   `stringr` is a package in `tidyverse ~` manipulate and work with strings
+
+    ```{r}
+    x <- "This is a string."
+    x
+    ```
+:::
+:::
+
+## Verbs
+
+| Verb           | Definition                                       |
+|----------------|--------------------------------------------------|
+| `str_detect()` | Returns TRUE if a pattern is present in a string |
+| `str_split()`  | Split a string into two or more                  |
+| `str_remove()` | Remove a pattern from a string                   |
+| `str_sub()`    | Extract parts of strings given locations         |
+| `str_wrap()`   | Wrap string as a paragraph                       |
+
+These are just a handful of available functions. Please check out <https://stringr.tidyverse.org/reference/index.html> for more.
+
+## Example Dataset
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+
+tuesdata <- tidytuesdayR::tt_load('2025-02-11')
+
+cdc_data <- tuesdata$cdc_datasets
+
+glimpse(cdc_data)
+```
+
+## `str_detect()`
+
+```{r}
+str_detect(cdc_data$tags, "covid")
+```
+
+## `str_detect()` with `filter()`
+
+```{r}
+cdc_data %>%
+  filter(str_detect(tags, "covid"))
+```
+
+## `str_split()`
+
+```{r}
+emails <- cdc_data$contact_email
+
+head(str_split(emails, "@"))
+```
+
+## `str_remove()`
+
+```{r}
+cdc_data %>%
+  mutate(bureau_code_new = str_remove(bureau_code, ":")) %>%
+  select(bureau_code, bureau_code_new)
+```
+
+## `str_sub()`
+
+```{r}
+cdc_data %>%
+  mutate(program_three = str_sub(program_code, 5, 7)) %>%
+  select(program_code, program_three)
+```
+
+## `str_wrap()`
+
+```{r}
+highest_cat <- 
+  cdc_data %>%
+  group_by(category) %>%
+  count() %>%
+  ungroup() %>%
+  arrange(desc(n)) %>%
+  slice(1:5)
+
+p <- 
+  ggplot(highest_cat, aes(x = category, y = n)) + 
+  geom_bar(stat = "identity") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +
+  theme_bw()
+
+```
+
+## The Plot
+
+```{r, dpi = 500}
+p
+```
+
+# Factors {.inverse}
+
+## Introduction to `forcats`
+
+::: columns
+::: {.column width="50%"}
+![Source: https://forcats.tidyverse.org/](/slides/images/forcats.png){fig-alt="Hexagon logo of the forcats package with image of a box with four cats in it"}
+:::
+
+::: {.column width="50%"}
+-   What are **factors?**
+
+    -   Categorical variables with set number levels (possible values)
+
+-   `forcats` is a package in `tidyverse` \~ work with factors
+
+    ```{r}
+    factor(c(LETTERS[1:5]))
+    ```
+:::
+:::
+
+## Verbs
+
+| Col1            | Col2                                      |
+|-----------------|-------------------------------------------|
+| `fct_relevel()` | Change levels of factor                   |
+| `fct_infreq()`  | Order levels of factor based on frequency |
+| `fct_lump()`    | Lump different levels of factor           |
+
+These are again just a handful of available functions. Please check out <https://forcats.tidyverse.org/reference/index.html> for more.
+
+## Categories from CDC Data
+
+```{r}
+cdc_cat <- 
+  cdc_data %>%
+  group_by(category) %>%
+  count() %>%
+  ungroup() %>% 
+  slice(1:10) %>%
+  mutate(category = factor(category))
+
+levels(cdc_cat$category)
+```
+
+## `fct_relevel()`
+
+```{r}
+cdc_cat <-
+  cdc_cat %>%
+  mutate(new_cat = fct_relevel(category, "500 Cities & Places", after = 2))
+
+levels(cdc_cat$new_cat)
+```
+
+## `fct_infreq()`
+
+```{r}
+ggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +
+  geom_bar(stat = "identity") +
+  theme_bw()
+```
+
+## `fct_lump()`
+
+Here, we are using the full `cdc_data`:
+
+```{r}
+cdc_data <- 
+  cdc_data %>%
+  mutate(cat_short = fct_lump_n(category, n = 3))
+
+table(cdc_data$cat_short)
+```
+
+# Thank you! {.inverse}

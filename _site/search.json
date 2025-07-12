@@ -204,6 +204,182 @@
     "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   },
   {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
+    "title": "Strings and Factors",
+    "section": "Introduction to stringr",
+    "text": "Introduction to stringr\n\n\n\n\n\n\nPackage in tidyverse\nSet of functions to manipulate and work with strings\n\n\n\"This is a string.\"\n\n[1] \"This is a string.\""
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
+    "title": "Strings and Factors",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
+    "title": "Strings and Factors",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_data &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_data)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
+    "title": "Strings and Factors",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nstr_detect(cdc_data$tags, \"covid\")\n\n   [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n  [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n  [37] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE\n  [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [73]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n  [97]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE\n [193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE\n [205]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE\n [217] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n [229]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [289] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n [301]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [337] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [349] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [361] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE\n [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE\n [397] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [433] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [445] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n [457] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [469] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [481] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [493] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [505] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [517] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [529] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [541] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [553] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [565] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [577] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [601] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [613] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [625] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [637] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [649] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [661] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [673] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [685] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [697] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [709] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [721] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [733] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [745] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [757] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [769] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [781] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [793] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [805] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [817] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [829] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [841] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE\n [853] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [865] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE\n [877] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [889]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [901]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [913] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [925] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE\n [937] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE\n [949] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [961] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [973] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [985] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [997] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1009] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE\n[1021]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE\n[1033]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE\n[1045]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1057]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE\n[1069] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE\n[1081] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[1093] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1105]  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE\n[1117]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1129]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[1141]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1153] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1165] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1177] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1189] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1201] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1213] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1225] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1237] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1249] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
+    "title": "Strings and Factors",
+    "section": "str_detect() with filter()",
+    "text": "str_detect() with filter()\n\ncdc_data %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
+    "title": "Strings and Factors",
+    "section": "str_split()",
+    "text": "str_split()\n\nemails &lt;- cdc_data$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
+    "title": "Strings and Factors",
+    "section": "str_remove()",
+    "text": "str_remove()\n\ncdc_data %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
+    "title": "Strings and Factors",
+    "section": "str_sub()",
+    "text": "str_sub()\n\ncdc_data %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
+    "title": "Strings and Factors",
+    "section": "str_wrap()",
+    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\nggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#expectations",
+    "href": "index.html#expectations",
+    "title": "Data Analytics in R",
+    "section": "Expectations",
+    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades. We will provide a list of recommended readings each week. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "classes/class_02.html",
+    "href": "classes/class_02.html",
+    "title": "Class 02: Data Visualization with ggplot",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+  },
+  {
+    "objectID": "classes/class_04.html",
+    "href": "classes/class_04.html",
+    "title": "Class 04: Relational Datasets",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Teaching Team",
+    "section": "",
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
+    "crumbs": [
+      "Teaching Team"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1",
+    "section": "",
+    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "Classes",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: Strings, Factors, and Dates\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Classes"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "classes/class_05.html",
+    "href": "classes/class_05.html",
+    "title": "Class 05: Strings, Factors, and Dates",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "classes/class_03.html",
+    "href": "classes/class_03.html",
+    "title": "Class 03: Querying and Wrangling Data",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "classes/class_01.html",
+    "href": "classes/class_01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+  },
+  {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
     "title": "Relational Datasets",
@@ -257,7 +433,7 @@
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
     "title": "Relational Datasets",
     "section": "Full Outer Join",
-    "text": "Full Outer Join\nJoin all the rows of both tables as long as there is a matching record in either table.\n\nfull_join\n\nfull_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 14 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;     \n13     NA       NA D       HR       \n14     NA       NA E       Admin"
+    "text": "Full Outer Join\nJoin all the rows of both tables as long as there is a matching record in either table."
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
@@ -342,112 +518,6 @@
     "title": "Relational Datasets",
     "section": "anti_join()",
     "text": "anti_join()\n\nanti_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 4 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      9       81 C      \n2     10       83 C      \n3     11       90 C      \n4     12       84 C"
-  },
-  {
-    "objectID": "classes/class_01.html",
-    "href": "classes/class_01.html",
-    "title": "Class 01: Introduction to the Course and to R",
-    "section": "",
-    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
-  },
-  {
-    "objectID": "classes/class_03.html",
-    "href": "classes/class_03.html",
-    "title": "Class 03: Querying and Wrangling Data",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Teaching Team",
-    "section": "",
-    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.",
-    "crumbs": [
-      "Teaching Team"
-    ]
-  },
-  {
-    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
-    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "title": "Practice Problem Set 1",
-    "section": "",
-    "text": "Downloading R and R Studio\n\nIf you don’t have R and R Studio downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
-  },
-  {
-    "objectID": "classes.html",
-    "href": "classes.html",
-    "title": "Classes",
-    "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: String Manipulation\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Classes"
-    ]
-  },
-  {
-    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
-    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "classes/class_04.html",
-    "href": "classes/class_04.html",
-    "title": "Class 04: Relational Datasets",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
-  },
-  {
-    "objectID": "classes/class_02.html",
-    "href": "classes/class_02.html",
-    "title": "Class 02: Data Visualization with ggplot",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Analytics in R",
-    "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "Data Analytics in R",
-    "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#expectations",
-    "href": "index.html#expectations",
-    "title": "Data Analytics in R",
-    "section": "Expectations",
-    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades. We will provide a list of recommended readings each week. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
-    "crumbs": [
-      "Home"
-    ]
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
@@ -566,7 +636,7 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
     "title": "Querying and Wrangling Data",
     "section": "Verbs",
-    "text": "Verbs\n\n\n\n\n\n\n\nVerb\nDefinition\n\n\n\n\nselect()\nRetrieve particular variables by their name or position\n\n\nfilter()\nRetrieve rows meeting condition(s)\n\n\nmutate()\nAdd a variable or transform existing ones\n\n\ngroup_by()\nGroups rows that have same value on one or more variables\n\n\nsummarize()\nRun functions on aggregated data\n\n\narrange()\nSort based on a variable in ascending or descending order\n\n\nslice()\nRetrieve rows of the data based on their location"
+    "text": "Verbs\n\n\n\n\n\n\n\nVerb\nDefinition\n\n\n\n\nselect()\nRetrieve particular variables by their name or position\n\n\nfilter()\nRetrieve rows meeting condition(s)\n\n\nmutate()\nAdd a variable or transform existing ones\n\n\ngroup_by()\nGroups rows that have same value on one or more variables\n\n\nsummarize()\nRun functions on aggregated data\n\n\narrange()\nSort based on a variable in ascending or descending order\n\n\nslice()\nRetrieve rows of the data based on their location\n\n\ncase_when()\nVectorize multiple ifelse() statements"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
@@ -646,136 +716,185 @@
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#introduction-to-stringr",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#introduction-to-stringr",
-    "title": "String Manipulation",
-    "section": "Introduction to stringr",
-    "text": "Introduction to stringr\n\n\n\n\n\n\nPackage in tidyverse"
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange-and-case_when",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange-and-case_when",
+    "title": "Querying and Wrangling Data",
+    "section": "arrange() and case_when()",
+    "text": "arrange() and case_when()\n\navg_score_diff &lt;- \n  avg_score_diff %&gt;%\n  ungroup() %&gt;%\n  mutate(order = case_when(stage == \"Round of 16\" ~ 1,\n                           stage == \"Quarterfinals\" ~ 2, \n                           stage == \"Semifinals\" ~ 3, \n                           stage == \"Final\" ~ 4)) %&gt;%\n  arrange(order)\n\navg_score_diff\n\n# A tibble: 4 × 5\n  stage         n_matches mean_diff sd_diff order\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Round of 16          89      1.47    1.18     1\n2 Quarterfinals        66      1.30    1.29     2\n3 Semifinals           36      1.75    1.52     3\n4 Final                26      1.81    1.39     4"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#verbs",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#verbs",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-forcats",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-forcats",
+    "title": "Strings and Factors",
+    "section": "Introduction to forcats",
+    "text": "Introduction to forcats"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs-1",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs-1",
+    "title": "Strings and Factors",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nCol1\nCol2\n\n\n\n\nfct_relevel()\nChange levels of factor\n\n\nfct_infreq()\nOrder levels of factor based on frequency\n\n\nfct_lump()\nLump different levels of factor\n\n\n\nThese are again just a handful of available functions. Please check out https://forcats.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#categories-from-cdc-data",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#categories-from-cdc-data",
+    "title": "Strings and Factors",
+    "section": "Categories from CDC Data",
+    "text": "Categories from CDC Data\n\ncdc_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;% \n  slice(1:10) %&gt;%\n  mutate(category = factor(category))\n\nlevels(cdc_cat$category)\n\n [1] \"500 Cities & Places\"                      \n [2] \"Administrative\"                           \n [3] \"Assisted Reproductive Technology (ART)\"   \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_relevel",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_relevel",
+    "title": "Strings and Factors",
+    "section": "fct_relevel()",
+    "text": "fct_relevel()\n\ncdc_cat &lt;-\n  cdc_cat %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nlevels(cdc_cat$new_cat)\n\n [1] \"Administrative\"                           \n [2] \"Assisted Reproductive Technology (ART)\"   \n [3] \"500 Cities & Places\"                      \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_infreq",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_infreq",
+    "title": "Strings and Factors",
+    "section": "fct_infreq()",
+    "text": "fct_infreq()\n\nggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +\n  geom_bar(stat = \"identity\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_lump",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#fct_lump",
+    "title": "Strings and Factors",
+    "section": "fct_lump()",
+    "text": "fct_lump()\nHere, we are using the full cdc_data:\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-tolubridate",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-tolubridate",
+    "title": "Strings, Factors and Dates",
+    "section": "Introduction tolubridate",
+    "text": "Introduction tolubridate"
+  },
+  {
+    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#functions",
+    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#functions",
+    "title": "Strings, Factors and Dates",
+    "section": "Functions",
+    "text": "Functions"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-stringr",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-stringr",
+    "title": "Strings and Factors",
+    "section": "Introduction to stringr",
+    "text": "Introduction to stringr\n\n\n\n\n\nSource: https://stringr.tidyverse.org/\n\n\n\n\nWhat are strings?\n\nCharacter(s) inside ‘..’ or “..”\n\nstringr is a package in tidyverse ~ manipulate and work with strings\n\nx &lt;- \"This is a string.\"\nx\n\n[1] \"This is a string.\""
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs",
+    "title": "Strings and Factors",
     "section": "Verbs",
     "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#example-dataset",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#example-dataset",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#example-dataset",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#example-dataset",
+    "title": "Strings and Factors",
     "section": "Example Dataset",
-    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_datasets &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_datasets)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_data &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_data)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect",
+    "title": "Strings and Factors",
     "section": "str_detect()",
-    "text": "str_detect()\n\nhead(str_detect(cdc_datasets$tags, \"covid\"))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE"
+    "text": "str_detect()\n\nstr_detect(cdc_data$tags, \"covid\")\n\n   [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n  [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n  [37] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE\n  [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [73]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n  [97]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE\n [193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE\n [205]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE\n [217] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n [229]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [289] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n [301]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [337] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [349] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [361] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE\n [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE\n [397] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [433] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [445] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n [457] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [469] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [481] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [493] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [505] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [517] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [529] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [541] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [553] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [565] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [577] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [601] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [613] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [625] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [637] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [649] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [661] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [673] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [685] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [697] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [709] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [721] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [733] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [745] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [757] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [769] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [781] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [793] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [805] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [817] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [829] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [841] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE\n [853] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [865] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE\n [877] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [889]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [901]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [913] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [925] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE\n [937] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE\n [949] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [961] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [973] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [985] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [997] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1009] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE\n[1021]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE\n[1033]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE\n[1045]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1057]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE\n[1069] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE\n[1081] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[1093] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1105]  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE\n[1117]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1129]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[1141]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1153] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1165] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1177] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1189] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1201] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1213] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1225] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1237] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1249] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect-with-filter",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_detect-with-filter",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect-with-filter",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect-with-filter",
+    "title": "Strings and Factors",
     "section": "str_detect() with filter()",
-    "text": "str_detect() with filter()\n\ncdc_datasets %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+    "text": "str_detect() with filter()\n\ncdc_data %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_split",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_split",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_split",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_split",
+    "title": "Strings and Factors",
     "section": "str_split()",
-    "text": "str_split()\n\nemails &lt;- cdc_datasets$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+    "text": "str_split()\n\nemails &lt;- cdc_data$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_remove",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_remove",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_remove",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_remove",
+    "title": "Strings and Factors",
     "section": "str_remove()",
-    "text": "str_remove()\n\ncdc_datasets %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+    "text": "str_remove()\n\ncdc_data %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_sub",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_sub",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_sub",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_sub",
+    "title": "Strings and Factors",
     "section": "str_sub()",
-    "text": "str_sub()\n\ncdc_datasets %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
+    "text": "str_sub()\n\ncdc_data %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
   },
   {
-    "objectID": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_wrap",
-    "href": "slides/class_05_string_manipulation/class_05_string_manipulation.html#str_wrap",
-    "title": "String Manipulation",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_wrap",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_wrap",
+    "title": "Strings and Factors",
     "section": "str_wrap()",
-    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_datasets %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\nggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\np &lt;- \n  ggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()"
   },
   {
-    "objectID": "classes/class_05.html",
-    "href": "classes/class_05.html",
-    "title": "Class 05: String Manipulation",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nString Manipulation\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-forcats",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-forcats",
+    "title": "Strings and Factors",
+    "section": "Introduction to forcats",
+    "text": "Introduction to forcats\n\n\n\n\n\nSource: https://forcats.tidyverse.org/\n\n\n\n\nWhat are factors?\n\nCategorical variables with set number levels (possible values)\n\nforcats is a package in tidyverse ~ work with factors\n\nfactor(c(LETTERS[1:5]))\n\n[1] A B C D E\nLevels: A B C D E"
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#introduction-to-stringr",
-    "title": "Strings, Factors and Dates",
-    "section": "Introduction to stringr",
-    "text": "Introduction to stringr\n\n\n\n\n\n\nPackage in tidyverse"
-  },
-  {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#verbs",
-    "title": "Strings, Factors and Dates",
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
+    "title": "Strings and Factors",
     "section": "Verbs",
-    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
+    "text": "Verbs\n\n\n\nCol1\nCol2\n\n\n\n\nfct_relevel()\nChange levels of factor\n\n\nfct_infreq()\nOrder levels of factor based on frequency\n\n\nfct_lump()\nLump different levels of factor\n\n\n\nThese are again just a handful of available functions. Please check out https://forcats.tidyverse.org/reference/index.html for more."
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#example-dataset",
-    "title": "Strings, Factors and Dates",
-    "section": "Example Dataset",
-    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_datasets &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_datasets)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
+    "title": "Strings and Factors",
+    "section": "Categories from CDC Data",
+    "text": "Categories from CDC Data\n\ncdc_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;% \n  slice(1:10) %&gt;%\n  mutate(category = factor(category))\n\nlevels(cdc_cat$category)\n\n [1] \"500 Cities & Places\"                      \n [2] \"Administrative\"                           \n [3] \"Assisted Reproductive Technology (ART)\"   \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect",
-    "title": "Strings, Factors and Dates",
-    "section": "str_detect()",
-    "text": "str_detect()\n\nhead(str_detect(cdc_datasets$tags, \"covid\"))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE"
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
+    "title": "Strings and Factors",
+    "section": "fct_relevel()",
+    "text": "fct_relevel()\n\ncdc_cat &lt;-\n  cdc_cat %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nlevels(cdc_cat$new_cat)\n\n [1] \"Administrative\"                           \n [2] \"Assisted Reproductive Technology (ART)\"   \n [3] \"500 Cities & Places\"                      \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_detect-with-filter",
-    "title": "Strings, Factors and Dates",
-    "section": "str_detect() with filter()",
-    "text": "str_detect() with filter()\n\ncdc_datasets %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "title": "Strings and Factors",
+    "section": "fct_infreq()",
+    "text": "fct_infreq()\n\nggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +\n  geom_bar(stat = \"identity\") +\n  theme_bw()"
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_split",
-    "title": "Strings, Factors and Dates",
-    "section": "str_split()",
-    "text": "str_split()\n\nemails &lt;- cdc_datasets$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
+    "title": "Strings and Factors",
+    "section": "fct_lump()",
+    "text": "fct_lump()\nHere, we are using the full cdc_data:\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_remove",
-    "title": "Strings, Factors and Dates",
-    "section": "str_remove()",
-    "text": "str_remove()\n\ncdc_datasets %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#the-plot",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#the-plot",
+    "title": "Strings and Factors",
+    "section": "The Plot",
+    "text": "The Plot\n\np"
   },
   {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_sub",
-    "title": "Strings, Factors and Dates",
-    "section": "str_sub()",
-    "text": "str_sub()\n\ncdc_datasets %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
-  },
-  {
-    "objectID": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
-    "href": "slides/class_05_strings_factors_dates/class_05_strings_factors_dates.html#str_wrap",
-    "title": "Strings, Factors and Dates",
-    "section": "str_wrap()",
-    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_datasets %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\nggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()"
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
+    "title": "Relational Datasets",
+    "section": "full_join()",
+    "text": "full_join()\n\nfull_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 14 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;     \n13     NA       NA D       HR       \n14     NA       NA E       Admin"
   }
 ]

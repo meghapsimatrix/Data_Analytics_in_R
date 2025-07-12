@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Megha Joshi">
-  <title>Data Analytics in R – Querying and Wrangling Data</title>
+  <title>Data Analytics in R – Strings and Factors</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,7 +391,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#562457" class="quarto-title-block center">
-  <h1 class="title">Querying and Wrangling Data</h1>
+  <h1 class="title">Strings and Factors</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -402,60 +402,41 @@ Megha Joshi
 </div>
 
 </section>
-<section id="introduction-to-the-tidyverse" class="slide level2">
-<h2>Introduction to the <code>tidyverse</code></h2>
+<section>
+<section id="strings" class="title-slide slide level1 inverse center">
+<h1>Strings</h1>
+
+</section>
+<section id="introduction-to-stringr" class="slide level2">
+<h2>Introduction to <code>stringr</code></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.tidyverse.org/"><img data-src="images/clipboard-661628822.png" alt="Hex stickers for all the packages that make up the tidyverse"></a></p>
-<figcaption>Source: https://www.tidyverse.org/</figcaption>
+<p><img data-src="../../slides/images/stringr.png" alt="Hexagon logo of the stringr package with a violin in the middle"></p>
+<figcaption>Source: https://stringr.tidyverse.org/</figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Set of packages for
+<li><p>What are <strong>strings</strong>?</p>
 <ul>
-<li>wrangling</li>
-<li>cleaning</li>
-<li>organizing</li>
-<li>summarizing</li>
-<li>visualizing data</li>
+<li>Character(s) inside ‘..’ or “..”</li>
 </ul></li>
+<li><p><code>stringr</code> is a package in <code>tidyverse ~</code> manipulate and work with strings</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="st">"This is a string."</span></span>
+<span id="cb1-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "This is a string."</code></pre>
+</div>
+</div></li>
 </ul>
 </div></div>
-</section>
-<section id="example-dataset-mens-world-cup-matches" class="slide level2">
-<h2>Example Dataset: Men’s World Cup Matches</h2>
-<p>Source: <a href="https://dslc-io.github.io/tidytuesdayR/"><code>tidytuesdayR</code></a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>tt <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(<span class="st">"2022-11-29"</span>)</span>
-<span id="cb1-7"><a></a>tt</span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a>wc_matches <span class="ot">&lt;-</span> tt<span class="sc">$</span>wcmatches</span>
-<span id="cb1-10"><a></a><span class="fu">glimpse</span>(matches)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>function (match, ignore.case = TRUE, perl = FALSE, vars = NULL)  </code></pre>
-</div>
-</div>
-</section>
-<section>
-<section id="dplyr" class="title-slide slide level1 inverse center">
-<h1><code>dplyr</code></h1>
-
 </section>
 <section id="verbs" class="slide level2">
 <h2>Verbs</h2>
 <table class="caption-top">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Verb</th>
@@ -464,337 +445,461 @@ Megha Joshi
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>select()</code></td>
-<td>Retrieve particular variables by their name or position</td>
+<td><code>str_detect()</code></td>
+<td>Returns TRUE if a pattern is present in a string</td>
 </tr>
 <tr class="even">
-<td><code>filter()</code></td>
-<td>Retrieve rows meeting condition(s)</td>
+<td><code>str_split()</code></td>
+<td>Split a string into two or more</td>
 </tr>
 <tr class="odd">
-<td><code>mutate()</code></td>
-<td>Add a variable or transform existing ones</td>
+<td><code>str_remove()</code></td>
+<td>Remove a pattern from a string</td>
 </tr>
 <tr class="even">
-<td><code>group_by()</code></td>
-<td>Groups rows that have same value on one or more variables</td>
+<td><code>str_sub()</code></td>
+<td>Extract parts of strings given locations</td>
 </tr>
 <tr class="odd">
-<td><code>summarize()</code></td>
-<td>Run functions on aggregated data</td>
-</tr>
-<tr class="even">
-<td><code>arrange()</code></td>
-<td>Sort based on a variable in ascending or descending order</td>
-</tr>
-<tr class="odd">
-<td><code>slice()</code></td>
-<td>Retrieve rows of the data based on their location</td>
-</tr>
-<tr class="even">
-<td><code>case_when()</code></td>
-<td>Vectorize multiple <code>ifelse()</code> statements</td>
+<td><code>str_wrap()</code></td>
+<td>Wrap string as a paragraph</td>
 </tr>
 </tbody>
 </table>
+<p>These are just a handful of available functions. Please check out <a href="https://stringr.tidyverse.org/reference/index.html" class="uri">https://stringr.tidyverse.org/reference/index.html</a> for more.</p>
 </section>
-<section id="select" class="slide level2">
-<h2><code>select()</code></h2>
-<p>wnba_draft</p>
+<section id="example-dataset" class="slide level2">
+<h2>Example Dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">select</span>(year, country, stage, home_team, away_team)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-02-11'</span>)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>cdc_data <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>cdc_datasets</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a><span class="fu">glimpse</span>(cdc_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 900 × 5
-    year country stage   home_team away_team    
-   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        
- 1  1930 Uruguay Group 1 France    Mexico       
- 2  1930 Uruguay Group 4 Belgium   United States
- 3  1930 Uruguay Group 2 Brazil    Yugoslavia   
- 4  1930 Uruguay Group 3 Peru      Romania      
- 5  1930 Uruguay Group 1 Argentina France       
- 6  1930 Uruguay Group 1 Chile     Mexico       
- 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   
- 8  1930 Uruguay Group 4 Paraguay  United States
- 9  1930 Uruguay Group 3 Uruguay   Peru         
-10  1930 Uruguay Group 1 Argentina Mexico       
-# ℹ 890 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="filter" class="slide level2">
-<h2><code>filter()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 15
-    year country   city  stage home_team away_team home_score away_score outcome
-   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  
- 1  1930 Uruguay   Mont… Final Uruguay   Argentina          4          2 H      
- 2  1934 Italy     Rome  Final Italy     Czechosl…          2          1 H      
- 3  1938 France    Colo… Final Hungary   Italy              2          4 A      
- 4  1954 Switzerl… Berne Final West Ger… Hungary            3          2 H      
- 5  1958 Sweden    Solna Final Sweden    Brazil             2          5 A      
- 6  1962 Chile     Sant… Final Brazil    Czechosl…          3          1 H      
- 7  1966 England   Lond… Final England   West Ger…          4          2 H      
- 8  1970 Mexico    Mexi… Final Brazil    Italy              4          1 H      
- 9  1974 Germany   Muni… Final West Ger… Netherla…          2          1 H      
-10  1978 Argentina Buen… Final Argentina Netherla…          3          1 H      
-11  1982 Spain     Madr… Final Italy     West Ger…          3          1 H      
-12  1986 Mexico    Mexi… Final Argentina West Ger…          3          2 H      
-13  1990 Italy     Rome  Final West Ger… Argentina          1          0 H      
-14  1994 United S… Pasa… Final Brazil    Italy              0          0 H      
-15  1998 France    Sain… Final France    Brazil             3          0 H      
-16  2002 Japan     Yoko… Final Germany   Brazil             0          2 A      
-17  2006 Germany   Berl… Final Italy     France             1          1 H      
-18  2010 South Af… Joha… Final Netherla… Spain              0          1 A      
-19  2014 Brazil    Rio … Final Germany   Argentina          1          0 H      
-20  2018 Russia    Mosc… Final France    Croatia            4          2 H      
-# ℹ 6 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,
-#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;</code></pre>
+<pre><code>Rows: 1,257
+Columns: 27
+$ dataset_url                  &lt;chr&gt; "https://archive.org/download/20250128-cd…
+$ contact_name                 &lt;chr&gt; "Physical Effects Research Branch (PERB),…
+$ contact_email                &lt;chr&gt; "sa-cin-webteam@cdc.gov", "sa-cin-webteam…
+$ bureau_code                  &lt;chr&gt; "009:20", "009:20", "009:20", "009:20", "…
+$ program_code                 &lt;chr&gt; "009:034", "009:034", "009:034", "009:034…
+$ category                     &lt;chr&gt; "National Institute for Occupational Safe…
+$ tags                         &lt;chr&gt; "This dataset does not have any tags", "T…
+$ publisher                    &lt;chr&gt; NA, NA, NA, NA, "Active Bacterial Core Su…
+$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, "public", NA, "public", "…
+$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, "*ABCs IPD Isolates were …
+$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, "The license for this…
+$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, "http://www.cdc.gov/p…
+$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, "2021-10-01", "20…
+$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, "US", "US", NA, N…
+$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, "2020-07-01/2021-…
+$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, "monthly", "month…
+$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, "https://…
+$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, "https://…
+$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
 </div>
 </div>
 </section>
-<section id="mutate" class="slide level2">
-<h2><code>mutate()</code></h2>
+<section id="str_detect" class="slide level2">
+<h2><code>str_detect()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>wc_matches <span class="ot">&lt;-</span> </span>
-<span id="cb7-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">ifelse</span>(stage <span class="sc">==</span> <span class="st">"Final Round"</span>, </span>
-<span id="cb7-4"><a></a>                        <span class="st">"Final"</span>, stage),</span>
-<span id="cb7-5"><a></a>         <span class="at">score_diff =</span> <span class="fu">abs</span>(home_score <span class="sc">-</span> away_score)) </span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a></a>  <span class="fu">select</span>(year, stage, home_team, away_team, score_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str_detect</span>(cdc_data<span class="sc">$</span>tags, <span class="st">"covid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 900 × 5
-    year stage   home_team away_team     score_diff
-   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;
- 1  1930 Group 1 France    Mexico                 3
- 2  1930 Group 4 Belgium   United States          3
- 3  1930 Group 2 Brazil    Yugoslavia             1
- 4  1930 Group 3 Peru      Romania                2
- 5  1930 Group 1 Argentina France                 1
- 6  1930 Group 1 Chile     Mexico                 3
- 7  1930 Group 2 Bolivia   Yugoslavia             4
- 8  1930 Group 4 Paraguay  United States          3
- 9  1930 Group 3 Uruguay   Peru                   1
-10  1930 Group 1 Argentina Mexico                 3
-# ℹ 890 more rows</code></pre>
+<pre><code>   [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
+  [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE
+  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+  [37] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
+  [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+  [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+  [73]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+  [97]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+ [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+ [193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+ [205]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE
+ [217] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+ [229]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [289] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
+ [301]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+ [313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [337] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [349] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+ [361] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+ [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE
+ [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+ [397] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [433] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [445] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+ [457] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [469] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [481] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [493] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [505] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [517] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [529] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [541] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [553] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [565] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [577] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [601] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [613] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [625] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [637] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [649] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [661] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [673] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [685] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [697] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [709] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [721] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [733] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [745] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [757] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [769] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [781] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [793] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [805] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [817] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [829] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [841] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE
+ [853] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [865] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE
+ [877] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [889]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [901]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+ [913] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [925] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+ [937] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+ [949] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [961] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [973] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [985] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [997] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1009] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
+[1021]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[1033]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+[1045]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1057]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE
+[1069] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+[1081] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[1093] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+[1105]  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE
+[1117]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+[1129]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[1141]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1153] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1165] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1177] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1189] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1201] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1213] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1225] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1237] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1249] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="group_by-and-summarize" class="slide level2">
-<h2><code>group_by()</code> and <code>summarize()</code></h2>
+<section id="str_detect-with-filter" class="slide level2">
+<h2><code>str_detect()</code> with <code>filter()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb9-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Final"</span>, </span>
-<span id="cb9-4"><a></a>                      <span class="st">"Semifinals"</span>, </span>
-<span id="cb9-5"><a></a>                      <span class="st">"Quarterfinals"</span>, </span>
-<span id="cb9-6"><a></a>                      <span class="st">"Round of 16"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a></a>  <span class="fu">group_by</span>(stage) <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">summarize</span>(<span class="at">n_matches =</span> <span class="fu">n</span>(),</span>
-<span id="cb9-9"><a></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(score_diff),</span>
-<span id="cb9-10"><a></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(score_diff))</span>
-<span id="cb9-11"><a></a></span>
-<span id="cb9-12"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(tags, <span class="st">"covid"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  stage         n_matches mean_diff sd_diff
-  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 Final                26      1.81    1.39
-2 Quarterfinals        66      1.30    1.29
-3 Round of 16          89      1.47    1.18
-4 Semifinals           36      1.75    1.52</code></pre>
+<pre><code># A tibble: 209 × 27
+   dataset_url      contact_name contact_email bureau_code program_code category
+   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   
+ 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…
+ 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…
+ 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…
+ 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …
+ 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …
+ 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    
+ 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    
+ 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    
+ 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    
+10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    
+# ℹ 199 more rows
+# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,
+#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,
+#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,
+#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,
+#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,
+#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …</code></pre>
 </div>
 </div>
 </section>
-<section id="arrange-and-case_when" class="slide level2">
-<h2><code>arrange()</code> and <code>case_when()</code></h2>
+<section id="str_split" class="slide level2">
+<h2><code>str_split()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">mutate</span>(<span class="at">order =</span> <span class="fu">case_when</span>(stage <span class="sc">==</span> <span class="st">"Round of 16"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb11-5"><a></a>                           stage <span class="sc">==</span> <span class="st">"Quarterfinals"</span> <span class="sc">~</span> <span class="dv">2</span>, </span>
-<span id="cb11-6"><a></a>                           stage <span class="sc">==</span> <span class="st">"Semifinals"</span> <span class="sc">~</span> <span class="dv">3</span>, </span>
-<span id="cb11-7"><a></a>                           stage <span class="sc">==</span> <span class="st">"Final"</span> <span class="sc">~</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">arrange</span>(order)</span>
-<span id="cb11-9"><a></a></span>
-<span id="cb11-10"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>emails <span class="ot">&lt;-</span> cdc_data<span class="sc">$</span>contact_email</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="fu">head</span>(<span class="fu">str_split</span>(emails, <span class="st">"@"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
-  stage         n_matches mean_diff sd_diff order
-  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 Round of 16          89      1.47    1.18     1
-2 Quarterfinals        66      1.30    1.29     2
-3 Semifinals           36      1.75    1.52     3
-4 Final                26      1.81    1.39     4</code></pre>
-</div>
-</div>
-</section>
-<section id="slice" class="slide level2">
-<h2><code>slice()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_diff)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  stage n_matches mean_diff sd_diff order
-  &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 Final        26      1.81    1.39     4</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="tidyr" class="title-slide slide level1 inverse center">
-<h1><code>tidyr</code></h1>
+<pre><code>[[1]]
+[1] "sa-cin-webteam" "cdc.gov"       
 
+[[2]]
+[1] "sa-cin-webteam" "cdc.gov"       
+
+[[3]]
+[1] "sa-cin-webteam" "cdc.gov"       
+
+[[4]]
+[1] "HHERequestHelp" "cdc.gov"       
+
+[[5]]
+[1] "abcs"    "cdc.gov"
+
+[[6]]
+[1] "cdcinfo" "cdc.gov"</code></pre>
+</div>
+</div>
+</section>
+<section id="str_remove" class="slide level2">
+<h2><code>str_remove()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">mutate</span>(<span class="at">bureau_code_new =</span> <span class="fu">str_remove</span>(bureau_code, <span class="st">":"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a></a>  <span class="fu">select</span>(bureau_code, bureau_code_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,257 × 2
+   bureau_code bureau_code_new
+   &lt;chr&gt;       &lt;chr&gt;          
+ 1 009:20      00920          
+ 2 009:20      00920          
+ 3 009:20      00920          
+ 4 009:20      00920          
+ 5 009:20      00920          
+ 6 009:00      00900          
+ 7 009:20      00920          
+ 8 009:20      00920          
+ 9 009:20      00920          
+10 009:20      00920          
+# ℹ 1,247 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="str_sub" class="slide level2">
+<h2><code>str_sub()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">program_three =</span> <span class="fu">str_sub</span>(program_code, <span class="dv">5</span>, <span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">select</span>(program_code, program_three)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,257 × 2
+   program_code program_three
+   &lt;chr&gt;        &lt;chr&gt;        
+ 1 009:034      034          
+ 2 009:034      034          
+ 3 009:034      034          
+ 4 009:034      034          
+ 5 009:020      020          
+ 6 009:020      020          
+ 7 009:020      020          
+ 8 009:020      020          
+ 9 009:020      020          
+10 009:020      020          
+# ℹ 1,247 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="str_wrap" class="slide level2">
+<h2><code>str_wrap()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>highest_cat <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">group_by</span>(category) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb15-8"><a></a></span>
+<span id="cb15-9"><a></a>p <span class="ot">&lt;-</span> </span>
+<span id="cb15-10"><a></a>  <span class="fu">ggplot</span>(highest_cat, <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb15-11"><a></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb15-12"><a></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb15-13"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-plot" class="slide level2">
+<h2>The Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="class_05_strings_and_factors_files/figure-revealjs/unnamed-chunk-9-1.png" width="5000" class="r-stretch"></section></section>
+<section>
+<section id="factors" class="title-slide slide level1 inverse center">
+<h1>Factors</h1>
+
+</section>
+<section id="introduction-to-forcats" class="slide level2">
+<h2>Introduction to <code>forcats</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../slides/images/forcats.png" alt="Hexagon logo of the forcats package with image of a box with four cats in it"></p>
+<figcaption>Source: https://forcats.tidyverse.org/</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>What are <strong>factors?</strong></p>
+<ul>
+<li>Categorical variables with set number levels (possible values)</li>
+</ul></li>
+<li><p><code>forcats</code> is a package in <code>tidyverse</code> ~ work with factors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">factor</span>(<span class="fu">c</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] A B C D E
+Levels: A B C D E</code></pre>
+</div>
+</div></li>
+</ul>
+</div></div>
 </section>
 <section id="verbs-1" class="slide level2">
 <h2>Verbs</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Verb</th>
-<th>Definition</th>
+<th>Col1</th>
+<th>Col2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pivot_longer()</code></td>
-<td>Transform data to long format</td>
+<td><code>fct_relevel()</code></td>
+<td>Change levels of factor</td>
 </tr>
 <tr class="even">
-<td><code>pivot_wider()</code></td>
-<td>Transform data to wide format</td>
+<td><code>fct_infreq()</code></td>
+<td>Order levels of factor based on frequency</td>
 </tr>
 <tr class="odd">
-<td><code>separate()</code></td>
-<td>Separate a column into multiple columns</td>
-</tr>
-<tr class="even">
-<td><code>unite()</code></td>
-<td>Unite multiple columns into one column</td>
+<td><code>fct_lump()</code></td>
+<td>Lump different levels of factor</td>
 </tr>
 </tbody>
 </table>
+<p>These are again just a handful of available functions. Please check out <a href="https://forcats.tidyverse.org/reference/index.html" class="uri">https://forcats.tidyverse.org/reference/index.html</a> for more.</p>
 </section>
-<section id="pivot_longer" class="slide level2">
-<h2><code>pivot_longer()</code></h2>
+<section id="categories-from-cdc-data" class="slide level2">
+<h2>Categories from CDC Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>long_dat <span class="ot">&lt;-</span> </span>
-<span id="cb15-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>order) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">pivot_longer</span>(n_matches<span class="sc">:</span>sd_diff,</span>
-<span id="cb15-5"><a></a>               <span class="at">names_to =</span> <span class="st">'stat'</span>, </span>
-<span id="cb15-6"><a></a>               <span class="at">values_to =</span> <span class="st">'val'</span>)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>long_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>cdc_cat <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">group_by</span>(category) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">factor</span>(category))</span>
+<span id="cb19-8"><a></a></span>
+<span id="cb19-9"><a></a><span class="fu">levels</span>(cdc_cat<span class="sc">$</span>category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
-   stage         stat        val
-   &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
- 1 Round of 16   n_matches 89   
- 2 Round of 16   mean_diff  1.47
- 3 Round of 16   sd_diff    1.18
- 4 Quarterfinals n_matches 66   
- 5 Quarterfinals mean_diff  1.30
- 6 Quarterfinals sd_diff    1.29
- 7 Semifinals    n_matches 36   
- 8 Semifinals    mean_diff  1.75
- 9 Semifinals    sd_diff    1.52
-10 Final         n_matches 26   
-11 Final         mean_diff  1.81
-12 Final         sd_diff    1.39</code></pre>
+<pre><code> [1] "500 Cities &amp; Places"                      
+ [2] "Administrative"                           
+ [3] "Assisted Reproductive Technology (ART)"   
+ [4] "Behavioral Risk Factors"                  
+ [5] "Cancer Research Citation Search"          
+ [6] "Case Surveillance"                        
+ [7] "Cessation Coverage"                       
+ [8] "Child Vaccinations"                       
+ [9] "Chronic Disease Indicators"               
+[10] "Coronavirus and Other Respiratory Viruses"</code></pre>
 </div>
 </div>
 </section>
-<section id="separate" class="slide level2">
-<h2><code>separate()</code></h2>
+<section id="fct_relevel" class="slide level2">
+<h2><code>fct_relevel()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>long_dat_clean <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a></a>  long_dat <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">separate</span>(stat, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"var"</span>), <span class="at">sep =</span> <span class="st">"_"</span>) </span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a>long_dat_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cdc_cat <span class="ot">&lt;-</span></span>
+<span id="cb21-2"><a></a>  cdc_cat <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">mutate</span>(<span class="at">new_cat =</span> <span class="fu">fct_relevel</span>(category, <span class="st">"500 Cities &amp; Places"</span>, <span class="at">after =</span> <span class="dv">2</span>))</span>
+<span id="cb21-4"><a></a></span>
+<span id="cb21-5"><a></a><span class="fu">levels</span>(cdc_cat<span class="sc">$</span>new_cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   stage         stat  var       val
-   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
- 1 Round of 16   n     matches 89   
- 2 Round of 16   mean  diff     1.47
- 3 Round of 16   sd    diff     1.18
- 4 Quarterfinals n     matches 66   
- 5 Quarterfinals mean  diff     1.30
- 6 Quarterfinals sd    diff     1.29
- 7 Semifinals    n     matches 36   
- 8 Semifinals    mean  diff     1.75
- 9 Semifinals    sd    diff     1.52
-10 Final         n     matches 26   
-11 Final         mean  diff     1.81
-12 Final         sd    diff     1.39</code></pre>
+<pre><code> [1] "Administrative"                           
+ [2] "Assisted Reproductive Technology (ART)"   
+ [3] "500 Cities &amp; Places"                      
+ [4] "Behavioral Risk Factors"                  
+ [5] "Cancer Research Citation Search"          
+ [6] "Case Surveillance"                        
+ [7] "Cessation Coverage"                       
+ [8] "Child Vaccinations"                       
+ [9] "Chronic Disease Indicators"               
+[10] "Coronavirus and Other Respiratory Viruses"</code></pre>
 </div>
 </div>
 </section>
-<section id="pivot_wider" class="slide level2">
-<h2><code>pivot_wider()</code></h2>
+<section id="fct_infreq" class="slide level2">
+<h2><code>fct_infreq()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>long_dat_clean <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>var) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stat, <span class="at">values_from =</span> val) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">rename</span>(<span class="at">Stage =</span> stage, <span class="st">`</span><span class="at">Number of Matches</span><span class="st">`</span> <span class="ot">=</span> n,</span>
-<span id="cb19-5"><a></a>         <span class="st">`</span><span class="at">Average Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> mean,</span>
-<span id="cb19-6"><a></a>         <span class="st">`</span><span class="at">SD of Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²
-  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
-1 Round of 16                   89                   1.47                   1.18
-2 Quarterfina…                  66                   1.30                   1.29
-3 Semifinals                    36                   1.75                   1.52
-4 Final                         26                   1.81                   1.39
-# ℹ abbreviated names: ¹​`Average Difference in Goals`,
-#   ²​`SD of Difference in Goals`</code></pre>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(cdc_cat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(category), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</div>
-</section>
-<section id="unite" class="slide level2">
-<h2><code>unite()</code></h2>
+<img data-src="class_05_strings_and_factors_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section id="fct_lump" class="slide level2">
+<h2><code>fct_lump()</code></h2>
+<p>Here, we are using the full <code>cdc_data</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">unite</span>(world_cup, year, country, <span class="at">sep =</span>  <span class="st">": "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cdc_data <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">mutate</span>(<span class="at">cat_short =</span> <span class="fu">fct_lump_n</span>(category, <span class="at">n =</span> <span class="dv">3</span>))</span>
+<span id="cb24-4"><a></a></span>
+<span id="cb24-5"><a></a><span class="fu">table</span>(cdc_data<span class="sc">$</span>cat_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26 × 15
-   world_cup       city  stage home_team away_team home_score away_score outcome
-   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  
- 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      
- 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      
- 3 1938: France    Colo… Final Hungary   Italy              2          4 A      
- 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      
- 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      
- 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      
- 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      
- 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      
- 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      
-10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      
-# ℹ 16 more rows
-# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,
-#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,
-#   score_diff &lt;dbl&gt;</code></pre>
+<pre><code>
+National Institute for Occupational Safety and Health 
+                                                  108 
+                                                 NCHS 
+                                                  184 
+                                                NNDSS 
+                                                  293 
+                                                Other 
+                                                  672 </code></pre>
 </div>
 </div>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 inverse center">
+<h1>Thank you!</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
