@@ -12,13 +12,65 @@ filters:
   - webr
 ---
 
-1.  Run the following code to load the data:
+1.  Run the following code to load the data. Glimpse the data and learn about the variables:
 
     ```{webr-r}
+    #install.packages("MatchIt")
+    library("MatchIt)
+    lalonde
+    ```
+
+    **For the following questions, please create a graph using ggplot to answer:**
+
+2.  Create a plot examine the distribution of `ret78` variable which has information on income of the participants in year 1978
+
+    ```{webr}
 
     ```
 
-2.  Create a scatterplot:
+3.  Now check the difference between the distribution of that variable between the treatment and control groups.
+
+    ```{webr}
+
+    ```
+
+4.  Think about one more different way to visualize the difference in the distribution of `ret78` in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?
+
+    ```{webr}
+
+    ```
+
+5.  Create graphs showing the difference in treatment and control group distributions of the other variables in the data :
+
+    ```{webr}
+
+    ```
+
+6.  Examine the relationship between `age` and `educ`
+
+    ```{webr}
+
+    ```
+
+7.  Does the relationship between age and education differ between the treatment and control groups:
+
+    ```{webr}
+
+    ```
+
+8.  Examine the relationship between race and income in 1978.
+
+    ```{webr}
+
+    ```
+
+9.  Does the relationship differ by treatment level.
+
+    ```{webr}
+
+    ```
+
+10. Challenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends.
 
     ```{webr}
 
