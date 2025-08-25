@@ -8,3 +8,15 @@ editor: visual
 ![](images/mj.jpeg){width="297"}
 
 [Dr. Megha Joshi](https://meghapsimatrix.com/) has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including [wildmeta](https://meghapsimatrix.github.io/wildmeta/), [simhelpers](https://meghapsimatrix.github.io/simhelpers/index.html), and [metaselection](https://github.com/jepusto/metaselection). She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.
+
+### **Tiffany "Tiff" M. Kollah, BSPH**
+
+Tiffany M. Kollah is a dedicated biostatistician in training and public health researcher with a strong background in mental health, chronic disease, and clinical trials. She currently serves as a **Clinical Trial Research Coordinator** in the Department of Neurology at the University of North Carolina at Chapel Hill. Tiffany holds a **Bachelor of Science in Public Health** from Slippery Rock University and is pursuing a **Graduate Certificate in Applied Statistics and Data Management** at NC State University (part-time) while working full-time in research at UNC.
+
+Her research career has spanned roles as a **Research Assistant in neurobiology**, where she supported Alzheimer’s disease studies using neuroimaging, and as a **Research Specialist** with a focus on chronic kidney disease and its psychosocial impacts in dialysis patients. Her interests lie at the intersection of **biostatistics, psychiatric epidemiology, and mental health disparities in minority populations**. She is particularly passionate about the **statistical analysis of longitudinal psychiatric data** and the advancement of **data science in mental health research**.
+
+Tiffany is an active member of the **American Statistical Association (ASA)**, where she contributes to the **Justice, Equity, Diversity, and Inclusion (JEDI) Outreach Group**. She co-chaired the **JEDI Young Professionals Group** during 2024–2025 and currently serves on its executive committee. In this role, she works to expand representation and access in the statistical sciences, particularly for underserved communities.
+
+She is also a proud member of the **CoachR Network**, collaborating with Megha Joshi on the development of a course designed to empower individuals who were unconstitutionally laid off, equipping them with skills to enter the growing field of public health technology.
+
+Outside of her professional work, Tiffany enjoys **playing tennis, hiking, practicing yoga and mindfulness, and painting.** ![🎨](https://fonts.gstatic.com/s/e/notoemoji/16.0/1f3a8/32.png){alt="🎨" width="24"}![😊](https://fonts.gstatic.com/s/e/notoemoji/16.0/1f60a/32.png){alt="😊" width="24"}

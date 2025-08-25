@@ -1,5 +1,5 @@
 ---
-title: "Practice Problem Set 1"
+title: "Practice Problem Set 1: Introduction"
 format:
   html:
     code-tools: true
@@ -10,12 +10,13 @@ filters:
   - webr
 ---
 
-### Downloading R and R Studio
+### Downloading R and R Studio/Positron
 
-1.  If you don't have R and R Studio downloaded, please download them:
+1.  If you don't have R and R Studio/Positron downloaded, please download them:
 
     -   Download R [here](https://www.r-project.org/).
     -   Download R Studio [here](https://posit.co/downloads/).
+    -   Download Positron [here](https://positron.posit.co/download).
 
 2.  Create an [R project](https://r4ds.hadley.nz/workflow-scripts.html#projects) for this class and open that project.
 

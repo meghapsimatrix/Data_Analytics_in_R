@@ -1,5 +1,5 @@
 ---
-title: "Practice Problem Set 2"
+title: "Practice Problem Set 3: Querying and Wrangling Data"
 format:
   html:
     code-tools: true

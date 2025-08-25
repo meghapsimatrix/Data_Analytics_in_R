@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practice Problem Set 2 – Data Analytics in R</title>
+<title>Practice Problem Set 2: Data Visualization – Data Analytics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4959,7 +4959,7 @@ min-height: 500px;
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['dplyr', 'readr', 'ggplot2'];
+globalThis.qwebrInstallRPackagesList = ['dplyr', 'readr', 'ggplot2', 'MatchIt'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -4981,7 +4981,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"output":"true","label":"unnamed-chunk-1","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":1,"code":"#install.packages(\"MatchIt\")\nlibrary(\"MatchIt)\nlalonde"},{"options":{"output":"true","label":"unnamed-chunk-2","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":2,"code":""},{"options":{"output":"true","label":"unnamed-chunk-3","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":3,"code":""},{"options":{"output":"true","label":"unnamed-chunk-4","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":4,"code":""},{"options":{"output":"true","label":"unnamed-chunk-5","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":5,"code":""},{"options":{"output":"true","label":"unnamed-chunk-6","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":6,"code":""},{"options":{"output":"true","label":"unnamed-chunk-7","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":7,"code":""},{"options":{"output":"true","label":"unnamed-chunk-8","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":8,"code":""},{"options":{"output":"true","label":"unnamed-chunk-9","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":9,"code":""},{"options":{"output":"true","label":"unnamed-chunk-10","message":"true","editor-max-height":"","editor-quick-suggestions":"false","comment":"","warning":"true","out-width":"700px","editor-word-wrap":"true","classes":"","context":"interactive","fig-width":7,"editor-font-scale":"1","autorun":"false","read-only":"false","out-height":"","dpi":72,"fig-cap":"","results":"markup","fig-height":5},"id":10,"code":""}];
+globalThis.qwebrCellDetails = [{"code":"#install.packages(\"MatchIt\")\nlibrary(\"MatchIt)\nlalonde","id":1,"options":{"label":"unnamed-chunk-1","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":2,"options":{"label":"unnamed-chunk-2","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":3,"options":{"label":"unnamed-chunk-3","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":4,"options":{"label":"unnamed-chunk-4","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":5,"options":{"label":"unnamed-chunk-5","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":6,"options":{"label":"unnamed-chunk-6","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":7,"options":{"label":"unnamed-chunk-7","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":8,"options":{"label":"unnamed-chunk-8","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":9,"options":{"label":"unnamed-chunk-9","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}},{"code":"","id":10,"options":{"label":"unnamed-chunk-10","output":"true","out-width":"700px","editor-font-scale":"1","autorun":"false","fig-width":7,"comment":"","dpi":72,"context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","editor-max-height":"","results":"markup","fig-cap":"","message":"true","out-height":"","read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -6247,7 +6247,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Practice Problem Set 2</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Practice Problem Set 2: Data Visualization</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -6601,7 +6601,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Practice Problem Set 2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Practice Problem Set 2: Data Visualization</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -6620,8 +6620,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <ol type="1">
 <li><p>Run the following code to load the data. Glimpse the data and learn about the variables:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 <p><strong>For the following questions, please create a graph using ggplot to answer:</strong></p></li>
 <li><p>Create a plot examine the distribution of <code>ret78</code> variable which has information on income of the participants in year 1978</p>
 <div class="cell">
@@ -7147,7 +7149,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Practice Problem Set 2&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Practice Problem Set 2: Data Visualization&quot;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
@@ -7155,14 +7157,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">webr:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: [&#39;dplyr&#39;, &#39;readr&#39;, &#39;ggplot2&#39;]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: [&#39;dplyr&#39;, &#39;readr&#39;, &#39;ggplot2&#39;, &#39;MatchIt&#39;]</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Run the following code to load the data. Glimpse the data and learn about the variables:</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr-r}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">    #install.packages(&quot;MatchIt&quot;)</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">    library(&quot;MatchIt)</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">    lalonde</span></span>

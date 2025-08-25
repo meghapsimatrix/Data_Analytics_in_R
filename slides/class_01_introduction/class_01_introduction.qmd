@@ -58,19 +58,19 @@ editor: visual
 
 ## Overview of Course
 
+-   Introduction
+
 -   Data visualization
 
 -   Data querying and wrangling
 
--   Working with relational databases
+-   Relational data
 
--   Dealing with different data types
+-   Strings and factors
 
--   Functions
+-   Functions and iteration
 
--   Iteration
-
--   Linear regression and gentle introduction to machine learning
+-   ...advanced topics to be added in the future
 
 ## Introduction to R
 
@@ -102,13 +102,13 @@ editor: visual
 ::: {.column width="50%"}
 -   Download [R](https://www.r-project.org/)
 
--   Download [R Studio](https://posit.co/downloads/)
+-   Download [R Studio](https://posit.co/downloads/) / Download [Positron](https://positron.posit.co/download)
 
 -   Download [Quarto](https://quarto.org/)
 :::
 :::
 
-## R Projects and Relative Path
+## R Studio - R Projects and Relative Path
 
 ::: columns
 ::: {.column width="20%"}

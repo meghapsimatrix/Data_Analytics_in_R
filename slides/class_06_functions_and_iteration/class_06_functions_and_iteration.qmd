@@ -23,25 +23,105 @@ editor: visual
 ```{r, warning = FALSE, message = FALSE}
 library(tidyverse)
 library(janitor)
+library(evalITR)
 
-diabetes_dat <- read_csv("../data/diabetes_uci/diabetes_data.csv") %>%
-  clean_names()
+star_dat <- star %>%
+    clean_names()
 
-glimpse(diabetes_dat)
+glimpse(star_dat)
 ```
 
-## Check Relationship Between Diabetes and High BP
+## Run a Linear Regression to Assess the Impact of Treatment on Language
 
 ```{r}
-chisq.test(diabetes_dat$diabetes_binary, diabetes_dat$high_bp)
+library(estimatr)
+library(broom)
+
+lang_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
+                  data = star_dat,
+                  se_type = "HC2")
+
+summary(lang_mod)
+
+tidy(lang_mod) %>%
+    filter(term == "treatment") %>%
+    mutate(outcome = "g3tlangss") %>%
+    dplyr::select(outcome, everything())
 ```
 
-## ... Between Diabetes and Smoking
+## ... on Math
 
 ```{r}
-chisq.test(diabetes_dat$diabetes_binary, diabetes_dat$smoker)
+math_mod <- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
+                  data = star_dat,
+                  se_type = "HC2")
+
+summary(math_mod)
+
+tidy(lang_mod) %>%
+    filter(term == "treatment") %>%
+    mutate(outcome = "g3tlangss") %>%
+    dplyr::select(outcome, everything())
+```
+
+## ...on Reading
+
+```{r}
+read_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
+                  data = star_dat,
+                  se_type = "HC2")
+
+summary(read_mod)
+
+tidy(read_mod) %>%
+    filter(term == "treatment") %>%
+    mutate(outcome = "g3tlangss") %>%
+    dplyr::select(outcome, everything())
 ```
 
 ## Repetition
+
+-   Redundant code
+
+-   Repetitive
+
+-   Prone to error when copy and pasting and changing a few things
+
+-   If we want to change the model, let's say add few other variables, we have to repeat that correction multiple times
+
+    -   Which may also open up space for more error
+
+## Functions
+
+## Function Example
+
+```{r}
+run_reg <- function(dat = star_dat,
+                    outcome_var) {
+
+    lm_equation <- paste(outcome_var, " ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt")
+
+    mod <- lm_robust(as.formula(lm_equation), 
+                     data = dat,
+                     se_type = "HC2")
+
+    res_clean <- tidy(mod) %>%
+        filter(term == "treatment") %>%
+        mutate(outcome = outcome_var) %>%
+        dplyr::select(outcome, everything())
+
+                
+    return(res_clean)
+    
+}
+```
+
+## Run the Function 
+
+```{r}
+run_reg(outcome = "g3tlangss")
+run_reg(outcome = "g3tmathss")
+run_reg(outcome = "g3treadss")
+```
 
 # Iteration {.inverse}

@@ -1,5 +1,5 @@
 ---
-title: "Practice Problem Set 2"
+title: "Practice Problem Set 2: Data Visualization"
 format:
   html:
     code-tools: true
@@ -7,14 +7,14 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2']
+  packages: ['dplyr', 'readr', 'ggplot2', 'MatchIt']
 filters:
   - webr
 ---
 
 1.  Run the following code to load the data. Glimpse the data and learn about the variables:
 
-    ```{webr-r}
+    ```{webr}
     #install.packages("MatchIt")
     library("MatchIt)
     lalonde
