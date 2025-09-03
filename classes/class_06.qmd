@@ -1,5 +1,5 @@
 ---
-title: "Class 05: Strings and Factors"
+title: "Class 06: Functions and Iteration"
 subtitle: ""
 description: ""
 author: "Megha Joshi"
@@ -7,7 +7,7 @@ date: ""
 listing:
   - id: slides
     contents:
-      - ../slides/class_05_strings_and_factors/*.qmd
+      - ../slides/class_06_functions_and_iteration/*.qmd
     type: table
     fields: [title, author]
     date-format: "ddd, MMM DD"

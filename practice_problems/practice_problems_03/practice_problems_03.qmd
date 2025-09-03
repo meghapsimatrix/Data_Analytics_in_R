@@ -14,12 +14,60 @@ filters:
 
 1.  Run the following code to load the data:
 
-    ```{webr-r}
+    ```{r, message = FALSE, warning = FALSE}
+    library(tidyverse)
+    library(janitor)
+
+    diabetes_dat <- read_csv("../data/diabetes_uci/diabetes_data.csv") %>%
+      clean_names()
+    ```
+
+2.  Using `tidyverse` syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.
+
+    ```{r}
 
     ```
 
-2.  Create a scatterplot:
+3.  Calculate the average BMI for smokers:
 
-    ```{webr}
+    ```{r}
+
+    ```
+
+4.  Using the [codebook](https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators) here, create another variable that contains the corresponding label for the `education` variable. For example, for the rows where `education` is 1, the new variable should contain: `Never attended school or only kindergarten`.
+
+    ```{r}
+
+    ```
+
+5.  For each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.
+
+    ```{r}
+
+    ```
+
+6.  Create a `ggplot` representing the data from above.
+
+    ```{r}
+
+    ```
+
+7.  For people with and without diabetes, calculate the mean and standard deviation of the following variables: `mental_hlth`, `physical_htlh`, `gen_hlth`, `bmi`, `age`, `income`.
+
+    ```{r}
+
+    ```
+
+8.  Think of ways to represent the table above in a different way
+
+9.  Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.
+
+    ```{r}
+
+    ```
+
+10. Create a table using `gt` or `kable` with the dataset above.
+
+    ```{r}
 
     ```

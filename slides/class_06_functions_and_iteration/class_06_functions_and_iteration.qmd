@@ -1,5 +1,5 @@
 ---
-title: "Querying and Wrangling Data"
+title: "Functions and Iteration"
 author: "Megha Joshi"
 execute: 
   echo: TRUE
@@ -24,6 +24,8 @@ editor: visual
 library(tidyverse)
 library(janitor)
 library(evalITR)
+library(estimatr)
+library(broom)
 
 star_dat <- star %>%
     clean_names()
@@ -34,22 +36,23 @@ glimpse(star_dat)
 ## Run a Linear Regression to Assess the Impact of Treatment on Language
 
 ```{r}
-library(estimatr)
-library(broom)
-
 lang_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
                   data = star_dat,
                   se_type = "HC2")
 
 summary(lang_mod)
+```
 
+## Tidy Language
+
+```{r}
 tidy(lang_mod) %>%
     filter(term == "treatment") %>%
     mutate(outcome = "g3tlangss") %>%
     dplyr::select(outcome, everything())
 ```
 
-## ... on Math
+## On Math
 
 ```{r}
 math_mod <- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
@@ -57,14 +60,20 @@ math_mod <- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrang
                   se_type = "HC2")
 
 summary(math_mod)
+```
 
+## Tidy Math
+
+```{r}
 tidy(lang_mod) %>%
     filter(term == "treatment") %>%
     mutate(outcome = "g3tlangss") %>%
     dplyr::select(outcome, everything())
+
+
 ```
 
-## ...on Reading
+## On Reading
 
 ```{r}
 read_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, 
@@ -72,7 +81,11 @@ read_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrang
                   se_type = "HC2")
 
 summary(read_mod)
+```
 
+## Tidy Reading
+
+```{r}
 tidy(read_mod) %>%
     filter(term == "treatment") %>%
     mutate(outcome = "g3tlangss") %>%
@@ -85,7 +98,7 @@ tidy(read_mod) %>%
 
 -   Repetitive
 
--   Prone to error when copy and pasting and changing a few things
+-   Prone to error when copy and pasting and changing a few things. Can list out all the errors I made?
 
 -   If we want to change the model, let's say add few other variables, we have to repeat that correction multiple times
 
@@ -116,7 +129,7 @@ run_reg <- function(dat = star_dat,
 }
 ```
 
-## Run the Function 
+## Run the Function
 
 ```{r}
 run_reg(outcome = "g3tlangss")
@@ -124,4 +137,113 @@ run_reg(outcome = "g3tmathss")
 run_reg(outcome = "g3treadss")
 ```
 
+## Repetition
+
+-   For the sake of this presentation, I am only showing three outcomes.
+
+-   Imagine if there were more than 10 outcomes that you needed to analyze.
+
+-   Think of potential issues in this situation - both when doing brute force analysis and even when using a function like `run_reg().`
+
 # Iteration {.inverse}
+
+## Repetitive Tasks Examples
+
+-   Running analysis for multiple outcomes like above
+
+-   Read in 50 csv files in a folder with data on different years
+
+-   Conduct power analysis to estimate sample size for a randomized trial based on multiple assumed values effect size
+
+## For Loops
+
+-   Classic way to run repetitive analyses or tasks
+
+-   For each item in a vector of items, run the code
+
+## For Loops Example
+
+```{r}
+numbers <- 1:10 # A vector of items to loop through
+
+for(n in numbers){ # for each number in the vector numbers
+  
+  x <- n * 2 # multiply the number by 2
+  
+  print(x) # print the result
+  
+  
+}
+```
+
+## STAR Analysis Example: Loop through Outcomes
+
+```{r}
+outcome <- c("g3tlangss", "g3tmathss", "g3treadss") # outcomes to loop through
+
+res <- NULL # initialize the results 
+
+for(y in outcome){ # for each outcome in the outcome vector 
+  
+  output <- run_reg(outcome = y) # run run_reg for that outcome
+  res <- bind_rows(res, output) # append the output to res
+  
+  
+}
+
+res # look at res after the looping
+
+```
+
+## For Loops are Slow...
+
+::: columns
+::: {.column width="50%"}
+-   For loops are still clunky and involve fairly extensive coding
+
+```{=html}
+<!-- -->
+```
+-   Need to think through how to append and store the outcome or print the outcome
+
+-   Also a bit slow..(er than other stuff we are going to talk about) in R
+:::
+
+::: {.column width="50%"}
+<iframe src="https://giphy.com/embed/ytPdmmKAsFOUM" width="343" height="480" style frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+`<p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM"`{=html}via GIPHY</a></p>
+:::
+:::
+
+## Verbs
+
+## `map()`
+
+```{r}
+numbers <- 1:10 # vector with items to loop over
+
+# function that you want run
+times_two <- function(x){
+  x * 2
+}
+
+# loop times_two through each number, notice the output
+map(numbers, .f = times_two)
+```
+
+## Different Output Format
+
+```{r}
+map_int(numbers, .f = times_two)
+```
+
+## `pmap_dfr`
+
+```{r}
+params <- tibble(outcome = c("g3tlangss", "g3tmathss", "g3treadss"))
+
+pmap_dfr(params, .f = run_reg)
+```

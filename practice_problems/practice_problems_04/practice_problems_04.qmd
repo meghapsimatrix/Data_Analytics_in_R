@@ -1,5 +1,5 @@
 ---
-title: "Practice Problem Set 2"
+title: "Practice Problem Set 4: Relational Data"
 format:
   html:
     code-tools: true
@@ -12,14 +12,67 @@ filters:
   - webr
 ---
 
-1.  Run the following code to load the data:
+1.  Run the following code to load the data. Look through [this website](https://nycflights13.tidyverse.org/index.html) to learn more about the data.
 
-    ```{webr-r}
+    ```{r, warning = FALSE, error=FALSE}
+    library(tidyverse)
+    library(nycflights13)
+
+    glimpse(airlines)
+    glimpse(airports)
+    glimpse(flights)
+    glimpse(planes)
+    glimpse(weather)
+    ```
+
+    \
+
+2.  Sketch out the relationship between all the tables in the database. For each dataset, what is the primary key? What are secondary keys?
+
+3.  How many flights operated by Jet Blue departed from EWR in January, 2013?
+
+    ```{r}
 
     ```
 
-2.  Create a scatterplot:
+4.  How many flights that departed from JFK in 2013 were manufactured by Boeing? Create a subset of flights data that meet these conditions - departed from JFK in 2013 on planes manufactured by Boeing.
 
-    ```{webr}
+    ```{r}
+
+    ```
+
+5.  For each of the airports in the `flights` data, count the number of flights that departed when there was some precipitation.
+
+    ```{r}
+
+    ```
+
+6.  How many of the flights from Q5 experienced some type of delay? What was the average delay?
+
+    ```{r}
+
+    ```
+
+7.  Break down the delayed flights from Q6 by plane manufacturer and the year manufactured.
+
+    ```{r}
+
+    ```
+
+8.  Are there any flights in the `flights` data for which we do not have matches in the other datasets? Why might there be no matches?
+
+    ```{r}
+
+    ```
+
+9.  How many flights departing from each of the NYC airports were headed to a different time zone? For each airport, calculate the number from flights departing and landing in each of the time zones. E.g. how many departed JFK and landed in America/Chicago time zone, in America/ Los Angeles time zone etc.?
+
+    ```{r}
+
+    ```
+
+10. Extract data on flights departing NYC airports for which we have information on the plane manufacturer.
+
+    ```{r}
 
     ```

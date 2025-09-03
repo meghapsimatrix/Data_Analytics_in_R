@@ -14,9 +14,9 @@
     ]
   },
   {
-    "listing": "/classes/class_05.html",
+    "listing": "/classes/class_04.html",
     "items": [
-      "/slides/class_05_strings_and_factors/class_05_strings_and_factors.html",
+      "/slides/class_04_relational_datasets/class_04_relational_data.html",
       "/practice_problems/practice_problems_04/practice_problems_04.html"
     ]
   },
@@ -27,14 +27,24 @@
       "/classes/class_02.html",
       "/classes/class_03.html",
       "/classes/class_04.html",
-      "/classes/class_05.html"
+      "/classes/class_05.html",
+      "/classes/class_06.html"
     ]
   },
   {
-    "listing": "/classes/class_04.html",
+    "listing": "/classes/class_05.html",
     "items": [
-      "/slides/class_04_relational_datasets/class_04_relational_data.html",
-      "/practice_problems/practice_problems_04/practice_problems_04.html"
+      "/slides/class_05_strings_and_factors/class_05_strings_and_factors.html",
+      "/practice_problems/practice_problems_05/practice_problems_05A.html",
+      "/practice_problems/practice_problems_05/practice_problems_05B.html"
+    ]
+  },
+  {
+    "listing": "/classes/class_06.html",
+    "items": [
+      "/slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html",
+      "/practice_problems/practice_problems_05/practice_problems_05A.html",
+      "/practice_problems/practice_problems_05/practice_problems_05B.html"
     ]
   },
   {

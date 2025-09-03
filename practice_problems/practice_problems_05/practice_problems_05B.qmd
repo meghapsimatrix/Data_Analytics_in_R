@@ -1,0 +1,59 @@
+---
+title: "Practice Problem Set 5B: Factors"
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+engine: knitr
+editor: visual
+webr:
+  packages: ['dplyr', 'readr', 'ggplot2']
+filters:
+  - webr
+---
+
+1.  Run the following code to load the data. View the codebook for the data [here](https://meghapsimatrix.quarto.pub/data-analytics-in-r/slides/class_02_data_visualization/class_02_data_visualization.html#/example-dataset-capital-bike-sharing-data).
+
+    ```{r, message = FALSE, warning = FALSE}
+    library(tidyverse)
+
+    bike_dat <- read_csv("../data/capital_bike_sharing_uci/capital_bike_sharing.csv")
+
+    glimpse(bike_dat)
+    ```
+
+2.  Create a graph like we did in Lecture 2 of the relationship between temperature and total bike rentals. What is odd about this graph?
+
+    ```{r}
+
+    ```
+
+3.  Recode the `season`, `yr`, `mnth`, `holiday`, `weekday`, `workingday`, and `weather-sit` variable.
+
+    ```{r}
+
+    ```
+
+4.  Change the season variable into a factor variable. What are the levels of the variable? Reorder the variable so that we have Summer, Fall, Winter, Spring.
+
+    ```{r}
+
+    ```
+
+5.  Recreate the graph from Q2 with the new reordered variable.
+
+    ```{r}
+
+    ```
+
+6.  Create a bar chart for the `weathersit` variable.
+
+    ```{r}
+
+    ```
+
+7.  Lump together the least frequent two levels and recreate the graph from Q6.
+
+    ```{r}
+
+    ```

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Megha Joshi">
-  <title>Data Analytics in R – Querying and Wrangling Data</title>
+  <title>Data Analytics in R – Functions and Iteration</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,7 +391,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#562457" class="quarto-title-block center">
-  <h1 class="title">Querying and Wrangling Data</h1>
+  <h1 class="title">Functions and Iteration</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -413,11 +413,13 @@ Megha Joshi
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-3"><a></a><span class="fu">library</span>(evalITR)</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a>star_dat <span class="ot">&lt;-</span> star <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a></a>    <span class="fu">clean_names</span>()</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="fu">glimpse</span>(star_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>star_dat <span class="ot">&lt;-</span> star <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a></a>    <span class="fu">clean_names</span>()</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="fu">glimpse</span>(star_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,911
 Columns: 14
@@ -441,14 +443,11 @@ $ gkwhite    &lt;dbl&gt; 19, 100, 97, 94, 98, 0, 0, 97, 97, 92, 99, 1, 99, 85, 9
 <section id="run-a-linear-regression-to-assess-the-impact-of-treatment-on-language" class="slide level2">
 <h2>Run a Linear Regression to Assess the Impact of Treatment on Language</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(estimatr)</span>
-<span id="cb3-2"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>lang_mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(g3tlangss <span class="sc">~</span> treatment <span class="sc">+</span> gender <span class="sc">+</span> race <span class="sc">+</span> schlurbn <span class="sc">+</span> grdrange <span class="sc">+</span> gkenrmnt, </span>
-<span id="cb3-5"><a></a>                  <span class="at">data =</span> star_dat,</span>
-<span id="cb3-6"><a></a>                  <span class="at">se_type =</span> <span class="st">"HC2"</span>)</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a><span class="fu">summary</span>(lang_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>lang_mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(g3tlangss <span class="sc">~</span> treatment <span class="sc">+</span> gender <span class="sc">+</span> race <span class="sc">+</span> schlurbn <span class="sc">+</span> grdrange <span class="sc">+</span> gkenrmnt, </span>
+<span id="cb3-2"><a></a>                  <span class="at">data =</span> star_dat,</span>
+<span id="cb3-3"><a></a>                  <span class="at">se_type =</span> <span class="st">"HC2"</span>)</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="fu">summary</span>(lang_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -476,6 +475,11 @@ gkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898
 Multiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 
 F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
+</div>
+</section>
+<section id="tidy-language" class="slide level2">
+<h2>Tidy Language</h2>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">tidy</span>(lang_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a></a>    <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="st">"g3tlangss"</span>) <span class="sc">%&gt;%</span></span>
@@ -489,7 +493,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </section>
 <section id="on-math" class="slide level2">
-<h2>… on Math</h2>
+<h2>On Math</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>math_mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(g3tmathss <span class="sc">~</span> treatment <span class="sc">+</span> gender <span class="sc">+</span> race <span class="sc">+</span> schlurbn <span class="sc">+</span> grdrange <span class="sc">+</span> gkenrmnt, </span>
 <span id="cb7-2"><a></a>                  <span class="at">data =</span> star_dat,</span>
@@ -523,6 +527,11 @@ gkenrmnt     -0.01167   0.005995  -1.94649 5.174e-02  -0.02343  8.830e-05 1898
 Multiple R-squared:  0.08643 ,  Adjusted R-squared:  0.08066 
 F-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
+</div>
+</section>
+<section id="tidy-math" class="slide level2">
+<h2>Tidy Math</h2>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tidy</span>(lang_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a></a>    <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="st">"g3tlangss"</span>) <span class="sc">%&gt;%</span></span>
@@ -536,7 +545,7 @@ F-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </section>
 <section id="on-reading" class="slide level2">
-<h2>…on Reading</h2>
+<h2>On Reading</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>read_mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(g3tlangss <span class="sc">~</span> treatment <span class="sc">+</span> gender <span class="sc">+</span> race <span class="sc">+</span> schlurbn <span class="sc">+</span> grdrange <span class="sc">+</span> gkenrmnt, </span>
 <span id="cb11-2"><a></a>                  <span class="at">data =</span> star_dat,</span>
@@ -570,6 +579,11 @@ gkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898
 Multiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 
 F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
+</div>
+</section>
+<section id="tidy-reading" class="slide level2">
+<h2>Tidy Reading</h2>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">tidy</span>(read_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a></a>    <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="st">"g3tlangss"</span>) <span class="sc">%&gt;%</span></span>
@@ -587,7 +601,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li><p>Redundant code</p></li>
 <li><p>Repetitive</p></li>
-<li><p>Prone to error when copy and pasting and changing a few things</p></li>
+<li><p>Prone to error when copy and pasting and changing a few things. Can list out all the errors I made?</p></li>
 <li><p>If we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times</p>
 <ul>
 <li>Which may also open up space for more error</li>
@@ -645,16 +659,191 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 1  10.63627 1898</code></pre>
 </div>
 </div>
+</section>
+<section id="repetition-1" class="slide level2">
+<h2>Repetition</h2>
+<ul>
+<li><p>For the sake of this presentation, I am only showing three outcomes.</p></li>
+<li><p>Imagine if there were more than 10 outcomes that you needed to analyze.</p></li>
+<li><p>Think of potential issues in this situation - both when doing brute force analysis and even when using a function like <code>run_reg().</code></p></li>
+</ul>
 </section></section>
+<section>
 <section id="iteration" class="title-slide slide level1 inverse center">
 <h1>Iteration</h1>
+
+</section>
+<section id="repetitive-tasks-examples" class="slide level2">
+<h2>Repetitive Tasks Examples</h2>
+<ul>
+<li><p>Running analysis for multiple outcomes like above</p></li>
+<li><p>Read in 50 csv files in a folder with data on different years</p></li>
+<li><p>Conduct power analysis to estimate sample size for a randomized trial based on multiple assumed values effect size</p></li>
+</ul>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>For Loops</h2>
+<ul>
+<li><p>Classic way to run repetitive analyses or tasks</p></li>
+<li><p>For each item in a vector of items, run the code</p></li>
+</ul>
+</section>
+<section id="for-loops-example" class="slide level2">
+<h2>For Loops Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># A vector of items to loop through</span></span>
+<span id="cb22-2"><a></a></span>
+<span id="cb22-3"><a></a><span class="cf">for</span>(n <span class="cf">in</span> numbers){ <span class="co"># for each number in the vector numbers</span></span>
+<span id="cb22-4"><a></a>  </span>
+<span id="cb22-5"><a></a>  x <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">2</span> <span class="co"># multiply the number by 2</span></span>
+<span id="cb22-6"><a></a>  </span>
+<span id="cb22-7"><a></a>  <span class="fu">print</span>(x) <span class="co"># print the result</span></span>
+<span id="cb22-8"><a></a>  </span>
+<span id="cb22-9"><a></a>  </span>
+<span id="cb22-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+[1] 4
+[1] 6
+[1] 8
+[1] 10
+[1] 12
+[1] 14
+[1] 16
+[1] 18
+[1] 20</code></pre>
+</div>
+</div>
+</section>
+<section id="star-analysis-example-loop-through-outcomes" class="slide level2">
+<h2>STAR Analysis Example: Loop through Outcomes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>outcome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"g3tlangss"</span>, <span class="st">"g3tmathss"</span>, <span class="st">"g3treadss"</span>) <span class="co"># outcomes to loop through</span></span>
+<span id="cb24-2"><a></a></span>
+<span id="cb24-3"><a></a>res <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># initialize the results </span></span>
+<span id="cb24-4"><a></a></span>
+<span id="cb24-5"><a></a><span class="cf">for</span>(y <span class="cf">in</span> outcome){ <span class="co"># for each outcome in the outcome vector </span></span>
+<span id="cb24-6"><a></a>  </span>
+<span id="cb24-7"><a></a>  output <span class="ot">&lt;-</span> <span class="fu">run_reg</span>(<span class="at">outcome =</span> y) <span class="co"># run run_reg for that outcome</span></span>
+<span id="cb24-8"><a></a>  res <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(res, output) <span class="co"># append the output to res</span></span>
+<span id="cb24-9"><a></a>  </span>
+<span id="cb24-10"><a></a>  </span>
+<span id="cb24-11"><a></a>}</span>
+<span id="cb24-12"><a></a></span>
+<span id="cb24-13"><a></a>res <span class="co"># look at res after the looping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    outcome      term estimate std.error statistic      p.value conf.low
+1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940
+2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616
+3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741
+  conf.high   df
+1  7.221312 1898
+2  9.765868 1898
+3 10.636268 1898</code></pre>
+</div>
+</div>
+</section>
+<section id="for-loops-are-slow" class="slide level2">
+<h2>For Loops are Slow…</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>For loops are still clunky and involve fairly extensive coding</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Need to think through how to append and store the outcome or print the outcome</p></li>
+<li><p>Also a bit slow..(er than other stuff we are going to talk about) in R</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<iframe src="https://giphy.com/embed/ytPdmmKAsFOUM" width="343" height="480" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
+</iframe>
+<p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></section><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<section id="verbs" class="slide level2">
+<h2>Verbs</h2>
+</section>
+</a><section id="map" class="slide level2"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<h2><code>map()</code></h2>
+</a><div class="cell"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a><div class="sourceCode cell-code" id="cb26"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><pre class="sourceCode numberSource r number-lines code-with-copy"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><code class="sourceCode r"><span id="cb26-1"></span></code></a><code class="sourceCode r"><a href="#cb26-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector with items to loop over</span>
+<span id="cb26-2"><a></a></span>
+<span id="cb26-3"><a></a><span class="co"># function that you want run</span></span>
+<span id="cb26-4"><a></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb26-5"><a></a>  x <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb26-6"><a></a>}</span>
+<span id="cb26-7"><a></a></span>
+<span id="cb26-8"><a></a><span class="co"># loop times_two through each number, notice the output</span></span>
+<span id="cb26-9"><a></a><span class="fu">map</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 2
+
+[[2]]
+[1] 4
+
+[[3]]
+[1] 6
+
+[[4]]
+[1] 8
+
+[[5]]
+[1] 10
+
+[[6]]
+[1] 12
+
+[[7]]
+[1] 14
+
+[[8]]
+[1] 16
+
+[[9]]
+[1] 18
+
+[[10]]
+[1] 20</code></pre>
+</div>
+</div>
+</section>
+<section id="different-output-format" class="slide level2">
+<h2>Different Output Format</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">map_int</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
+</div>
+</div>
+</section>
+<section id="pmap_dfr" class="slide level2">
+<h2><code>pmap_dfr</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>params <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">outcome =</span> <span class="fu">c</span>(<span class="st">"g3tlangss"</span>, <span class="st">"g3tmathss"</span>, <span class="st">"g3treadss"</span>))</span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a><span class="fu">pmap_dfr</span>(params, <span class="at">.f =</span> run_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    outcome      term estimate std.error statistic      p.value conf.low
+1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940
+2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616
+3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741
+  conf.high   df
+1  7.221312 1898
+2  9.765868 1898
+3 10.636268 1898</code></pre>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

@@ -3,7 +3,7 @@ title: "Teaching Team"
 editor: visual
 ---
 
-### Megha Joshi, PhD
+### **Megha Joshi, PhD**
 
 ![](images/mj.jpeg){width="297"}
 

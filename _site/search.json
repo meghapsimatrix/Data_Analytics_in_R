@@ -304,65 +304,156 @@
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Example Dataset",
-    "text": "Example Dataset\n\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(evalITR)\n\nstar_dat &lt;- star %&gt;%\n    clean_names()\n\nglimpse(star_dat)\n\nRows: 1,911\nColumns: 14\n$ g3tlangss  &lt;dbl&gt; 608, 644, 638, 595, 694, 644, 618, 668, 677, 650, 635, 657,…\n$ g3treadss  &lt;dbl&gt; 582, 636, 578, 612, 631, 592, 583, 661, 675, 713, 614, 595,…\n$ g3tmathss  &lt;dbl&gt; 591, 622, 610, 612, 631, 631, 606, 648, 648, 645, 636, 610,…\n$ treatment  &lt;dbl&gt; 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,…\n$ gender     &lt;fct&gt; 2, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2,…\n$ race       &lt;fct&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1,…\n$ birthmonth &lt;fct&gt; 11, 11, 12, 11, 9, 3, 6, 6, 1, 6, 11, 12, 7, 5, 5, 11, 12, …\n$ birthyear  &lt;fct&gt; 1979, 1979, 1979, 1979, 1980, 1980, 1980, 1980, 1980, 1980,…\n$ schlurbn   &lt;fct&gt; 2, 2, 3, 3, 3, 1, 1, 2, 2, 4, 3, 1, 3, 3, 4, 2, 1, 1, 3, 3,…\n$ grdrange   &lt;fct&gt; 5, 6, 3, 8, 3, 6, 6, 5, 5, 6, 8, 6, 8, 4, 4, 4, 6, 6, 5, 6,…\n$ gkenrmnt   &lt;dbl&gt; 603, 621, 512, 389, 444, 521, 888, 709, 709, 531, 650, 479,…\n$ gkfrlnch   &lt;dbl&gt; 90, 10, 32, 51, 30, 90, 98, 1, 1, 48, 64, 70, 64, 32, 28, 2…\n$ gkbused    &lt;dbl&gt; 62, 61, 98, 71, 90, 13, 1, 98, 98, 67, 95, 17, 95, 93, 94, …\n$ gkwhite    &lt;dbl&gt; 19, 100, 97, 94, 98, 0, 0, 97, 97, 92, 99, 1, 99, 85, 98, 6…"
+    "text": "Example Dataset\n\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(evalITR)\nlibrary(estimatr)\nlibrary(broom)\n\nstar_dat &lt;- star %&gt;%\n    clean_names()\n\nglimpse(star_dat)\n\nRows: 1,911\nColumns: 14\n$ g3tlangss  &lt;dbl&gt; 608, 644, 638, 595, 694, 644, 618, 668, 677, 650, 635, 657,…\n$ g3treadss  &lt;dbl&gt; 582, 636, 578, 612, 631, 592, 583, 661, 675, 713, 614, 595,…\n$ g3tmathss  &lt;dbl&gt; 591, 622, 610, 612, 631, 631, 606, 648, 648, 645, 636, 610,…\n$ treatment  &lt;dbl&gt; 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,…\n$ gender     &lt;fct&gt; 2, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2,…\n$ race       &lt;fct&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1,…\n$ birthmonth &lt;fct&gt; 11, 11, 12, 11, 9, 3, 6, 6, 1, 6, 11, 12, 7, 5, 5, 11, 12, …\n$ birthyear  &lt;fct&gt; 1979, 1979, 1979, 1979, 1980, 1980, 1980, 1980, 1980, 1980,…\n$ schlurbn   &lt;fct&gt; 2, 2, 3, 3, 3, 1, 1, 2, 2, 4, 3, 1, 3, 3, 4, 2, 1, 1, 3, 3,…\n$ grdrange   &lt;fct&gt; 5, 6, 3, 8, 3, 6, 6, 5, 5, 6, 8, 6, 8, 4, 4, 4, 6, 6, 5, 6,…\n$ gkenrmnt   &lt;dbl&gt; 603, 621, 512, 389, 444, 521, 888, 709, 709, 531, 650, 479,…\n$ gkfrlnch   &lt;dbl&gt; 90, 10, 32, 51, 30, 90, 98, 1, 1, 48, 64, 70, 64, 32, 28, 2…\n$ gkbused    &lt;dbl&gt; 62, 61, 98, 71, 90, 13, 1, 98, 98, 67, 95, 17, 95, 93, 94, …\n$ gkwhite    &lt;dbl&gt; 19, 100, 97, 94, 98, 0, 0, 97, 97, 92, 99, 1, 99, 85, 98, 6…"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-a-linear-regression-to-assess-the-impact-of-treatment-on-language",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-a-linear-regression-to-assess-the-impact-of-treatment-on-language",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Run a Linear Regression to Assess the Impact of Treatment on Language",
-    "text": "Run a Linear Regression to Assess the Impact of Treatment on Language\n\nlibrary(estimatr)\nlibrary(broom)\n\nlang_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(lang_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "text": "Run a Linear Regression to Assess the Impact of Treatment on Language\n\nlang_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(lang_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language",
+    "title": "Functions and Iteration",
+    "section": "Tidy Language",
+    "text": "Tidy Language\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
-    "title": "Querying and Wrangling Data",
-    "section": "… on Math",
-    "text": "… on Math\n\nmath_mod &lt;- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(math_mod)\n\n\nCall:\nlm_robust(formula = g3tmathss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n             Estimate Std. Error   t value  Pr(&gt;|t|)  CI Lower   CI Upper   DF\n(Intercept) 627.27238   6.034736 103.94363 0.000e+00 615.43697  6.391e+02 1898\ntreatment     6.36724   1.732919   3.67429 2.451e-04   2.96862  9.766e+00 1898\ngender2       0.03764   1.726153   0.02181 9.826e-01  -3.34772  3.423e+00 1898\nrace2       -21.85364   3.005153  -7.27205 5.153e-13 -27.74739 -1.596e+01 1898\nschlurbn2     8.66786   3.564785   2.43152 1.513e-02   1.67655  1.566e+01 1898\nschlurbn3     3.57552   3.717144   0.96190 3.362e-01  -3.71459  1.087e+01 1898\nschlurbn4    -0.61152   4.817304  -0.12694 8.990e-01 -10.05929  8.836e+00 1898\ngrdrange4    10.40834   4.146388   2.51022 1.215e-02   2.27638  1.854e+01 1898\ngrdrange5     3.24765   3.552424   0.91421 3.607e-01  -3.71941  1.021e+01 1898\ngrdrange6     7.68867   3.205376   2.39868 1.655e-02   1.40224  1.398e+01 1898\ngrdrange7   -19.31582   8.736040  -2.21105 2.715e-02 -36.44907 -2.183e+00 1898\ngrdrange8     6.11783   3.533298   1.73148 8.353e-02  -0.81172  1.305e+01 1898\ngkenrmnt     -0.01167   0.005995  -1.94649 5.174e-02  -0.02343  8.830e-05 1898\n\nMultiple R-squared:  0.08643 ,  Adjusted R-squared:  0.08066 \nF-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "title": "Functions and Iteration",
+    "section": "On Math",
+    "text": "On Math\n\nmath_mod &lt;- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(math_mod)\n\n\nCall:\nlm_robust(formula = g3tmathss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n             Estimate Std. Error   t value  Pr(&gt;|t|)  CI Lower   CI Upper   DF\n(Intercept) 627.27238   6.034736 103.94363 0.000e+00 615.43697  6.391e+02 1898\ntreatment     6.36724   1.732919   3.67429 2.451e-04   2.96862  9.766e+00 1898\ngender2       0.03764   1.726153   0.02181 9.826e-01  -3.34772  3.423e+00 1898\nrace2       -21.85364   3.005153  -7.27205 5.153e-13 -27.74739 -1.596e+01 1898\nschlurbn2     8.66786   3.564785   2.43152 1.513e-02   1.67655  1.566e+01 1898\nschlurbn3     3.57552   3.717144   0.96190 3.362e-01  -3.71459  1.087e+01 1898\nschlurbn4    -0.61152   4.817304  -0.12694 8.990e-01 -10.05929  8.836e+00 1898\ngrdrange4    10.40834   4.146388   2.51022 1.215e-02   2.27638  1.854e+01 1898\ngrdrange5     3.24765   3.552424   0.91421 3.607e-01  -3.71941  1.021e+01 1898\ngrdrange6     7.68867   3.205376   2.39868 1.655e-02   1.40224  1.398e+01 1898\ngrdrange7   -19.31582   8.736040  -2.21105 2.715e-02 -36.44907 -2.183e+00 1898\ngrdrange8     6.11783   3.533298   1.73148 8.353e-02  -0.81172  1.305e+01 1898\ngkenrmnt     -0.01167   0.005995  -1.94649 5.174e-02  -0.02343  8.830e-05 1898\n\nMultiple R-squared:  0.08643 ,  Adjusted R-squared:  0.08066 \nF-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math",
+    "title": "Functions and Iteration",
+    "section": "Tidy Math",
+    "text": "Tidy Math\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
-    "title": "Querying and Wrangling Data",
-    "section": "…on Reading",
-    "text": "…on Reading\n\nread_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(read_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "title": "Functions and Iteration",
+    "section": "On Reading",
+    "text": "On Reading\n\nread_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(read_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading",
+    "title": "Functions and Iteration",
+    "section": "Tidy Reading",
+    "text": "Tidy Reading\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Repetition",
-    "text": "Repetition\n\nRedundant code\nRepetitive\nProne to error when copy and pasting and changing a few things\nIf we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times\n\nWhich may also open up space for more error"
+    "text": "Repetition\n\nRedundant code\nRepetitive\nProne to error when copy and pasting and changing a few things. Can list out all the errors I made?\nIf we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times\n\nWhich may also open up space for more error"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Functions",
     "text": "Functions"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Function Example",
     "text": "Function Example\n\nrun_reg &lt;- function(dat = star_dat,\n                    outcome_var) {\n\n    lm_equation &lt;- paste(outcome_var, \" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt\")\n\n    mod &lt;- lm_robust(as.formula(lm_equation), \n                     data = dat,\n                     se_type = \"HC2\")\n\n    res_clean &lt;- tidy(mod) %&gt;%\n        filter(term == \"treatment\") %&gt;%\n        mutate(outcome = outcome_var) %&gt;%\n        dplyr::select(outcome, everything())\n\n                \n    return(res_clean)\n    \n}"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
-    "title": "Querying and Wrangling Data",
+    "title": "Functions and Iteration",
     "section": "Run the Function",
     "text": "Run the Function\n\nrun_reg(outcome = \"g3tlangss\")\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898\n\nrun_reg(outcome = \"g3tmathss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tmathss treatment 6.367242  1.732919  3.674288 0.0002451289 2.968616\n  conf.high   df\n1  9.765868 1898\n\nrun_reg(outcome = \"g3treadss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  10.63627 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
+    "title": "Functions and Iteration",
+    "section": "Repetition",
+    "text": "Repetition\n\nFor the sake of this presentation, I am only showing three outcomes.\nImagine if there were more than 10 outcomes that you needed to analyze.\nThink of potential issues in this situation - both when doing brute force analysis and even when using a function like run_reg()."
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
+    "title": "Functions and Iteration",
+    "section": "Repetitive Tasks Examples",
+    "text": "Repetitive Tasks Examples\n\nRunning analysis for multiple outcomes like above\nRead in 50 csv files in a folder with data on different years\nConduct power analysis to estimate sample size for a randomized trial based on multiple assumed values effect size"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
+    "title": "Functions and Iteration",
+    "section": "For Loops",
+    "text": "For Loops\n\nClassic way to run repetitive analyses or tasks\nFor each item in a vector of items, run the code"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-example",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-example",
+    "title": "Functions and Iteration",
+    "section": "For Loops Example",
+    "text": "For Loops Example\n\nnumbers &lt;- 1:10 # A vector of items to loop through\n\nfor(n in numbers){ # for each number in the vector numbers\n  \n  x &lt;- n * 2 # multiply the number by 2\n  \n  print(x) # print the result\n  \n  \n}\n\n[1] 2\n[1] 4\n[1] 6\n[1] 8\n[1] 10\n[1] 12\n[1] 14\n[1] 16\n[1] 18\n[1] 20"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#star-analysis-example-loop-through-outcomes",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#star-analysis-example-loop-through-outcomes",
+    "title": "Functions and Iteration",
+    "section": "STAR Analysis Example: Loop through Outcomes",
+    "text": "STAR Analysis Example: Loop through Outcomes\n\noutcome &lt;- c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\") # outcomes to loop through\n\nres &lt;- NULL # initialize the results \n\nfor(y in outcome){ # for each outcome in the outcome vector \n  \n  output &lt;- run_reg(outcome = y) # run run_reg for that outcome\n  res &lt;- bind_rows(res, output) # append the output to res\n  \n  \n}\n\nres # look at res after the looping\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
+    "title": "Functions and Iteration",
+    "section": "For Loops are Slow…",
+    "text": "For Loops are Slow…\n\n\n\nFor loops are still clunky and involve fairly extensive coding\n\n\n\nNeed to think through how to append and store the outcome or print the outcome\nAlso a bit slow..(er than other stuff we are going to talk about) in R"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#verbs",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#verbs",
+    "title": "Functions and Iteration",
+    "section": "Verbs",
+    "text": "Verbs"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
+    "title": "Functions and Iteration",
+    "section": "map()",
+    "text": "map()\n\nnumbers &lt;- 1:10 # vector with items to loop over\n\n# function that you want run\ntimes_two &lt;- function(x){\n  x * 2\n}\n\n# loop times_two through each number, notice the output\nmap(numbers, .f = times_two)\n\n[[1]]\n[1] 2\n\n[[2]]\n[1] 4\n\n[[3]]\n[1] 6\n\n[[4]]\n[1] 8\n\n[[5]]\n[1] 10\n\n[[6]]\n[1] 12\n\n[[7]]\n[1] 14\n\n[[8]]\n[1] 16\n\n[[9]]\n[1] 18\n\n[[10]]\n[1] 20"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
+    "title": "Functions and Iteration",
+    "section": "Different Output Format",
+    "text": "Different Output Format\n\nmap_int(numbers, .f = times_two)\n\n [1]  2  4  6  8 10 12 14 16 18 20"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#pmap_dfr",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#pmap_dfr",
+    "title": "Functions and Iteration",
+    "section": "pmap_dfr",
+    "text": "pmap_dfr\n\nparams &lt;- tibble(outcome = c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\"))\n\npmap_dfr(params, .f = run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
   },
   {
     "objectID": "classes/class_01.html",
     "href": "classes/class_01.html",
     "title": "Class 01: Introduction to the Course and to R",
     "section": "",
-    "text": "Lecture\nPlaceholder right now - this is where a recorded lecture would go.\n\n\n\nSlides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+    "text": "Slides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
   },
   {
     "objectID": "classes/class_03.html",
@@ -372,49 +463,11 @@
     "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 3: Querying and Wrangling Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
-    "objectID": "classes/class_05.html",
-    "href": "classes/class_05.html",
-    "title": "Class 05: Strings and Factors",
+    "objectID": "classes/class_04.html",
+    "href": "classes/class_04.html",
+    "title": "Class 04: Relational Datasets",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nStrings and Factors\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
-  },
-  {
-    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
-    "title": "Practice Problem Set 2: Data Visualization",
-    "section": "",
-    "text": "Run the following code to load the data. Glimpse the data and learn about the variables:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor the following questions, please create a graph using ggplot to answer:\nCreate a plot examine the distribution of ret78 variable which has information on income of the participants in year 1978\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow check the difference between the distribution of that variable between the treatment and control groups.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nThink about one more different way to visualize the difference in the distribution of ret78 in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate graphs showing the difference in treatment and control group distributions of the other variables in the data :\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between age and educ\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship between age and education differ between the treatment and control groups:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between race and income in 1978.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship differ by treatment level.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
-    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
-    "title": "Practice Problem Set 3: Querying and Wrangling Data",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "classes.html",
-    "href": "classes.html",
-    "title": "Classes",
-    "section": "",
-    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: Strings and Factors\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Classes"
-    ]
-  },
-  {
-    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "title": "Practice Problem Set 1: Introduction",
-    "section": "",
-    "text": "Downloading R and R Studio/Positron\n\nIf you don’t have R and R Studio/Positron downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\nDownload Positron here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
-  },
-  {
-    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
-    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
-    "title": "Practice Problem Set 2",
-    "section": "",
-    "text": "Run the following code to load the data:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCreate a scatterplot:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 4: Relational Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
     "objectID": "instructors.html",
@@ -427,11 +480,70 @@
     ]
   },
   {
-    "objectID": "classes/class_04.html",
-    "href": "classes/class_04.html",
-    "title": "Class 04: Relational Datasets",
+    "objectID": "practice_problems/practice_problems_05/practice_problems_05B.html",
+    "href": "practice_problems/practice_problems_05/practice_problems_05B.html",
+    "title": "Practice Problem Set 5B: Factors",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Run the following code to load the data. View the codebook for the data here.\n\nlibrary(tidyverse)\n\nbike_dat &lt;- read_csv(\"../data/capital_bike_sharing_uci/capital_bike_sharing.csv\")\n\nglimpse(bike_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ yr         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,…\n$ weekday    &lt;dbl&gt; 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4,…\n$ workingday &lt;dbl&gt; 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1,…\n$ weathersit &lt;dbl&gt; 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 2, 2, 2,…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ cnt        &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…\n\n\nCreate a graph like we did in Lecture 2 of the relationship between temperature and total bike rentals. What is odd about this graph?\nRecode the season, yr, mnth, holiday, weekday, workingday, and weather-sit variable.\nChange the season variable into a factor variable. What are the levels of the variable? Reorder the variable so that we have Summer, Fall, Winter, Spring.\nRecreate the graph from Q2 with the new reordered variable.\nCreate a bar chart for the weathersit variable.\nLump together the least frequent two levels and recreate the graph from Q6."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "title": "Practice Problem Set 4: Relational Data",
+    "section": "",
+    "text": "Run the following code to load the data. Look through this website to learn more about the data.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(nycflights13)\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…\n\nglimpse(airports)\n\nRows: 1,458\nColumns: 8\n$ faa   &lt;chr&gt; \"04G\", \"06A\", \"06C\", \"06N\", \"09J\", \"0A9\", \"0G6\", \"0G7\", \"0P2\", \"…\n$ name  &lt;chr&gt; \"Lansdowne Airport\", \"Moton Field Municipal Airport\", \"Schaumbur…\n$ lat   &lt;dbl&gt; 41.13047, 32.46057, 41.98934, 41.43191, 31.07447, 36.37122, 41.4…\n$ lon   &lt;dbl&gt; -80.61958, -85.68003, -88.10124, -74.39156, -81.42778, -82.17342…\n$ alt   &lt;dbl&gt; 1044, 264, 801, 523, 11, 1593, 730, 492, 1000, 108, 409, 875, 10…\n$ tz    &lt;dbl&gt; -5, -6, -6, -5, -5, -5, -5, -5, -5, -8, -5, -6, -5, -5, -5, -5, …\n$ dst   &lt;chr&gt; \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"U\", \"A\", \"A\", \"U\", \"A\",…\n$ tzone &lt;chr&gt; \"America/New_York\", \"America/Chicago\", \"America/Chicago\", \"Ameri…\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…\n\nglimpse(planes)\n\nRows: 3,322\nColumns: 9\n$ tailnum      &lt;chr&gt; \"N10156\", \"N102UW\", \"N103US\", \"N104UW\", \"N10575\", \"N105UW…\n$ year         &lt;int&gt; 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…\n$ type         &lt;chr&gt; \"Fixed wing multi engine\", \"Fixed wing multi engine\", \"Fi…\n$ manufacturer &lt;chr&gt; \"EMBRAER\", \"AIRBUS INDUSTRIE\", \"AIRBUS INDUSTRIE\", \"AIRBU…\n$ model        &lt;chr&gt; \"EMB-145XR\", \"A320-214\", \"A320-214\", \"A320-214\", \"EMB-145…\n$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ seats        &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…\n$ speed        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ engine       &lt;chr&gt; \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turb…\n\nglimpse(weather)\n\nRows: 26,115\nColumns: 15\n$ origin     &lt;chr&gt; \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EW…\n$ year       &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,…\n$ month      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, …\n$ temp       &lt;dbl&gt; 39.02, 39.02, 39.02, 39.92, 39.02, 37.94, 39.02, 39.92, 39.…\n$ dewp       &lt;dbl&gt; 26.06, 26.96, 28.04, 28.04, 28.04, 28.04, 28.04, 28.04, 28.…\n$ humid      &lt;dbl&gt; 59.37, 61.63, 64.43, 62.21, 64.43, 67.21, 64.43, 62.21, 62.…\n$ wind_dir   &lt;dbl&gt; 270, 250, 240, 250, 260, 240, 240, 250, 260, 260, 260, 330,…\n$ wind_speed &lt;dbl&gt; 10.35702, 8.05546, 11.50780, 12.65858, 12.65858, 11.50780, …\n$ wind_gust  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 20.…\n$ precip     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ pressure   &lt;dbl&gt; 1012.0, 1012.3, 1012.5, 1012.2, 1011.9, 1012.4, 1012.2, 101…\n$ visib      &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…\n$ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00…\n\n\n\n\nSketch out the relationship between all the tables in the database. For each dataset, what is the primary key? What are secondary keys?\nHow many flights operated by Jet Blue departed from EWR in January, 2013?\nHow many flights that departed from JFK in 2013 were manufactured by Boeing? Create a subset of flights data that meet these conditions - departed from JFK in 2013 on planes manufactured by Boeing.\nFor each of the airports in the flights data, count the number of flights that departed when there was some precipitation.\nHow many of the flights from Q5 experienced some type of delay? What was the average delay?\nBreak down the delayed flights from Q6 by plane manufacturer and the year manufactured.\nAre there any flights in the flights data for which we do not have matches in the other datasets? Why might there be no matches?\nHow many flights departing from each of the NYC airports were headed to a different time zone? For each airport, calculate the number from flights departing and landing in each of the time zones. E.g. how many departed JFK and landed in America/Chicago time zone, in America/ Los Angeles time zone etc.?\nExtract data on flights departing NYC airports for which we have information on the plane manufacturer."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1: Introduction",
+    "section": "",
+    "text": "Downloading R and R Studio/Positron\n\nIf you don’t have R and R Studio/Positron downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\nDownload Positron here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "Classes",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: Strings and Factors\n\n\nMegha Joshi\n\n\n\n\nClass 06: Functions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Classes"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "title": "Practice Problem Set 3: Querying and Wrangling Data",
+    "section": "",
+    "text": "Run the following code to load the data:\n\nlibrary(tidyverse)\nlibrary(janitor)\n\ndiabetes_dat &lt;- read_csv(\"../data/diabetes_uci/diabetes_data.csv\") %&gt;%\n  clean_names()\n\nUsing tidyverse syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.\nCalculate the average BMI for smokers:\nUsing the codebook here, create another variable that contains the corresponding label for the education variable. For example, for the rows where education is 1, the new variable should contain: Never attended school or only kindergarten.\nFor each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.\nCreate a ggplot representing the data from above.\nFor people with and without diabetes, calculate the mean and standard deviation of the following variables: mental_hlth, physical_htlh, gen_hlth, bmi, age, income.\nThink of ways to represent the table above in a different way\nRestructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.\nCreate a table using gt or kable with the dataset above."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_05/practice_problems_05A.html",
+    "href": "practice_problems/practice_problems_05/practice_problems_05A.html",
+    "title": "Practice Problem Set 5A: Strings",
+    "section": "",
+    "text": "Run the following code to load the data. View the codebook and other information on the on the data here.\n\nlibrary(tidyverse)\n\nnsf_data &lt;- tidytuesdayR::tt_load('2025-05-06')\nnsf_terminations &lt;- nsf_data$nsf_terminations\n\nSeparate the project title into the main title and sub-title.\nCreate a subset of the data with projects that have the word STEM in their title.\nCount the number of grants by directorate. Do you see anything odd.\nClean up the directorate variable and create the table again. Arrange the table in descending order.\nCount the length of the org_zip variable. Look at the distribution of the length.\nSplit the org_zip variable into into two variables. First containing the 5 number zip code and the second containing the add-on 4 number code.\nChallenge problem: Create a graph identifying the most commonly occurring word across the abstracts from grants that are on Ted Cruz’s list."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2: Data Visualization",
+    "section": "",
+    "text": "Run the following code to load the data. Glimpse the data and learn about the variables:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor the following questions, please create a graph using ggplot to answer:\nCreate a plot examine the distribution of ret78 variable which has information on income of the participants in year 1978\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow check the difference between the distribution of that variable between the treatment and control groups.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nThink about one more different way to visualize the difference in the distribution of ret78 in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate graphs showing the difference in treatment and control group distributions of the other variables in the data :\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between age and educ\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship between age and education differ between the treatment and control groups:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between race and income in 1978.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship differ by treatment level.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "classes/class_05.html",
+    "href": "classes/class_05.html",
+    "title": "Class 05: Strings and Factors",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nStrings and Factors\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+  },
+  {
+    "objectID": "classes/class_06.html",
+    "href": "classes/class_06.html",
+    "title": "Class 06: Functions and Iteration",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nFunctions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
     "objectID": "classes/class_02.html",
@@ -445,7 +557,7 @@
     "href": "index.html",
     "title": "Data Analytics in R",
     "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
     "crumbs": [
       "Home"
     ]
@@ -455,7 +567,7 @@
     "href": "index.html#course-description",
     "title": "Data Analytics in R",
     "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve twelve classes covering data visualization, data wrangling, and data analytics. Each class will involve a 30 minute video lecture accompanied by slides. For each topic, we also provide a set intensive practice exercises that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
     "crumbs": [
       "Home"
     ]
@@ -465,7 +577,7 @@
     "href": "index.html#expectations",
     "title": "Data Analytics in R",
     "section": "Expectations",
-    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades. We will provide a list of recommended readings each week. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
+    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades but are happy to consult if you have questions. Moeover, we will provide a list of recommended readings each week. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
     "crumbs": [
       "Home"
     ]

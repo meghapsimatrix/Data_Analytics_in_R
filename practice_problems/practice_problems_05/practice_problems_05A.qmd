@@ -1,0 +1,64 @@
+---
+title: "Practice Problem Set 5A: Strings"
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+engine: knitr
+editor: visual
+webr:
+  packages: ['dplyr', 'readr', 'ggplot2']
+filters:
+  - webr
+---
+
+1.  Run the following code to load the data. View the codebook and other information on the on the data [here](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-05-06/readme.md).
+
+    ```{r, message = FALSE, warning = FALSE}
+    library(tidyverse)
+
+    nsf_data <- tidytuesdayR::tt_load('2025-05-06')
+    nsf_terminations <- nsf_data$nsf_terminations
+
+    ```
+
+2.  Separate the project title into the main title and sub-title.
+
+    ```{r}
+
+    ```
+
+3.  Create a subset of the data with projects that have the word STEM in their title.
+
+    ```{r}
+    ```
+
+4.  Count the number of grants by `directorate`. Do you see anything odd.
+
+    ```{r}
+
+    ```
+
+5.  Clean up the `directorate` variable and create the table again. Arrange the table in descending order.
+
+    ```{r}
+
+    ```
+
+6.  Count the length of the `org_zip` variable. Look at the distribution of the length.
+
+    ```{r}
+
+    ```
+
+7.  Split the `org_zip` variable into into two variables. First containing the 5 number zip code and the second containing the add-on 4 number code.
+
+    ```{r}
+
+    ```
+
+8.  Challenge problem: Create a graph identifying the most commonly occurring word across the abstracts from grants that are on Ted Cruz's list.
+
+    ```{r}
+
+    ```
