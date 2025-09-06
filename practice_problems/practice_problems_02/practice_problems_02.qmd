@@ -6,10 +6,6 @@ format:
     embed-resources: true
 engine: knitr
 editor: visual
-r:
-  packages: ['dplyr', 'readr', 'ggplot2', 'MatchIt']
-filters:
-  - r
 ---
 
 1.  Run the following code to load the data. Glimpse the data and learn about the variables:
@@ -17,7 +13,9 @@ filters:
     ```{r}
     #install.packages("MatchIt")
     library(MatchIt)
-    lalonde
+    library(tidyverse)
+
+    glimpse(lalonde)
     ```
 
     **For the following questions, please create a graph using ggplot to answer:**

@@ -16,7 +16,9 @@ filters:
 
     ```{r}
     library(MatchIt)
-    lalonde
+    library(tidyverse)
+
+    glimpse(lalonde)
     ```
 
 2.  Create dummy variables for the race categorical variable. There should be three new variables: black (1 if the race is black, 0 otherwise), hispanic (1 if race is hispan, 0 otherwise), and white (1 if race is white, 0 otherwise).

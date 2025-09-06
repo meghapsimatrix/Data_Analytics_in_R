@@ -19,7 +19,7 @@ listing:
     filter-ui: false
   - id: problems
     contents:
-      - ../practice_problems/practice_problems_05/practice_problems_*.qmd
+      - ../practice_problems/practice_problems_06/practice_problems_*.qmd
     type: table
     fields: [title]
     date-format: "ddd, MMM DD"
@@ -42,6 +42,11 @@ tbl-colwidths: [10,50,40]
 :::
 
 # Readings
+|                                                                                                               |
+|------------------------------------------------------------------------|
+| [R4DS Chapter 19 - Functions](https://r4ds.had.co.nz/functions.html)|
+| [R Programming for DS Chapter 14 - Functions](https://bookdown.org/rdpeng/rprogdatascience/functions.html) |
+| [R4DS Chapter 21 - Iteration](https://r4ds.had.co.nz/iteration.html)|
 
 
 

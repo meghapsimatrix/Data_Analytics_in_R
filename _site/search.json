@@ -302,6 +302,13 @@
     "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
   },
   {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "title": "Functions and Iteration",
+    "section": "Example Dataset Background",
+    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package. Please review information about the data here."
+  },
+  {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
     "title": "Functions and Iteration",
@@ -316,11 +323,11 @@
     "text": "Run a Linear Regression to Assess the Impact of Treatment on Language\n\nlang_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(lang_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
   },
   {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language",
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
     "title": "Functions and Iteration",
-    "section": "Tidy Language",
-    "text": "Tidy Language\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "section": "Tidy Language Results",
+    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
@@ -330,11 +337,11 @@
     "text": "On Math\n\nmath_mod &lt;- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(math_mod)\n\n\nCall:\nlm_robust(formula = g3tmathss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n             Estimate Std. Error   t value  Pr(&gt;|t|)  CI Lower   CI Upper   DF\n(Intercept) 627.27238   6.034736 103.94363 0.000e+00 615.43697  6.391e+02 1898\ntreatment     6.36724   1.732919   3.67429 2.451e-04   2.96862  9.766e+00 1898\ngender2       0.03764   1.726153   0.02181 9.826e-01  -3.34772  3.423e+00 1898\nrace2       -21.85364   3.005153  -7.27205 5.153e-13 -27.74739 -1.596e+01 1898\nschlurbn2     8.66786   3.564785   2.43152 1.513e-02   1.67655  1.566e+01 1898\nschlurbn3     3.57552   3.717144   0.96190 3.362e-01  -3.71459  1.087e+01 1898\nschlurbn4    -0.61152   4.817304  -0.12694 8.990e-01 -10.05929  8.836e+00 1898\ngrdrange4    10.40834   4.146388   2.51022 1.215e-02   2.27638  1.854e+01 1898\ngrdrange5     3.24765   3.552424   0.91421 3.607e-01  -3.71941  1.021e+01 1898\ngrdrange6     7.68867   3.205376   2.39868 1.655e-02   1.40224  1.398e+01 1898\ngrdrange7   -19.31582   8.736040  -2.21105 2.715e-02 -36.44907 -2.183e+00 1898\ngrdrange8     6.11783   3.533298   1.73148 8.353e-02  -0.81172  1.305e+01 1898\ngkenrmnt     -0.01167   0.005995  -1.94649 5.174e-02  -0.02343  8.830e-05 1898\n\nMultiple R-squared:  0.08643 ,  Adjusted R-squared:  0.08066 \nF-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
   },
   {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math",
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
     "title": "Functions and Iteration",
-    "section": "Tidy Math",
-    "text": "Tidy Math\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "section": "Tidy Math Results",
+    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
@@ -344,11 +351,11 @@
     "text": "On Reading\n\nread_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(read_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
   },
   {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading",
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
     "title": "Functions and Iteration",
-    "section": "Tidy Reading",
-    "text": "Tidy Reading\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "section": "Tidy Reading Results",
+    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
@@ -377,6 +384,13 @@
     "title": "Functions and Iteration",
     "section": "Run the Function",
     "text": "Run the Function\n\nrun_reg(outcome = \"g3tlangss\")\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898\n\nrun_reg(outcome = \"g3tmathss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tmathss treatment 6.367242  1.732919  3.674288 0.0002451289 2.968616\n  conf.high   df\n1  9.765868 1898\n\nrun_reg(outcome = \"g3treadss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  10.63627 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "title": "Functions and Iteration",
+    "section": "Critiques of the run_reg() Function",
+    "text": "Critiques of the run_reg() Function\n\nCan you think of potential issues with this function?\nWhat are the issues and consequences of those issues?\nWhat can you do to improve the function?"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
@@ -421,11 +435,11 @@
     "text": "For Loops are Slow…\n\n\n\nFor loops are still clunky and involve fairly extensive coding\n\n\n\nNeed to think through how to append and store the outcome or print the outcome\nAlso a bit slow..(er than other stuff we are going to talk about) in R"
   },
   {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#verbs",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#verbs",
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
     "title": "Functions and Iteration",
-    "section": "Verbs",
-    "text": "Verbs"
+    "section": "purrr",
+    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here: https://purrr.tidyverse.org/reference/map.html"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
@@ -442,18 +456,25 @@
     "text": "Different Output Format\n\nmap_int(numbers, .f = times_two)\n\n [1]  2  4  6  8 10 12 14 16 18 20"
   },
   {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#pmap_dfr",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#pmap_dfr",
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
     "title": "Functions and Iteration",
-    "section": "pmap_dfr",
-    "text": "pmap_dfr\n\nparams &lt;- tibble(outcome = c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\"))\n\npmap_dfr(params, .f = run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "section": "Back to our run_reg()",
+    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "title": "Functions and Iteration",
+    "section": "Functions with Multiple arguments",
+    "text": "Functions with Multiple arguments\n\nThe map() family of functions is limited in that we can only loop through one thing\nWe may run into a scenario where we want through loop through multiple things\nCan you think of some such scenarios?\nIn such case, we can use the pmap() family of functions. Please read through https://purrr.tidyverse.org/reference/pmap.html"
   },
   {
     "objectID": "classes/class_01.html",
     "href": "classes/class_01.html",
     "title": "Class 01: Introduction to the Course and to R",
     "section": "",
-    "text": "Slides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+    "text": "Slides\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\nNo matching items\n\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2 - History and Overview of R\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
   },
   {
     "objectID": "classes/class_03.html",
@@ -494,11 +515,11 @@
     "text": "Run the following code to load the data. Look through this website to learn more about the data.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(nycflights13)\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…\n\nglimpse(airports)\n\nRows: 1,458\nColumns: 8\n$ faa   &lt;chr&gt; \"04G\", \"06A\", \"06C\", \"06N\", \"09J\", \"0A9\", \"0G6\", \"0G7\", \"0P2\", \"…\n$ name  &lt;chr&gt; \"Lansdowne Airport\", \"Moton Field Municipal Airport\", \"Schaumbur…\n$ lat   &lt;dbl&gt; 41.13047, 32.46057, 41.98934, 41.43191, 31.07447, 36.37122, 41.4…\n$ lon   &lt;dbl&gt; -80.61958, -85.68003, -88.10124, -74.39156, -81.42778, -82.17342…\n$ alt   &lt;dbl&gt; 1044, 264, 801, 523, 11, 1593, 730, 492, 1000, 108, 409, 875, 10…\n$ tz    &lt;dbl&gt; -5, -6, -6, -5, -5, -5, -5, -5, -5, -8, -5, -6, -5, -5, -5, -5, …\n$ dst   &lt;chr&gt; \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"U\", \"A\", \"A\", \"U\", \"A\",…\n$ tzone &lt;chr&gt; \"America/New_York\", \"America/Chicago\", \"America/Chicago\", \"Ameri…\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…\n\nglimpse(planes)\n\nRows: 3,322\nColumns: 9\n$ tailnum      &lt;chr&gt; \"N10156\", \"N102UW\", \"N103US\", \"N104UW\", \"N10575\", \"N105UW…\n$ year         &lt;int&gt; 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…\n$ type         &lt;chr&gt; \"Fixed wing multi engine\", \"Fixed wing multi engine\", \"Fi…\n$ manufacturer &lt;chr&gt; \"EMBRAER\", \"AIRBUS INDUSTRIE\", \"AIRBUS INDUSTRIE\", \"AIRBU…\n$ model        &lt;chr&gt; \"EMB-145XR\", \"A320-214\", \"A320-214\", \"A320-214\", \"EMB-145…\n$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ seats        &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…\n$ speed        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ engine       &lt;chr&gt; \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turb…\n\nglimpse(weather)\n\nRows: 26,115\nColumns: 15\n$ origin     &lt;chr&gt; \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EW…\n$ year       &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,…\n$ month      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, …\n$ temp       &lt;dbl&gt; 39.02, 39.02, 39.02, 39.92, 39.02, 37.94, 39.02, 39.92, 39.…\n$ dewp       &lt;dbl&gt; 26.06, 26.96, 28.04, 28.04, 28.04, 28.04, 28.04, 28.04, 28.…\n$ humid      &lt;dbl&gt; 59.37, 61.63, 64.43, 62.21, 64.43, 67.21, 64.43, 62.21, 62.…\n$ wind_dir   &lt;dbl&gt; 270, 250, 240, 250, 260, 240, 240, 250, 260, 260, 260, 330,…\n$ wind_speed &lt;dbl&gt; 10.35702, 8.05546, 11.50780, 12.65858, 12.65858, 11.50780, …\n$ wind_gust  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 20.…\n$ precip     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ pressure   &lt;dbl&gt; 1012.0, 1012.3, 1012.5, 1012.2, 1011.9, 1012.4, 1012.2, 101…\n$ visib      &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…\n$ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00…\n\n\n\n\nSketch out the relationship between all the tables in the database. For each dataset, what is the primary key? What are secondary keys?\nHow many flights operated by Jet Blue departed from EWR in January, 2013?\nHow many flights that departed from JFK in 2013 were manufactured by Boeing? Create a subset of flights data that meet these conditions - departed from JFK in 2013 on planes manufactured by Boeing.\nFor each of the airports in the flights data, count the number of flights that departed when there was some precipitation.\nHow many of the flights from Q5 experienced some type of delay? What was the average delay?\nBreak down the delayed flights from Q6 by plane manufacturer and the year manufactured.\nAre there any flights in the flights data for which we do not have matches in the other datasets? Why might there be no matches?\nHow many flights departing from each of the NYC airports were headed to a different time zone? For each airport, calculate the number from flights departing and landing in each of the time zones. E.g. how many departed JFK and landed in America/Chicago time zone, in America/ Los Angeles time zone etc.?\nExtract data on flights departing NYC airports for which we have information on the plane manufacturer."
   },
   {
-    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
-    "title": "Practice Problem Set 1: Introduction",
+    "objectID": "practice_problems/practice_problems_06/practice_problems_06.html",
+    "href": "practice_problems/practice_problems_06/practice_problems_06.html",
+    "title": "Practice Problem Set 6: Functions and Iteration",
     "section": "",
-    "text": "Downloading R and R Studio/Positron\n\nIf you don’t have R and R Studio/Positron downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\nDownload Positron here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+    "text": "Run the following code to load the data. View the codebook and other information on the on the data here.\n\nlibrary(MatchIt)\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.2\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(lalonde)\n\nRows: 614\nColumns: 9\n$ treat    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ age      &lt;int&gt; 37, 22, 30, 27, 33, 22, 23, 32, 22, 33, 19, 21, 18, 27, 17, 1…\n$ educ     &lt;int&gt; 11, 9, 12, 11, 8, 9, 12, 11, 16, 12, 9, 13, 8, 10, 7, 10, 13,…\n$ race     &lt;fct&gt; black, hispan, black, black, black, black, black, black, blac…\n$ married  &lt;int&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0…\n$ nodegree &lt;int&gt; 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1…\n$ re74     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ re75     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ re78     &lt;dbl&gt; 9930.0460, 3595.8940, 24909.4500, 7506.1460, 289.7899, 4056.4…\n\n\nCreate dummy variables for the race categorical variable. There should be three new variables: black (1 if the race is black, 0 otherwise), hispanic (1 if race is hispan, 0 otherwise), and white (1 if race is white, 0 otherwise).\n\ntable(lalonde$race)\n\n\n black hispan  white \n   243     72    299 \n\n\nWrite code that calculates the proportion of black students in treatment group, the proportion of black students in control group. Then take the difference between those two numbers.\nCreate a function using the code you wrote in Q3 that takes in a vector containing treatment indicator and the vector containing a binary variable and takes the difference in proportion between treatment and control group.\nWrite code to run this function for the following variables: black, hispanic, white, married, and nodegree.\nUpdate the function from Q4 so that the output now is a data frame or tibble containing the following: (1) the proportion in treatment, (2) proportion in control and (3) the difference in the proportions.\nLoop through the variables in Q5 with the updated function.\nNow change the function so it takes in a dataset and unquoted variable names as arguments. Look through this blog to see how this works.\nApply the function to the variables listed in Q5.\nChallenge Problem: I have bunch of csv files in this folder. I need to read them all in. Each data has data on a different school. Read all the data in and bind them together in one dataset."
   },
   {
     "objectID": "classes.html",
@@ -511,11 +532,18 @@
     ]
   },
   {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1: Introduction",
+    "section": "",
+    "text": "Downloading R and R Studio/Positron\n\nIf you don’t have R and R Studio/Positron downloaded, please download them:\n\nDownload R here.\nDownload R Studio here.\nDownload Positron here.\n\nCreate an R project for this class and open that project.\nOpen the project and install the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nWrite code to read in [some data].\nUsing the summary() function from base R, write code to look at the summary of the following variables: attendance, date.\nUsing the table() function, check the how many matches were hosted by each Host country.\nRun a linear regression regressing home_score on away_score and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 7 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
     "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
     "href": "practice_problems/practice_problems_03/practice_problems_03.html",
     "title": "Practice Problem Set 3: Querying and Wrangling Data",
     "section": "",
-    "text": "Run the following code to load the data:\n\nlibrary(tidyverse)\nlibrary(janitor)\n\ndiabetes_dat &lt;- read_csv(\"../data/diabetes_uci/diabetes_data.csv\") %&gt;%\n  clean_names()\n\nUsing tidyverse syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.\nCalculate the average BMI for smokers:\nUsing the codebook here, create another variable that contains the corresponding label for the education variable. For example, for the rows where education is 1, the new variable should contain: Never attended school or only kindergarten.\nFor each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.\nCreate a ggplot representing the data from above.\nFor people with and without diabetes, calculate the mean and standard deviation of the following variables: mental_hlth, physical_htlh, gen_hlth, bmi, age, income.\nThink of ways to represent the table above in a different way\nRestructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.\nCreate a table using gt or kable with the dataset above."
+    "text": "Run the following code to load the data:\n\nlibrary(tidyverse)\nlibrary(janitor)\n\ndiabetes_dat &lt;- read_csv(\"https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv\") %&gt;%\n  clean_names()\n\nUsing tidyverse syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.\nCalculate the average BMI for smokers:\nUsing the codebook here, create another variable that contains the corresponding label for the education variable. For example, for the rows where education is 1, the new variable should contain: Never attended school or only kindergarten.\nFor each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.\nCreate a ggplot representing the data from above.\nFor people with and without diabetes, calculate the mean and standard deviation of the following variables: mental_hlth, physical_htlh, gen_hlth, bmi, age, income.\nThink of ways to represent the table above in a different way\nRestructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.\nCreate a table using gt or kable with the dataset above."
   },
   {
     "objectID": "practice_problems/practice_problems_05/practice_problems_05A.html",
@@ -529,28 +557,28 @@
     "href": "practice_problems/practice_problems_02/practice_problems_02.html",
     "title": "Practice Problem Set 2: Data Visualization",
     "section": "",
-    "text": "Run the following code to load the data. Glimpse the data and learn about the variables:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor the following questions, please create a graph using ggplot to answer:\nCreate a plot examine the distribution of ret78 variable which has information on income of the participants in year 1978\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow check the difference between the distribution of that variable between the treatment and control groups.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nThink about one more different way to visualize the difference in the distribution of ret78 in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate graphs showing the difference in treatment and control group distributions of the other variables in the data :\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between age and educ\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship between age and education differ between the treatment and control groups:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between race and income in 1978.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship differ by treatment level.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Run the following code to load the data. Glimpse the data and learn about the variables:\n\n#install.packages(\"MatchIt\")\nlibrary(MatchIt)\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.2\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(lalonde)\n\nRows: 614\nColumns: 9\n$ treat    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ age      &lt;int&gt; 37, 22, 30, 27, 33, 22, 23, 32, 22, 33, 19, 21, 18, 27, 17, 1…\n$ educ     &lt;int&gt; 11, 9, 12, 11, 8, 9, 12, 11, 16, 12, 9, 13, 8, 10, 7, 10, 13,…\n$ race     &lt;fct&gt; black, hispan, black, black, black, black, black, black, blac…\n$ married  &lt;int&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0…\n$ nodegree &lt;int&gt; 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1…\n$ re74     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ re75     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ re78     &lt;dbl&gt; 9930.0460, 3595.8940, 24909.4500, 7506.1460, 289.7899, 4056.4…\n\n\nFor the following questions, please create a graph using ggplot to answer:\nCreate a plot examine the distribution of ret78 variable which has information on income of the participants in year 1978\nNow check the difference between the distribution of that variable between the treatment and control groups.\nThink about one more different way to visualize the difference in the distribution of ret78 in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?\nCreate graphs showing the difference in treatment and control group distributions of the other variables in the data :\nExamine the relationship between age and educ\nDoes the relationship between age and education differ between the treatment and control groups:\nExamine the relationship between race and income in 1978.\nDoes the relationship differ by treatment level.\nChallenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends."
   },
   {
     "objectID": "classes/class_05.html",
     "href": "classes/class_05.html",
     "title": "Class 05: Strings and Factors",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nStrings and Factors\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nStrings and Factors\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 14 - Strings\n\n\nR4DS Chapter 15 - Factors"
   },
   {
     "objectID": "classes/class_06.html",
     "href": "classes/class_06.html",
     "title": "Class 06: Functions and Iteration",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nFunctions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nFunctions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 6: Functions and Iteration\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 19 - Functions\n\n\nR Programming for DS Chapter 14 - Functions\n\n\nR4DS Chapter 21 - Iteration"
   },
   {
     "objectID": "classes/class_02.html",
     "href": "classes/class_02.html",
     "title": "Class 02: Data Visualization with ggplot",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2: Data Visualization\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 2: Data Visualization\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nR for Data Science: Chapter 3 - Data Visualization\n\n\nData Visualization: A Practical Introduction"
   },
   {
     "objectID": "index.html",
@@ -938,61 +966,5 @@
     "title": "Querying and Wrangling Data",
     "section": "unite()",
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
-    "title": "Functions and Iteration",
-    "section": "Tidy Language Results",
-    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
-    "title": "Functions and Iteration",
-    "section": "Tidy Math Results",
-    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
-    "title": "Functions and Iteration",
-    "section": "Tidy Reading Results",
-    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
-    "title": "Functions and Iteration",
-    "section": "Critiques of the run_reg() Function",
-    "text": "Critiques of the run_reg() Function\n\nCan you think of potential issues with this function?\nWhat are the issues and consequences of those issues?\nWhat can you do to improve the function?"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
-    "title": "Functions and Iteration",
-    "section": "purrr",
-    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here: https://purrr.tidyverse.org/reference/map.html"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
-    "title": "Functions and Iteration",
-    "section": "Back to our run_reg()",
-    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
-    "title": "Functions and Iteration",
-    "section": "Functions with Multiple arguments",
-    "text": "Functions with Multiple arguments\n\nThe map() family of functions is limited in that we can only loop through one thing\nWe may run into a scenario where we want through loop through multiple things\nCan you think of some such scenarios?\nIn such case, we can use the pmap() family of functions. Please read through https://purrr.tidyverse.org/reference/pmap.html"
-  },
-  {
-    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
-    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
-    "title": "Functions and Iteration",
-    "section": "Example Dataset Background",
-    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package. Please review information about the data here."
   }
 ]

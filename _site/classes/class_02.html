@@ -293,7 +293,7 @@ Problem Sets
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1755451568197" data-listing-reading-time-sort="2" data-listing-word-count-sort="278" data-listing-title-sort="Practice Problem Set 2: Data Visualization" data-listing-filename-sort="practice_problems_02.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1757196153057" data-listing-reading-time-sort="2" data-listing-word-count-sort="282" data-listing-title-sort="Practice Problem Set 2: Data Visualization" data-listing-filename-sort="practice_problems_02.qmd">
 <td>
 <a href="../practice_problems/practice_problems_02/practice_problems_02.html" class="title listing-title">Practice Problem Set 2: Data Visualization</a>
 </td>
@@ -307,9 +307,19 @@ No matching items
 </section>
 <section id="readings" class="level1">
 <h1>Readings</h1>
-<ul>
-<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter 3 - Data Visualization</a></li>
-</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter 3 - Data Visualization</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://socviz.co/">Data Visualization: A Practical Introduction</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -408,7 +418,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
