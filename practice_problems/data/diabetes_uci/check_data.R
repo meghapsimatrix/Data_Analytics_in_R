@@ -1,6 +1,6 @@
 library(tidyverse)
 
-diabetes_dat <- read_csv("slides/data/diabetes_uci/diabetes_data.csv")
+diabetes_dat <- read_csv("slides/data/diabetes_uci/diabetes_data.csv") %>% janitor::clean_names()
 
 diabetes_dat %>%
   group_by(high_bp, diabetes_binary) %>%

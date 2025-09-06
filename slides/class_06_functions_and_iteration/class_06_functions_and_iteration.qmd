@@ -18,6 +18,16 @@ editor: visual
 
 # Functions {.inverse}
 
+## Example Dataset Background
+
+-   Tennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)
+
+-   Longitudinal project examining effect of class size on student achievement
+
+-   Data on language, math, reading outcomes
+
+-   The data that we are using is from the `evalITR` package. Please review information about the data [here](https://michaellli.github.io/evalITR/reference/star.html).
+
 ## Example Dataset
 
 ```{r, warning = FALSE, message = FALSE}
@@ -43,7 +53,7 @@ lang_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrang
 summary(lang_mod)
 ```
 
-## Tidy Language
+## Tidy Language Results
 
 ```{r}
 tidy(lang_mod) %>%
@@ -62,7 +72,7 @@ math_mod <- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrang
 summary(math_mod)
 ```
 
-## Tidy Math
+## Tidy Math Results
 
 ```{r}
 tidy(lang_mod) %>%
@@ -83,7 +93,7 @@ read_mod <- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrang
 summary(read_mod)
 ```
 
-## Tidy Reading
+## Tidy Reading Results
 
 ```{r}
 tidy(read_mod) %>%
@@ -98,7 +108,7 @@ tidy(read_mod) %>%
 
 -   Repetitive
 
--   Prone to error when copy and pasting and changing a few things. Can list out all the errors I made?
+-   Prone to error when copy and pasting and changing a few things. Can you list out all the errors I made just now?
 
 -   If we want to change the model, let's say add few other variables, we have to repeat that correction multiple times
 
@@ -106,16 +116,46 @@ tidy(read_mod) %>%
 
 ## Functions
 
+::: columns
+::: {.column width="50%"}
+-   Input
+
+-   Do something with the input
+
+-   Output
+
+-   Run it over again with different input
+:::
+
+::: {.column width="50%"}
+```{r}
+sum_it <- function(x, # input 1 
+                   y # input 2
+                   ){
+  
+  total <- x + y # do something with the input
+  
+  return(total) # output
+  
+
+}
+
+sum_it(2, 3)
+
+sum_it(1000, 5000)
+```
+:::
+:::
+
 ## Function Example
 
 ```{r}
-run_reg <- function(dat = star_dat,
-                    outcome_var) {
+run_reg <- function(outcome_var) {
 
     lm_equation <- paste(outcome_var, " ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt")
 
     mod <- lm_robust(as.formula(lm_equation), 
-                     data = dat,
+                     data = star_dat,
                      se_type = "HC2")
 
     res_clean <- tidy(mod) %>%
@@ -136,6 +176,14 @@ run_reg(outcome = "g3tlangss")
 run_reg(outcome = "g3tmathss")
 run_reg(outcome = "g3treadss")
 ```
+
+## Critiques of the `run_reg()` Function
+
+-   Can you think of potential issues with this function?
+
+-   What are the issues and consequences of those issues?
+
+-   What can you do to improve the function?
 
 ## Repetition
 
@@ -201,9 +249,8 @@ res # look at res after the looping
 ::: {.column width="50%"}
 -   For loops are still clunky and involve fairly extensive coding
 
-```{=html}
 <!-- -->
-```
+
 -   Need to think through how to append and store the outcome or print the outcome
 
 -   Also a bit slow..(er than other stuff we are going to talk about) in R
@@ -214,11 +261,33 @@ res # look at res after the looping
 
 </iframe>
 
-`<p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM"`{=html}via GIPHY</a></p>
+`<p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM"`{=html}via GIPHY</a>
+
+</p>
 :::
 :::
 
-## Verbs
+## `purrr` 
+
+::: columns
+::: {.column width="50%"}
+![](images/clipboard-1382919279.png)
+:::
+
+::: {.column width="50%"}
+-   Functional programming in R
+
+-   Like for loop - apply a function to each element in a vector but less clunky
+
+-   Major family of functions: `map()`
+
+    -   Loop over a vector and output some value
+
+    -   Different variations of `map()` will return different types of output
+
+    -   Please read through the different variations here: <https://purrr.tidyverse.org/reference/map.html>
+:::
+:::
 
 ## `map()`
 
@@ -240,10 +309,20 @@ map(numbers, .f = times_two)
 map_int(numbers, .f = times_two)
 ```
 
-## `pmap_dfr`
+## Back to our `run_reg()`
 
 ```{r}
-params <- tibble(outcome = c("g3tlangss", "g3tmathss", "g3treadss"))
-
-pmap_dfr(params, .f = run_reg)
+map_dfr(outcome, run_reg)
 ```
+
+## Functions with Multiple arguments
+
+-   The `map()` family of functions is limited in that we can only loop through one thing
+
+-   We may run into a scenario where we want through loop through multiple things
+
+-   Can you think of some such scenarios?
+
+-   In such case, we can use the `pmap()` family of functions. Please read through <https://purrr.tidyverse.org/reference/pmap.html>
+
+# Thank you!! {.inverse}

@@ -407,6 +407,15 @@ Megha Joshi
 <h1>Functions</h1>
 
 </section>
+<section id="example-dataset-background" class="slide level2">
+<h2>Example Dataset Background</h2>
+<ul>
+<li><p>Tennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)</p></li>
+<li><p>Longitudinal project examining effect of class size on student achievement</p></li>
+<li><p>Data on language, math, reading outcomes</p></li>
+<li><p>The data that we are using is from the <code>evalITR</code> package. Please review information about the data <a href="https://michaellli.github.io/evalITR/reference/star.html">here</a>.</p></li>
+</ul>
+</section>
 <section id="example-dataset" class="slide level2">
 <h2>Example Dataset</h2>
 <div class="cell">
@@ -477,8 +486,8 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="tidy-language" class="slide level2">
-<h2>Tidy Language</h2>
+<section id="tidy-language-results" class="slide level2">
+<h2>Tidy Language Results</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">tidy</span>(lang_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
@@ -529,8 +538,8 @@ F-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="tidy-math" class="slide level2">
-<h2>Tidy Math</h2>
+<section id="tidy-math-results" class="slide level2">
+<h2>Tidy Math Results</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tidy</span>(lang_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
@@ -581,8 +590,8 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="tidy-reading" class="slide level2">
-<h2>Tidy Reading</h2>
+<section id="tidy-reading-results" class="slide level2">
+<h2>Tidy Reading Results</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">tidy</span>(read_mod) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a></a>    <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
@@ -601,7 +610,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li><p>Redundant code</p></li>
 <li><p>Repetitive</p></li>
-<li><p>Prone to error when copy and pasting and changing a few things. Can list out all the errors I made?</p></li>
+<li><p>Prone to error when copy and pasting and changing a few things. Can you list out all the errors I made just now?</p></li>
 <li><p>If we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times</p>
 <ul>
 <li>Which may also open up space for more error</li>
@@ -610,48 +619,78 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="functions-1" class="slide level2">
 <h2>Functions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Input</p></li>
+<li><p>Do something with the input</p></li>
+<li><p>Output</p></li>
+<li><p>Run it over again with different input</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sum_it <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="co"># input 1 </span></span>
+<span id="cb15-2"><a></a>                   y <span class="co"># input 2</span></span>
+<span id="cb15-3"><a></a>                   ){</span>
+<span id="cb15-4"><a></a>  </span>
+<span id="cb15-5"><a></a>  total <span class="ot">&lt;-</span> x <span class="sc">+</span> y <span class="co"># do something with the input</span></span>
+<span id="cb15-6"><a></a>  </span>
+<span id="cb15-7"><a></a>  <span class="fu">return</span>(total) <span class="co"># output</span></span>
+<span id="cb15-8"><a></a>  </span>
+<span id="cb15-9"><a></a></span>
+<span id="cb15-10"><a></a>}</span>
+<span id="cb15-11"><a></a></span>
+<span id="cb15-12"><a></a><span class="fu">sum_it</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">sum_it</span>(<span class="dv">1000</span>, <span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6000</code></pre>
+</div>
+</div>
+</div></div>
 </section>
 <section id="function-example" class="slide level2">
 <h2>Function Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>run_reg <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">dat =</span> star_dat,</span>
-<span id="cb15-2"><a></a>                    outcome_var) {</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a>    lm_equation <span class="ot">&lt;-</span> <span class="fu">paste</span>(outcome_var, <span class="st">" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt"</span>)</span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a>    mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(<span class="fu">as.formula</span>(lm_equation), </span>
-<span id="cb15-7"><a></a>                     <span class="at">data =</span> dat,</span>
-<span id="cb15-8"><a></a>                     <span class="at">se_type =</span> <span class="st">"HC2"</span>)</span>
-<span id="cb15-9"><a></a></span>
-<span id="cb15-10"><a></a>    res_clean <span class="ot">&lt;-</span> <span class="fu">tidy</span>(mod) <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a></a>        <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-12"><a></a>        <span class="fu">mutate</span>(<span class="at">outcome =</span> outcome_var) <span class="sc">%&gt;%</span></span>
-<span id="cb15-13"><a></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(outcome, <span class="fu">everything</span>())</span>
-<span id="cb15-14"><a></a></span>
-<span id="cb15-15"><a></a>                </span>
-<span id="cb15-16"><a></a>    <span class="fu">return</span>(res_clean)</span>
-<span id="cb15-17"><a></a>    </span>
-<span id="cb15-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>run_reg <span class="ot">&lt;-</span> <span class="cf">function</span>(outcome_var) {</span>
+<span id="cb19-2"><a></a></span>
+<span id="cb19-3"><a></a>    lm_equation <span class="ot">&lt;-</span> <span class="fu">paste</span>(outcome_var, <span class="st">" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt"</span>)</span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a>    mod <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(<span class="fu">as.formula</span>(lm_equation), </span>
+<span id="cb19-6"><a></a>                     <span class="at">data =</span> star_dat,</span>
+<span id="cb19-7"><a></a>                     <span class="at">se_type =</span> <span class="st">"HC2"</span>)</span>
+<span id="cb19-8"><a></a></span>
+<span id="cb19-9"><a></a>    res_clean <span class="ot">&lt;-</span> <span class="fu">tidy</span>(mod) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a></a>        <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treatment"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a></a>        <span class="fu">mutate</span>(<span class="at">outcome =</span> outcome_var) <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(outcome, <span class="fu">everything</span>())</span>
+<span id="cb19-13"><a></a></span>
+<span id="cb19-14"><a></a>                </span>
+<span id="cb19-15"><a></a>    <span class="fu">return</span>(res_clean)</span>
+<span id="cb19-16"><a></a>    </span>
+<span id="cb19-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="run-the-function" class="slide level2">
 <h2>Run the Function</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3tlangss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3tlangss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    outcome      term estimate std.error statistic     p.value conf.low
 1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494
   conf.high   df
 1  7.221312 1898</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3tmathss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3tmathss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    outcome      term estimate std.error statistic      p.value conf.low
 1 g3tmathss treatment 6.367242  1.732919  3.674288 0.0002451289 2.968616
   conf.high   df
 1  9.765868 1898</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3treadss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">run_reg</span>(<span class="at">outcome =</span> <span class="st">"g3treadss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    outcome      term estimate std.error statistic      p.value conf.low
 1 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741
@@ -659,6 +698,14 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 1  10.63627 1898</code></pre>
 </div>
 </div>
+</section>
+<section id="critiques-of-the-run_reg-function" class="slide level2">
+<h2>Critiques of the <code>run_reg()</code> Function</h2>
+<ul>
+<li><p>Can you think of potential issues with this function?</p></li>
+<li><p>What are the issues and consequences of those issues?</p></li>
+<li><p>What can you do to improve the function?</p></li>
+</ul>
 </section>
 <section id="repetition-1" class="slide level2">
 <h2>Repetition</h2>
@@ -691,16 +738,16 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="for-loops-example" class="slide level2">
 <h2>For Loops Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># A vector of items to loop through</span></span>
-<span id="cb22-2"><a></a></span>
-<span id="cb22-3"><a></a><span class="cf">for</span>(n <span class="cf">in</span> numbers){ <span class="co"># for each number in the vector numbers</span></span>
-<span id="cb22-4"><a></a>  </span>
-<span id="cb22-5"><a></a>  x <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">2</span> <span class="co"># multiply the number by 2</span></span>
-<span id="cb22-6"><a></a>  </span>
-<span id="cb22-7"><a></a>  <span class="fu">print</span>(x) <span class="co"># print the result</span></span>
-<span id="cb22-8"><a></a>  </span>
-<span id="cb22-9"><a></a>  </span>
-<span id="cb22-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># A vector of items to loop through</span></span>
+<span id="cb26-2"><a></a></span>
+<span id="cb26-3"><a></a><span class="cf">for</span>(n <span class="cf">in</span> numbers){ <span class="co"># for each number in the vector numbers</span></span>
+<span id="cb26-4"><a></a>  </span>
+<span id="cb26-5"><a></a>  x <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">2</span> <span class="co"># multiply the number by 2</span></span>
+<span id="cb26-6"><a></a>  </span>
+<span id="cb26-7"><a></a>  <span class="fu">print</span>(x) <span class="co"># print the result</span></span>
+<span id="cb26-8"><a></a>  </span>
+<span id="cb26-9"><a></a>  </span>
+<span id="cb26-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2
 [1] 4
@@ -718,19 +765,19 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="star-analysis-example-loop-through-outcomes" class="slide level2">
 <h2>STAR Analysis Example: Loop through Outcomes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>outcome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"g3tlangss"</span>, <span class="st">"g3tmathss"</span>, <span class="st">"g3treadss"</span>) <span class="co"># outcomes to loop through</span></span>
-<span id="cb24-2"><a></a></span>
-<span id="cb24-3"><a></a>res <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># initialize the results </span></span>
-<span id="cb24-4"><a></a></span>
-<span id="cb24-5"><a></a><span class="cf">for</span>(y <span class="cf">in</span> outcome){ <span class="co"># for each outcome in the outcome vector </span></span>
-<span id="cb24-6"><a></a>  </span>
-<span id="cb24-7"><a></a>  output <span class="ot">&lt;-</span> <span class="fu">run_reg</span>(<span class="at">outcome =</span> y) <span class="co"># run run_reg for that outcome</span></span>
-<span id="cb24-8"><a></a>  res <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(res, output) <span class="co"># append the output to res</span></span>
-<span id="cb24-9"><a></a>  </span>
-<span id="cb24-10"><a></a>  </span>
-<span id="cb24-11"><a></a>}</span>
-<span id="cb24-12"><a></a></span>
-<span id="cb24-13"><a></a>res <span class="co"># look at res after the looping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>outcome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"g3tlangss"</span>, <span class="st">"g3tmathss"</span>, <span class="st">"g3treadss"</span>) <span class="co"># outcomes to loop through</span></span>
+<span id="cb28-2"><a></a></span>
+<span id="cb28-3"><a></a>res <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># initialize the results </span></span>
+<span id="cb28-4"><a></a></span>
+<span id="cb28-5"><a></a><span class="cf">for</span>(y <span class="cf">in</span> outcome){ <span class="co"># for each outcome in the outcome vector </span></span>
+<span id="cb28-6"><a></a>  </span>
+<span id="cb28-7"><a></a>  output <span class="ot">&lt;-</span> <span class="fu">run_reg</span>(<span class="at">outcome =</span> y) <span class="co"># run run_reg for that outcome</span></span>
+<span id="cb28-8"><a></a>  res <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(res, output) <span class="co"># append the output to res</span></span>
+<span id="cb28-9"><a></a>  </span>
+<span id="cb28-10"><a></a>  </span>
+<span id="cb28-11"><a></a>}</span>
+<span id="cb28-12"><a></a></span>
+<span id="cb28-13"><a></a>res <span class="co"># look at res after the looping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    outcome      term estimate std.error statistic      p.value conf.low
 1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940
@@ -758,26 +805,42 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div><div class="column" style="width:50%;">
 <iframe src="https://giphy.com/embed/ytPdmmKAsFOUM" width="343" height="480" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
 </iframe>
-<p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<p></p><p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a></p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<p></p>
 </a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
 </a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
 </a></section><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-<section id="verbs" class="slide level2">
-<h2>Verbs</h2>
-</section>
+</a><section id="purrr" class="slide level2"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<h2><code>purrr</code></h2>
+</a><div class="columns"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<div class="column" style="width:50%;">
+<p><img data-src="images/clipboard-1382919279.png"></p>
+</div></a><div class="column" style="width:50%;"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a><ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<li><p>Functional programming in R</p></li>
+<li><p>Like for loop - apply a function to each element in a vector but less clunky</p></li>
+</a><li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><p>Major family of functions: <code>map()</code></p>
+</a><ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<li><p>Loop over a vector and output some value</p></li>
+<li><p>Different variations of <code>map()</code> will return different types of output</p></li>
+</a><li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">Please read through the different variations here: <a href="https://purrr.tidyverse.org/reference/map.html" class="uri">https://purrr.tidyverse.org/reference/map.html</a></a></p></li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></ul></li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</a></section><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
 </a><section id="map" class="slide level2"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
 <h2><code>map()</code></h2>
 </a><div class="cell"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a><div class="sourceCode cell-code" id="cb26"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><pre class="sourceCode numberSource r number-lines code-with-copy"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><code class="sourceCode r"><span id="cb26-1"></span></code></a><code class="sourceCode r"><a href="#cb26-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector with items to loop over</span>
-<span id="cb26-2"><a></a></span>
-<span id="cb26-3"><a></a><span class="co"># function that you want run</span></span>
-<span id="cb26-4"><a></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb26-5"><a></a>  x <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb26-6"><a></a>}</span>
-<span id="cb26-7"><a></a></span>
-<span id="cb26-8"><a></a><span class="co"># loop times_two through each number, notice the output</span></span>
-<span id="cb26-9"><a></a><span class="fu">map</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</a><div class="sourceCode cell-code" id="cb30"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><pre class="sourceCode numberSource r number-lines code-with-copy"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><code class="sourceCode r"><span id="cb30-1"></span></code></a><code class="sourceCode r"><a href="#cb30-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector with items to loop over</span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a><span class="co"># function that you want run</span></span>
+<span id="cb30-4"><a></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb30-5"><a></a>  x <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb30-6"><a></a>}</span>
+<span id="cb30-7"><a></a></span>
+<span id="cb30-8"><a></a><span class="co"># loop times_two through each number, notice the output</span></span>
+<span id="cb30-9"><a></a><span class="fu">map</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 2
@@ -814,18 +877,16 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="different-output-format" class="slide level2">
 <h2>Different Output Format</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">map_int</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">map_int</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
 </div>
 </div>
 </section>
-<section id="pmap_dfr" class="slide level2">
-<h2><code>pmap_dfr</code></h2>
+<section id="back-to-our-run_reg" class="slide level2">
+<h2>Back to our <code>run_reg()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>params <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">outcome =</span> <span class="fu">c</span>(<span class="st">"g3tlangss"</span>, <span class="st">"g3tmathss"</span>, <span class="st">"g3treadss"</span>))</span>
-<span id="cb30-2"><a></a></span>
-<span id="cb30-3"><a></a><span class="fu">pmap_dfr</span>(params, <span class="at">.f =</span> run_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">map_dfr</span>(outcome, run_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    outcome      term estimate std.error statistic      p.value conf.low
 1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940
@@ -837,13 +898,25 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 3 10.636268 1898</code></pre>
 </div>
 </div>
+</section>
+<section id="functions-with-multiple-arguments" class="slide level2">
+<h2>Functions with Multiple arguments</h2>
+<ul>
+<li><p>The <code>map()</code> family of functions is limited in that we can only loop through one thing</p></li>
+<li><p>We may run into a scenario where we want through loop through multiple things</p></li>
+<li><p>Can you think of some such scenarios?</p></li>
+<li><p>In such case, we can use the <code>pmap()</code> family of functions. Please read through <a href="https://purrr.tidyverse.org/reference/pmap.html" class="uri">https://purrr.tidyverse.org/reference/pmap.html</a></p></li>
+</ul>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 inverse center">
+<h1>Thank you!!</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -1181,7 +1254,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

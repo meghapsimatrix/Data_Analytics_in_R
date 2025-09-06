@@ -355,21 +355,21 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
     "title": "Functions and Iteration",
     "section": "Repetition",
-    "text": "Repetition\n\nRedundant code\nRepetitive\nProne to error when copy and pasting and changing a few things. Can list out all the errors I made?\nIf we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times\n\nWhich may also open up space for more error"
+    "text": "Repetition\n\nRedundant code\nRepetitive\nProne to error when copy and pasting and changing a few things. Can you list out all the errors I made just now?\nIf we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times\n\nWhich may also open up space for more error"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
     "title": "Functions and Iteration",
     "section": "Functions",
-    "text": "Functions"
+    "text": "Functions\n\n\n\nInput\nDo something with the input\nOutput\nRun it over again with different input\n\n\n\nsum_it &lt;- function(x, # input 1 \n                   y # input 2\n                   ){\n  \n  total &lt;- x + y # do something with the input\n  \n  return(total) # output\n  \n\n}\n\nsum_it(2, 3)\n\n[1] 5\n\nsum_it(1000, 5000)\n\n[1] 6000"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
     "title": "Functions and Iteration",
     "section": "Function Example",
-    "text": "Function Example\n\nrun_reg &lt;- function(dat = star_dat,\n                    outcome_var) {\n\n    lm_equation &lt;- paste(outcome_var, \" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt\")\n\n    mod &lt;- lm_robust(as.formula(lm_equation), \n                     data = dat,\n                     se_type = \"HC2\")\n\n    res_clean &lt;- tidy(mod) %&gt;%\n        filter(term == \"treatment\") %&gt;%\n        mutate(outcome = outcome_var) %&gt;%\n        dplyr::select(outcome, everything())\n\n                \n    return(res_clean)\n    \n}"
+    "text": "Function Example\n\nrun_reg &lt;- function(outcome_var) {\n\n    lm_equation &lt;- paste(outcome_var, \" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt\")\n\n    mod &lt;- lm_robust(as.formula(lm_equation), \n                     data = star_dat,\n                     se_type = \"HC2\")\n\n    res_clean &lt;- tidy(mod) %&gt;%\n        filter(term == \"treatment\") %&gt;%\n        mutate(outcome = outcome_var) %&gt;%\n        dplyr::select(outcome, everything())\n\n                \n    return(res_clean)\n    \n}"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
@@ -938,5 +938,61 @@
     "title": "Querying and Wrangling Data",
     "section": "unite()",
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Language Results",
+    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Math Results",
+    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Reading Results",
+    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "title": "Functions and Iteration",
+    "section": "Critiques of the run_reg() Function",
+    "text": "Critiques of the run_reg() Function\n\nCan you think of potential issues with this function?\nWhat are the issues and consequences of those issues?\nWhat can you do to improve the function?"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
+    "title": "Functions and Iteration",
+    "section": "purrr",
+    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here: https://purrr.tidyverse.org/reference/map.html"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
+    "title": "Functions and Iteration",
+    "section": "Back to our run_reg()",
+    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "title": "Functions and Iteration",
+    "section": "Functions with Multiple arguments",
+    "text": "Functions with Multiple arguments\n\nThe map() family of functions is limited in that we can only loop through one thing\nWe may run into a scenario where we want through loop through multiple things\nCan you think of some such scenarios?\nIn such case, we can use the pmap() family of functions. Please read through https://purrr.tidyverse.org/reference/pmap.html"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "title": "Functions and Iteration",
+    "section": "Example Dataset Background",
+    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package. Please review information about the data here."
   }
 ]

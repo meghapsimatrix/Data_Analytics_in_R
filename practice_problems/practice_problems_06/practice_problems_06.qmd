@@ -1,0 +1,74 @@
+---
+title: "Practice Problem Set 6: Functions and Iteration"
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+engine: knitr
+editor: visual
+webr:
+  packages: ['dplyr', 'readr', 'ggplot2']
+filters:
+  - webr
+---
+
+1.  Run the following code to load the data. View the codebook and other information on the on the data [here](kosukeimai.github.io/MatchIt/reference/lalonde.html).
+
+    ```{r}
+    library(MatchIt)
+    lalonde
+    ```
+
+2.  Create dummy variables for the race categorical variable. There should be three new variables: black (1 if the race is black, 0 otherwise), hispanic (1 if race is hispan, 0 otherwise), and white (1 if race is white, 0 otherwise).
+
+    ```{r}
+    table(lalonde$race)
+    ```
+
+3.  Write code that calculates the proportion of black students in treatment group, the proportion of black students in control group. Then take the difference between those two numbers.
+
+    ```{r}
+
+    ```
+
+4.  Create a function using the code you wrote in Q3 that takes in a vector containing treatment indicator and the vector containing a binary variable and takes the difference in proportion between treatment and control group.
+
+    ```{r}
+
+    ```
+
+5.  Write code to run this function for the following variables: `black`, `hispanic`, `white`, `married`, and `nodegree`.
+
+    ```{r}
+
+    ```
+
+6.  Update the function from Q4 so that the output now is **a data frame or tibble** containing the following: (1) the proportion in treatment, (2) proportion in control and (3) the difference in the proportions.
+
+    ```{r}
+
+    ```
+
+7.  Loop through the variables in Q5 with the updated function.
+
+    ```{r}
+
+    ```
+
+8.  Now change the function so it takes in a dataset and unquoted variable names as arguments. Look through [this blog](https://www.r-bloggers.com/2019/06/curly-curly-the-successor-of-bang-bang/) to see how this works.
+
+    ```{r}
+
+    ```
+
+9.  Apply the function to the variables listed in Q5.
+
+    ```{r}
+
+    ```
+
+10. **Challenge Problem**: I have bunch of csv files in this folder. I need to read them all in. Each data has data on a different school. Read all the data in and bind them together in one dataset.
+
+    ```{r}
+
+    ```
