@@ -20,8 +20,4 @@ Peng, R. D. (2016). *R programming for data science* (pp. 86-181). Victoria, BC,
 
 Wickham, H., Cetinkaya-Rundel, M. & Grolemund, G (2023). *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (2e) R for Data Science (2e).* O’Reilly Media, Inc. Free version [here](https://r4ds.hadley.nz/).
 
-## Practice Problems
-
-## Community of Practice
-
 ## 

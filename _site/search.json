@@ -30,26 +30,6 @@
     ]
   },
   {
-    "objectID": "syllabus.html#practice-problems",
-    "href": "syllabus.html#practice-problems",
-    "title": "Syllabus",
-    "section": "Practice Problems",
-    "text": "Practice Problems",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
-    "objectID": "syllabus.html#community-of-practice",
-    "href": "syllabus.html#community-of-practice",
-    "title": "Syllabus",
-    "section": "Community of Practice",
-    "text": "Community of Practice",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
     "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
     "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
     "title": "Data Visualization with ggplot",
@@ -481,14 +461,14 @@
     "href": "classes/class_03.html",
     "title": "Class 03: Querying and Wrangling Data",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 3: Querying and Wrangling Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 3: Querying and Wrangling Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 5 - Data Transformation\n\n\nR4DS Chapter 12 - Tidy Data\n\n\nR Programming for DS Chapter 12 - Managing Data Frames with the dplyr package"
   },
   {
     "objectID": "classes/class_04.html",
     "href": "classes/class_04.html",
     "title": "Class 04: Relational Datasets",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 4: Relational Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nInstructor\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items\n\n\n\n\nPractice Problems\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\nPractice Problem Set 4: Relational Data\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 13 - Relational Data"
   },
   {
     "objectID": "instructors.html",
