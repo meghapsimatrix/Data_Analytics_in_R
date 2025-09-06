@@ -67,7 +67,7 @@ filters:
 
     ```
 
-10. **Challenge Problem**: I have bunch of csv files in this folder. I need to read them all in. Each data has data on a different school. Read all the data in and bind them together in one dataset.
+10. **Challenge Problem**: I have bunch of csv files in [this folder](https://github.com/meghapsimatrix/Data_Analytics_in_R/tree/main/practice_problems/data/school_data). I need to read them all in. Each data has data on a different school. Read all the data in and bind them together in one dataset.
 
     ```{r}
 

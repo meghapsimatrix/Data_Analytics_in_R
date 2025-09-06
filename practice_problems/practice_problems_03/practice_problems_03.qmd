@@ -18,7 +18,7 @@ filters:
     library(tidyverse)
     library(janitor)
 
-    diabetes_dat <- read_csv("../data/diabetes_uci/diabetes_data.csv") %>%
+    diabetes_dat <- read_csv("https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv") %>%
       clean_names()
     ```
 
