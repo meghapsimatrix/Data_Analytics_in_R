@@ -62,7 +62,7 @@
     "href": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
     "title": "Data Visualization with ggplot",
     "section": "The Grammar",
-    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).” - Hadley Wickham"
+    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).”\nHadley Wickham"
   },
   {
     "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
@@ -167,7 +167,7 @@
     "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
     "title": "Data Visualization with ggplot",
     "section": "Total Rentals by Season",
-    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  theme_light() + \n  guides(fill = FALSE)"
+    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  theme_light()"
   },
   {
     "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
@@ -181,14 +181,14 @@
     "href": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
     "title": "Data Visualization with ggplot",
     "section": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday",
-    "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
     "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
     "title": "Introduction to Data Analytics in R",
     "section": "Introduction to This Course",
-    "text": "Introduction to This Course\n\nSharpen your data analytic skills\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nOne hour lectures once a week for one hour\nPractice problems\nJob search resources"
+    "text": "Introduction to This Course\n\nSharpen your data analytic skills in R\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nPractice problems\nJob search resources"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#instructors",
@@ -202,7 +202,7 @@
     "href": "slides/class_01_introduction/class_01_introduction.html#expectations",
     "title": "Introduction to Data Analytics in R",
     "section": "Expectations",
-    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nIn the Syllabus, we listed relevant chapters for each class\nOther books/ resources here\n\nPractice problems - practice, practice, practice\nNo grades\nCollaboration - Slack channel"
+    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nFor each class, we will list out relevant chapters\n\nPractice problems - practice, practice, practice\nCollaboration - Slack channel"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#overview-of-course",
@@ -230,14 +230,14 @@
     "href": "slides/class_01_introduction/class_01_introduction.html#r-studio---r-projects-and-relative-path",
     "title": "Introduction to Data Analytics in R",
     "section": "R Studio - R Projects and Relative Path",
-    "text": "R Studio - R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
+    "text": "R Studio - R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\nIf you are switching to Positron, the set up is a bit different ~ https://github.com/posit-dev/positron/discussions/5425\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
     "href": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
     "title": "Introduction to Data Analytics in R",
     "section": "Basics of R: Objects and Assignment",
-    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_cats &lt;- c(\"Moni\", \"Rumi\")\nmy_cats\n\n[1] \"Moni\" \"Rumi\""
+    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_children &lt;- c(\"Yori\", \"Moni\", \"Rumi\")\nmy_children\n\n[1] \"Yori\" \"Moni\" \"Rumi\""
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#r-packages",
@@ -258,7 +258,7 @@
     "href": "slides/class_01_introduction/class_01_introduction.html#write-good-documentation",
     "title": "Introduction to Data Analytics in R",
     "section": "Write Good Documentation",
-    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments"
+    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments, chunk codes out into sections"
   },
   {
     "objectID": "slides/class_01_introduction/class_01_introduction.html#conduct-code-review",
@@ -565,7 +565,7 @@
     "href": "index.html",
     "title": "Data Analytics in R",
     "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "text": "This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.",
     "crumbs": [
       "Home"
     ]
@@ -575,7 +575,7 @@
     "href": "index.html#course-description",
     "title": "Data Analytics in R",
     "section": "",
-    "text": "We prepared this course for people impacted by federal funding cuts. This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.Class meetings",
+    "text": "This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. We will also cover some translations between R and Structured Query Language (SQL). Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.",
     "crumbs": [
       "Home"
     ]
@@ -585,7 +585,7 @@
     "href": "index.html#expectations",
     "title": "Data Analytics in R",
     "section": "Expectations",
-    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades but are happy to consult if you have questions. Moeover, we will provide a list of recommended readings each week. We encourage you to look through recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. Feel free to work together in groups and learn from each other. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
+    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades but are happy to consult if you have questions. Moreover, we will provide a list of recommended readings each week. We encourage you to look through the recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
     "crumbs": [
       "Home"
     ]
@@ -609,7 +609,7 @@
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#relational-data",
     "title": "Relational Datasets",
     "section": "Relational Data",
-    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nEmployee data:\n\n\n# A tibble: 8 × 3\n  emp_id dept_name dept_id\n   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  \n1      1 Analytics A      \n2      2 Analytics A      \n3      3 Analytics A      \n4      4 Analytics A      \n5      5 Research  B      \n6      6 Research  B      \n7      7 Research  B      \n8      8 Research  B      \n\n\n\nDepartment data:\n\n\n# A tibble: 2 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research"
+    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nEmployee data:\n\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\nDepartment data:\n\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#databases",
@@ -630,14 +630,14 @@
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
     "title": "Relational Datasets",
     "section": "Primary Key",
-    "text": "Primary Key\n\nEvery table needs to have a primary key\nHas to be unique - no duplicated key\nShould not have missing data for primary key - we need an identifier\n\nExample:\n\nEmployee ID in the employee dataset (dept_emp)\nDepartment number in the department manager dataset (dept_manager)"
+    "text": "Primary Key\n\nEvery table needs to have a primary key. This would be a unique identifier for each of the rows.\nHas to be unique - no duplicated key\n\nPossible to concatenate two or more variables to create a primary key\n\nShould not have missing data for primary key - we need an identifier\n\nExample:\n\nEmployee ID in the employee dataset (`employee_dat`)\nDepartment number in the department dataset (`department_dat`)"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
     "href": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
     "title": "Relational Datasets",
     "section": "Foreign Keys",
-    "text": "Foreign Keys\n\nCounterpart to the primary key\nAn identifier in a another table that matches with the primary key in a table\n\nExample:\n\nDepartment number is a foreign key in dept_emp data that matches with the primary key department number in the dept_manager data"
+    "text": "Foreign Keys\n\nCounterpart to the primary key\nAn identifier in a another table that matches with the primary key in a table\n\nExample:\n\nDepartment number is a foreign key in employee_dat that matches with the primary key department number in the department_dat\n\n\n\n\n\n\nemployee_dat\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\n\ndepartment_dat\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin"
   },
   {
     "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
@@ -742,7 +742,7 @@
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-stringr",
     "title": "Strings and Factors",
     "section": "Introduction to stringr",
-    "text": "Introduction to stringr\n\n\n\n\n\nSource: https://stringr.tidyverse.org/\n\n\n\n\nWhat are strings?\n\nCharacter(s) inside ‘..’ or “..”\n\nstringr is a package in tidyverse ~ manipulate and work with strings\n\nx &lt;- \"This is a string.\"\nx\n\n[1] \"This is a string.\""
+    "text": "Introduction to stringr\n\n\n\n\n\nSource: https://stringr.tidyverse.org/\n\n\n\n\nWhat are strings?\n\nCharacter(s) inside ‘..’ or “..”\n\nstringr is a package in tidyverse for manipulating and working with strings\n\nx &lt;- \"This is a string.\"\nx\n\n[1] \"This is a string.\""
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs",
@@ -756,7 +756,7 @@
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#example-dataset",
     "title": "Strings and Factors",
     "section": "Example Dataset",
-    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\n\ncdc_data &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_data)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\ncdc_data &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_data)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect",
@@ -812,7 +812,7 @@
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-forcats",
     "title": "Strings and Factors",
     "section": "Introduction to forcats",
-    "text": "Introduction to forcats\n\n\n\n\n\nSource: https://forcats.tidyverse.org/\n\n\n\n\nWhat are factors?\n\nCategorical variables with set number levels (possible values)\n\nforcats is a package in tidyverse ~ work with factors\n\nfactor(c(LETTERS[1:5]))\n\n[1] A B C D E\nLevels: A B C D E"
+    "text": "Introduction to forcats\n\n\n\n\n\nSource: https://forcats.tidyverse.org/\n\n\n\n\nWhat are factors?\n\nCategorical variables with set number levels (possible values)\n\nforcats is a package in tidyverse for working with factors\n\nfactor(c(LETTERS[1:5]))\n\n[1] A B C D E\nLevels: A B C D E"
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
@@ -861,7 +861,14 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
     "title": "Querying and Wrangling Data",
     "section": "Example Dataset: Men’s World Cup Matches",
-    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches\nglimpse(matches)\n\nfunction (match, ignore.case = TRUE, perl = FALSE, vars = NULL)"
+    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches-1",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches-1",
+    "title": "Querying and Wrangling Data",
+    "section": "Example Dataset: Men’s World Cup Matches",
+    "text": "Example Dataset: Men’s World Cup Matches\n\nglimpse(wc_matches)\n\nRows: 900\nColumns: 15\n$ year           &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1…\n$ country        &lt;chr&gt; \"Uruguay\", \"Uruguay\", \"Uruguay\", \"Uruguay\", \"Uruguay\", …\n$ city           &lt;chr&gt; \"Montevideo\", \"Montevideo\", \"Montevideo\", \"Montevideo\",…\n$ stage          &lt;chr&gt; \"Group 1\", \"Group 4\", \"Group 2\", \"Group 3\", \"Group 1\", …\n$ home_team      &lt;chr&gt; \"France\", \"Belgium\", \"Brazil\", \"Peru\", \"Argentina\", \"Ch…\n$ away_team      &lt;chr&gt; \"Mexico\", \"United States\", \"Yugoslavia\", \"Romania\", \"Fr…\n$ home_score     &lt;dbl&gt; 4, 0, 1, 1, 1, 3, 0, 0, 1, 6, 1, 0, 0, 4, 3, 6, 6, 4, 2…\n$ away_score     &lt;dbl&gt; 1, 3, 2, 3, 0, 0, 4, 3, 0, 3, 0, 1, 4, 0, 1, 1, 1, 2, 3…\n$ outcome        &lt;chr&gt; \"H\", \"A\", \"A\", \"A\", \"H\", \"H\", \"A\", \"A\", \"H\", \"H\", \"H\", …\n$ win_conditions &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ winning_team   &lt;chr&gt; \"France\", \"United States\", \"Yugoslavia\", \"Romania\", \"Ar…\n$ losing_team    &lt;chr&gt; \"Mexico\", \"Belgium\", \"Brazil\", \"Peru\", \"France\", \"Mexic…\n$ date           &lt;date&gt; 1930-07-13, 1930-07-13, 1930-07-14, 1930-07-14, 1930-0…\n$ month          &lt;chr&gt; \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\",…\n$ dayofweek      &lt;chr&gt; \"Sunday\", \"Sunday\", \"Monday\", \"Monday\", \"Tuesday\", \"Wed…"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
@@ -875,7 +882,7 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
     "title": "Querying and Wrangling Data",
     "section": "select()",
-    "text": "select()\nwnba_draft\n\nwc_matches %&gt;%\n  select(year, country, stage, home_team, away_team)\n\n# A tibble: 900 × 5\n    year country stage   home_team away_team    \n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        \n 1  1930 Uruguay Group 1 France    Mexico       \n 2  1930 Uruguay Group 4 Belgium   United States\n 3  1930 Uruguay Group 2 Brazil    Yugoslavia   \n 4  1930 Uruguay Group 3 Peru      Romania      \n 5  1930 Uruguay Group 1 Argentina France       \n 6  1930 Uruguay Group 1 Chile     Mexico       \n 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   \n 8  1930 Uruguay Group 4 Paraguay  United States\n 9  1930 Uruguay Group 3 Uruguay   Peru         \n10  1930 Uruguay Group 1 Argentina Mexico       \n# ℹ 890 more rows"
+    "text": "select()\n\nwc_matches %&gt;%\n  select(year, country, stage, home_team, away_team)\n\n# A tibble: 900 × 5\n    year country stage   home_team away_team    \n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        \n 1  1930 Uruguay Group 1 France    Mexico       \n 2  1930 Uruguay Group 4 Belgium   United States\n 3  1930 Uruguay Group 2 Brazil    Yugoslavia   \n 4  1930 Uruguay Group 3 Peru      Romania      \n 5  1930 Uruguay Group 1 Argentina France       \n 6  1930 Uruguay Group 1 Chile     Mexico       \n 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   \n 8  1930 Uruguay Group 4 Paraguay  United States\n 9  1930 Uruguay Group 3 Uruguay   Peru         \n10  1930 Uruguay Group 1 Argentina Mexico       \n# ℹ 890 more rows"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#filter",
@@ -924,6 +931,13 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer",
     "title": "Querying and Wrangling Data",
     "section": "pivot_longer()",
+    "text": "pivot_longer()\n\navg_score_diff\n\n# A tibble: 4 × 5\n  stage         n_matches mean_diff sd_diff order\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Round of 16          89      1.47    1.18     1\n2 Quarterfinals        66      1.30    1.29     2\n3 Semifinals           36      1.75    1.52     3\n4 Final                26      1.81    1.39     4"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer-1",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer-1",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_longer()",
     "text": "pivot_longer()\n\nlong_dat &lt;- \n  avg_score_diff %&gt;%\n  select(-order) %&gt;%\n  pivot_longer(n_matches:sd_diff,\n               names_to = 'stat', \n               values_to = 'val')\n\nlong_dat\n\n# A tibble: 12 × 3\n   stage         stat        val\n   &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;\n 1 Round of 16   n_matches 89   \n 2 Round of 16   mean_diff  1.47\n 3 Round of 16   sd_diff    1.18\n 4 Quarterfinals n_matches 66   \n 5 Quarterfinals mean_diff  1.30\n 6 Quarterfinals sd_diff    1.29\n 7 Semifinals    n_matches 36   \n 8 Semifinals    mean_diff  1.75\n 9 Semifinals    sd_diff    1.52\n10 Final         n_matches 26   \n11 Final         mean_diff  1.81\n12 Final         sd_diff    1.39"
   },
   {
@@ -938,13 +952,13 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_wider",
     "title": "Querying and Wrangling Data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\nlong_dat_clean %&gt;%\n  select(-var) %&gt;%\n  pivot_wider(names_from = stat, values_from = val) %&gt;%\n  rename(Stage = stage, `Number of Matches` = n,\n         `Average Difference in Goals` = mean,\n         `SD of Difference in Goals` = sd)\n\n# A tibble: 4 × 4\n  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²\n  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;\n1 Round of 16                   89                   1.47                   1.18\n2 Quarterfina…                  66                   1.30                   1.29\n3 Semifinals                    36                   1.75                   1.52\n4 Final                         26                   1.81                   1.39\n# ℹ abbreviated names: ¹​`Average Difference in Goals`,\n#   ²​`SD of Difference in Goals`"
+    "text": "pivot_wider()\n\nlong_dat_clean %&gt;%\n  select(-var) %&gt;%\n  pivot_wider(names_from = stat, values_from = val) %&gt;%\n  rename(Stage = stage, \n         `Number of Matches` = n,\n         `Average Difference in Goals` = mean,\n         `SD of Difference in Goals` = sd)\n\n# A tibble: 4 × 4\n  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²\n  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;\n1 Round of 16                   89                   1.47                   1.18\n2 Quarterfina…                  66                   1.30                   1.29\n3 Semifinals                    36                   1.75                   1.52\n4 Final                         26                   1.81                   1.39\n# ℹ abbreviated names: ¹​`Average Difference in Goals`,\n#   ²​`SD of Difference in Goals`"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
     "title": "Querying and Wrangling Data",
     "section": "unite()",
-    "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;\n\n\n\n\n\nTheme by Beatriz Mills on GitHub"
+    "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;"
   }
 ]

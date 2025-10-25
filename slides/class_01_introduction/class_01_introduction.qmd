@@ -18,11 +18,9 @@ editor: visual
 
 ## Introduction to This Course
 
--   Sharpen your data analytic skills
+-   Sharpen your data analytic skills in R
 
 -   Prepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist
-
--   One hour lectures once a week for one hour
 
 -   Practice problems
 
@@ -32,25 +30,22 @@ editor: visual
 
 [Megha Joshi, PhD](https://meghapsimatrix.com/)
 
-![](images/mj.jpeg)
+![](images/mj.jpeg){fig-alt="Photo of one of the instructors Megha Joshi"}
 
 ## Expectations
 
 ::: {.columns style=".smaller"}
 ::: {.column width="50%"}
-[![](images/r4ds.jpg){width="382"}](https://r4ds.hadley.nz/)
+[![](images/r4ds.jpg){fig-alt="Cover of the R for Data Science Book Second Edition" width="382"}](https://r4ds.hadley.nz/)
 :::
 
 ::: {.column width="50%"}
 -   Recommended readings
 
     -   [R4DS](https://r4ds.had.co.nz/) and [R Programming for DS](https://bookdown.org/rdpeng/rprogdatascience/)
-    -   In the Syllabus, we listed relevant chapters for each class
-    -   Other books/ resources here
+    -   For each class, we will list out relevant chapters
 
 -   Practice problems - practice, practice, practice
-
--   No grades
 
 -   Collaboration - Slack channel
 :::
@@ -96,7 +91,7 @@ editor: visual
 
 ::: columns
 ::: {.column width="50%"}
-![](images/RStudio.png)
+![](images/RStudio.png){fig-alt="Logo for R Studio"}
 :::
 
 ::: {.column width="50%"}
@@ -108,7 +103,7 @@ editor: visual
 :::
 :::
 
-## R Studio - R Projects and Relative Path
+## R Studio - R Projects and Relative Path {.smaller}
 
 ::: columns
 ::: {.column width="20%"}
@@ -123,6 +118,8 @@ editor: visual
 -   You can set relative paths so other users are able to run code without messing too much with the working directory
 
 -   Read more about how to set up projects [here](https://r4ds.had.co.nz/workflow-projects.html)
+
+-   If you are switching to Positron, the set up is a bit different \~ <https://github.com/posit-dev/positron/discussions/5425>
 :::
 :::
 
@@ -147,8 +144,8 @@ x + y
 ```
 
 ```{r}
-my_cats <- c("Moni", "Rumi")
-my_cats
+my_children <- c("Yori", "Moni", "Rumi")
+my_children
 ```
 
 ## R Packages
@@ -198,13 +195,13 @@ install.packages("estimatr") # robust estimators
 
 -   For yourself and for other people who may use your code
 
--   Write comments
+-   Write comments, chunk codes out into sections
 
 ## Conduct Code Review
 
 ::: columns
 ::: {.column width="30%"}
-[![](images/code_check.png)](https://debruine.github.io/project/code-check/)
+[![](images/code_check.png){fig-alt="Hex sticker for Code Check Club"}](https://debruine.github.io/project/code-check/)
 :::
 
 ::: {.column width="70%"}
@@ -244,7 +241,7 @@ install.packages("estimatr") # robust estimators
 
 ::: columns
 ::: {.column width="50%"}
-![](images/quarto.png){width="723"}
+![](images/quarto.png){fig-alt="Screenshot from quarto's website showing it can be used to create dashboards, websites, books, presentations etc." width="723"}
 :::
 
 ::: {.column width="50%"}

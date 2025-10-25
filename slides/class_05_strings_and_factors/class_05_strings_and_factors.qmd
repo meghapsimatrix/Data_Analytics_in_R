@@ -30,7 +30,7 @@ editor: visual
 
     -   Character(s) inside '..' or ".."
 
--   `stringr` is a package in `tidyverse ~` manipulate and work with strings
+-   `stringr` is a package in `tidyverse` for manipulating and working with strings
 
     ```{r}
     x <- "This is a string."
@@ -58,7 +58,6 @@ library(tidytuesdayR)
 library(tidyverse)
 
 tuesdata <- tidytuesdayR::tt_load('2025-02-11')
-
 cdc_data <- tuesdata$cdc_datasets
 
 glimpse(cdc_data)
@@ -140,7 +139,7 @@ p
 
     -   Categorical variables with set number levels (possible values)
 
--   `forcats` is a package in `tidyverse` \~ work with factors
+-   `forcats` is a package in `tidyverse` for working with factors
 
     ```{r}
     factor(c(LETTERS[1:5]))
@@ -184,7 +183,7 @@ levels(cdc_cat$new_cat)
 
 ## `fct_infreq()`
 
-```{r}
+```{r, fig.width = 15, fig.height = 8, dpi = 500}
 ggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +
   geom_bar(stat = "identity") +
   theme_bw()

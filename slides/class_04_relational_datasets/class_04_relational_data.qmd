@@ -75,8 +75,7 @@ emp_dept_dat
 Employee data:
 
 ```{r, echo = FALSE}
-emp_dept_dat %>%
-  select(emp_id:dept_id)
+employee_dat
 ```
 :::
 
@@ -84,9 +83,7 @@ emp_dept_dat %>%
 Department data:
 
 ```{r, echo = FALSE}
-emp_dept_dat %>%
-  select(dept_id, dept_name) %>%
-  distinct() 
+department_dat
 ```
 :::
 :::
@@ -121,21 +118,23 @@ department_dat
 What do you notice about the relationship between the two datasets?
 :::
 
-## Primary Key
+## Primary Key {.smaller}
 
--   Every table needs to have a primary key
+-   Every table needs to have a primary key. This would be a unique identifier for each of the rows.
 
 -   Has to be unique - no duplicated key
+
+    -   Possible to concatenate two or more variables to create a primary key
 
 -   Should not have missing data for primary key - we need an identifier
 
     -   Example:
 
-        -   Employee ID in the employee dataset (`dept_emp`)
+        -   Employee ID in the employee dataset (`` `employee_dat` ``)
 
-        -   Department number in the department manager dataset (`dept_manager`)
+        -   Department number in the department dataset (`` `department_dat` ``)
 
-## Foreign Keys
+## Foreign Keys {.smaller}
 
 -   Counterpart to the primary key
 
@@ -143,7 +142,21 @@ What do you notice about the relationship between the two datasets?
 
     -   Example:
 
-        -   Department number is a foreign key in `dept_emp` data that matches with the primary key department number in the `dept_manager` data
+        -   Department number is a foreign key in `employee_dat` that matches with the primary key department number in the `department_dat`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+employee_dat
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+department_dat
+```
+:::
+:::
 
 # Mutating Joins {.inverse}
 
@@ -151,7 +164,7 @@ What do you notice about the relationship between the two datasets?
 
 Join all the rows of both tables as long as there is a matching record in either table.
 
-![](images/full_join.png){width="533"}
+![](images/full_join.png){fig-alt="Chart showing how full join works. Left side table has key id 1, 2, 3 and variable x 1, 2, 3. The right side table has id 1, 2, 4 and variable y 1, 2, 3. The joined data has all 4 ids, for id 3, y is NA and for id 4, x is NA." width="533"}
 
 ## `full_join()`
 
@@ -163,7 +176,7 @@ full_join(employee_dat, department_dat, by = "dept_id")
 
 Join all the rows of the left table and the matching rows in the right table.
 
-![](images/left_join.png)
+![](images/left_join.png){fig-alt="Chart showing how left join works. Left side table has key id 1, 2, 3 and variable x 1, 2, 3. The right side table has id 1, 2, 4 and variable y 1, 2, 3. The joined data has all ids from left side table, 1, 2, 3, along with x1, 2, 3, ids 1 and 2 have y 1 and 2 and for id 3, y is NA."}
 
 ## `left_join()`
 
@@ -175,7 +188,7 @@ left_join(employee_dat, department_dat, by = "dept_id")
 
 Join all the rows of the right table and the matching rows in the left table.
 
-![](images/right_join.png){width="533"}
+![](images/right_join.png){fig-alt="Chart showing how right join works. Left side table has key id 1, 2, 3 and variable x 1, 2, 3. The right side table has id 1, 2, 4 and variable y 1, 2, 3. The joined data has all ids from right side table, 1, 2, 4, along with y 1, 2, 3, ids 1 and 2 have x 1 and 2 and for id 4, x is NA." width="533"}
 
 ## `right_join()`
 
@@ -187,7 +200,7 @@ right_join(employee_dat, department_dat, by = "dept_id")
 
 Join the rows which are present in both tables.
 
-![](images/inner_join.png){width="533"}
+![](images/inner_join.png){fig-alt="Chart showing how inner join works. Left side table has key id 1, 2, 3 and variable x 1, 2, 3. The right side table has id 1, 2, 4 and variable y 1, 2, 3. The joined data has id 1 and 2 along with the relevant x and y data. The two ids are in both table." width="533"}
 
 ## `inner_join()`
 

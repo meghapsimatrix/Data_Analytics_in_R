@@ -437,10 +437,31 @@ Megha Joshi
 <span id="cb1-6"><a></a>tt <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(<span class="st">"2022-11-29"</span>)</span>
 <span id="cb1-7"><a></a>tt</span>
 <span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a>wc_matches <span class="ot">&lt;-</span> tt<span class="sc">$</span>wcmatches</span>
-<span id="cb1-10"><a></a><span class="fu">glimpse</span>(matches)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a>wc_matches <span class="ot">&lt;-</span> tt<span class="sc">$</span>wcmatches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-dataset-mens-world-cup-matches-1" class="slide level2">
+<h2>Example Dataset: Men’s World Cup Matches</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(wc_matches)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>function (match, ignore.case = TRUE, perl = FALSE, vars = NULL)  </code></pre>
+<pre><code>Rows: 900
+Columns: 15
+$ year           &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1…
+$ country        &lt;chr&gt; "Uruguay", "Uruguay", "Uruguay", "Uruguay", "Uruguay", …
+$ city           &lt;chr&gt; "Montevideo", "Montevideo", "Montevideo", "Montevideo",…
+$ stage          &lt;chr&gt; "Group 1", "Group 4", "Group 2", "Group 3", "Group 1", …
+$ home_team      &lt;chr&gt; "France", "Belgium", "Brazil", "Peru", "Argentina", "Ch…
+$ away_team      &lt;chr&gt; "Mexico", "United States", "Yugoslavia", "Romania", "Fr…
+$ home_score     &lt;dbl&gt; 4, 0, 1, 1, 1, 3, 0, 0, 1, 6, 1, 0, 0, 4, 3, 6, 6, 4, 2…
+$ away_score     &lt;dbl&gt; 1, 3, 2, 3, 0, 0, 4, 3, 0, 3, 0, 1, 4, 0, 1, 1, 1, 2, 3…
+$ outcome        &lt;chr&gt; "H", "A", "A", "A", "H", "H", "A", "A", "H", "H", "H", …
+$ win_conditions &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ winning_team   &lt;chr&gt; "France", "United States", "Yugoslavia", "Romania", "Ar…
+$ losing_team    &lt;chr&gt; "Mexico", "Belgium", "Brazil", "Peru", "France", "Mexic…
+$ date           &lt;date&gt; 1930-07-13, 1930-07-13, 1930-07-14, 1930-07-14, 1930-0…
+$ month          &lt;chr&gt; "Jul", "Jul", "Jul", "Jul", "Jul", "Jul", "Jul", "Jul",…
+$ dayofweek      &lt;chr&gt; "Sunday", "Sunday", "Monday", "Monday", "Tuesday", "Wed…</code></pre>
 </div>
 </div>
 </section>
@@ -449,7 +470,7 @@ Megha Joshi
 <h1><code>dplyr</code></h1>
 
 </section>
-<section id="verbs" class="slide level2">
+<section id="verbs" class="slide level2 smaller">
 <h2>Verbs</h2>
 <table class="caption-top">
 <colgroup>
@@ -500,10 +521,9 @@ Megha Joshi
 </section>
 <section id="select" class="slide level2">
 <h2><code>select()</code></h2>
-<p>wnba_draft</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">select</span>(year, country, stage, home_team, away_team)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">select</span>(year, country, stage, home_team, away_team)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 900 × 5
     year country stage   home_team away_team    
@@ -525,8 +545,8 @@ Megha Joshi
 <section id="filter" class="slide level2">
 <h2><code>filter()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 15
     year country   city  stage home_team away_team home_score away_score outcome
@@ -559,14 +579,14 @@ Megha Joshi
 <section id="mutate" class="slide level2">
 <h2><code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>wc_matches <span class="ot">&lt;-</span> </span>
-<span id="cb7-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">ifelse</span>(stage <span class="sc">==</span> <span class="st">"Final Round"</span>, </span>
-<span id="cb7-4"><a></a>                        <span class="st">"Final"</span>, stage),</span>
-<span id="cb7-5"><a></a>         <span class="at">score_diff =</span> <span class="fu">abs</span>(home_score <span class="sc">-</span> away_score)) </span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a></a>  <span class="fu">select</span>(year, stage, home_team, away_team, score_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>wc_matches <span class="ot">&lt;-</span> </span>
+<span id="cb8-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">ifelse</span>(stage <span class="sc">==</span> <span class="st">"Final Round"</span>, </span>
+<span id="cb8-4"><a></a>                        <span class="st">"Final"</span>, stage),</span>
+<span id="cb8-5"><a></a>         <span class="at">score_diff =</span> <span class="fu">abs</span>(home_score <span class="sc">-</span> away_score)) </span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a></a>  <span class="fu">select</span>(year, stage, home_team, away_team, score_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 900 × 5
     year stage   home_team away_team     score_diff
@@ -588,18 +608,18 @@ Megha Joshi
 <section id="group_by-and-summarize" class="slide level2">
 <h2><code>group_by()</code> and <code>summarize()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb9-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Final"</span>, </span>
-<span id="cb9-4"><a></a>                      <span class="st">"Semifinals"</span>, </span>
-<span id="cb9-5"><a></a>                      <span class="st">"Quarterfinals"</span>, </span>
-<span id="cb9-6"><a></a>                      <span class="st">"Round of 16"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a></a>  <span class="fu">group_by</span>(stage) <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">summarize</span>(<span class="at">n_matches =</span> <span class="fu">n</span>(),</span>
-<span id="cb9-9"><a></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(score_diff),</span>
-<span id="cb9-10"><a></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(score_diff))</span>
-<span id="cb9-11"><a></a></span>
-<span id="cb9-12"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a></a>  wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Final"</span>, </span>
+<span id="cb10-4"><a></a>                      <span class="st">"Semifinals"</span>, </span>
+<span id="cb10-5"><a></a>                      <span class="st">"Quarterfinals"</span>, </span>
+<span id="cb10-6"><a></a>                      <span class="st">"Round of 16"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a></a>  <span class="fu">group_by</span>(stage) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">summarize</span>(<span class="at">n_matches =</span> <span class="fu">n</span>(),</span>
+<span id="cb10-9"><a></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(score_diff),</span>
+<span id="cb10-10"><a></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(score_diff))</span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   stage         n_matches mean_diff sd_diff
@@ -614,16 +634,16 @@ Megha Joshi
 <section id="arrange-and-case_when" class="slide level2">
 <h2><code>arrange()</code> and <code>case_when()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">mutate</span>(<span class="at">order =</span> <span class="fu">case_when</span>(stage <span class="sc">==</span> <span class="st">"Round of 16"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb11-5"><a></a>                           stage <span class="sc">==</span> <span class="st">"Quarterfinals"</span> <span class="sc">~</span> <span class="dv">2</span>, </span>
-<span id="cb11-6"><a></a>                           stage <span class="sc">==</span> <span class="st">"Semifinals"</span> <span class="sc">~</span> <span class="dv">3</span>, </span>
-<span id="cb11-7"><a></a>                           stage <span class="sc">==</span> <span class="st">"Final"</span> <span class="sc">~</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">arrange</span>(order)</span>
-<span id="cb11-9"><a></a></span>
-<span id="cb11-10"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>avg_score_diff <span class="ot">&lt;-</span> </span>
+<span id="cb12-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">mutate</span>(<span class="at">order =</span> <span class="fu">case_when</span>(stage <span class="sc">==</span> <span class="st">"Round of 16"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb12-5"><a></a>                           stage <span class="sc">==</span> <span class="st">"Quarterfinals"</span> <span class="sc">~</span> <span class="dv">2</span>, </span>
+<span id="cb12-6"><a></a>                           stage <span class="sc">==</span> <span class="st">"Semifinals"</span> <span class="sc">~</span> <span class="dv">3</span>, </span>
+<span id="cb12-7"><a></a>                           stage <span class="sc">==</span> <span class="st">"Final"</span> <span class="sc">~</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a></a>  <span class="fu">arrange</span>(order)</span>
+<span id="cb12-9"><a></a></span>
+<span id="cb12-10"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   stage         n_matches mean_diff sd_diff order
@@ -638,9 +658,9 @@ Megha Joshi
 <section id="slice" class="slide level2">
 <h2><code>slice()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_diff)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>avg_score_diff <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_diff)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
   stage n_matches mean_diff sd_diff order
@@ -686,14 +706,29 @@ Megha Joshi
 <section id="pivot_longer" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>long_dat <span class="ot">&lt;-</span> </span>
-<span id="cb15-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>order) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">pivot_longer</span>(n_matches<span class="sc">:</span>sd_diff,</span>
-<span id="cb15-5"><a></a>               <span class="at">names_to =</span> <span class="st">'stat'</span>, </span>
-<span id="cb15-6"><a></a>               <span class="at">values_to =</span> <span class="st">'val'</span>)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>long_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>avg_score_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  stage         n_matches mean_diff sd_diff order
+  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1 Round of 16          89      1.47    1.18     1
+2 Quarterfinals        66      1.30    1.29     2
+3 Semifinals           36      1.75    1.52     3
+4 Final                26      1.81    1.39     4</code></pre>
+</div>
+</div>
+</section>
+<section id="pivot_longer-1" class="slide level2">
+<h2><code>pivot_longer()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>long_dat <span class="ot">&lt;-</span> </span>
+<span id="cb18-2"><a></a>  avg_score_diff <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>order) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">pivot_longer</span>(n_matches<span class="sc">:</span>sd_diff,</span>
+<span id="cb18-5"><a></a>               <span class="at">names_to =</span> <span class="st">'stat'</span>, </span>
+<span id="cb18-6"><a></a>               <span class="at">values_to =</span> <span class="st">'val'</span>)</span>
+<span id="cb18-7"><a></a></span>
+<span id="cb18-8"><a></a>long_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    stage         stat        val
@@ -716,11 +751,11 @@ Megha Joshi
 <section id="separate" class="slide level2">
 <h2><code>separate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>long_dat_clean <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a></a>  long_dat <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">separate</span>(stat, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"var"</span>), <span class="at">sep =</span> <span class="st">"_"</span>) </span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a>long_dat_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>long_dat_clean <span class="ot">&lt;-</span> </span>
+<span id="cb20-2"><a></a>  long_dat <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a></a>  <span class="fu">separate</span>(stat, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"var"</span>), <span class="at">sep =</span> <span class="st">"_"</span>) </span>
+<span id="cb20-4"><a></a></span>
+<span id="cb20-5"><a></a>long_dat_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
    stage         stat  var       val
@@ -743,12 +778,13 @@ Megha Joshi
 <section id="pivot_wider" class="slide level2">
 <h2><code>pivot_wider()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>long_dat_clean <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>var) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stat, <span class="at">values_from =</span> val) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">rename</span>(<span class="at">Stage =</span> stage, <span class="st">`</span><span class="at">Number of Matches</span><span class="st">`</span> <span class="ot">=</span> n,</span>
-<span id="cb19-5"><a></a>         <span class="st">`</span><span class="at">Average Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> mean,</span>
-<span id="cb19-6"><a></a>         <span class="st">`</span><span class="at">SD of Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>long_dat_clean <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>var) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stat, <span class="at">values_from =</span> val) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a></a>  <span class="fu">rename</span>(<span class="at">Stage =</span> stage, </span>
+<span id="cb22-5"><a></a>         <span class="st">`</span><span class="at">Number of Matches</span><span class="st">`</span> <span class="ot">=</span> n,</span>
+<span id="cb22-6"><a></a>         <span class="st">`</span><span class="at">Average Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> mean,</span>
+<span id="cb22-7"><a></a>         <span class="st">`</span><span class="at">SD of Difference in Goals</span><span class="st">`</span> <span class="ot">=</span> sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²
@@ -765,9 +801,9 @@ Megha Joshi
 <section id="unite" class="slide level2">
 <h2><code>unite()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">unite</span>(world_cup, year, country, <span class="at">sep =</span>  <span class="st">": "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>wc_matches <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">unite</span>(world_cup, year, country, <span class="at">sep =</span>  <span class="st">": "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">filter</span>(stage <span class="sc">==</span> <span class="st">"Final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 26 × 15
    world_cup       city  stage home_team away_team home_score away_score outcome
@@ -788,13 +824,16 @@ Megha Joshi
 #   score_diff &lt;dbl&gt;</code></pre>
 </div>
 </div>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 inverse center">
+<h1>Thank you!</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Theme by Beatriz Mills on <a href="https://github.com/beatrizmilz/quarto-rladies-theme">GitHub</a></p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

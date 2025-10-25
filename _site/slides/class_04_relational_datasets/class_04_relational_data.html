@@ -472,28 +472,34 @@ Megha Joshi
 <p>Employee data:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 3
-  emp_id dept_name dept_id
-   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  
-1      1 Analytics A      
-2      2 Analytics A      
-3      3 Analytics A      
-4      4 Analytics A      
-5      5 Research  B      
-6      6 Research  B      
-7      7 Research  B      
-8      8 Research  B      </code></pre>
+<pre><code># A tibble: 12 × 3
+   emp_id surv_scr dept_id
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+ 1      1       73 A      
+ 2      2       75 A      
+ 3      3       90 A      
+ 4      4       79 A      
+ 5      5       86 B      
+ 6      6       83 B      
+ 7      7       83 B      
+ 8      8       85 B      
+ 9      9       81 C      
+10     10       83 C      
+11     11       90 C      
+12     12       84 C      </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Department data:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
+<pre><code># A tibble: 4 × 2
   dept_id dept_name
   &lt;chr&gt;   &lt;chr&gt;    
 1 A       Analytics
-2 B       Research </code></pre>
+2 B       Research 
+3 D       HR       
+4 E       Admin    </code></pre>
 </div>
 </div>
 </div></div>
@@ -561,22 +567,25 @@ Megha Joshi
           display:block!important;
       }</style></aside>
 </section>
-<section id="primary-key" class="slide level2">
+<section id="primary-key" class="slide level2 smaller">
 <h2>Primary Key</h2>
 <ul>
-<li><p>Every table needs to have a primary key</p></li>
-<li><p>Has to be unique - no duplicated key</p></li>
+<li><p>Every table needs to have a primary key. This would be a unique identifier for each of the rows.</p></li>
+<li><p>Has to be unique - no duplicated key</p>
+<ul>
+<li>Possible to concatenate two or more variables to create a primary key</li>
+</ul></li>
 <li><p>Should not have missing data for primary key - we need an identifier</p>
 <ul>
 <li><p>Example:</p>
 <ul>
-<li><p>Employee ID in the employee dataset (<code>dept_emp</code>)</p></li>
-<li><p>Department number in the department manager dataset (<code>dept_manager</code>)</p></li>
+<li><p>Employee ID in the employee dataset (<code>`employee_dat`</code>)</p></li>
+<li><p>Department number in the department dataset (<code>`department_dat`</code>)</p></li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="foreign-keys" class="slide level2">
+<section id="foreign-keys" class="slide level2 smaller">
 <h2>Foreign Keys</h2>
 <ul>
 <li><p>Counterpart to the primary key</p></li>
@@ -584,10 +593,46 @@ Megha Joshi
 <ul>
 <li><p>Example:</p>
 <ul>
-<li>Department number is a foreign key in <code>dept_emp</code> data that matches with the primary key department number in the <code>dept_manager</code> data</li>
+<li>Department number is a foreign key in <code>employee_dat</code> that matches with the primary key department number in the <code>department_dat</code></li>
 </ul></li>
 </ul></li>
 </ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>employee_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   emp_id surv_scr dept_id
+    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+ 1      1       73 A      
+ 2      2       75 A      
+ 3      3       90 A      
+ 4      4       79 A      
+ 5      5       86 B      
+ 6      6       83 B      
+ 7      7       83 B      
+ 8      8       85 B      
+ 9      9       81 C      
+10     10       83 C      
+11     11       90 C      
+12     12       84 C      </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>department_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  dept_id dept_name
+  &lt;chr&gt;   &lt;chr&gt;    
+1 A       Analytics
+2 B       Research 
+3 D       HR       
+4 E       Admin    </code></pre>
+</div>
+</div>
+</div></div>
 </section>
 <section>
 <section id="mutating-joins" class="title-slide slide level1 inverse center">
@@ -598,11 +643,11 @@ Megha Joshi
 <h2>Full Outer Join</h2>
 <p>Join all the rows of both tables as long as there is a matching record in either table.</p>
 
-<img data-src="images/full_join.png" width="533" class="r-stretch"></section>
+<img data-src="images/full_join.png" alt="Chart showing how full join works. Left side table has id 1, 2, 3 and variable x 1, 2, 3. The right side table has id 1, 2, 4 and variable y 1, 2, 4. The joined data has all 4 ids, for id 3, y3 is NA and for id 4 x4 is NA." width="533" class="r-stretch"></section>
 <section id="full_join" class="slide level2">
 <h2><code>full_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">full_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">full_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 14 × 4
    emp_id surv_scr dept_id dept_name
@@ -632,7 +677,7 @@ Megha Joshi
 <section id="left_join" class="slide level2">
 <h2><code>left_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">left_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">left_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
    emp_id surv_scr dept_id dept_name
@@ -660,7 +705,7 @@ Megha Joshi
 <section id="right_join" class="slide level2">
 <h2><code>right_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">right_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">right_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
    emp_id surv_scr dept_id dept_name
@@ -686,7 +731,7 @@ Megha Joshi
 <section id="inner_join" class="slide level2">
 <h2><code>inner_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">inner_join</span>(department_dat, employee_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">inner_join</span>(department_dat, employee_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 4
   dept_id dept_name emp_id surv_scr
@@ -710,7 +755,7 @@ Megha Joshi
 <section id="cross_join" class="slide level2">
 <h2><code>cross_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">cross_join</span>(employee_dat, department_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">cross_join</span>(employee_dat, department_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 48 × 5
    emp_id surv_scr dept_id.x dept_id.y dept_name
@@ -742,7 +787,7 @@ Megha Joshi
 <section id="semi_join" class="slide level2">
 <h2><code>semi_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">semi_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">semi_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
   emp_id surv_scr dept_id
@@ -766,7 +811,7 @@ Megha Joshi
 <section id="anti_join" class="slide level2">
 <h2><code>anti_join()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">anti_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">anti_join</span>(employee_dat, department_dat, <span class="at">by =</span> <span class="st">"dept_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   emp_id surv_scr dept_id

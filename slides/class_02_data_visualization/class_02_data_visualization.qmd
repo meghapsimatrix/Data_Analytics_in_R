@@ -20,7 +20,7 @@ editor: visual
 
 ::: columns
 ::: {.column width="50%" layout="[[-1], [1], [-1]]"}
-![](images/motivation.png)
+![](images/motivation.png){fig-alt="A motivational poster with quote from Kieran Healy saying \"You should look at your data.\" The quote is from Data Visualization: A Practical Introduction, 2018.o"}
 :::
 
 ::: {.column width="40%"}
@@ -79,11 +79,13 @@ glimpse(bike_sharing_dat)
 
 ::: columns
 ::: {.column width="50%"}
-[![](images/Picture1.png)](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+[![](images/Picture1.png){fig-alt="Screenshot from ggplot2 website showing different layers. There is an illustration of squares on top of each other representing the following layers from bottom to top: data, mapping, layers, scales, facets, coordinates, themes."}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 :::
 
 ::: {.column width="50%" style="font-size: 120%;"}
-"In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars)." - Hadley Wickham
+"In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars)."
+
+Hadley Wickham
 :::
 :::
 
@@ -252,8 +254,7 @@ ggplot(bike_sharing_dat,
 ```{r}
 ggplot(bike_sharing_dat, aes(x = count, fill = season)) +
   geom_density(alpha = .8) + 
-  theme_light() + 
-  guides(fill = FALSE)
+  theme_light() 
 ```
 
 ## Total Rentals by Season
@@ -266,7 +267,7 @@ ggplot(bike_sharing_dat, aes(x = count, fill = season)) +
   guides(fill = FALSE)
 ```
 
-# Introducing More Variables
+# Introducing More Variables {.inverse}
 
 ## Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday
 
@@ -280,3 +281,5 @@ ggplot(bike_sharing_dat,
   facet_grid(weathersit ~ season) +
   theme_test()
 ```
+
+# Thank you! {.inverse}

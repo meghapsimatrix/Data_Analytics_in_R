@@ -47,12 +47,17 @@ tt <- tt_load("2022-11-29")
 tt
 
 wc_matches <- tt$wcmatches
-glimpse(matches)
+```
+
+## Example Dataset: Men's World Cup Matches
+
+```{r}
+glimpse(wc_matches)
 ```
 
 # `dplyr` {.inverse}
 
-## Verbs
+## Verbs {.smaller}
 
 | Verb          | Definition                                                |
 |---------------|-----------------------------------------------------------|
@@ -66,8 +71,6 @@ glimpse(matches)
 | `case_when()` | Vectorize multiple `ifelse()` statements                  |
 
 ## `select()`
-
-wnba_draft
 
 ```{r}
 wc_matches %>%
@@ -148,6 +151,12 @@ avg_score_diff %>%
 ## `pivot_longer()`
 
 ```{r}
+avg_score_diff
+```
+
+## `pivot_longer()`
+
+```{r}
 long_dat <- 
   avg_score_diff %>%
   select(-order) %>%
@@ -174,7 +183,8 @@ long_dat_clean
 long_dat_clean %>%
   select(-var) %>%
   pivot_wider(names_from = stat, values_from = val) %>%
-  rename(Stage = stage, `Number of Matches` = n,
+  rename(Stage = stage, 
+         `Number of Matches` = n,
          `Average Difference in Goals` = mean,
          `SD of Difference in Goals` = sd)
 ```
@@ -186,3 +196,5 @@ wc_matches %>%
   unite(world_cup, year, country, sep =  ": ") %>%
   filter(stage == "Final")
 ```
+
+# Thank you! {.inverse}
