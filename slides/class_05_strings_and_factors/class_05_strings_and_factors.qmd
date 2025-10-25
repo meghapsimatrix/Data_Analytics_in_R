@@ -183,12 +183,6 @@ levels(cdc_cat$new_cat)
 
 ## `fct_infreq()`
 
-```{r, fig.width = 15, fig.height = 8, dpi = 500}
-ggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +
-  geom_bar(stat = "identity") +
-  theme_bw()
-```
-
 ## `fct_lump()`
 
 Here, we are using the full `cdc_data`:
