@@ -152,8 +152,8 @@ p
 | Col1            | Col2                                      |
 |-----------------|-------------------------------------------|
 | `fct_relevel()` | Change levels of factor                   |
-| `fct_infreq()`  | Order levels of factor based on frequency |
 | `fct_lump()`    | Lump different levels of factor           |
+| `fct_infreq()`  | Order levels of factor based on frequency |
 
 These are again just a handful of available functions. Please check out <https://forcats.tidyverse.org/reference/index.html> for more.
 
@@ -162,35 +162,37 @@ These are again just a handful of available functions. Please check out <https:/
 ```{r}
 cdc_cat <- 
   cdc_data %>%
-  group_by(category) %>%
-  count() %>%
-  ungroup() %>% 
-  slice(1:10) %>%
   mutate(category = factor(category))
 
-levels(cdc_cat$category)
+head(levels(cdc_cat$category))
 ```
 
 ## `fct_relevel()`
 
 ```{r}
-cdc_cat <-
-  cdc_cat %>%
+cdc_data<-
+  cdc_data %>%
   mutate(new_cat = fct_relevel(category, "500 Cities & Places", after = 2))
 
-levels(cdc_cat$new_cat)
+head(levels(cdc_data$new_cat))
 ```
 
-## `fct_infreq()`
-
 ## `fct_lump()`
-
-Here, we are using the full `cdc_data`:
 
 ```{r}
 cdc_data <- 
   cdc_data %>%
   mutate(cat_short = fct_lump_n(category, n = 3))
+
+table(cdc_data$cat_short)
+```
+
+## `fct_infreq()`
+
+```{r}
+cdc_data <- 
+  cdc_data %>%
+  mutate(cat_short = fct_infreq(cat_short))
 
 table(cdc_data$cat_short)
 ```

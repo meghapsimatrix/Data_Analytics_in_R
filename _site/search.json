@@ -819,35 +819,35 @@
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
     "title": "Strings and Factors",
     "section": "Verbs",
-    "text": "Verbs\n\n\n\nCol1\nCol2\n\n\n\n\nfct_relevel()\nChange levels of factor\n\n\nfct_infreq()\nOrder levels of factor based on frequency\n\n\nfct_lump()\nLump different levels of factor\n\n\n\nThese are again just a handful of available functions. Please check out https://forcats.tidyverse.org/reference/index.html for more."
+    "text": "Verbs\n\n\n\nCol1\nCol2\n\n\n\n\nfct_relevel()\nChange levels of factor\n\n\nfct_lump()\nLump different levels of factor\n\n\nfct_infreq()\nOrder levels of factor based on frequency\n\n\n\nThese are again just a handful of available functions. Please check out https://forcats.tidyverse.org/reference/index.html for more."
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
     "title": "Strings and Factors",
     "section": "Categories from CDC Data",
-    "text": "Categories from CDC Data\n\ncdc_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;% \n  slice(1:10) %&gt;%\n  mutate(category = factor(category))\n\nlevels(cdc_cat$category)\n\n [1] \"500 Cities & Places\"                      \n [2] \"Administrative\"                           \n [3] \"Assisted Reproductive Technology (ART)\"   \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
+    "text": "Categories from CDC Data\n\ncdc_cat &lt;- \n  cdc_data %&gt;%\n  mutate(category = factor(category))\n\nhead(levels(cdc_cat$category))\n\n[1] \"500 Cities & Places\"                   \n[2] \"Administrative\"                        \n[3] \"Assisted Reproductive Technology (ART)\"\n[4] \"Behavioral Risk Factors\"               \n[5] \"Cancer Research Citation Search\"       \n[6] \"Case Surveillance\""
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
     "title": "Strings and Factors",
     "section": "fct_relevel()",
-    "text": "fct_relevel()\n\ncdc_cat &lt;-\n  cdc_cat %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nlevels(cdc_cat$new_cat)\n\n [1] \"Administrative\"                           \n [2] \"Assisted Reproductive Technology (ART)\"   \n [3] \"500 Cities & Places\"                      \n [4] \"Behavioral Risk Factors\"                  \n [5] \"Cancer Research Citation Search\"          \n [6] \"Case Surveillance\"                        \n [7] \"Cessation Coverage\"                       \n [8] \"Child Vaccinations\"                       \n [9] \"Chronic Disease Indicators\"               \n[10] \"Coronavirus and Other Respiratory Viruses\""
+    "text": "fct_relevel()\n\ncdc_data&lt;-\n  cdc_data %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nhead(levels(cdc_data$new_cat))\n\n[1] \"Administrative\"                        \n[2] \"Assisted Reproductive Technology (ART)\"\n[3] \"500 Cities & Places\"                   \n[4] \"Behavioral Risk Factors\"               \n[5] \"Cancer Research Citation Search\"       \n[6] \"Case Surveillance\""
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
     "title": "Strings and Factors",
     "section": "fct_infreq()",
-    "text": "fct_infreq()\n\nggplot(cdc_cat, aes(x = fct_infreq(category), y = n)) +\n  geom_bar(stat = \"identity\") +\n  theme_bw()"
+    "text": "fct_infreq()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_infreq(cat_short))\n\ntable(cdc_data$cat_short)\n\n\n                                                Other \n                                                  672 \n                                                NNDSS \n                                                  293 \n                                                 NCHS \n                                                  184 \nNational Institute for Occupational Safety and Health \n                                                  108"
   },
   {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
     "title": "Strings and Factors",
     "section": "fct_lump()",
-    "text": "fct_lump()\nHere, we are using the full cdc_data:\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
+    "text": "fct_lump()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",

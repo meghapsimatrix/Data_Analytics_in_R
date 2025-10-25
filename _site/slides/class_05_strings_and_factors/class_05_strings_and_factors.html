@@ -800,12 +800,12 @@ Levels: A B C D E</code></pre>
 <td>Change levels of factor</td>
 </tr>
 <tr class="even">
-<td><code>fct_infreq()</code></td>
-<td>Order levels of factor based on frequency</td>
-</tr>
-<tr class="odd">
 <td><code>fct_lump()</code></td>
 <td>Lump different levels of factor</td>
+</tr>
+<tr class="odd">
+<td><code>fct_infreq()</code></td>
+<td>Order levels of factor based on frequency</td>
 </tr>
 </tbody>
 </table>
@@ -816,67 +816,45 @@ Levels: A B C D E</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>cdc_cat <span class="ot">&lt;-</span> </span>
 <span id="cb19-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">group_by</span>(category) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb19-6"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">factor</span>(category))</span>
-<span id="cb19-8"><a></a></span>
-<span id="cb19-9"><a></a><span class="fu">levels</span>(cdc_cat<span class="sc">$</span>category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">factor</span>(category))</span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a><span class="fu">head</span>(<span class="fu">levels</span>(cdc_cat<span class="sc">$</span>category))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "500 Cities &amp; Places"                      
- [2] "Administrative"                           
- [3] "Assisted Reproductive Technology (ART)"   
- [4] "Behavioral Risk Factors"                  
- [5] "Cancer Research Citation Search"          
- [6] "Case Surveillance"                        
- [7] "Cessation Coverage"                       
- [8] "Child Vaccinations"                       
- [9] "Chronic Disease Indicators"               
-[10] "Coronavirus and Other Respiratory Viruses"</code></pre>
+<pre><code>[1] "500 Cities &amp; Places"                   
+[2] "Administrative"                        
+[3] "Assisted Reproductive Technology (ART)"
+[4] "Behavioral Risk Factors"               
+[5] "Cancer Research Citation Search"       
+[6] "Case Surveillance"                     </code></pre>
 </div>
 </div>
 </section>
 <section id="fct_relevel" class="slide level2">
 <h2><code>fct_relevel()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cdc_cat <span class="ot">&lt;-</span></span>
-<span id="cb21-2"><a></a>  cdc_cat <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cdc_data<span class="ot">&lt;-</span></span>
+<span id="cb21-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a></a>  <span class="fu">mutate</span>(<span class="at">new_cat =</span> <span class="fu">fct_relevel</span>(category, <span class="st">"500 Cities &amp; Places"</span>, <span class="at">after =</span> <span class="dv">2</span>))</span>
 <span id="cb21-4"><a></a></span>
-<span id="cb21-5"><a></a><span class="fu">levels</span>(cdc_cat<span class="sc">$</span>new_cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a></a><span class="fu">head</span>(<span class="fu">levels</span>(cdc_data<span class="sc">$</span>new_cat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Administrative"                           
- [2] "Assisted Reproductive Technology (ART)"   
- [3] "500 Cities &amp; Places"                      
- [4] "Behavioral Risk Factors"                  
- [5] "Cancer Research Citation Search"          
- [6] "Case Surveillance"                        
- [7] "Cessation Coverage"                       
- [8] "Child Vaccinations"                       
- [9] "Chronic Disease Indicators"               
-[10] "Coronavirus and Other Respiratory Viruses"</code></pre>
+<pre><code>[1] "Administrative"                        
+[2] "Assisted Reproductive Technology (ART)"
+[3] "500 Cities &amp; Places"                   
+[4] "Behavioral Risk Factors"               
+[5] "Cancer Research Citation Search"       
+[6] "Case Surveillance"                     </code></pre>
 </div>
 </div>
 </section>
-<section id="fct_infreq" class="slide level2">
-<h2><code>fct_infreq()</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(cdc_cat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(category), <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="class_05_strings_and_factors_files/figure-revealjs/unnamed-chunk-13-1.png" width="7500" class="r-stretch"></section>
 <section id="fct_lump" class="slide level2">
 <h2><code>fct_lump()</code></h2>
-<p>Here, we are using the full <code>cdc_data</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cdc_data <span class="ot">&lt;-</span> </span>
-<span id="cb24-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">mutate</span>(<span class="at">cat_short =</span> <span class="fu">fct_lump_n</span>(category, <span class="at">n =</span> <span class="dv">3</span>))</span>
-<span id="cb24-4"><a></a></span>
-<span id="cb24-5"><a></a><span class="fu">table</span>(cdc_data<span class="sc">$</span>cat_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>cdc_data <span class="ot">&lt;-</span> </span>
+<span id="cb23-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">mutate</span>(<span class="at">cat_short =</span> <span class="fu">fct_lump_n</span>(category, <span class="at">n =</span> <span class="dv">3</span>))</span>
+<span id="cb23-4"><a></a></span>
+<span id="cb23-5"><a></a><span class="fu">table</span>(cdc_data<span class="sc">$</span>cat_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 National Institute for Occupational Safety and Health 
@@ -887,6 +865,27 @@ National Institute for Occupational Safety and Health
                                                   293 
                                                 Other 
                                                   672 </code></pre>
+</div>
+</div>
+</section>
+<section id="fct_infreq" class="slide level2">
+<h2><code>fct_infreq()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>cdc_data <span class="ot">&lt;-</span> </span>
+<span id="cb25-2"><a></a>  cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a></a>  <span class="fu">mutate</span>(<span class="at">cat_short =</span> <span class="fu">fct_infreq</span>(cat_short))</span>
+<span id="cb25-4"><a></a></span>
+<span id="cb25-5"><a></a><span class="fu">table</span>(cdc_data<span class="sc">$</span>cat_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                                Other 
+                                                  672 
+                                                NNDSS 
+                                                  293 
+                                                 NCHS 
+                                                  184 
+National Institute for Occupational Safety and Health 
+                                                  108 </code></pre>
 </div>
 </div>
 </section></section>
