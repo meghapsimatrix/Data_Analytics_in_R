@@ -410,10 +410,13 @@ Megha Joshi
 <section id="example-dataset-background" class="slide level2">
 <h2>Example Dataset Background</h2>
 <ul>
-<li><p>Tennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)</p></li>
+<li><p>Tennessee’s Student/Teacher Achievement Ratio (STAR) <a href="https://edsource.org/wp-content/uploads/old/STAR.pdf">(Mosteller, 1995)</a></p></li>
 <li><p>Longitudinal project examining effect of class size on student achievement</p></li>
 <li><p>Data on language, math, reading outcomes</p></li>
-<li><p>The data that we are using is from the <code>evalITR</code> package. Please review information about the data <a href="https://michaellli.github.io/evalITR/reference/star.html">here</a>.</p></li>
+<li><p>The data that we are using is from the <code>evalITR</code> package</p>
+<ul>
+<li>Please review information about the data <a href="https://michaellli.github.io/evalITR/reference/star.html">here</a></li>
+</ul></li>
 </ul>
 </section>
 <section id="example-dataset" class="slide level2">
@@ -630,7 +633,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sum_it <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="co"># input 1 </span></span>
-<span id="cb15-2"><a></a>                   y <span class="co"># input 2</span></span>
+<span id="cb15-2"><a></a>                   y  <span class="co"># input 2</span></span>
 <span id="cb15-3"><a></a>                   ){</span>
 <span id="cb15-4"><a></a>  </span>
 <span id="cb15-5"><a></a>  total <span class="ot">&lt;-</span> x <span class="sc">+</span> y <span class="co"># do something with the input</span></span>
@@ -710,9 +713,9 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="repetition-1" class="slide level2">
 <h2>Repetition</h2>
 <ul>
-<li><p>For the sake of this presentation, I am only showing three outcomes.</p></li>
-<li><p>Imagine if there were more than 10 outcomes that you needed to analyze.</p></li>
-<li><p>Think of potential issues in this situation - both when doing brute force analysis and even when using a function like <code>run_reg().</code></p></li>
+<li><p>For the sake of this presentation, I am only showing three outcomes</p></li>
+<li><p>Imagine if there were more than 10 outcomes that you needed to analyze</p></li>
+<li><p>Think of potential issues in this situation - both when doing brute force analysis and even when using a function like <code>run_reg()</code></p></li>
 </ul>
 </section></section>
 <section>
@@ -724,19 +727,19 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Repetitive Tasks Examples</h2>
 <ul>
 <li><p>Running analysis for multiple outcomes like above</p></li>
-<li><p>Read in 50 csv files in a folder with data on different years</p></li>
-<li><p>Conduct power analysis to estimate sample size for a randomized trial based on multiple assumed values effect size</p></li>
+<li><p>Reading in 50 csv files in a folder with different csv files containing data for different school year</p></li>
+<li><p>Conduct power analysis to estimate sample size for a randomized trial based on multiple assumed values of the effect size</p></li>
 </ul>
 </section>
 <section id="for-loops" class="slide level2">
 <h2>For Loops</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p>Classic way to run repetitive analyses or tasks</p></li>
 <li><p>For each item in a vector of items, run the code</p></li>
 </ul>
-</section>
-<section id="for-loops-example" class="slide level2">
-<h2>For Loops Example</h2>
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># A vector of items to loop through</span></span>
 <span id="cb26-2"><a></a></span>
@@ -761,6 +764,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 [1] 20</code></pre>
 </div>
 </div>
+</div></div>
 </section>
 <section id="star-analysis-example-loop-through-outcomes" class="slide level2">
 <h2>STAR Analysis Example: Loop through Outcomes</h2>
@@ -792,47 +796,36 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="for-loops-are-slow" class="slide level2">
 <h2>For Loops are Slow…</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <ul>
 <li>For loops are still clunky and involve fairly extensive coding</li>
+<li>Need to think through how to append and store the outcome or print the outcome</li>
+<li>Also a bit slow..(er than other stuff we are going to talk about) in R</li>
 </ul>
-<!-- -->
-<ul>
-<li><p>Need to think through how to append and store the outcome or print the outcome</p></li>
-<li><p>Also a bit slow..(er than other stuff we are going to talk about) in R</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<iframe src="https://giphy.com/embed/ytPdmmKAsFOUM" width="343" height="480" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-<p></p><p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a></p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-<p></p>
-</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></section><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a><section id="purrr" class="slide level2"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</section>
+<section id="purrr" class="slide level2">
 <h2><code>purrr</code></h2>
-</a><div class="columns"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-<div class="column" style="width:50%;">
+<div class="columns">
+<div class="column" style="width:30%;">
 <p><img data-src="images/clipboard-1382919279.png"></p>
-</div></a><div class="column" style="width:50%;"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a><ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+</div><div class="column" style="width:70%;">
+<ul>
 <li><p>Functional programming in R</p></li>
 <li><p>Like for loop - apply a function to each element in a vector but less clunky</p></li>
-</a><li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><p>Major family of functions: <code>map()</code></p>
-</a><ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<li><p>Major family of functions: <code>map()</code></p>
+<div>
+<ul>
 <li><p>Loop over a vector and output some value</p></li>
 <li><p>Different variations of <code>map()</code> will return different types of output</p></li>
-</a><li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><p><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">Please read through the different variations here: <a href="https://purrr.tidyverse.org/reference/map.html" class="uri">https://purrr.tidyverse.org/reference/map.html</a></a></p></li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></ul></li><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></ul><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></div><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a></section><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a><section id="map" class="slide level2"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
+<li><p>Please read through the different variations <a href="https://purrr.tidyverse.org/reference/map.html">here</a></p></li>
+</ul>
+</div></li>
+</ul>
+</div></div>
+</section>
+<section id="map" class="slide level2">
 <h2><code>map()</code></h2>
-</a><div class="cell"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a="">
-</a><div class="sourceCode cell-code" id="cb30"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""></a><pre class="sourceCode numberSource r number-lines code-with-copy"><a href="https://giphy.com/gifs/tortoise-ytPdmmKAsFOUM" via="" giphy<="" a=""><code class="sourceCode r"><span id="cb30-1"></span></code></a><code class="sourceCode r"><a href="#cb30-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector with items to loop over</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="co"># vector with items to loop over</span></span>
 <span id="cb30-2"><a></a></span>
 <span id="cb30-3"><a></a><span class="co"># function that you want run</span></span>
 <span id="cb30-4"><a></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
@@ -855,22 +848,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 [1] 8
 
 [[5]]
-[1] 10
-
-[[6]]
-[1] 12
-
-[[7]]
-[1] 14
-
-[[8]]
-[1] 16
-
-[[9]]
-[1] 18
-
-[[10]]
-[1] 20</code></pre>
+[1] 10</code></pre>
 </div>
 </div>
 </section>
@@ -879,7 +857,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">map_int</span>(numbers, <span class="at">.f =</span> times_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
+<pre><code>[1]  2  4  6  8 10</code></pre>
 </div>
 </div>
 </section>
@@ -1254,7 +1232,7 @@ F-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16</code></pre>
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

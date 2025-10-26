@@ -286,7 +286,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
     "title": "Functions and Iteration",
     "section": "Example Dataset Background",
-    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package. Please review information about the data here."
+    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package\n\nPlease review information about the data here"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
@@ -349,7 +349,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
     "title": "Functions and Iteration",
     "section": "Functions",
-    "text": "Functions\n\n\n\nInput\nDo something with the input\nOutput\nRun it over again with different input\n\n\n\nsum_it &lt;- function(x, # input 1 \n                   y # input 2\n                   ){\n  \n  total &lt;- x + y # do something with the input\n  \n  return(total) # output\n  \n\n}\n\nsum_it(2, 3)\n\n[1] 5\n\nsum_it(1000, 5000)\n\n[1] 6000"
+    "text": "Functions\n\n\n\nInput\nDo something with the input\nOutput\nRun it over again with different input\n\n\n\nsum_it &lt;- function(x, # input 1 \n                   y  # input 2\n                   ){\n  \n  total &lt;- x + y # do something with the input\n  \n  return(total) # output\n  \n\n}\n\nsum_it(2, 3)\n\n[1] 5\n\nsum_it(1000, 5000)\n\n[1] 6000"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
@@ -377,21 +377,21 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
     "title": "Functions and Iteration",
     "section": "Repetition",
-    "text": "Repetition\n\nFor the sake of this presentation, I am only showing three outcomes.\nImagine if there were more than 10 outcomes that you needed to analyze.\nThink of potential issues in this situation - both when doing brute force analysis and even when using a function like run_reg()."
+    "text": "Repetition\n\nFor the sake of this presentation, I am only showing three outcomes\nImagine if there were more than 10 outcomes that you needed to analyze\nThink of potential issues in this situation - both when doing brute force analysis and even when using a function like run_reg()"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
     "title": "Functions and Iteration",
     "section": "Repetitive Tasks Examples",
-    "text": "Repetitive Tasks Examples\n\nRunning analysis for multiple outcomes like above\nRead in 50 csv files in a folder with data on different years\nConduct power analysis to estimate sample size for a randomized trial based on multiple assumed values effect size"
+    "text": "Repetitive Tasks Examples\n\nRunning analysis for multiple outcomes like above\nReading in 50 csv files in a folder with different csv files containing data for different school year\nConduct power analysis to estimate sample size for a randomized trial based on multiple assumed values of the effect size"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
     "title": "Functions and Iteration",
     "section": "For Loops",
-    "text": "For Loops\n\nClassic way to run repetitive analyses or tasks\nFor each item in a vector of items, run the code"
+    "text": "For Loops\n\n\n\nClassic way to run repetitive analyses or tasks\nFor each item in a vector of items, run the code\n\n\n\nnumbers &lt;- 1:10 # A vector of items to loop through\n\nfor(n in numbers){ # for each number in the vector numbers\n  \n  x &lt;- n * 2 # multiply the number by 2\n  \n  print(x) # print the result\n  \n  \n}\n\n[1] 2\n[1] 4\n[1] 6\n[1] 8\n[1] 10\n[1] 12\n[1] 14\n[1] 16\n[1] 18\n[1] 20"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-example",
@@ -412,28 +412,28 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
     "title": "Functions and Iteration",
     "section": "For Loops are Slow…",
-    "text": "For Loops are Slow…\n\n\n\nFor loops are still clunky and involve fairly extensive coding\n\n\n\nNeed to think through how to append and store the outcome or print the outcome\nAlso a bit slow..(er than other stuff we are going to talk about) in R"
+    "text": "For Loops are Slow…\n\nFor loops are still clunky and involve fairly extensive coding\nNeed to think through how to append and store the outcome or print the outcome\nAlso a bit slow..(er than other stuff we are going to talk about) in R"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
     "title": "Functions and Iteration",
     "section": "purrr",
-    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here: https://purrr.tidyverse.org/reference/map.html"
+    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
     "title": "Functions and Iteration",
     "section": "map()",
-    "text": "map()\n\nnumbers &lt;- 1:10 # vector with items to loop over\n\n# function that you want run\ntimes_two &lt;- function(x){\n  x * 2\n}\n\n# loop times_two through each number, notice the output\nmap(numbers, .f = times_two)\n\n[[1]]\n[1] 2\n\n[[2]]\n[1] 4\n\n[[3]]\n[1] 6\n\n[[4]]\n[1] 8\n\n[[5]]\n[1] 10\n\n[[6]]\n[1] 12\n\n[[7]]\n[1] 14\n\n[[8]]\n[1] 16\n\n[[9]]\n[1] 18\n\n[[10]]\n[1] 20"
+    "text": "map()\n\nnumbers &lt;- 1:5 # vector with items to loop over\n\n# function that you want run\ntimes_two &lt;- function(x){\n  x * 2\n}\n\n# loop times_two through each number, notice the output\nmap(numbers, .f = times_two)\n\n[[1]]\n[1] 2\n\n[[2]]\n[1] 4\n\n[[3]]\n[1] 6\n\n[[4]]\n[1] 8\n\n[[5]]\n[1] 10"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
     "title": "Functions and Iteration",
     "section": "Different Output Format",
-    "text": "Different Output Format\n\nmap_int(numbers, .f = times_two)\n\n [1]  2  4  6  8 10 12 14 16 18 20"
+    "text": "Different Output Format\n\nmap_int(numbers, .f = times_two)\n\n[1]  2  4  6  8 10"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
@@ -836,18 +836,18 @@
     "text": "fct_relevel()\n\ncdc_data&lt;-\n  cdc_data %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nhead(levels(cdc_data$new_cat))\n\n[1] \"Administrative\"                        \n[2] \"Assisted Reproductive Technology (ART)\"\n[3] \"500 Cities & Places\"                   \n[4] \"Behavioral Risk Factors\"               \n[5] \"Cancer Research Citation Search\"       \n[6] \"Case Surveillance\""
   },
   {
-    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
-    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
-    "title": "Strings and Factors",
-    "section": "fct_infreq()",
-    "text": "fct_infreq()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_infreq(cat_short))\n\ntable(cdc_data$cat_short)\n\n\n                                                Other \n                                                  672 \n                                                NNDSS \n                                                  293 \n                                                 NCHS \n                                                  184 \nNational Institute for Occupational Safety and Health \n                                                  108"
-  },
-  {
     "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
     "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
     "title": "Strings and Factors",
     "section": "fct_lump()",
     "text": "fct_lump()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "title": "Strings and Factors",
+    "section": "fct_infreq()",
+    "text": "fct_infreq()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_infreq(cat_short))\n\ntable(cdc_data$cat_short)\n\n\n                                                Other \n                                                  672 \n                                                NNDSS \n                                                  293 \n                                                 NCHS \n                                                  184 \nNational Institute for Occupational Safety and Health \n                                                  108"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",
