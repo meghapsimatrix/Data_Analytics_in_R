@@ -7,7 +7,7 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2', 'tidyverse', 'janitor', 'curl']
+  packages: ['tidyverse', 'janitor', 'curl']
 filters:
   - webr
 ---
@@ -30,44 +30,48 @@ filters:
 
 3.  Calculate the average BMI for smokers:
 
-    ```{r}
+    ```{webr}
 
     ```
 
 4.  Using the [codebook](https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators) here, create another variable that contains the corresponding label for the `education` variable. For example, for the rows where `education` is 1, the new variable should contain: `Never attended school or only kindergarten`.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 5.  For each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 6.  Create a `ggplot` representing the data from above.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 7.  For people with and without diabetes, calculate the mean and standard deviation of the following variables: `mental_hlth`, `physical_htlh`, `gen_hlth`, `bmi`, `age`, `income`.
 
-    ```{r}
+    ```{webr}
 
     ```
 
-8.  Think of ways to represent the table above in a different way
+8.  Think of different ways to represent the table above.
+
+    ```{webr}
+
+    ```
 
 9.  Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 10. Create a table using `gt` or `kable` with the dataset above.
 
-    ```{r}
+    ```{webr}
 
     ```

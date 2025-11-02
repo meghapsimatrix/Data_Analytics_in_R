@@ -7,7 +7,7 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2', 'tidyverse', 'janitor', 'curl', 'MatchIt']
+  packages: ['tidyverse', 'janitor', 'curl', 'MatchIt']
 filters:
   - webr
 ---
@@ -23,13 +23,13 @@ filters:
 
     **For the following questions, please create a graph using `ggplot` to answer:**
 
-2.  Create a plot examine the distribution of `ret78` variable which has information on income of the participants in year 1978.
+2.  Create a plot examine the distribution of `re78` variable which has information on income of the participants in year 1978.
 
     ```{webr}
 
     ```
 
-3.  Now check the difference between the distribution of that variable between the treatment and control groups.
+3.  Now check the difference between the distribution of that variable between the treatment and control groups. (Note: you have to highlight code that is in different lines and then run in `webr` interface).
 
     ```{webr}
 
