@@ -7,14 +7,14 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2']
+  packages: ['tidyverse', 'curl']
 filters:
   - webr
 ---
 
-1.  Run the following code to load the data. View the codebook and other information on the on the data [here](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-05-06/readme.md).
+1.  Run the following code to load the data. View the codebook and other information on the on the data [here](https://rfordatascience.github.io/tidytuesday/data/2025/2025-05-06/readme.html).
 
-    ```{r, message = FALSE, warning = FALSE}
+    ```{webr, message = FALSE, warning = FALSE}
     library(tidyverse)
 
     nsf_data <- tidytuesdayR::tt_load('2025-05-06')
@@ -24,41 +24,41 @@ filters:
 
 2.  Separate the project title into the main title and sub-title.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 3.  Create a subset of the data with projects that have the word STEM in their title.
 
-    ```{r}
+    ```{webr}
     ```
 
-4.  Count the number of grants by `directorate`. Do you see anything odd.
+4.  Count the number of grants by `directorate`. Do you see anything odd?
 
-    ```{r}
+    ```{webr}
 
     ```
 
 5.  Clean up the `directorate` variable and create the table again. Arrange the table in descending order.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 6.  Count the length of the `org_zip` variable. Look at the distribution of the length.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 7.  Split the `org_zip` variable into into two variables. First containing the 5 number zip code and the second containing the add-on 4 number code.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 8.  Challenge problem: Create a graph identifying the most commonly occurring word across the abstracts from grants that are on Ted Cruz's list.
 
-    ```{r}
+    ```{webr}
 
     ```

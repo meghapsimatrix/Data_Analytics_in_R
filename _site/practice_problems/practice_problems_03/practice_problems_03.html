@@ -4959,7 +4959,7 @@ min-height: 500px;
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['dplyr', 'readr', 'ggplot2', 'tidyverse', 'janitor', 'curl'];
+globalThis.qwebrInstallRPackagesList = ['tidyverse', 'janitor', 'curl', 'kableExtra'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -4981,7 +4981,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(tidyverse)\nlibrary(janitor)\n\ndiabetes_dat <- read_csv(\"https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv\") %>%\n  clean_names()","options":{"comment":"","message":"true","dpi":72,"label":"unnamed-chunk-1","read-only":"false","editor-quick-suggestions":"false","output":"true","results":"markup","editor-word-wrap":"true","out-height":"","out-width":"700px","autorun":"false","editor-max-height":"","warning":"true","editor-font-scale":"1","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"context":"interactive"},"id":1},{"code":"","options":{"comment":"","message":"true","dpi":72,"label":"unnamed-chunk-2","read-only":"false","editor-quick-suggestions":"false","output":"true","results":"markup","editor-word-wrap":"true","out-height":"","out-width":"700px","autorun":"false","editor-max-height":"","warning":"true","editor-font-scale":"1","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"context":"interactive"},"id":2}];
+globalThis.qwebrCellDetails = [{"code":"library(tidyverse)\nlibrary(janitor)\n\ndiabetes_dat <- read_csv(\"https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv\") %>%\n  clean_names()\n\nglimpse(diabetes_dat)","id":1,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-1","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":2,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-2","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":3,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-3","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":4,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-4","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":5,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-5","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":6,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-6","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":7,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-7","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":8,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-8","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":9,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-9","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}},{"code":"","id":10,"options":{"fig-height":5,"results":"markup","message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-10","editor-quick-suggestions":"false","fig-width":7,"out-height":"","fig-cap":"","editor-word-wrap":"true","autorun":"false","read-only":"false","editor-max-height":"","classes":"","warning":"true","dpi":72,"comment":"","context":"interactive","out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -6624,19 +6624,51 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div></li>
-<li><p>Using <code>tidyverse</code> syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.</p>
+<li><p>Using <code>tidyverse</code> syntax, calculate the count and proportion of high BP patients who were diagnosed with diabetes.</p>
 <div class="cell">
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div></li>
-<li><p>Calculate the average BMI for smokers:</p></li>
-<li><p>Using the <a href="https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators">codebook</a> here, create another variable that contains the corresponding label for the <code>education</code> variable. For example, for the rows where <code>education</code> is 1, the new variable should contain: <code>Never attended school or only kindergarten</code>.</p></li>
-<li><p>For each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.</p></li>
-<li><p>Create a <code>ggplot</code> representing the data from above.</p></li>
-<li><p>For people with and without diabetes, calculate the mean and standard deviation of the following variables: <code>mental_hlth</code>, <code>physical_htlh</code>, <code>gen_hlth</code>, <code>bmi</code>, <code>age</code>, <code>income</code>.</p></li>
-<li><p>Think of ways to represent the table above in a different way</p></li>
-<li><p>Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.</p></li>
-<li><p>Create a table using <code>gt</code> or <code>kable</code> with the dataset above.</p></li>
+<li><p>Calculate the average BMI for smokers.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>Using the <a href="https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators">codebook</a> here, create another variable that contains the corresponding label for the <code>education</code> variable. For example, for the rows where <code>education</code> is 1, the new variable should contain: <code>Never attended school or only kindergarten</code>.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>For each category of education, calculate the proportion of people who smoke, are physically active, have had a heart attack, eat fruits, and eat vegetables.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>Create a <code>ggplot</code> representing the data from above.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>For people with and without diabetes, calculate the mean and standard deviation of the following variables: <code>mental_hlth</code>, <code>physical_htlh</code>, <code>gen_hlth</code>, <code>bmi</code>, <code>age</code>, <code>income</code>.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>Think of different ways to represent the table above. Experiment with the new formats.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
+<li><p>Challenge Problem: Create a table using <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><code>kableExtra</code></a> with the data from Question 9.</p>
+<div class="cell">
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></li>
 </ol>
 
 
@@ -6787,7 +6819,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -7124,7 +7156,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">webr:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: [&#39;dplyr&#39;, &#39;readr&#39;, &#39;ggplot2&#39;, &#39;tidyverse&#39;, &#39;janitor&#39;, &#39;curl&#39;]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: [&#39;tidyverse&#39;, &#39;janitor&#39;, &#39;curl&#39;, &#39;kableExtra&#39;]</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -7137,57 +7169,63 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">    diabetes_dat &lt;- read_csv(&quot;https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv&quot;) %&gt;%</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">      clean_names()</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Using <span class="in">`tidyverse`</span> syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="in">    glimpse(diabetes_dat)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Using <span class="in">`tidyverse`</span> syntax, calculate the count and proportion of high BP patients who were diagnosed with diabetes.</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Calculate the average BMI for smokers:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Calculate the average BMI for smokers.</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Using the <span class="co">[</span><span class="ot">codebook</span><span class="co">](https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators)</span> here, create another variable that contains the corresponding label for the <span class="in">`education`</span> variable. For example, for the rows where <span class="in">`education`</span> is 1, the new variable should contain: <span class="in">`Never attended school or only kindergarten`</span>.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Using the <span class="co">[</span><span class="ot">codebook</span><span class="co">](https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators)</span> here, create another variable that contains the corresponding label for the <span class="in">`education`</span> variable. For example, for the rows where <span class="in">`education`</span> is 1, the new variable should contain: <span class="in">`Never attended school or only kindergarten`</span>.</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>For each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>For each category of education, calculate the proportion of people who smoke, are physically active, have had a heart attack, eat fruits, and eat vegetables.</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Create a <span class="in">`ggplot`</span> representing the data from above.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Create a <span class="in">`ggplot`</span> representing the data from above.</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>For people with and without diabetes, calculate the mean and standard deviation of the following variables: <span class="in">`mental_hlth`</span>, <span class="in">`physical_htlh`</span>, <span class="in">`gen_hlth`</span>, <span class="in">`bmi`</span>, <span class="in">`age`</span>, <span class="in">`income`</span>.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>For people with and without diabetes, calculate the mean and standard deviation of the following variables: <span class="in">`mental_hlth`</span>, <span class="in">`physical_htlh`</span>, <span class="in">`gen_hlth`</span>, <span class="in">`bmi`</span>, <span class="in">`age`</span>, <span class="in">`income`</span>.</span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>Think of ways to represent the table above in a different way</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>Think of different ways to represent the table above. Experiment with the new formats.</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Create a table using <span class="in">`gt`</span> or <span class="in">`kable`</span> with the dataset above.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>Restructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Challenge Problem: Create a table using <span class="co">[</span><span class="ot">`kableExtra`</span><span class="co">](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)</span> with the data from Question 9.</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{webr}</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <script type="module">

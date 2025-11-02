@@ -7,14 +7,14 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2']
+  packages: ['tidyverse', 'curl']
 filters:
   - webr
 ---
 
-1.  Run the following code to load the data. View the codebook for the data [here](https://meghapsimatrix.quarto.pub/data-analytics-in-r/slides/class_02_data_visualization/class_02_data_visualization.html#/example-dataset-capital-bike-sharing-data).
+1.  Run the following code to load the data. View the codebook for the data [here](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset).
 
-    ```{r, message = FALSE, warning = FALSE}
+    ```{webr, message = FALSE, warning = FALSE}
     library(tidyverse)
 
     bike_dat <- read_csv("../data/capital_bike_sharing_uci/capital_bike_sharing.csv")
@@ -24,36 +24,36 @@ filters:
 
 2.  Create a graph like we did in Lecture 2 of the relationship between temperature and total bike rentals. What is odd about this graph?
 
-    ```{r}
+    ```{webr}
 
     ```
 
-3.  Recode the `season`, `yr`, `mnth`, `holiday`, `weekday`, `workingday`, and `weather-sit` variable.
+3.  Re-code the `season`, `yr`, `mnth`, `holiday`, `weekday`, `workingday`, and `weather-sit` variables.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 4.  Change the season variable into a factor variable. What are the levels of the variable? Reorder the variable so that we have Summer, Fall, Winter, Spring.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 5.  Recreate the graph from Q2 with the new reordered variable.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 6.  Create a bar chart for the `weathersit` variable.
 
-    ```{r}
+    ```{webr}
 
     ```
 
 7.  Lump together the least frequent two levels and recreate the graph from Q6.
 
-    ```{r}
+    ```{webr}
 
     ```

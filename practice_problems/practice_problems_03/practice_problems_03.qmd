@@ -7,7 +7,7 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['tidyverse', 'janitor', 'curl']
+  packages: ['tidyverse', 'janitor', 'curl', 'kableExtra']
 filters:
   - webr
 ---
@@ -20,15 +20,17 @@ filters:
 
     diabetes_dat <- read_csv("https://raw.githubusercontent.com/meghapsimatrix/Data_Analytics_in_R/refs/heads/main/practice_problems/data/diabetes_uci/diabetes_data.csv") %>%
       clean_names()
+      
+    glimpse(diabetes_dat)
     ```
 
-2.  Using `tidyverse` syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.
+2.  Using `tidyverse` syntax, calculate the count and proportion of high BP patients who were diagnosed with diabetes.
 
     ```{webr}
 
     ```
 
-3.  Calculate the average BMI for smokers:
+3.  Calculate the average BMI for smokers.
 
     ```{webr}
 
@@ -40,7 +42,7 @@ filters:
 
     ```
 
-5.  For each category of education, calculate the proportion of people who smoke, are physically active, smoke, have had a heart attack, eat fruits and vegetables.
+5.  For each category of education, calculate the proportion of people who smoke, are physically active, have had a heart attack, eat fruits, and eat vegetables.
 
     ```{webr}
 
@@ -58,7 +60,7 @@ filters:
 
     ```
 
-8.  Think of different ways to represent the table above.
+8.  Think of different ways to represent the table above. Experiment with the new formats.
 
     ```{webr}
 
@@ -70,7 +72,7 @@ filters:
 
     ```
 
-10. Create a table using `gt` or `kable` with the dataset above.
+10. Challenge Problem: Create a table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) with the data from Question 9.
 
     ```{webr}
 
