@@ -10,7 +10,7 @@ editor: visual
 
 1.  Run the following code to load the data. Glimpse the data and learn about the variables:
 
-    ```{r}
+    ```{r, warning = F, message = F}
     #install.packages("MatchIt")
     library(MatchIt)
     library(tidyverse)
@@ -18,9 +18,9 @@ editor: visual
     glimpse(lalonde)
     ```
 
-    **For the following questions, please create a graph using ggplot to answer:**
+    **For the following questions, please create a graph using `ggplot` to answer:**
 
-2.  Create a plot examine the distribution of `ret78` variable which has information on income of the participants in year 1978
+2.  Create a plot examine the distribution of `ret78` variable which has information on income of the participants in year 1978.
 
     ```{r}
 
@@ -38,19 +38,19 @@ editor: visual
 
     ```
 
-5.  Create graphs showing the difference in treatment and control group distributions of the other variables in the data :
+5.  Create graphs showing distributions of the other variables in the data for treatment versus control groups.
 
     ```{r}
 
     ```
 
-6.  Examine the relationship between `age` and `educ`
+6.  Examine the relationship between `age` and `educ.`
 
     ```{r}
 
     ```
 
-7.  Does the relationship between age and education differ between the treatment and control groups:
+7.  Does the relationship between age and education differ between the treatment and control groups?
 
     ```{r}
 
@@ -62,7 +62,7 @@ editor: visual
 
     ```
 
-9.  Does the relationship differ by treatment level.
+9.  Does the relationship differ by treatment level?
 
     ```{r}
 
