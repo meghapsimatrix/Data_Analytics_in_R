@@ -7,14 +7,14 @@ format:
 engine: knitr
 editor: visual
 webr:
-  packages: ['dplyr', 'readr', 'ggplot2']
+  packages: ['dplyr', 'readr', 'ggplot2', 'tidyverse', 'janitor', 'curl']
 filters:
   - webr
 ---
 
 1.  Run the following code to load the data:
 
-    ```{r, message = FALSE, warning = FALSE}
+    ```{webr, message = FALSE, warning = FALSE}
     library(tidyverse)
     library(janitor)
 
@@ -24,7 +24,7 @@ filters:
 
 2.  Using `tidyverse` syntax, calculate the number of proportion of high BP patients who were diagnosed with diabetes.
 
-    ```{r}
+    ```{webr}
 
     ```
 
