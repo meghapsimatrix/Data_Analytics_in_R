@@ -12,7 +12,7 @@ filters:
   - webr
 ---
 
-1.  Run the following code to load the data. View the codebook and other information on the on the data [here](kosukeimai.github.io/MatchIt/reference/lalonde.html).
+1.  Run the following code to load the data. View the codebook and other information on the on the data [here](https://kosukeimai.github.io/MatchIt/reference/lalonde.html).
 
     ```{webr}
     library(MatchIt)
