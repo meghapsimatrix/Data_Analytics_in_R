@@ -497,7 +497,7 @@
   {
     "objectID": "classes.html",
     "href": "classes.html",
-    "title": "Classes",
+    "title": "R Basics",
     "section": "",
     "text": "Class\n\n\nInstructor\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\nClass 05: Strings and Factors\n\n\nMegha Joshi\n\n\n\n\nClass 06: Functions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\nNo matching items",
     "crumbs": [
@@ -953,5 +953,12 @@
     "title": "Querying and Wrangling Data",
     "section": "unite()",
     "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;"
+  },
+  {
+    "objectID": "advanced.html",
+    "href": "advanced.html",
+    "title": "Advanced Topics",
+    "section": "",
+    "text": "Class\n\n\nInstructor\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

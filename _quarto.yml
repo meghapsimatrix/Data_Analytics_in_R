@@ -24,7 +24,9 @@ website:
       - href: syllabus.qmd
         text: Syllabus
       - href: classes.qmd
-        text: Classes
+        text: R Basics
+      - href: advanced.qmd
+        text: Advanced Topics
         
 format:
   html:

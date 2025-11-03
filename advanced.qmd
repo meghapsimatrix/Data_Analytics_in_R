@@ -1,9 +1,9 @@
 ---
-title: "R Basics"
+title: "Advanced Topics"
 listing:
   - id: schedule
     contents:
-      - classes/class_*.qmd
+      - advanced/class_*.qmd
     type: table
     fields: [title, author]
     field-display-names:
