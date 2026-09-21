@@ -1,0 +1,26 @@
+---
+title: "Analyze AB Tests with Linear Regression"
+author: "Megha Joshi"
+format: revealjs
+editor: visual
+---
+
+## Linear regression
+
+## AB testing
+
+## Comparing how two groups differ on average
+
+## t-test
+
+## t-test Assumptions
+
+## As a linear model
+
+$$y = mx + b $$
+
+## Resources
+
+Gelman, A., Hill, J., & Vehtari, A. (2021). Regression and other stories. Cambridge University Press. https://avehtari.github.io/ROS-Examples/
+
+Heiss, Andrew. 2019. “Half a Dozen Frequentist and Bayesian Ways to Measure the Difference in Means in Two Groups.” January 29, 2019. https://doi.org/10.59350/94eck-1gd29.

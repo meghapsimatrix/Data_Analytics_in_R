@@ -4,7 +4,7 @@ project:
 website:
   title: "Data Analytics in R"
   sidebar:
-    background: "#562457"
+    background: "#1C1C2B"
     logo: "images/logo.png"
     pinned: true
     align: center
