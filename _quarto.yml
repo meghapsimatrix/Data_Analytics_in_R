@@ -25,8 +25,6 @@ website:
         text: Syllabus
       - href: classes.qmd
         text: R Basics
-      - href: advanced.qmd
-        text: Advanced Topics
         
 format:
   html:
