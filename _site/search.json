@@ -509,6 +509,13 @@
     "text": "Linear Regression Recap"
   },
   {
+    "objectID": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
+    "href": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
+    "title": "Linear Regression for AB Tests",
+    "section": "Thank You!",
+    "text": "Thank You!"
+  },
+  {
     "objectID": "classes.html",
     "href": "classes.html",
     "title": "R Basics",
@@ -590,16 +597,6 @@
     "title": "Data Analytics in R",
     "section": "",
     "text": "This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#expectations",
-    "href": "index.html#expectations",
-    "title": "Data Analytics in R",
-    "section": "Expectations",
-    "text": "Expectations\nThe more you put into this course, the more you will get out. This course is really for you to learn and improve your data analytic skills. We are not going to provide grades but are happy to consult if you have questions. Moreover, we will provide a list of recommended readings each week. We encourage you to look through the recommended readings to help guide you as you learn R.\nWe particularly emphasize that completing the practice exercises that we provide will help you really learn the concepts. Instructors will not be able to grade and provide detailed feedback on your work on these problems. We will, however, provide answers to these problems. We believe that people learn programming best not just by watching lectures but by actively practicing. Thus, we highly encourage you to complete the practice exercises. We have created a Slack channel to form a community to learn R together. Please reach out to each other and post questions or resources. Also, try to apply what you learn here on your own projects.",
     "crumbs": [
       "Home"
     ]
@@ -1022,16 +1019,9 @@
     "href": "advanced.html",
     "title": "Advanced Topics",
     "section": "",
-    "text": "Class\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nClass 01: Linear Regression for AB Tests\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items",
+    "text": "Class\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nClass 01: Linear Regression\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Advanced Topics"
     ]
-  },
-  {
-    "objectID": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
-    "href": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
-    "title": "Linear Regression for AB Tests",
-    "section": "Thank You!",
-    "text": "Thank You!"
   }
 ]
