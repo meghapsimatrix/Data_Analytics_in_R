@@ -9,7 +9,7 @@
 <meta name="author" content="Megha Joshi">
 <meta name="dcterms.date" content="2026-05-14">
 
-<title>Class 01: Linear Regression for AB Tests – Data Analytics in R</title>
+<title>Class 01: Linear Regression – Data Analytics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,9 +81,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -109,9 +109,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -170,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Class 01: Linear Regression for AB Tests</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Class 01: Linear Regression</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -237,7 +237,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Class 01: Linear Regression for AB Tests</h1>
+<h1 class="title">Class 01: Linear Regression</h1>
 </div>
 
 
@@ -269,32 +269,14 @@ window.Quarto = {
 <section id="slides" class="level1">
 <h1>Slides</h1>
 <div id="listing-slides" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
+<table class="quarto-listing-table table caption-top">
 <thead>
-<tr>
-
-<th>
-Topic
-</th>
-
-<th>
-Instructor
-</th>
-
+<tr class="header">
+<th data-quarto-table-cell-role="th">Topic</th>
+<th data-quarto-table-cell-role="th">Instructor</th>
 </tr>
 </thead>
 <tbody class="list">
-
-<tr data-index="0" data-listing-file-modified-sort="1764445414544" data-listing-reading-time-sort="5" data-listing-word-count-sort="812" data-listing-title-sort="Introduction to Data Analytics in R" data-listing-filename-sort="class_01_introduction.qmd">
-<td>
-<a href="../slides/class_01_introduction/class_01_introduction.html" class="title listing-title">Introduction to Data Analytics in R</a>
-</td>
-<td>
-<span class="listing-author">Megha Joshi</span>
-</td>
-
-</tr>
-
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -303,25 +285,13 @@ Instructor
 <section id="practice-problems" class="level1">
 <h1>Practice Problems</h1>
 <div id="listing-problems" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
+<table class="quarto-listing-table table caption-top">
 <thead>
-<tr>
-
-<th>
-Problem Sets
-</th>
-
+<tr class="header">
+<th data-quarto-table-cell-role="th">Problem Sets</th>
 </tr>
 </thead>
 <tbody class="list">
-
-<tr data-index="0" data-listing-file-modified-sort="1764445414544" data-listing-reading-time-sort="2" data-listing-word-count-sort="306" data-listing-title-sort="Practice Problem Set 1: Introduction" data-listing-filename-sort="practice_problems_01.qmd">
-<td>
-<a href="../practice_problems/practice_problems_01/practice_problems_01.html" class="title listing-title">Practice Problem Set 1: Introduction</a>
-</td>
-
-</tr>
-
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -335,16 +305,7 @@ Problem Sets
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><a href="https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html">R Programming for DS Chapter 2 - History and Overview of R</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://r4ds.hadley.nz/intro.html">R4DS Introduction</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://r4ds.hadley.nz/workflow-scripts.html">R4DS Chapter 6 - Workflow: scripts and projects</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://r4ds.hadley.nz/quarto.html">R4DS Chapter 28 - Quarto</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>

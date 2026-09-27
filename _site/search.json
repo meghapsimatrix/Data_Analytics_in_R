@@ -41,7 +41,7 @@
     "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
     "title": "Querying and Wrangling Data",
     "section": "Example Dataset: Men’s World Cup Matches",
-    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches"
+    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches"
   },
   {
     "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches-1",
@@ -475,7 +475,7 @@
     "href": "instructors.html",
     "title": "Teaching Team",
     "section": "",
-    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 9 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.\n\n\nTiffany “Tiff” M. Kollah, BSPH\n\nTiffany M. Kollah is a dedicated biostatistician in training and public health researcher with a strong background in mental health, chronic disease, and clinical trials. She currently serves as a Clinical Trial Research Coordinator in the Department of Neurology at the University of North Carolina at Chapel Hill. Tiffany holds a Bachelor of Science in Public Health from Slippery Rock University and is pursuing a Graduate Certificate in Applied Statistics and Data Management at NC State University (part-time) while working full-time in research at UNC.\nHer research career has spanned roles as a Research Assistant in neurobiology, where she supported Alzheimer’s disease studies using neuroimaging, and as a Research Specialist with a focus on chronic kidney disease and its psychosocial impacts in dialysis patients. Her interests lie at the intersection of biostatistics, psychiatric epidemiology, and mental health disparities in minority populations. She is particularly passionate about the statistical analysis of longitudinal psychiatric data and the advancement of data science in mental health research.\nTiffany is an active member of the American Statistical Association (ASA), where she contributes to the Justice, Equity, Diversity, and Inclusion (JEDI) Outreach Group. She co-chaired the JEDI Young Professionals Group during 2024–2025 and currently serves on its executive committee. In this role, she works to expand representation and access in the statistical sciences, particularly for underserved communities.\nShe is also a proud member of the CoachR Network, collaborating with Megha Joshi on the development of a course designed to empower individuals who were unconstitutionally laid off, equipping them with skills to enter the growing field of public health technology.\nOutside of her professional work, Tiffany enjoys playing tennis, hiking, practicing yoga and mindfulness, and painting.",
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 10 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.\n\n\nTiffany “Tiff” M. Kollah, BSPH\n\nTiffany M. Kollah is a dedicated biostatistician in training and public health researcher with a strong background in mental health, chronic disease, and clinical trials. She currently serves as a Clinical Trial Research Coordinator in the Department of Neurology at the University of North Carolina at Chapel Hill. Tiffany holds a Bachelor of Science in Public Health from Slippery Rock University and is pursuing a Graduate Certificate in Applied Statistics and Data Management at NC State University (part-time) while working full-time in research at UNC.\nHer research career has spanned roles as a Research Assistant in neurobiology, where she supported Alzheimer’s disease studies using neuroimaging, and as a Research Specialist with a focus on chronic kidney disease and its psychosocial impacts in dialysis patients. Her interests lie at the intersection of biostatistics, psychiatric epidemiology, and mental health disparities in minority populations. She is particularly passionate about the statistical analysis of longitudinal psychiatric data and the advancement of data science in mental health research.\nTiffany is an active member of the American Statistical Association (ASA), where she contributes to the Justice, Equity, Diversity, and Inclusion (JEDI) Outreach Group. She co-chaired the JEDI Young Professionals Group during 2024–2025 and currently serves on its executive committee. In this role, she works to expand representation and access in the statistical sciences, particularly for underserved communities.\nShe is also a proud member of the CoachR Network, collaborating with Megha Joshi on the development of a course designed to empower individuals who were unconstitutionally laid off, equipping them with skills to enter the growing field of public health technology.\nOutside of her professional work, Tiffany enjoys playing tennis, hiking, practicing yoga and mindfulness, and painting.",
     "crumbs": [
       "Teaching Team"
     ]
@@ -506,7 +506,7 @@
     "href": "advanced_slides/class_01_introduction/class_01_introduction.html#linear-regression-recap",
     "title": "Linear Regression for AB Tests",
     "section": "Linear Regression Recap",
-    "text": "Linear Regression Recap\n\nSharpen your data analytic skills in R\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nPractice problems\nJob search resources"
+    "text": "Linear Regression Recap"
   },
   {
     "objectID": "classes.html",
@@ -521,9 +521,9 @@
   {
     "objectID": "advanced/class_01.html",
     "href": "advanced/class_01.html",
-    "title": "Class 01: Linear Regression for AB Tests",
+    "title": "Class 01: Linear Regression",
     "section": "",
-    "text": "Slides\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\n\nNo matching items\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2 - History and Overview of R\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+    "text": "Slides\n\n\n\n\nTopic\nInstructor\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\nProblem Sets\n\n\n\n\n\nNo matching items\n\n\n\nRecommended Readings"
   },
   {
     "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
@@ -630,7 +630,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
     "title": "Functions and Iteration",
     "section": "Tidy Language Results",
-    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
@@ -644,7 +644,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
     "title": "Functions and Iteration",
     "section": "Tidy Math Results",
-    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
@@ -658,7 +658,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
     "title": "Functions and Iteration",
     "section": "Tidy Reading Results",
-    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898"
+    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
@@ -686,7 +686,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
     "title": "Functions and Iteration",
     "section": "Run the Function",
-    "text": "Run the Function\n\nrun_reg(outcome = \"g3tlangss\")\n\n    outcome      term estimate std.error statistic     p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 0.009523254  1.00494\n  conf.high   df\n1  7.221312 1898\n\nrun_reg(outcome = \"g3tmathss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tmathss treatment 6.367242  1.732919  3.674288 0.0002451289 2.968616\n  conf.high   df\n1  9.765868 1898\n\nrun_reg(outcome = \"g3treadss\")\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  10.63627 1898"
+    "text": "Run the Function\n\nrun_reg(outcome = \"g3tlangss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898\n\nrun_reg(outcome = \"g3tmathss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n\nrun_reg(outcome = \"g3treadss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19      10.6  1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
@@ -721,7 +721,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#star-analysis-example-loop-through-outcomes",
     "title": "Functions and Iteration",
     "section": "STAR Analysis Example: Loop through Outcomes",
-    "text": "STAR Analysis Example: Loop through Outcomes\n\noutcome &lt;- c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\") # outcomes to loop through\n\nres &lt;- NULL # initialize the results \n\nfor(y in outcome){ # for each outcome in the outcome vector \n  \n  output &lt;- run_reg(outcome = y) # run run_reg for that outcome\n  res &lt;- bind_rows(res, output) # append the output to res\n  \n  \n}\n\nres # look at res after the looping\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
+    "text": "STAR Analysis Example: Loop through Outcomes\n\noutcome &lt;- c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\") # outcomes to loop through\n\nres &lt;- NULL # initialize the results \n\nfor(y in outcome){ # for each outcome in the outcome vector \n  \n  output &lt;- run_reg(outcome = y) # run run_reg for that outcome\n  res &lt;- bind_rows(res, output) # append the output to res\n  \n  \n}\n\nres # look at res after the looping\n\n# A tibble: 3 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 9.52e-3     1.00      7.22  1898\n2 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n3 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19     10.6   1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
@@ -756,7 +756,7 @@
     "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
     "title": "Functions and Iteration",
     "section": "Back to our run_reg()",
-    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n    outcome      term estimate std.error statistic      p.value conf.low\n1 g3tlangss treatment 4.113126  1.584827  2.595315 9.523254e-03 1.004940\n2 g3tmathss treatment 6.367242  1.732919  3.674288 2.451289e-04 2.968616\n3 g3treadss treatment 7.411505  1.644268  4.507479 6.960466e-06 4.186741\n  conf.high   df\n1  7.221312 1898\n2  9.765868 1898\n3 10.636268 1898"
+    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n# A tibble: 3 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 9.52e-3     1.00      7.22  1898\n2 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n3 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19     10.6   1898"
   },
   {
     "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
@@ -1026,5 +1026,12 @@
     "crumbs": [
       "Advanced Topics"
     ]
+  },
+  {
+    "objectID": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
+    "href": "advanced_slides/class_01_introduction/class_01_introduction.html#thank-you",
+    "title": "Linear Regression for AB Tests",
+    "section": "Thank You!",
+    "text": "Thank You!"
   }
 ]

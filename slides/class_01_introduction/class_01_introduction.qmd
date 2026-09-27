@@ -34,7 +34,7 @@ editor: visual
 
 ## Expectations
 
-::: {.columns style=".smaller"}
+::::: {.columns style=".smaller"}
 ::: {.column width="50%"}
 [![](images/r4ds.jpg){fig-alt="Cover of the R for Data Science Book Second Edition" width="382"}](https://r4ds.hadley.nz/)
 :::
@@ -49,7 +49,7 @@ editor: visual
 
 -   Collaboration - Slack channel
 :::
-:::
+:::::
 
 ## Overview of Course
 
@@ -69,7 +69,7 @@ editor: visual
 
 ## Introduction to R
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 [![Artwork by \@allison_horst](images/R_love.gif){fig-alt="Animated gif of the R logo with magenta and red hearts moving upward in a loop to the left of the \"R.\""}](https://allisonhorst.com/allison-horst)
 :::
@@ -85,11 +85,11 @@ editor: visual
 
     -   [Stack Overflow](https://stackoverflow.com/questions/tagged/R)
 :::
-:::
+:::::
 
 ## Downloading
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/RStudio.png){fig-alt="Logo for R Studio"}
 :::
@@ -101,11 +101,11 @@ editor: visual
 
 -   Download [Quarto](https://quarto.org/)
 :::
-:::
+:::::
 
 ## R Studio - R Projects and Relative Path {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="20%"}
 ![](images/R_project.png)
 :::
@@ -121,7 +121,7 @@ editor: visual
 
 -   If you are switching to Positron, the set up is a bit different \~ <https://github.com/posit-dev/positron/discussions/5425>
 :::
-:::
+:::::
 
 ```{r, eval = FALSE}
 # absolute path - this won't work on someone else's computer
@@ -199,7 +199,7 @@ install.packages("estimatr") # robust estimators
 
 ## Conduct Code Review
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 [![](images/code_check.png){fig-alt="Hex sticker for Code Check Club"}](https://debruine.github.io/project/code-check/)
 :::
@@ -213,11 +213,11 @@ install.packages("estimatr") # robust estimators
 
 -   Check out the [Code Check Club](https://debruine.github.io/project/code-check/) by Lisa De Bruine et al.
 :::
-:::
+:::::
 
 ## Use Version Control
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 [![Artwork by \@allison_horst](images/git_hug.png){fig-alt="Cartoon of the GitHub octocat mascot hugging a very sad looking little furry monster while the monster points accusingly at an open laptop with \"MERGE CONFLICT\" in red across the entire screen. The laptop has angry eyes and claws and a wicked smile. In text across the top reads \"gitHUG\" with a small heart."}](https://allisonhorst.com/allison-horst)
 :::
@@ -233,13 +233,13 @@ install.packages("estimatr") # robust estimators
 
 -   Please read [Vuorre & Curley (2018)](https://journals.sagepub.com/doi/pdf/10.1177/2515245918754826) to learn more about how to set up git to work with RStudio
 :::
-:::
+:::::
 
 # Quarto {.inverse}
 
 ## Introduction to Quarto
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/quarto.png){fig-alt="Screenshot from quarto's website showing it can be used to create dashboards, websites, books, presentations etc." width="723"}
 :::
@@ -255,6 +255,6 @@ install.packages("estimatr") # robust estimators
 
 -   For more information, please visit <https://quarto.org/>
 :::
-:::
+:::::
 
 # Thank You! {.inverse}

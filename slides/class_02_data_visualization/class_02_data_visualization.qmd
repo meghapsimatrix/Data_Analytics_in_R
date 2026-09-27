@@ -18,7 +18,7 @@ editor: visual
 
 ## Data Visualization
 
-::: columns
+::::: columns
 ::: {.column width="50%" layout="[[-1], [1], [-1]]"}
 ![](images/motivation.png){fig-alt="A motivational poster with quote from Kieran Healy saying \"You should look at your data.\" The quote is from Data Visualization: A Practical Introduction, 2018.o"}
 :::
@@ -36,7 +36,7 @@ editor: visual
 
     -   Make or support an argument
 :::
-:::
+:::::
 
 ## A Grammar of Graphics
 
@@ -77,7 +77,7 @@ glimpse(bike_sharing_dat)
 
 ## The Grammar {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 [![](images/Picture1.png){fig-alt="Screenshot from ggplot2 website showing different layers. There is an illustration of squares on top of each other representing the following layers from bottom to top: data, mapping, layers, scales, facets, coordinates, themes."}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 :::
@@ -87,7 +87,7 @@ glimpse(bike_sharing_dat)
 
 Hadley Wickham
 :::
-:::
+:::::
 
 ## Data
 

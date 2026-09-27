@@ -118,7 +118,7 @@ tidy(read_mod) %>%
 
 ## Functions
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   Input
 
@@ -147,7 +147,7 @@ sum_it(2, 3)
 sum_it(1000, 5000)
 ```
 :::
-:::
+:::::
 
 ## Function Example
 
@@ -207,7 +207,7 @@ run_reg(outcome = "g3treadss")
 
 ## For Loops
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   Classic way to run repetitive analyses or tasks
 
@@ -228,7 +228,7 @@ for(n in numbers){ # for each number in the vector numbers
 }
 ```
 :::
-:::
+:::::
 
 ## STAR Analysis Example: Loop through Outcomes
 
@@ -257,7 +257,7 @@ res # look at res after the looping
 
 ## `purrr`
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 ![](images/clipboard-1382919279.png)
 :::
@@ -277,7 +277,7 @@ res # look at res after the looping
     -   Please read through the different variations [here](https://purrr.tidyverse.org/reference/map.html)
     :::
 :::
-:::
+:::::
 
 ## `map()`
 

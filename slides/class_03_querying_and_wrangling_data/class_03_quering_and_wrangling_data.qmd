@@ -18,7 +18,7 @@ editor: visual
 
 ## Introduction to the `tidyverse`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 [![Source: https://www.tidyverse.org/](images/clipboard-661628822.png){fig-alt="Hex stickers for all the packages that make up the tidyverse"}](https://www.tidyverse.org/)
 :::
@@ -31,14 +31,13 @@ editor: visual
     -   summarizing
     -   visualizing data
 :::
-:::
+:::::
 
 ## Example Dataset: Men's World Cup Matches
 
 Source: [`tidytuesdayR`](https://dslc-io.github.io/tidytuesdayR/)
 
 ```{r, message = FALSE, warning = FALSE}
-library(tidyverse)
 library(tidyverse)
 library(tidytuesdayR)
 
@@ -60,7 +59,7 @@ glimpse(wc_matches)
 ## Verbs {.smaller}
 
 | Verb          | Definition                                                |
-|---------------|-----------------------------------------------------------|
+|-----------------|-------------------------------------------------------|
 | `select()`    | Retrieve particular variables by their name or position   |
 | `filter()`    | Retrieve rows meeting condition(s)                        |
 | `mutate()`    | Add a variable or transform existing ones                 |

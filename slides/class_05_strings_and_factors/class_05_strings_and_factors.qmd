@@ -20,7 +20,7 @@ editor: visual
 
 ## Introduction to `stringr`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![Source: https://stringr.tidyverse.org/](/slides/images/stringr.png){fig-alt="Hexagon logo of the stringr package with a violin in the middle"}
 :::
@@ -37,7 +37,7 @@ editor: visual
     x
     ```
 :::
-:::
+:::::
 
 ## Verbs
 
@@ -129,7 +129,7 @@ p
 
 ## Introduction to `forcats`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![Source: https://forcats.tidyverse.org/](/slides/images/forcats.png){fig-alt="Hexagon logo of the forcats package with image of a box with four cats in it"}
 :::
@@ -145,7 +145,7 @@ p
     factor(c(LETTERS[1:5]))
     ```
 :::
-:::
+:::::
 
 ## Verbs
 

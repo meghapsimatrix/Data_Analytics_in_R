@@ -18,7 +18,7 @@ editor: visual
 
 ## A Data Frame
 
-::: columns
+::::: columns
 ::: {.column width="50%; font-size: 85%"}
 -   Data frames represent data as a table with rows and columns
 
@@ -44,11 +44,11 @@ emp_dept_dat <- inner_join(department_dat,
 emp_dept_dat
 ```
 :::
-:::
+:::::
 
 ## Limitations of Data Frames
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   Redundant information
 
@@ -62,7 +62,7 @@ emp_dept_dat
 emp_dept_dat 
 ```
 :::
-:::
+:::::
 
 ## Relational Data
 
@@ -70,7 +70,7 @@ emp_dept_dat
 
 -   Cut redundant information, optimize storage and memory, organize the information better
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Employee data:
 
@@ -86,7 +86,7 @@ Department data:
 department_dat
 ```
 :::
-:::
+:::::
 
 ## Databases
 
@@ -100,7 +100,7 @@ department_dat
 
 ## Example Dataset Full
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, echo = TRUE}
 employee_dat
@@ -112,7 +112,7 @@ employee_dat
 department_dat
 ```
 :::
-:::
+:::::
 
 ::: notes
 What do you notice about the relationship between the two datasets?
@@ -144,7 +144,7 @@ What do you notice about the relationship between the two datasets?
 
         -   Department number is a foreign key in `employee_dat` that matches with the primary key department number in the `department_dat`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r}
 employee_dat
@@ -156,7 +156,7 @@ employee_dat
 department_dat
 ```
 :::
-:::
+:::::
 
 # Mutating Joins {.inverse}
 
