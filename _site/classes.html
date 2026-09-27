@@ -241,7 +241,7 @@ Instructor
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1745384400000" data-listing-file-modified-sort="1764445414532" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="265" data-listing-title-sort="Class 01: Introduction to the Course and to R" data-listing-filename-sort="class_01.qmd">
+<tr data-index="0" data-listing-date-sort="1745384400000" data-listing-file-modified-sort="1790545822236" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="265" data-listing-title-sort="Class 01: Introduction to the Course and to R" data-listing-filename-sort="class_01.qmd">
 <td>
 <a href="./classes/class_01.html" class="title listing-title">Class 01: Introduction to the Course and to R</a>
 </td>
@@ -251,7 +251,7 @@ Instructor
 
 </tr>
 
-<tr data-index="1" data-listing-file-modified-sort="1764445414532" data-listing-reading-time-sort="1" data-listing-word-count-sort="134" data-listing-title-sort="Class 02: Data Visualization with ggplot" data-listing-filename-sort="class_02.qmd">
+<tr data-index="1" data-listing-file-modified-sort="1790545822236" data-listing-reading-time-sort="1" data-listing-word-count-sort="134" data-listing-title-sort="Class 02: Data Visualization with ggplot" data-listing-filename-sort="class_02.qmd">
 <td>
 <a href="./classes/class_02.html" class="title listing-title">Class 02: Data Visualization with ggplot</a>
 </td>
@@ -261,7 +261,7 @@ Instructor
 
 </tr>
 
-<tr data-index="2" data-listing-file-modified-sort="1764445414532" data-listing-reading-time-sort="1" data-listing-word-count-sort="144" data-listing-title-sort="Class 03: Querying and Wrangling Data" data-listing-filename-sort="class_03.qmd">
+<tr data-index="2" data-listing-file-modified-sort="1790545822236" data-listing-reading-time-sort="1" data-listing-word-count-sort="144" data-listing-title-sort="Class 03: Querying and Wrangling Data" data-listing-filename-sort="class_03.qmd">
 <td>
 <a href="./classes/class_03.html" class="title listing-title">Class 03: Querying and Wrangling Data</a>
 </td>
@@ -271,7 +271,7 @@ Instructor
 
 </tr>
 
-<tr data-index="3" data-listing-file-modified-sort="1764445414532" data-listing-reading-time-sort="1" data-listing-word-count-sort="123" data-listing-title-sort="Class 04: Relational Datasets" data-listing-filename-sort="class_04.qmd">
+<tr data-index="3" data-listing-file-modified-sort="1790545822236" data-listing-reading-time-sort="1" data-listing-word-count-sort="123" data-listing-title-sort="Class 04: Relational Datasets" data-listing-filename-sort="class_04.qmd">
 <td>
 <a href="./classes/class_04.html" class="title listing-title">Class 04: Relational Datasets</a>
 </td>
@@ -281,7 +281,7 @@ Instructor
 
 </tr>
 
-<tr data-index="4" data-listing-file-modified-sort="1764445414532" data-listing-reading-time-sort="1" data-listing-word-count-sort="127" data-listing-title-sort="Class 05: Strings and Factors" data-listing-filename-sort="class_05.qmd">
+<tr data-index="4" data-listing-file-modified-sort="1790545822236" data-listing-reading-time-sort="1" data-listing-word-count-sort="127" data-listing-title-sort="Class 05: Strings and Factors" data-listing-filename-sort="class_05.qmd">
 <td>
 <a href="./classes/class_05.html" class="title listing-title">Class 05: Strings and Factors</a>
 </td>
@@ -291,7 +291,7 @@ Instructor
 
 </tr>
 
-<tr data-index="5" data-listing-file-modified-sort="1764445414532" data-listing-reading-time-sort="1" data-listing-word-count-sort="136" data-listing-title-sort="Class 06: Functions and Iteration" data-listing-filename-sort="class_06.qmd">
+<tr data-index="5" data-listing-file-modified-sort="1790545822237" data-listing-reading-time-sort="1" data-listing-word-count-sort="136" data-listing-title-sort="Class 06: Functions and Iteration" data-listing-filename-sort="class_06.qmd">
 <td>
 <a href="./classes/class_06.html" class="title listing-title">Class 06: Functions and Iteration</a>
 </td>
@@ -386,7 +386,7 @@ Instructor
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

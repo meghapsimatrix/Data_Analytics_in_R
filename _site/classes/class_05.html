@@ -278,7 +278,7 @@ Instructor
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1790524053274" data-listing-reading-time-sort="3" data-listing-word-count-sort="600" data-listing-title-sort="Strings and Factors" data-listing-filename-sort="class_05_strings_and_factors.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1790545822273" data-listing-reading-time-sort="3" data-listing-word-count-sort="600" data-listing-title-sort="Strings and Factors" data-listing-filename-sort="class_05_strings_and_factors.qmd">
 <td>
 <a href="../slides/class_05_strings_and_factors/class_05_strings_and_factors.html" class="title listing-title">Strings and Factors</a>
 </td>
@@ -308,14 +308,14 @@ Problem Sets
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1764445414544" data-listing-reading-time-sort="2" data-listing-word-count-sort="229" data-listing-title-sort="Practice Problem Set 5A: Strings" data-listing-filename-sort="practice_problems_05A.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1790545822261" data-listing-reading-time-sort="2" data-listing-word-count-sort="229" data-listing-title-sort="Practice Problem Set 5A: Strings" data-listing-filename-sort="practice_problems_05A.qmd">
 <td>
 <a href="../practice_problems/practice_problems_05/practice_problems_05A.html" class="title listing-title">Practice Problem Set 5A: Strings</a>
 </td>
 
 </tr>
 
-<tr data-index="1" data-listing-file-modified-sort="1764445414544" data-listing-reading-time-sort="1" data-listing-word-count-sort="191" data-listing-title-sort="Practice Problem Set 5B: Factors" data-listing-filename-sort="practice_problems_05B.qmd">
+<tr data-index="1" data-listing-file-modified-sort="1790545822261" data-listing-reading-time-sort="1" data-listing-word-count-sort="191" data-listing-title-sort="Practice Problem Set 5B: Factors" data-listing-filename-sort="practice_problems_05B.qmd">
 <td>
 <a href="../practice_problems/practice_problems_05/practice_problems_05B.html" class="title listing-title">Practice Problem Set 5B: Factors</a>
 </td>
@@ -421,7 +421,7 @@ Problem Sets
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/meghapsimatrix\.quarto\.pub\/data-analytics-in-r");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
