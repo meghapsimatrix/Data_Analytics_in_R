@@ -1,0 +1,996 @@
+[
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Form a community of practice to learn R\nLearn and/or sharpen data wrangling, cleaning, analysis and visualization skills\nEquip you to be able to pass technical interviews",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#recommended-readings",
+    "href": "syllabus.html#recommended-readings",
+    "title": "Syllabus",
+    "section": "Recommended Readings",
+    "text": "Recommended Readings\nHealy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press. Free version here.\nIsmay, C., & Kim, A. Y. (2019). Statistical inference via data science: A ModernDive into R and the tidyverse. Chapman and Hall/CRC. Free version here.\nPeng, R. D. (2016). R programming for data science (pp. 86-181). Victoria, BC, Canada: Leanpub. Free version here.\nWickham, H., Cetinkaya-Rundel, M. & Grolemund, G (2023). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (2e) R for Data Science (2e). O’Reilly Media, Inc. Free version here.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data-visualization",
+    "title": "Data Visualization with ggplot",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nExploration\n\nLook at distributions\nExamine relationship between variables\n\nCommunication\n\nIllustrate your findings in ways that are digestible\nMake or support an argument"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#a-grammar-of-graphics",
+    "title": "Data Visualization with ggplot",
+    "section": "A Grammar of Graphics",
+    "text": "A Grammar of Graphics\n\nLeland Wilkinson wrote The Grammar of Graphics (2nd edition, 2005)\n\nDeveloped the grammar of graphics\nDescribed fundamental elements that make up a statistical graphic\n\nHadley Wickham created the R package ggplot2 to create graphs based on Wilkinson’s grammar of graphics (gg)\n\nLayers"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#loading-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Loading ggplot",
+    "text": "Loading ggplot\nThe ggplot2 package is available as part of the tidyverse set of packages:\n\nlibrary(tidyverse)\n\nYou can also load the package separately:\n\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset-capital-bike-sharing-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#example-dataset-capital-bike-sharing-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Example Dataset: Capital Bike Sharing Data",
+    "text": "Example Dataset: Capital Bike Sharing Data\nSource: UCI Repository\n\nload(\"../../slides/data/capital_bike_sharing_data/bike_sharing_dat.RData\")\nglimpse(bike_sharing_dat)\n\nRows: 731\nColumns: 16\n$ instant    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …\n$ dteday     &lt;date&gt; 2011-01-01, 2011-01-02, 2011-01-03, 2011-01-04, 2011-01-05…\n$ season     &lt;chr&gt; \"winter\", \"winter\", \"winter\", \"winter\", \"winter\", \"winter\",…\n$ yr         &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ mnth       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ holiday    &lt;chr&gt; \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No Holiday\", \"No…\n$ weekday    &lt;chr&gt; \"Saturday\", \"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Th…\n$ workingday &lt;chr&gt; \"Holiday\", \"Holiday\", \"Working Day\", \"Working Day\", \"Workin…\n$ weathersit &lt;chr&gt; \"Misty and Cloudy\", \"Misty and Cloudy\", \"Clear\", \"Clear\", \"…\n$ temp       &lt;dbl&gt; 0.3441670, 0.3634780, 0.1963640, 0.2000000, 0.2269570, 0.20…\n$ atemp      &lt;dbl&gt; 0.3636250, 0.3537390, 0.1894050, 0.2121220, 0.2292700, 0.23…\n$ hum        &lt;dbl&gt; 0.805833, 0.696087, 0.437273, 0.590435, 0.436957, 0.518261,…\n$ windspeed  &lt;dbl&gt; 0.1604460, 0.2485390, 0.2483090, 0.1602960, 0.1869000, 0.08…\n$ casual     &lt;dbl&gt; 331, 131, 120, 108, 82, 88, 148, 68, 54, 41, 43, 25, 38, 54…\n$ registered &lt;dbl&gt; 654, 670, 1229, 1454, 1518, 1518, 1362, 891, 768, 1280, 122…\n$ count      &lt;dbl&gt; 985, 801, 1349, 1562, 1600, 1606, 1510, 959, 822, 1321, 126…"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#the-grammar-1",
+    "title": "Data Visualization with ggplot",
+    "section": "The Grammar",
+    "text": "The Grammar\n\n\n\n\n“In brief, the grammar tells us that a graphic maps the data to the aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).”\nHadley Wickham"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#data",
+    "title": "Data Visualization with ggplot",
+    "section": "Data",
+    "text": "Data\n\nData - information used to create the graphic\n\n\nggplot(data = bike_sharing_dat)"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#aesthetic-mappings",
+    "title": "Data Visualization with ggplot",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\nAesthetic attributes - x, y, color, size\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season))"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#layers",
+    "title": "Data Visualization with ggplot",
+    "section": "Layers",
+    "text": "Layers\n\nGeoms- geometric representations of the data\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scales",
+    "title": "Data Visualization with ggplot",
+    "section": "Scales",
+    "text": "Scales\nScales - translate what is in the graph to what is in the data using legends or axes\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() + \n  scale_color_brewer(palette = \"Dark2\")"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#facets",
+    "title": "Data Visualization with ggplot",
+    "section": "Facets",
+    "text": "Facets\n\nFacets - small multiples\n\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season)"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#theme",
+    "title": "Data Visualization with ggplot",
+    "section": "Theme",
+    "text": "Theme\nTheme - set overall how the graph looks\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point() +\n  facet_grid(~ season) + \n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#cleaning-up",
+    "title": "Data Visualization with ggplot",
+    "section": "Cleaning Up",
+    "text": "Cleaning Up\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count, \n           color = season)) + \n  geom_point(alpha = .5) +\n  facet_grid(~ season) + \n  scale_color_brewer(palette = \"Dark2\") +\n  labs(x = \"Temperature\", y = \"Total Rental Bikes\", color = \"Season\") +\n  theme_bw() + \n  guides(color = guide_legend(position = \"bottom\"))"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#anatomy-of-a-ggplot",
+    "title": "Data Visualization with ggplot",
+    "section": "Anatomy of a ggplot",
+    "text": "Anatomy of a ggplot\n\nggplot(data = [dat], # the data\n       aes(x = [x_var], \n           y = [y_var],\n           color = [color_var], \n           fill = [fill_var])) + # aesthetic mappings\n  geom_[point]() + # geom\n  geom_[smooth]() + # another layer\n  scale_[aesthetic]_[type]() + # scaling\n  facet_grid([row] ~ [col]) + # faceting\n  theme_[theme]() # theme"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = holiday, fill = holiday)) + \n  geom_bar() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#histogram-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Histogram: Continuous Data",
+    "text": "Histogram: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = temp)) + \n  geom_histogram(fill = \"darkred\", alpha = .8, bins = 15) +\n  theme_grey()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#density-plot-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Density Plot: Continuous Data",
+    "text": "Density Plot: Continuous Data\n\nggplot(bike_sharing_dat, aes(x = count)) +\n  geom_density(alpha = .8, fill = \"navy\") + \n  theme(legend.position = \"none\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#bar-plot-categorical-data-1",
+    "title": "Data Visualization with ggplot",
+    "section": "Bar Plot: Categorical Data",
+    "text": "Bar Plot: Categorical Data\n\nggplot(bike_sharing_dat, aes(x = season, fill = weathersit)) +\n  geom_bar(position = \"fill\") +\n  theme_classic()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#box-plot",
+    "title": "Data Visualization with ggplot",
+    "section": "Box Plot",
+    "text": "Box Plot\n\nggplot(bike_sharing_dat, \n       aes(x = weathersit, \n           y = count, \n           fill = weathersit)) +\n  geom_boxplot(alpha = .7) +\n  theme(legend.position = \"none\") +\n  theme_linedraw()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#scatter-plot-continuous-data",
+    "title": "Data Visualization with ggplot",
+    "section": "Scatter Plot: Continuous Data",
+    "text": "Scatter Plot: Continuous Data\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count)) + \n  geom_point(alpha = .7) + \n  theme_dark()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season",
+    "title": "Data Visualization with ggplot",
+    "section": "Total Rentals by Season",
+    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  theme_light()"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#total-rentals-by-season-1",
+    "title": "Data Visualization with ggplot",
+    "section": "Total Rentals by Season",
+    "text": "Total Rentals by Season\n\nggplot(bike_sharing_dat, aes(x = count, fill = season)) +\n  geom_density(alpha = .8) + \n  facet_wrap(~ season) +\n  theme_void() + \n  guides(fill = FALSE)"
+  },
+  {
+    "objectID": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
+    "href": "slides/class_02_data_visualization/class_02_data_visualization.html#relationship-between-temperature-and-total-rentals-by-season-and-weather-and-by-weekday-and-holiday",
+    "title": "Data Visualization with ggplot",
+    "section": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday",
+    "text": "Relationship Between Temperature and Total Rentals by Season and Weather and by Weekday and Holiday\n\nggplot(bike_sharing_dat, \n       aes(x = temp, \n           y = count,\n           color = weekday,\n           shape = holiday)) + \n  geom_point(alpha = .7) + \n  facet_grid(weathersit ~ season) +\n  theme_test()"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-this-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to This Course",
+    "text": "Introduction to This Course\n\nSharpen your data analytic skills in R\nPrepare you for career paths including Data Analyst, Quantitative User Researcher, Data Scientist\nPractice problems\nJob search resources"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#instructors",
+    "href": "slides/class_01_introduction/class_01_introduction.html#instructors",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Instructors",
+    "text": "Instructors\nMegha Joshi, PhD"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#expectations",
+    "href": "slides/class_01_introduction/class_01_introduction.html#expectations",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Expectations",
+    "text": "Expectations\n\n\n\n\n\nRecommended readings\n\nR4DS and R Programming for DS\nFor each class, we will list out relevant chapters\n\nPractice problems - practice, practice, practice\nCollaboration - Slack channel"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#overview-of-course",
+    "href": "slides/class_01_introduction/class_01_introduction.html#overview-of-course",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Overview of Course",
+    "text": "Overview of Course\n\nIntroduction\nData visualization\nData querying and wrangling\nRelational data\nStrings and factors\nFunctions and iteration\n…advanced topics to be added in the future"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-r",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-r",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to R",
+    "text": "Introduction to R\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\n\nProgramming language - based on S\nOpen source and FREE\nbase R plus other R packages ~ over 20,000\nUser community\n\nTidy Tuesday\nData Science Learning Community\nStack Overflow"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#downloading",
+    "href": "slides/class_01_introduction/class_01_introduction.html#downloading",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Downloading",
+    "text": "Downloading\n\n\n\n\n\nDownload R\nDownload R Studio / Download Positron\nDownload Quarto"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#r-studio---r-projects-and-relative-path",
+    "href": "slides/class_01_introduction/class_01_introduction.html#r-studio---r-projects-and-relative-path",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Studio - R Projects and Relative Path",
+    "text": "R Studio - R Projects and Relative Path\n\n\n\n\n\nKeep all materials related to a project (or a class) together in one place\nThe working directory is set to the base folder\nYou can set relative paths so other users are able to run code without messing too much with the working directory\nRead more about how to set up projects here\nIf you are switching to Positron, the set up is a bit different ~ https://github.com/posit-dev/positron/discussions/5425\n\n\n\n# absolute path - this won't work on someone else's computer\ndat &lt;- read.csv(\"/Users/meghajoshi/Desktop/R_course_2025/data/fifa_world_cup/women_wc/matches_1991_2023.csv\")\n\n# example of relative path\ndat &lt;- read.csv(\"data/fifa_world_cup_kaggle/women_wc/matches_1991_2023.csv\")"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
+    "href": "slides/class_01_introduction/class_01_introduction.html#basics-of-r-objects-and-assignment",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Basics of R: Objects and Assignment",
+    "text": "Basics of R: Objects and Assignment\n\nx &lt;- 5\nx\n\n[1] 5\n\n\n\ny &lt;- 2\nx + y\n\n[1] 7\n\n\n\nmy_children &lt;- c(\"Yori\", \"Moni\", \"Rumi\")\nmy_children\n\n[1] \"Yori\" \"Moni\" \"Rumi\""
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#r-packages",
+    "href": "slides/class_01_introduction/class_01_introduction.html#r-packages",
+    "title": "Introduction to Data Analytics in R",
+    "section": "R Packages",
+    "text": "R Packages\nPlease install the following packages:\n\ninstall.packages(\"tidyverse\") # data wrangling and viz\ninstall.packages(\"readxl\") # read excel files\ninstall.packages(\"janitor\") # clean messy data\ninstall.packages(\"estimatr\") # robust estimators"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#write-clean-code",
+    "href": "slides/class_01_introduction/class_01_introduction.html#write-clean-code",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Clean Code",
+    "text": "Write Clean Code\n\nWrite code that is easy to read\nAdd spaces between things\n\na&lt;-c(1,2,3,4,5) # don't do this\na &lt;- c(1, 2, 3, 4, 5) # do this\n\nIn R, please use &lt;- to assign\n\nx = 5 # don't do this\nx &lt;- 5 # do this\n\nUse _ instead of . as separation when naming objects\n\nmy.color &lt;- \"blue\" # don't do this\nmy_color &lt;- \"blue\" # do this\n\nSome packages to help : lintr"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#write-good-documentation",
+    "href": "slides/class_01_introduction/class_01_introduction.html#write-good-documentation",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Write Good Documentation",
+    "text": "Write Good Documentation\n\nHelps with reproducibility\nFor yourself and for other people who may use your code\nWrite comments, chunk codes out into sections"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#conduct-code-review",
+    "href": "slides/class_01_introduction/class_01_introduction.html#conduct-code-review",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Conduct Code Review",
+    "text": "Conduct Code Review\n\n\n\n\n\nProcess of systematically checking code\nOn your own or by someone else\nCatch errors or suggest better ways to code\nCheck out the Code Check Club by Lisa De Bruine et al."
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#use-version-control",
+    "href": "slides/class_01_introduction/class_01_introduction.html#use-version-control",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Use Version Control",
+    "text": "Use Version Control\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\n\ngit and GitHub\nTrack changes, merge conflicts, branching to review code before merging\nTrack issues\nA portfolio of your work\nPlease read Vuorre & Curley (2018) to learn more about how to set up git to work with RStudio"
+  },
+  {
+    "objectID": "slides/class_01_introduction/class_01_introduction.html#introduction-to-quarto",
+    "href": "slides/class_01_introduction/class_01_introduction.html#introduction-to-quarto",
+    "title": "Introduction to Data Analytics in R",
+    "section": "Introduction to Quarto",
+    "text": "Introduction to Quarto\n\n\n\n\n\nIntegrate text, code, graphs, tables\nDevelop slides, websites, books\nUse R, Python\nThe slides, practice problems, and the website for this course have been created using Quarto\nFor more information, please visit https://quarto.org/"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset-background",
+    "title": "Functions and Iteration",
+    "section": "Example Dataset Background",
+    "text": "Example Dataset Background\n\nTennessee’s Student/Teacher Achievement Ratio (STAR) (Mosteller, 1995)\nLongitudinal project examining effect of class size on student achievement\nData on language, math, reading outcomes\nThe data that we are using is from the evalITR package\n\nPlease review information about the data here"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#example-dataset",
+    "title": "Functions and Iteration",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(evalITR)\nlibrary(estimatr)\nlibrary(broom)\n\nstar_dat &lt;- star %&gt;%\n    clean_names()\n\nglimpse(star_dat)\n\nRows: 1,911\nColumns: 14\n$ g3tlangss  &lt;dbl&gt; 608, 644, 638, 595, 694, 644, 618, 668, 677, 650, 635, 657,…\n$ g3treadss  &lt;dbl&gt; 582, 636, 578, 612, 631, 592, 583, 661, 675, 713, 614, 595,…\n$ g3tmathss  &lt;dbl&gt; 591, 622, 610, 612, 631, 631, 606, 648, 648, 645, 636, 610,…\n$ treatment  &lt;dbl&gt; 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,…\n$ gender     &lt;fct&gt; 2, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2,…\n$ race       &lt;fct&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1,…\n$ birthmonth &lt;fct&gt; 11, 11, 12, 11, 9, 3, 6, 6, 1, 6, 11, 12, 7, 5, 5, 11, 12, …\n$ birthyear  &lt;fct&gt; 1979, 1979, 1979, 1979, 1980, 1980, 1980, 1980, 1980, 1980,…\n$ schlurbn   &lt;fct&gt; 2, 2, 3, 3, 3, 1, 1, 2, 2, 4, 3, 1, 3, 3, 4, 2, 1, 1, 3, 3,…\n$ grdrange   &lt;fct&gt; 5, 6, 3, 8, 3, 6, 6, 5, 5, 6, 8, 6, 8, 4, 4, 4, 6, 6, 5, 6,…\n$ gkenrmnt   &lt;dbl&gt; 603, 621, 512, 389, 444, 521, 888, 709, 709, 531, 650, 479,…\n$ gkfrlnch   &lt;dbl&gt; 90, 10, 32, 51, 30, 90, 98, 1, 1, 48, 64, 70, 64, 32, 28, 2…\n$ gkbused    &lt;dbl&gt; 62, 61, 98, 71, 90, 13, 1, 98, 98, 67, 95, 17, 95, 93, 94, …\n$ gkwhite    &lt;dbl&gt; 19, 100, 97, 94, 98, 0, 0, 97, 97, 92, 99, 1, 99, 85, 98, 6…"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-a-linear-regression-to-assess-the-impact-of-treatment-on-language",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-a-linear-regression-to-assess-the-impact-of-treatment-on-language",
+    "title": "Functions and Iteration",
+    "section": "Run a Linear Regression to Assess the Impact of Treatment on Language",
+    "text": "Run a Linear Regression to Assess the Impact of Treatment on Language\n\nlang_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(lang_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-language-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Language Results",
+    "text": "Tidy Language Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-math",
+    "title": "Functions and Iteration",
+    "section": "On Math",
+    "text": "On Math\n\nmath_mod &lt;- lm_robust(g3tmathss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(math_mod)\n\n\nCall:\nlm_robust(formula = g3tmathss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n             Estimate Std. Error   t value  Pr(&gt;|t|)  CI Lower   CI Upper   DF\n(Intercept) 627.27238   6.034736 103.94363 0.000e+00 615.43697  6.391e+02 1898\ntreatment     6.36724   1.732919   3.67429 2.451e-04   2.96862  9.766e+00 1898\ngender2       0.03764   1.726153   0.02181 9.826e-01  -3.34772  3.423e+00 1898\nrace2       -21.85364   3.005153  -7.27205 5.153e-13 -27.74739 -1.596e+01 1898\nschlurbn2     8.66786   3.564785   2.43152 1.513e-02   1.67655  1.566e+01 1898\nschlurbn3     3.57552   3.717144   0.96190 3.362e-01  -3.71459  1.087e+01 1898\nschlurbn4    -0.61152   4.817304  -0.12694 8.990e-01 -10.05929  8.836e+00 1898\ngrdrange4    10.40834   4.146388   2.51022 1.215e-02   2.27638  1.854e+01 1898\ngrdrange5     3.24765   3.552424   0.91421 3.607e-01  -3.71941  1.021e+01 1898\ngrdrange6     7.68867   3.205376   2.39868 1.655e-02   1.40224  1.398e+01 1898\ngrdrange7   -19.31582   8.736040  -2.21105 2.715e-02 -36.44907 -2.183e+00 1898\ngrdrange8     6.11783   3.533298   1.73148 8.353e-02  -0.81172  1.305e+01 1898\ngkenrmnt     -0.01167   0.005995  -1.94649 5.174e-02  -0.02343  8.830e-05 1898\n\nMultiple R-squared:  0.08643 ,  Adjusted R-squared:  0.08066 \nF-statistic: 16.42 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-math-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Math Results",
+    "text": "Tidy Math Results\n\ntidy(lang_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#on-reading",
+    "title": "Functions and Iteration",
+    "section": "On Reading",
+    "text": "On Reading\n\nread_mod &lt;- lm_robust(g3tlangss ~ treatment + gender + race + schlurbn + grdrange + gkenrmnt, \n                  data = star_dat,\n                  se_type = \"HC2\")\n\nsummary(read_mod)\n\n\nCall:\nlm_robust(formula = g3tlangss ~ treatment + gender + race + schlurbn + \n    grdrange + gkenrmnt, data = star_dat, se_type = \"HC2\")\n\nStandard error type:  HC2 \n\nCoefficients:\n              Estimate Std. Error  t value  Pr(&gt;|t|)   CI Lower  CI Upper   DF\n(Intercept) 633.366942    5.36016 118.1620 0.000e+00 622.854526 643.87936 1898\ntreatment     4.113126    1.58483   2.5953 9.523e-03   1.004940   7.22131 1898\ngender2      10.144257    1.57216   6.4524 1.393e-10   7.060914  13.22760 1898\nrace2       -13.713573    2.45781  -5.5796 2.758e-08 -18.533876  -8.89327 1898\nschlurbn2     8.602082    3.00381   2.8637 4.233e-03   2.710965  14.49320 1898\nschlurbn3     6.301093    3.16943   1.9881 4.695e-02   0.085161  12.51702 1898\nschlurbn4     6.421318    4.25744   1.5083 1.317e-01  -1.928435  14.77107 1898\ngrdrange4    -4.028959    4.00679  -1.0055 3.148e-01 -11.887125   3.82921 1898\ngrdrange5    -6.074969    3.34049  -1.8186 6.913e-02 -12.626392   0.47645 1898\ngrdrange6     0.334935    2.90863   0.1152 9.083e-01  -5.369513   6.03938 1898\ngrdrange7   -26.247871    6.98357  -3.7585 1.761e-04 -39.944145 -12.55160 1898\ngrdrange8    -6.151212    3.37377  -1.8232 6.842e-02 -12.767900   0.46548 1898\ngkenrmnt      0.003051    0.00552   0.5526 5.806e-01  -0.007776   0.01388 1898\n\nMultiple R-squared:  0.06845 ,  Adjusted R-squared:  0.06256 \nF-statistic: 13.02 on 12 and 1898 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#tidy-reading-results",
+    "title": "Functions and Iteration",
+    "section": "Tidy Reading Results",
+    "text": "Tidy Reading Results\n\ntidy(read_mod) %&gt;%\n    filter(term == \"treatment\") %&gt;%\n    mutate(outcome = \"g3tlangss\") %&gt;%\n    dplyr::select(outcome, everything())\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition",
+    "title": "Functions and Iteration",
+    "section": "Repetition",
+    "text": "Repetition\n\nRedundant code\nRepetitive\nProne to error when copy and pasting and changing a few things. Can you list out all the errors I made just now?\nIf we want to change the model, let’s say add few other variables, we have to repeat that correction multiple times\n\nWhich may also open up space for more error"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-1",
+    "title": "Functions and Iteration",
+    "section": "Functions",
+    "text": "Functions\n\n\n\nInput\nDo something with the input\nOutput\nRun it over again with different input\n\n\n\nsum_it &lt;- function(x, # input 1 \n                   y  # input 2\n                   ){\n  \n  total &lt;- x + y # do something with the input\n  \n  return(total) # output\n  \n\n}\n\nsum_it(2, 3)\n\n[1] 5\n\nsum_it(1000, 5000)\n\n[1] 6000"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#function-example",
+    "title": "Functions and Iteration",
+    "section": "Function Example",
+    "text": "Function Example\n\nrun_reg &lt;- function(outcome_var) {\n\n    lm_equation &lt;- paste(outcome_var, \" ~  treatment + gender + race + schlurbn + grdrange + gkenrmnt\")\n\n    mod &lt;- lm_robust(as.formula(lm_equation), \n                     data = star_dat,\n                     se_type = \"HC2\")\n\n    res_clean &lt;- tidy(mod) %&gt;%\n        filter(term == \"treatment\") %&gt;%\n        mutate(outcome = outcome_var) %&gt;%\n        dplyr::select(outcome, everything())\n\n                \n    return(res_clean)\n    \n}"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#run-the-function",
+    "title": "Functions and Iteration",
+    "section": "Run the Function",
+    "text": "Run the Function\n\nrun_reg(outcome = \"g3tlangss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 0.00952     1.00      7.22  1898\n\nrun_reg(outcome = \"g3tmathss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n\nrun_reg(outcome = \"g3treadss\")\n\n# A tibble: 1 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19      10.6  1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#critiques-of-the-run_reg-function",
+    "title": "Functions and Iteration",
+    "section": "Critiques of the run_reg() Function",
+    "text": "Critiques of the run_reg() Function\n\nCan you think of potential issues with this function?\nWhat are the issues and consequences of those issues?\nWhat can you do to improve the function?"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetition-1",
+    "title": "Functions and Iteration",
+    "section": "Repetition",
+    "text": "Repetition\n\nFor the sake of this presentation, I am only showing three outcomes\nImagine if there were more than 10 outcomes that you needed to analyze\nThink of potential issues in this situation - both when doing brute force analysis and even when using a function like run_reg()"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#repetitive-tasks-examples",
+    "title": "Functions and Iteration",
+    "section": "Repetitive Tasks Examples",
+    "text": "Repetitive Tasks Examples\n\nRunning analysis for multiple outcomes like above\nReading in 50 csv files in a folder with different csv files containing data for different school year\nConduct power analysis to estimate sample size for a randomized trial based on multiple assumed values of the effect size"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops",
+    "title": "Functions and Iteration",
+    "section": "For Loops",
+    "text": "For Loops\n\n\n\nClassic way to run repetitive analyses or tasks\nFor each item in a vector of items, run the code\n\n\n\nnumbers &lt;- 1:10 # A vector of items to loop through\n\nfor(n in numbers){ # for each number in the vector numbers\n  \n  x &lt;- n * 2 # multiply the number by 2\n  \n  print(x) # print the result\n  \n  \n}\n\n[1] 2\n[1] 4\n[1] 6\n[1] 8\n[1] 10\n[1] 12\n[1] 14\n[1] 16\n[1] 18\n[1] 20"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#star-analysis-example-loop-through-outcomes",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#star-analysis-example-loop-through-outcomes",
+    "title": "Functions and Iteration",
+    "section": "STAR Analysis Example: Loop through Outcomes",
+    "text": "STAR Analysis Example: Loop through Outcomes\n\noutcome &lt;- c(\"g3tlangss\", \"g3tmathss\", \"g3treadss\") # outcomes to loop through\n\nres &lt;- NULL # initialize the results \n\nfor(y in outcome){ # for each outcome in the outcome vector \n  \n  output &lt;- run_reg(outcome = y) # run run_reg for that outcome\n  res &lt;- bind_rows(res, output) # append the output to res\n  \n  \n}\n\nres # look at res after the looping\n\n# A tibble: 3 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 9.52e-3     1.00      7.22  1898\n2 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n3 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19     10.6   1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#for-loops-are-slow",
+    "title": "Functions and Iteration",
+    "section": "For Loops are Slow…",
+    "text": "For Loops are Slow…\n\nFor loops are still clunky and involve fairly extensive coding\nNeed to think through how to append and store the outcome or print the outcome\nAlso a bit slow..(er than other stuff we are going to talk about) in R"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#purrr",
+    "title": "Functions and Iteration",
+    "section": "purrr",
+    "text": "purrr\n\n\n\n\n\nFunctional programming in R\nLike for loop - apply a function to each element in a vector but less clunky\nMajor family of functions: map()\n\nLoop over a vector and output some value\nDifferent variations of map() will return different types of output\nPlease read through the different variations here"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#map",
+    "title": "Functions and Iteration",
+    "section": "map()",
+    "text": "map()\n\nnumbers &lt;- 1:5 # vector with items to loop over\n\n# function that you want run\ntimes_two &lt;- function(x){\n  x * 2\n}\n\n# loop times_two through each number, notice the output\nmap(numbers, .f = times_two)\n\n[[1]]\n[1] 2\n\n[[2]]\n[1] 4\n\n[[3]]\n[1] 6\n\n[[4]]\n[1] 8\n\n[[5]]\n[1] 10"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#different-output-format",
+    "title": "Functions and Iteration",
+    "section": "Different Output Format",
+    "text": "Different Output Format\n\nmap_int(numbers, .f = times_two)\n\n[1]  2  4  6  8 10"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#back-to-our-run_reg",
+    "title": "Functions and Iteration",
+    "section": "Back to our run_reg()",
+    "text": "Back to our run_reg()\n\nmap_dfr(outcome, run_reg)\n\n# A tibble: 3 × 9\n  outcome   term   estimate std.error statistic p.value conf.low conf.high    df\n  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 g3tlangss treat…     4.11      1.58      2.60 9.52e-3     1.00      7.22  1898\n2 g3tmathss treat…     6.37      1.73      3.67 2.45e-4     2.97      9.77  1898\n3 g3treadss treat…     7.41      1.64      4.51 6.96e-6     4.19     10.6   1898"
+  },
+  {
+    "objectID": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "href": "slides/class_06_functions_and_iteration/class_06_functions_and_iteration.html#functions-with-multiple-arguments",
+    "title": "Functions and Iteration",
+    "section": "Functions with Multiple arguments",
+    "text": "Functions with Multiple arguments\n\nThe map() family of functions is limited in that we can only loop through one thing\nWe may run into a scenario where we want through loop through multiple things\nCan you think of some such scenarios?\nIn such case, we can use the pmap() family of functions. Please read through https://purrr.tidyverse.org/reference/pmap.html"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Data Analytics in R",
+    "section": "",
+    "text": "This free course is intended to sharpen your data analytic skills to prepare you to transition to jobs and careers requiring such skills. We will cover fundamentals of data analytics in R. Some target job positions include data analyst, quantitative researcher, quantitative user researcher, and data scientist.\nThis course will involve classes covering data visualization, data wrangling, and data analytics. We also plan to add courses for more advanced topics in the future. For each topic, we provide a set intensive practice problem sets that will help you learn concepts covered in class. Some of the exercises will be based on topics covered during the lecture and some will require you to think a bit creatively and maybe do some searching online.\nAdditionally, we will attempt to provide some resources and help for job search. We will provide example resumes, example technical and behavioral interview questions, and descriptions of different careers paths.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "classes/class_02.html",
+    "href": "classes/class_02.html",
+    "title": "Class 02: Data Visualization with ggplot",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nData Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 2: Data Visualization\n\n\n\n\n\n\nNo matching items\n\n\n\nReadings\n\n\n\n\n\n\nR for Data Science: Chapter 3 - Data Visualization\n\n\nData Visualization: A Practical Introduction"
+  },
+  {
+    "objectID": "classes/class_06.html",
+    "href": "classes/class_06.html",
+    "title": "Class 06: Functions and Iteration",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nFunctions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 6: Functions and Iteration\n\n\n\n\n\n\nNo matching items\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 19 - Functions\n\n\nR Programming for DS Chapter 14 - Functions\n\n\nR4DS Chapter 21 - Iteration"
+  },
+  {
+    "objectID": "classes/class_05.html",
+    "href": "classes/class_05.html",
+    "title": "Class 05: Strings and Factors",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nStrings and Factors\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 5A: Strings\n\n\n\n\n\n\nPractice Problem Set 5B: Factors\n\n\n\n\n\n\nNo matching items\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 14 - Strings\n\n\nR4DS Chapter 15 - Factors"
+  },
+  {
+    "objectID": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "href": "practice_problems/practice_problems_02/practice_problems_02.html",
+    "title": "Practice Problem Set 2: Data Visualization",
+    "section": "",
+    "text": "Run the following code to load the data. Glimpse the data and learn about the variables:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor the following questions, please create a graph using ggplot to answer:\nCreate a plot examine the distribution of re78 variable which has information on income of the participants in year 1978. (Note: you have to highlight code that is in different lines and then run in webr interface).\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow check the difference between the distribution of that variable between the treatment and control groups.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nThink about one more different way to visualize the difference in the distribution of ret78 in treatment versus control. Which way do you prefer - one from Q3 or Q4 - and why?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate graphs showing distributions of the other variables in the data for treatment versus control groups.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between age and educ.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship between age and education differ between the treatment and control groups?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExamine the relationship between race and income in 1978.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nDoes the relationship differ by treatment level?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: Examine the trend in income across the three times given (1974, 1975, 1978). Draw conclusions about the trends.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_05/practice_problems_05A.html",
+    "href": "practice_problems/practice_problems_05/practice_problems_05A.html",
+    "title": "Practice Problem Set 5A: Strings",
+    "section": "",
+    "text": "Run the following code to load the data. View the codebook and other information on the on the data here.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nSeparate the project title into the main title and sub-title.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate a subset of the data with projects that have the word STEM in their title.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCount the number of grants by directorate. Do you see anything odd?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nClean up the directorate variable and create the table again. Arrange the table in descending order.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCount the length of the org_zip variable. Look at the distribution of the length.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nSplit the org_zip variable into into two variables. First containing the 5 number zip code and the second containing the add-on 4 number code.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge problem: Create a graph identifying the most commonly occurring word across the abstracts from grants that are on Ted Cruz’s list.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "href": "practice_problems/practice_problems_03/practice_problems_03.html",
+    "title": "Practice Problem Set 3: Querying and Wrangling Data",
+    "section": "",
+    "text": "Run the following code to load the data:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nUsing tidyverse syntax, calculate the count and proportion of high BP patients who were diagnosed with diabetes.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCalculate the average BMI for smokers.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nUsing the codebook here, create another variable that contains the corresponding label for the education variable. For example, for the rows where education is 1, the new variable should contain: Never attended school or only kindergarten.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor each category of education, calculate the proportion of people who smoke, are physically active, have had a heart attack, eat fruits, and eat vegetables.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate a ggplot representing the data from above.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor people with and without diabetes, calculate the mean and standard deviation of the following variables: mental_hlth, physical_htlh, gen_hlth, bmi, age, income.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nThink of different ways to represent the table above. Experiment with the new formats.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRestructure the data so that we have mean and standard deviation for diabetic vs non-diabetic people as columns. And, all the background traits for which we calculated the mean and standard deviation as rows.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: Create a table using kableExtra with the data from Question 9.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "href": "practice_problems/practice_problems_01/practice_problems_01.html",
+    "title": "Practice Problem Set 1: Introduction",
+    "section": "",
+    "text": "Downloading R and R Studio/Positron\n\nIf you don’t have R and R Studio/Positron downloaded, please download them:\n\nDownload R here.\nDownload RStudio here.\nDownload Positron here.\n\nIf you prefer to use RStudio, please create an R project for this class and open that project. Try using the project setup. If using Positron, you don’t need to create a project but you can just set up a folder for this course.\nInstall the following packages:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\ninstall.packages(\"janitor\")\ninstall.packages(\"estimatr\")\n\n\n\n\nWorking In R\n\nOpen an R script.\nLook at the sleep data, which is a built in dataset in R.\n\nsleep\n\n   extra group ID\n1    0.7     1  1\n2   -1.6     1  2\n3   -0.2     1  3\n4   -1.2     1  4\n5   -0.1     1  5\n6    3.4     1  6\n7    3.7     1  7\n8    0.8     1  8\n9    0.0     1  9\n10   2.0     1 10\n11   1.9     2  1\n12   0.8     2  2\n13   1.1     2  3\n14   0.1     2  4\n15  -0.1     2  5\n16   4.4     2  6\n17   5.5     2  7\n18   1.6     2  8\n19   4.6     2  9\n20   3.4     2 10\n\n\nUsing the summary() function from base R, write code to look at the summary of all the variables in the data.\nUsing the table() function, check the how many records are there for each group.\nRun a linear regression regressing extra on group and view the summary of the model.\n\n\n\nWorking with Quarto\n\nDownload Quarto. Create an html Quarto document and write a short paragraph on what you expect to gain out of this course in the next 3 months.\nIn the document, check where the working directory is now.\nCreate code snippets on the Quarto document and transfer the code from Question 4 through 8 there.\nRender the html file.\n\n\n\nBonus: Version Control\n\nIf you don’t have a GitHub account, create an account.\nCreate a repository for this class and add the R Project you created for this class to the repository.\nCommit and push changes to remote repository."
+  },
+  {
+    "objectID": "classes.html",
+    "href": "classes.html",
+    "title": "R Basics",
+    "section": "",
+    "text": "Class\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nClass 01: Introduction to the Course and to R\n\n\nMegha Joshi\n\n\n\n\n\n\nClass 02: Data Visualization with ggplot\n\n\nMegha Joshi\n\n\n\n\n\n\nClass 03: Querying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\n\nClass 04: Relational Datasets\n\n\nMegha Joshi\n\n\n\n\n\n\nClass 05: Strings and Factors\n\n\nMegha Joshi\n\n\n\n\n\n\nClass 06: Functions and Iteration\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "R Basics"
+    ]
+  },
+  {
+    "objectID": "practice_problems/practice_problems_06/practice_problems_06.html",
+    "href": "practice_problems/practice_problems_06/practice_problems_06.html",
+    "title": "Practice Problem Set 6: Functions and Iteration",
+    "section": "",
+    "text": "Run the following code to load the data. View the codebook and other information on the on the data here.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate dummy variables for the race categorical variable. There should be three new variables: black (1 if the race is black, 0 otherwise), hispanic (1 if race is hispan, 0 otherwise), and white (1 if race is white, 0 otherwise).\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWrite code that calculates the proportion of black students in treatment group and the control group. Then take the difference between those two proportions.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate a function using the code you wrote in Q3 that takes in a vector containing treatment indicator and the vector containing a binary variable. The function then calculates the proportions in the treatment and control group as well as the difference in the proportions.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWrite code to run this function for the following variables: black, hispanic, white, married, and nodegree.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nUpdate the function from Q4 so that the output now is a data frame or tibble containing the following: (1) the proportion in treatment, (2) proportion in control and (3) the difference in the proportions.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nLoop through the variables in Q5 with the updated function.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow change the function so it takes in a dataset and unquoted variable names as arguments. Look through this blog to see how this works.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nApply the function to the variables listed in Q5.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChallenge Problem: I have bunch of csv files in this folder. I need to read them all in. Each file has data on a different school. Read all the data in and bind them together in one dataset.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "href": "practice_problems/practice_problems_04/practice_problems_04.html",
+    "title": "Practice Problem Set 4: Relational Data",
+    "section": "",
+    "text": "Run the following code to load the data. Look through this website to learn more about the data.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nSketch out the relationship between all the tables in the database. For each dataset, what is the primary key? What are secondary keys?\nHow many flights operated by Jet Blue departed from EWR in January, 2013?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nHow many flights that departed from JFK in 2013 were manufactured by Boeing? Create a subset of flights data that meet these conditions - departed from JFK in 2013 on planes manufactured by Boeing.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nFor each of the airports in the flights data, count the number of flights that departed when there was some precipitation.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nHow many of the flights from Q5 experienced some type of delay? What was the average delay?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCount the number of the delayed flights from Q6 by plane manufacturer and the year manufactured.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nAre there any flights in the flights data for which we do not have matches in the other datasets? Why might there be no matches?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nHow many flights departing from each of the NYC airports were headed to a different time zone? For each airport, calculate the number from flights departing and landing in each of the time zones. For example, how many departed JFK and landed in America/Chicago time zone, in America/ Los Angeles time zone etc.?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExtract data on flights departing NYC airports for which we have information on the plane manufacturer.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "practice_problems/practice_problems_05/practice_problems_05B.html",
+    "href": "practice_problems/practice_problems_05/practice_problems_05B.html",
+    "title": "Practice Problem Set 5B: Factors",
+    "section": "",
+    "text": "Run the following code to load the data. View the codebook for the data here.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate a graph like we did in Lecture 2 of the relationship between temperature and total bike rentals. What is odd about this graph?\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRe-code the season, yr, mnth, holiday, weekday, workingday, and weather-sit variables.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nChange the season variable into a factor variable. What are the levels of the variable? Reorder the variable so that we have Summer, Fall, Winter, Spring.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRecreate the graph from Q2 with the new reordered variable.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nCreate a bar chart for the weathersit variable.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nLump together the least frequent two levels and recreate the graph from Q6.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Teaching Team",
+    "section": "",
+    "text": "Megha Joshi, PhD\n\nDr. Megha Joshi has more than 10 years of experience in designing and leading research projects. She has expertise in causal inference and meta-analytic methods, as well as experience in cleaning and analyzing large, complex data sets in R. She has developed and maintains several R packages including wildmeta, simhelpers, and metaselection. She has a PhD in Quantitative Methods from The University of Texas at Austin. At the university, she assisted in the following courses that used R heavily: Data Analysis, Simulation, and Programming in R and Causal Inference. She currently works in the insurance industry and has experience in conducting educational policy and program evaluations.\n\n\nTiffany “Tiff” M. Kollah, BSPH\n\nTiffany M. Kollah is a dedicated biostatistician in training and public health researcher with a strong background in mental health, chronic disease, and clinical trials. She currently serves as a Clinical Trial Research Coordinator in the Department of Neurology at the University of North Carolina at Chapel Hill. Tiffany holds a Bachelor of Science in Public Health from Slippery Rock University and is pursuing a Graduate Certificate in Applied Statistics and Data Management at NC State University (part-time) while working full-time in research at UNC.\nHer research career has spanned roles as a Research Assistant in neurobiology, where she supported Alzheimer’s disease studies using neuroimaging, and as a Research Specialist with a focus on chronic kidney disease and its psychosocial impacts in dialysis patients. Her interests lie at the intersection of biostatistics, psychiatric epidemiology, and mental health disparities in minority populations. She is particularly passionate about the statistical analysis of longitudinal psychiatric data and the advancement of data science in mental health research.\nTiffany is an active member of the American Statistical Association (ASA), where she contributes to the Justice, Equity, Diversity, and Inclusion (JEDI) Outreach Group. She co-chaired the JEDI Young Professionals Group during 2024–2025 and currently serves on its executive committee. In this role, she works to expand representation and access in the statistical sciences, particularly for underserved communities.\nShe is also a proud member of the CoachR Network, collaborating with Megha Joshi on the development of a course designed to empower individuals who were unconstitutionally laid off, equipping them with skills to enter the growing field of public health technology.\nOutside of her professional work, Tiffany enjoys playing tennis, hiking, practicing yoga and mindfulness, and painting.",
+    "crumbs": [
+      "Teaching Team"
+    ]
+  },
+  {
+    "objectID": "classes/class_04.html",
+    "href": "classes/class_04.html",
+    "title": "Class 04: Relational Datasets",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nRelational Datasets\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 4: Relational Data\n\n\n\n\n\n\nNo matching items\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 13 - Relational Data"
+  },
+  {
+    "objectID": "classes/class_03.html",
+    "href": "classes/class_03.html",
+    "title": "Class 03: Querying and Wrangling Data",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nQuerying and Wrangling Data\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 3: Querying and Wrangling Data\n\n\n\n\n\n\nNo matching items\n\n\n\nReadings\n\n\n\n\n\n\nR4DS Chapter 5 - Data Transformation\n\n\nR4DS Chapter 12 - Tidy Data\n\n\nR Programming for DS Chapter 12 - Managing Data Frames with the dplyr package"
+  },
+  {
+    "objectID": "classes/class_01.html",
+    "href": "classes/class_01.html",
+    "title": "Class 01: Introduction to the Course and to R",
+    "section": "",
+    "text": "Slides\n\n\n\n\n\n\nTopic\n\n\n\nInstructor\n\n\n\n\n\n\n\n\nIntroduction to Data Analytics in R\n\n\nMegha Joshi\n\n\n\n\n\n\nNo matching items\n\n\n\nPractice Problems\n\n\n\n\n\n\nProblem Sets\n\n\n\n\n\n\n\n\nPractice Problem Set 1: Introduction\n\n\n\n\n\n\nNo matching items\n\n\n\nRecommended Readings\n\n\n\n\n\n\nR Programming for DS Chapter 2 - History and Overview of R\n\n\nR4DS Introduction\n\n\nR4DS Chapter 6 - Workflow: scripts and projects\n\n\nR4DS Chapter 28 - Quarto"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#linear-regression",
+    "href": "slides/research/linear_regression.html#linear-regression",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "Linear regression",
+    "text": "Linear regression"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#ab-testing",
+    "href": "slides/research/linear_regression.html#ab-testing",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "AB testing",
+    "text": "AB testing"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#comparing-how-two-groups-differ-on-average",
+    "href": "slides/research/linear_regression.html#comparing-how-two-groups-differ-on-average",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "Comparing how two groups differ on average",
+    "text": "Comparing how two groups differ on average"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#t-test",
+    "href": "slides/research/linear_regression.html#t-test",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "t-test",
+    "text": "t-test"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#t-test-assumptions",
+    "href": "slides/research/linear_regression.html#t-test-assumptions",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "t-test Assumptions",
+    "text": "t-test Assumptions"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#as-a-linear-model",
+    "href": "slides/research/linear_regression.html#as-a-linear-model",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "As a linear model",
+    "text": "As a linear model\n\\[y = mx + b \\]"
+  },
+  {
+    "objectID": "slides/research/linear_regression.html#resources",
+    "href": "slides/research/linear_regression.html#resources",
+    "title": "Analyze AB Tests with Linear Regression",
+    "section": "Resources",
+    "text": "Resources\nGelman, A., Hill, J., & Vehtari, A. (2021). Regression and other stories. Cambridge University Press. https://avehtari.github.io/ROS-Examples/\nHeiss, Andrew. 2019. “Half a Dozen Frequentist and Bayesian Ways to Measure the Difference in Means in Two Groups.” January 29, 2019. https://doi.org/10.59350/94eck-1gd29."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#a-data-frame",
+    "title": "Relational Datasets",
+    "section": "A Data Frame",
+    "text": "A Data Frame\n\n\n\nData frames represent data as a table with rows and columns\n\nRows represent observations or record (e.g., each row contains data on employee)\nColumns typically contain variables (e.g., columns contain information like score on employee satisfaction survey, what department the employee belongs to etc.)\n\nA tibble is a modern data frame - Chapter 10 of R4DS\n\n\n\n\n# A tibble: 8 × 4\n  dept_id dept_name emp_id surv_scr\n  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;\n1 A       Analytics      1       73\n2 A       Analytics      2       75\n3 A       Analytics      3       90\n4 A       Analytics      4       79\n5 B       Research       5       86\n6 B       Research       6       83\n7 B       Research       7       83\n8 B       Research       8       85"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#limitations-of-data-frames",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#limitations-of-data-frames",
+    "title": "Relational Datasets",
+    "section": "Limitations of Data Frames",
+    "text": "Limitations of Data Frames\n\n\n\nRedundant information\n\nIn the example data, note that department name repeats ~ same information is repeated across 4 rows\n\nStorage and memory issues\n\n\n\n\n# A tibble: 8 × 4\n  dept_id dept_name emp_id surv_scr\n  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;\n1 A       Analytics      1       73\n2 A       Analytics      2       75\n3 A       Analytics      3       90\n4 A       Analytics      4       79\n5 B       Research       5       86\n6 B       Research       6       83\n7 B       Research       7       83\n8 B       Research       8       85"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#relational-data",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#relational-data",
+    "title": "Relational Datasets",
+    "section": "Relational Data",
+    "text": "Relational Data\n\nLike data frames but now we split the data into multiple tables\nCut redundant information, optimize storage and memory, organize the information better\n\n\n\nEmployee data:\n\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\nDepartment data:\n\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#databases",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#databases",
+    "title": "Relational Datasets",
+    "section": "Databases",
+    "text": "Databases\n\nCollection of multiple data\nDatabase Management System\n\nMySQL\nDuckDB"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#example-dataset-full",
+    "title": "Relational Datasets",
+    "section": "Example Dataset Full",
+    "text": "Example Dataset Full\n\n\n\nemployee_dat\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\n\ndepartment_dat\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin    \n\n\n\n\nWhat do you notice about the relationship between the two datasets?"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#primary-key",
+    "title": "Relational Datasets",
+    "section": "Primary Key",
+    "text": "Primary Key\n\nEvery table needs to have a primary key. This would be a unique identifier for each of the rows.\nHas to be unique - no duplicated key\n\nPossible to concatenate two or more variables to create a primary key\n\nShould not have missing data for primary key - we need an identifier\n\nExample:\n\nEmployee ID in the employee dataset (`employee_dat`)\nDepartment number in the department dataset (`department_dat`)"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#foreign-keys",
+    "title": "Relational Datasets",
+    "section": "Foreign Keys",
+    "text": "Foreign Keys\n\nCounterpart to the primary key\nAn identifier in a another table that matches with the primary key in a table\n\nExample:\n\nDepartment number is a foreign key in employee_dat that matches with the primary key department number in the department_dat\n\n\n\n\n\n\nemployee_dat\n\n# A tibble: 12 × 3\n   emp_id surv_scr dept_id\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1      1       73 A      \n 2      2       75 A      \n 3      3       90 A      \n 4      4       79 A      \n 5      5       86 B      \n 6      6       83 B      \n 7      7       83 B      \n 8      8       85 B      \n 9      9       81 C      \n10     10       83 C      \n11     11       90 C      \n12     12       84 C      \n\n\n\n\ndepartment_dat\n\n# A tibble: 4 × 2\n  dept_id dept_name\n  &lt;chr&gt;   &lt;chr&gt;    \n1 A       Analytics\n2 B       Research \n3 D       HR       \n4 E       Admin"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full-outer-join",
+    "title": "Relational Datasets",
+    "section": "Full Outer Join",
+    "text": "Full Outer Join\nJoin all the rows of both tables as long as there is a matching record in either table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#full_join",
+    "title": "Relational Datasets",
+    "section": "full_join()",
+    "text": "full_join()\n\nfull_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 14 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;     \n13     NA       NA D       HR       \n14     NA       NA E       Admin"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#left-outer-join-or-left-join",
+    "title": "Relational Datasets",
+    "section": "Left Outer Join or Left Join",
+    "text": "Left Outer Join or Left Join\nJoin all the rows of the left table and the matching rows in the right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#left_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#left_join",
+    "title": "Relational Datasets",
+    "section": "left_join()",
+    "text": "left_join()\n\nleft_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 12 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9      9       81 C       &lt;NA&gt;     \n10     10       83 C       &lt;NA&gt;     \n11     11       90 C       &lt;NA&gt;     \n12     12       84 C       &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#right-outer-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#right-outer-join",
+    "title": "Relational Datasets",
+    "section": "Right Outer Join",
+    "text": "Right Outer Join\nJoin all the rows of the right table and the matching rows in the left table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#right_join",
+    "title": "Relational Datasets",
+    "section": "right_join()",
+    "text": "right_join()\n\nright_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 10 × 4\n   emp_id surv_scr dept_id dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    \n 1      1       73 A       Analytics\n 2      2       75 A       Analytics\n 3      3       90 A       Analytics\n 4      4       79 A       Analytics\n 5      5       86 B       Research \n 6      6       83 B       Research \n 7      7       83 B       Research \n 8      8       85 B       Research \n 9     NA       NA D       HR       \n10     NA       NA E       Admin"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner-join",
+    "title": "Relational Datasets",
+    "section": "Inner Join",
+    "text": "Inner Join\nJoin the rows which are present in both tables."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#inner_join",
+    "title": "Relational Datasets",
+    "section": "inner_join()",
+    "text": "inner_join()\n\ninner_join(department_dat, employee_dat, by = \"dept_id\")\n\n# A tibble: 8 × 4\n  dept_id dept_name emp_id surv_scr\n  &lt;chr&gt;   &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;\n1 A       Analytics      1       73\n2 A       Analytics      2       75\n3 A       Analytics      3       90\n4 A       Analytics      4       79\n5 B       Research       5       86\n6 B       Research       6       83\n7 B       Research       7       83\n8 B       Research       8       85"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross-join-or-cartesian-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#cross-join-or-cartesian-join",
+    "title": "Relational Datasets",
+    "section": "Cross Join or Cartesian Join",
+    "text": "Cross Join or Cartesian Join\nReturns all possible combinations of all rows."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#cross_join",
+    "title": "Relational Datasets",
+    "section": "cross_join()",
+    "text": "cross_join()\n\ncross_join(employee_dat, department_dat)\n\n# A tibble: 48 × 5\n   emp_id surv_scr dept_id.x dept_id.y dept_name\n    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    \n 1      1       73 A         A         Analytics\n 2      1       73 A         B         Research \n 3      1       73 A         D         HR       \n 4      1       73 A         E         Admin    \n 5      2       75 A         A         Analytics\n 6      2       75 A         B         Research \n 7      2       75 A         D         HR       \n 8      2       75 A         E         Admin    \n 9      3       90 A         A         Analytics\n10      3       90 A         B         Research \n# ℹ 38 more rows"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi-join",
+    "title": "Relational Datasets",
+    "section": "Semi Join",
+    "text": "Semi Join\nFilter records from left table that has matching records in right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#semi_join",
+    "title": "Relational Datasets",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nsemi_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 8 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      1       73 A      \n2      2       75 A      \n3      3       90 A      \n4      4       79 A      \n5      5       86 B      \n6      6       83 B      \n7      7       83 B      \n8      8       85 B"
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti-join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#anti-join",
+    "title": "Relational Datasets",
+    "section": "Anti Join",
+    "text": "Anti Join\nFilter records from left table that do not have matching records in right table."
+  },
+  {
+    "objectID": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
+    "href": "slides/class_04_relational_datasets/class_04_relational_data.html#anti_join",
+    "title": "Relational Datasets",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nanti_join(employee_dat, department_dat, by = \"dept_id\")\n\n# A tibble: 4 × 3\n  emp_id surv_scr dept_id\n   &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  \n1      9       81 C      \n2     10       83 C      \n3     11       90 C      \n4     12       84 C"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-stringr",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-stringr",
+    "title": "Strings and Factors",
+    "section": "Introduction to stringr",
+    "text": "Introduction to stringr\n\n\n\n\n\nSource: https://stringr.tidyverse.org/\n\n\n\n\nWhat are strings?\n\nCharacter(s) inside ‘..’ or “..”\n\nstringr is a package in tidyverse for manipulating and working with strings\n\nx &lt;- \"This is a string.\"\nx\n\n[1] \"This is a string.\""
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs",
+    "title": "Strings and Factors",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\nstr_detect()\nReturns TRUE if a pattern is present in a string\n\n\nstr_split()\nSplit a string into two or more\n\n\nstr_remove()\nRemove a pattern from a string\n\n\nstr_sub()\nExtract parts of strings given locations\n\n\nstr_wrap()\nWrap string as a paragraph\n\n\n\nThese are just a handful of available functions. Please check out https://stringr.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#example-dataset",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#example-dataset",
+    "title": "Strings and Factors",
+    "section": "Example Dataset",
+    "text": "Example Dataset\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-02-11')\ncdc_data &lt;- tuesdata$cdc_datasets\n\nglimpse(cdc_data)\n\nRows: 1,257\nColumns: 27\n$ dataset_url                  &lt;chr&gt; \"https://archive.org/download/20250128-cd…\n$ contact_name                 &lt;chr&gt; \"Physical Effects Research Branch (PERB),…\n$ contact_email                &lt;chr&gt; \"sa-cin-webteam@cdc.gov\", \"sa-cin-webteam…\n$ bureau_code                  &lt;chr&gt; \"009:20\", \"009:20\", \"009:20\", \"009:20\", \"…\n$ program_code                 &lt;chr&gt; \"009:034\", \"009:034\", \"009:034\", \"009:034…\n$ category                     &lt;chr&gt; \"National Institute for Occupational Safe…\n$ tags                         &lt;chr&gt; \"This dataset does not have any tags\", \"T…\n$ publisher                    &lt;chr&gt; NA, NA, NA, NA, \"Active Bacterial Core Su…\n$ public_access_level          &lt;chr&gt; NA, NA, NA, NA, \"public\", NA, \"public\", \"…\n$ footnotes                    &lt;chr&gt; NA, NA, NA, NA, \"*ABCs IPD Isolates were …\n$ license                      &lt;chr&gt; NA, NA, NA, NA, NA, \"The license for this…\n$ source_link                  &lt;chr&gt; NA, NA, NA, NA, NA, \"http://www.cdc.gov/p…\n$ issued                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2021-10-01\", \"20…\n$ geographic_coverage          &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"US\", \"US\", NA, N…\n$ temporal_applicability       &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"2020-07-01/2021-…\n$ update_frequency             &lt;chr&gt; NA, NA, NA, NA, NA, NA, \"monthly\", \"month…\n$ described_by                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ homepage                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"https://…\n$ geographic_unit_of_analysis  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ suggested_citation           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ geospatial_resolution        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ references                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ glossary_methodology         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ access_level_comment         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ analytical_methods_reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ language                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ collection                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect",
+    "title": "Strings and Factors",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nstr_detect(cdc_data$tags, \"covid\")\n\n   [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n  [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n  [37] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE\n  [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n  [73]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n  [97]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE\n [193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE\n [205]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE\n [217] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n [229]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [289] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n [301]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [337] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [349] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [361] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE\n [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE\n [397] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [433] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [445] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n [457] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [469] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [481] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [493] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [505] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [517] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [529] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [541] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [553] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [565] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [577] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [601] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [613] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [625] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [637] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [649] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [661] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [673] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [685] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [697] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [709] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [721] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [733] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [745] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [757] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [769] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [781] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [793] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [805] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [817] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [829] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [841] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE\n [853] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [865] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE\n [877] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [889]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n [901]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE\n [913] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [925] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE\n [937] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE\n [949] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [961] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [973] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [985] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [997] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1009] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE\n[1021]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE\n[1033]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE\n[1045]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1057]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE\n[1069] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE\n[1081] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[1093] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1105]  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE\n[1117]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE\n[1129]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[1141]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1153] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1165] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1177] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1189] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1201] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1213] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1225] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1237] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[1249] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect-with-filter",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_detect-with-filter",
+    "title": "Strings and Factors",
+    "section": "str_detect() with filter()",
+    "text": "str_detect() with filter()\n\ncdc_data %&gt;%\n  filter(str_detect(tags, \"covid\"))\n\n# A tibble: 209 × 27\n   dataset_url      contact_name contact_email bureau_code program_code category\n   &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;   \n 1 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 2 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 3 https://archive… CDC-INFO     cdcinfo@cdci… 009:20      009:020      Laborat…\n 4 https://archive… National Sy… nssp@cdc.gov  009:20      009:037      Public …\n 5 https://archive… National Sy… nssp@cdc.gov  009:20      009:026      Public …\n 6 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 7 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 8 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n 9 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n10 https://archive… National Ce… cdcinfo@cdc.… 009:20      009:020      NCHS    \n# ℹ 199 more rows\n# ℹ 21 more variables: tags &lt;chr&gt;, publisher &lt;chr&gt;, public_access_level &lt;chr&gt;,\n#   footnotes &lt;chr&gt;, license &lt;chr&gt;, source_link &lt;chr&gt;, issued &lt;chr&gt;,\n#   geographic_coverage &lt;chr&gt;, temporal_applicability &lt;chr&gt;,\n#   update_frequency &lt;chr&gt;, described_by &lt;chr&gt;, homepage &lt;chr&gt;,\n#   geographic_unit_of_analysis &lt;chr&gt;, suggested_citation &lt;chr&gt;,\n#   geospatial_resolution &lt;chr&gt;, references &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_split",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_split",
+    "title": "Strings and Factors",
+    "section": "str_split()",
+    "text": "str_split()\n\nemails &lt;- cdc_data$contact_email\n\nhead(str_split(emails, \"@\"))\n\n[[1]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[2]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[3]]\n[1] \"sa-cin-webteam\" \"cdc.gov\"       \n\n[[4]]\n[1] \"HHERequestHelp\" \"cdc.gov\"       \n\n[[5]]\n[1] \"abcs\"    \"cdc.gov\"\n\n[[6]]\n[1] \"cdcinfo\" \"cdc.gov\""
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_remove",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_remove",
+    "title": "Strings and Factors",
+    "section": "str_remove()",
+    "text": "str_remove()\n\ncdc_data %&gt;%\n  mutate(bureau_code_new = str_remove(bureau_code, \":\")) %&gt;%\n  select(bureau_code, bureau_code_new)\n\n# A tibble: 1,257 × 2\n   bureau_code bureau_code_new\n   &lt;chr&gt;       &lt;chr&gt;          \n 1 009:20      00920          \n 2 009:20      00920          \n 3 009:20      00920          \n 4 009:20      00920          \n 5 009:20      00920          \n 6 009:00      00900          \n 7 009:20      00920          \n 8 009:20      00920          \n 9 009:20      00920          \n10 009:20      00920          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_sub",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_sub",
+    "title": "Strings and Factors",
+    "section": "str_sub()",
+    "text": "str_sub()\n\ncdc_data %&gt;%\n  mutate(program_three = str_sub(program_code, 5, 7)) %&gt;%\n  select(program_code, program_three)\n\n# A tibble: 1,257 × 2\n   program_code program_three\n   &lt;chr&gt;        &lt;chr&gt;        \n 1 009:034      034          \n 2 009:034      034          \n 3 009:034      034          \n 4 009:034      034          \n 5 009:020      020          \n 6 009:020      020          \n 7 009:020      020          \n 8 009:020      020          \n 9 009:020      020          \n10 009:020      020          \n# ℹ 1,247 more rows"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_wrap",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#str_wrap",
+    "title": "Strings and Factors",
+    "section": "str_wrap()",
+    "text": "str_wrap()\n\nhighest_cat &lt;- \n  cdc_data %&gt;%\n  group_by(category) %&gt;%\n  count() %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(n)) %&gt;%\n  slice(1:5)\n\np &lt;- \n  ggplot(highest_cat, aes(x = category, y = n)) + \n  geom_bar(stat = \"identity\") +\n  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#the-plot",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#the-plot",
+    "title": "Strings and Factors",
+    "section": "The Plot",
+    "text": "The Plot\n\np"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-forcats",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#introduction-to-forcats",
+    "title": "Strings and Factors",
+    "section": "Introduction to forcats",
+    "text": "Introduction to forcats\n\n\n\n\n\nSource: https://forcats.tidyverse.org/\n\n\n\n\nWhat are factors?\n\nCategorical variables with set number levels (possible values)\n\nforcats is a package in tidyverse for working with factors\n\nfactor(c(LETTERS[1:5]))\n\n[1] A B C D E\nLevels: A B C D E"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#verbs-1",
+    "title": "Strings and Factors",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nCol1\nCol2\n\n\n\n\nfct_relevel()\nChange levels of factor\n\n\nfct_lump()\nLump different levels of factor\n\n\nfct_infreq()\nOrder levels of factor based on frequency\n\n\n\nThese are again just a handful of available functions. Please check out https://forcats.tidyverse.org/reference/index.html for more."
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#categories-from-cdc-data",
+    "title": "Strings and Factors",
+    "section": "Categories from CDC Data",
+    "text": "Categories from CDC Data\n\ncdc_cat &lt;- \n  cdc_data %&gt;%\n  mutate(category = factor(category))\n\nhead(levels(cdc_cat$category))\n\n[1] \"500 Cities & Places\"                   \n[2] \"Administrative\"                        \n[3] \"Assisted Reproductive Technology (ART)\"\n[4] \"Behavioral Risk Factors\"               \n[5] \"Cancer Research Citation Search\"       \n[6] \"Case Surveillance\""
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_relevel",
+    "title": "Strings and Factors",
+    "section": "fct_relevel()",
+    "text": "fct_relevel()\n\ncdc_data&lt;-\n  cdc_data %&gt;%\n  mutate(new_cat = fct_relevel(category, \"500 Cities & Places\", after = 2))\n\nhead(levels(cdc_data$new_cat))\n\n[1] \"Administrative\"                        \n[2] \"Assisted Reproductive Technology (ART)\"\n[3] \"500 Cities & Places\"                   \n[4] \"Behavioral Risk Factors\"               \n[5] \"Cancer Research Citation Search\"       \n[6] \"Case Surveillance\""
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_lump",
+    "title": "Strings and Factors",
+    "section": "fct_lump()",
+    "text": "fct_lump()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_lump_n(category, n = 3))\n\ntable(cdc_data$cat_short)\n\n\nNational Institute for Occupational Safety and Health \n                                                  108 \n                                                 NCHS \n                                                  184 \n                                                NNDSS \n                                                  293 \n                                                Other \n                                                  672"
+  },
+  {
+    "objectID": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "href": "slides/class_05_strings_and_factors/class_05_strings_and_factors.html#fct_infreq",
+    "title": "Strings and Factors",
+    "section": "fct_infreq()",
+    "text": "fct_infreq()\n\ncdc_data &lt;- \n  cdc_data %&gt;%\n  mutate(cat_short = fct_infreq(cat_short))\n\ntable(cdc_data$cat_short)\n\n\n                                                Other \n                                                  672 \n                                                NNDSS \n                                                  293 \n                                                 NCHS \n                                                  184 \nNational Institute for Occupational Safety and Health \n                                                  108"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#introduction-to-the-tidyverse",
+    "title": "Querying and Wrangling Data",
+    "section": "Introduction to the tidyverse",
+    "text": "Introduction to the tidyverse\n\n\n\n\n\nSource: https://www.tidyverse.org/\n\n\n\n\nSet of packages for\n\nwrangling\ncleaning\norganizing\nsummarizing\nvisualizing data"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches",
+    "title": "Querying and Wrangling Data",
+    "section": "Example Dataset: Men’s World Cup Matches",
+    "text": "Example Dataset: Men’s World Cup Matches\nSource: tidytuesdayR\n\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n\ntt &lt;- tt_load(\"2022-11-29\")\ntt\n\nwc_matches &lt;- tt$wcmatches"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches-1",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#example-dataset-mens-world-cup-matches-1",
+    "title": "Querying and Wrangling Data",
+    "section": "Example Dataset: Men’s World Cup Matches",
+    "text": "Example Dataset: Men’s World Cup Matches\n\nglimpse(wc_matches)\n\nRows: 900\nColumns: 15\n$ year           &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1…\n$ country        &lt;chr&gt; \"Uruguay\", \"Uruguay\", \"Uruguay\", \"Uruguay\", \"Uruguay\", …\n$ city           &lt;chr&gt; \"Montevideo\", \"Montevideo\", \"Montevideo\", \"Montevideo\",…\n$ stage          &lt;chr&gt; \"Group 1\", \"Group 4\", \"Group 2\", \"Group 3\", \"Group 1\", …\n$ home_team      &lt;chr&gt; \"France\", \"Belgium\", \"Brazil\", \"Peru\", \"Argentina\", \"Ch…\n$ away_team      &lt;chr&gt; \"Mexico\", \"United States\", \"Yugoslavia\", \"Romania\", \"Fr…\n$ home_score     &lt;dbl&gt; 4, 0, 1, 1, 1, 3, 0, 0, 1, 6, 1, 0, 0, 4, 3, 6, 6, 4, 2…\n$ away_score     &lt;dbl&gt; 1, 3, 2, 3, 0, 0, 4, 3, 0, 3, 0, 1, 4, 0, 1, 1, 1, 2, 3…\n$ outcome        &lt;chr&gt; \"H\", \"A\", \"A\", \"A\", \"H\", \"H\", \"A\", \"A\", \"H\", \"H\", \"H\", …\n$ win_conditions &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ winning_team   &lt;chr&gt; \"France\", \"United States\", \"Yugoslavia\", \"Romania\", \"Ar…\n$ losing_team    &lt;chr&gt; \"Mexico\", \"Belgium\", \"Brazil\", \"Peru\", \"France\", \"Mexic…\n$ date           &lt;date&gt; 1930-07-13, 1930-07-13, 1930-07-14, 1930-07-14, 1930-0…\n$ month          &lt;chr&gt; \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\", \"Jul\",…\n$ dayofweek      &lt;chr&gt; \"Sunday\", \"Sunday\", \"Monday\", \"Monday\", \"Tuesday\", \"Wed…"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs",
+    "title": "Querying and Wrangling Data",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\n\n\n\n\nVerb\nDefinition\n\n\n\n\nselect()\nRetrieve particular variables by their name or position\n\n\nfilter()\nRetrieve rows meeting condition(s)\n\n\nmutate()\nAdd a variable or transform existing ones\n\n\ngroup_by()\nGroups rows that have same value on one or more variables\n\n\nsummarize()\nRun functions on aggregated data\n\n\narrange()\nSort based on a variable in ascending or descending order\n\n\nslice()\nRetrieve rows of the data based on their location\n\n\ncase_when()\nVectorize multiple ifelse() statements"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#select",
+    "title": "Querying and Wrangling Data",
+    "section": "select()",
+    "text": "select()\n\nwc_matches %&gt;%\n  select(year, country, stage, home_team, away_team)\n\n# A tibble: 900 × 5\n    year country stage   home_team away_team    \n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        \n 1  1930 Uruguay Group 1 France    Mexico       \n 2  1930 Uruguay Group 4 Belgium   United States\n 3  1930 Uruguay Group 2 Brazil    Yugoslavia   \n 4  1930 Uruguay Group 3 Peru      Romania      \n 5  1930 Uruguay Group 1 Argentina France       \n 6  1930 Uruguay Group 1 Chile     Mexico       \n 7  1930 Uruguay Group 2 Bolivia   Yugoslavia   \n 8  1930 Uruguay Group 4 Paraguay  United States\n 9  1930 Uruguay Group 3 Uruguay   Peru         \n10  1930 Uruguay Group 1 Argentina Mexico       \n# ℹ 890 more rows"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#filter",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#filter",
+    "title": "Querying and Wrangling Data",
+    "section": "filter()",
+    "text": "filter()\n\nwc_matches %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 20 × 15\n    year country   city  stage home_team away_team home_score away_score outcome\n   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1  1930 Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2  1934 Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3  1938 France    Colo… Final Hungary   Italy              2          4 A      \n 4  1954 Switzerl… Berne Final West Ger… Hungary            3          2 H      \n 5  1958 Sweden    Solna Final Sweden    Brazil             2          5 A      \n 6  1962 Chile     Sant… Final Brazil    Czechosl…          3          1 H      \n 7  1966 England   Lond… Final England   West Ger…          4          2 H      \n 8  1970 Mexico    Mexi… Final Brazil    Italy              4          1 H      \n 9  1974 Germany   Muni… Final West Ger… Netherla…          2          1 H      \n10  1978 Argentina Buen… Final Argentina Netherla…          3          1 H      \n11  1982 Spain     Madr… Final Italy     West Ger…          3          1 H      \n12  1986 Mexico    Mexi… Final Argentina West Ger…          3          2 H      \n13  1990 Italy     Rome  Final West Ger… Argentina          1          0 H      \n14  1994 United S… Pasa… Final Brazil    Italy              0          0 H      \n15  1998 France    Sain… Final France    Brazil             3          0 H      \n16  2002 Japan     Yoko… Final Germany   Brazil             0          2 A      \n17  2006 Germany   Berl… Final Italy     France             1          1 H      \n18  2010 South Af… Joha… Final Netherla… Spain              0          1 A      \n19  2014 Brazil    Rio … Final Germany   Argentina          1          0 H      \n20  2018 Russia    Mosc… Final France    Croatia            4          2 H      \n# ℹ 6 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#mutate",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#mutate",
+    "title": "Querying and Wrangling Data",
+    "section": "mutate()",
+    "text": "mutate()\n\nwc_matches &lt;- \n  wc_matches %&gt;%\n  mutate(stage = ifelse(stage == \"Final Round\", \n                        \"Final\", stage),\n         score_diff = abs(home_score - away_score)) \n\nwc_matches %&gt;%\n  select(year, stage, home_team, away_team, score_diff)\n\n# A tibble: 900 × 5\n    year stage   home_team away_team     score_diff\n   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;\n 1  1930 Group 1 France    Mexico                 3\n 2  1930 Group 4 Belgium   United States          3\n 3  1930 Group 2 Brazil    Yugoslavia             1\n 4  1930 Group 3 Peru      Romania                2\n 5  1930 Group 1 Argentina France                 1\n 6  1930 Group 1 Chile     Mexico                 3\n 7  1930 Group 2 Bolivia   Yugoslavia             4\n 8  1930 Group 4 Paraguay  United States          3\n 9  1930 Group 3 Uruguay   Peru                   1\n10  1930 Group 1 Argentina Mexico                 3\n# ℹ 890 more rows"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#group_by-and-summarize",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#group_by-and-summarize",
+    "title": "Querying and Wrangling Data",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\n\navg_score_diff &lt;- \n  wc_matches %&gt;%\n  filter(stage %in% c(\"Final\", \n                      \"Semifinals\", \n                      \"Quarterfinals\", \n                      \"Round of 16\")) %&gt;%\n  group_by(stage) %&gt;%\n  summarize(n_matches = n(),\n            mean_diff = mean(score_diff),\n            sd_diff = sd(score_diff))\n\navg_score_diff\n\n# A tibble: 4 × 4\n  stage         n_matches mean_diff sd_diff\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 Final                26      1.81    1.39\n2 Quarterfinals        66      1.30    1.29\n3 Round of 16          89      1.47    1.18\n4 Semifinals           36      1.75    1.52"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange-and-case_when",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#arrange-and-case_when",
+    "title": "Querying and Wrangling Data",
+    "section": "arrange() and case_when()",
+    "text": "arrange() and case_when()\n\navg_score_diff &lt;- \n  avg_score_diff %&gt;%\n  ungroup() %&gt;%\n  mutate(order = case_when(stage == \"Round of 16\" ~ 1,\n                           stage == \"Quarterfinals\" ~ 2, \n                           stage == \"Semifinals\" ~ 3, \n                           stage == \"Final\" ~ 4)) %&gt;%\n  arrange(order)\n\navg_score_diff\n\n# A tibble: 4 × 5\n  stage         n_matches mean_diff sd_diff order\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Round of 16          89      1.47    1.18     1\n2 Quarterfinals        66      1.30    1.29     2\n3 Semifinals           36      1.75    1.52     3\n4 Final                26      1.81    1.39     4"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#slice",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#slice",
+    "title": "Querying and Wrangling Data",
+    "section": "slice()",
+    "text": "slice()\n\navg_score_diff %&gt;%\n  arrange(desc(mean_diff)) %&gt;%\n  slice(1)\n\n# A tibble: 1 × 5\n  stage n_matches mean_diff sd_diff order\n  &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Final        26      1.81    1.39     4"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs-1",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#verbs-1",
+    "title": "Querying and Wrangling Data",
+    "section": "Verbs",
+    "text": "Verbs\n\n\n\nVerb\nDefinition\n\n\n\n\npivot_longer()\nTransform data to long format\n\n\npivot_wider()\nTransform data to wide format\n\n\nseparate()\nSeparate a column into multiple columns\n\n\nunite()\nUnite multiple columns into one column"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\navg_score_diff\n\n# A tibble: 4 × 5\n  stage         n_matches mean_diff sd_diff order\n  &lt;chr&gt;             &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 Round of 16          89      1.47    1.18     1\n2 Quarterfinals        66      1.30    1.29     2\n3 Semifinals           36      1.75    1.52     3\n4 Final                26      1.81    1.39     4"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer-1",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_longer-1",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\nlong_dat &lt;- \n  avg_score_diff %&gt;%\n  select(-order) %&gt;%\n  pivot_longer(n_matches:sd_diff,\n               names_to = 'stat', \n               values_to = 'val')\n\nlong_dat\n\n# A tibble: 12 × 3\n   stage         stat        val\n   &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;\n 1 Round of 16   n_matches 89   \n 2 Round of 16   mean_diff  1.47\n 3 Round of 16   sd_diff    1.18\n 4 Quarterfinals n_matches 66   \n 5 Quarterfinals mean_diff  1.30\n 6 Quarterfinals sd_diff    1.29\n 7 Semifinals    n_matches 36   \n 8 Semifinals    mean_diff  1.75\n 9 Semifinals    sd_diff    1.52\n10 Final         n_matches 26   \n11 Final         mean_diff  1.81\n12 Final         sd_diff    1.39"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#separate",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#separate",
+    "title": "Querying and Wrangling Data",
+    "section": "separate()",
+    "text": "separate()\n\nlong_dat_clean &lt;- \n  long_dat %&gt;%\n  separate(stat, into = c(\"stat\", \"var\"), sep = \"_\") \n\nlong_dat_clean\n\n# A tibble: 12 × 4\n   stage         stat  var       val\n   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;\n 1 Round of 16   n     matches 89   \n 2 Round of 16   mean  diff     1.47\n 3 Round of 16   sd    diff     1.18\n 4 Quarterfinals n     matches 66   \n 5 Quarterfinals mean  diff     1.30\n 6 Quarterfinals sd    diff     1.29\n 7 Semifinals    n     matches 36   \n 8 Semifinals    mean  diff     1.75\n 9 Semifinals    sd    diff     1.52\n10 Final         n     matches 26   \n11 Final         mean  diff     1.81\n12 Final         sd    diff     1.39"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_wider",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#pivot_wider",
+    "title": "Querying and Wrangling Data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\nlong_dat_clean %&gt;%\n  select(-var) %&gt;%\n  pivot_wider(names_from = stat, values_from = val) %&gt;%\n  rename(Stage = stage, \n         `Number of Matches` = n,\n         `Average Difference in Goals` = mean,\n         `SD of Difference in Goals` = sd)\n\n# A tibble: 4 × 4\n  Stage        `Number of Matches` Average Difference i…¹ SD of Difference in …²\n  &lt;chr&gt;                      &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;\n1 Round of 16                   89                   1.47                   1.18\n2 Quarterfina…                  66                   1.30                   1.29\n3 Semifinals                    36                   1.75                   1.52\n4 Final                         26                   1.81                   1.39\n# ℹ abbreviated names: ¹​`Average Difference in Goals`,\n#   ²​`SD of Difference in Goals`"
+  },
+  {
+    "objectID": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
+    "href": "slides/class_03_querying_and_wrangling_data/class_03_quering_and_wrangling_data.html#unite",
+    "title": "Querying and Wrangling Data",
+    "section": "unite()",
+    "text": "unite()\n\nwc_matches %&gt;%\n  unite(world_cup, year, country, sep =  \": \") %&gt;%\n  filter(stage == \"Final\")\n\n# A tibble: 26 × 15\n   world_cup       city  stage home_team away_team home_score away_score outcome\n   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n 1 1930: Uruguay   Mont… Final Uruguay   Argentina          4          2 H      \n 2 1934: Italy     Rome  Final Italy     Czechosl…          2          1 H      \n 3 1938: France    Colo… Final Hungary   Italy              2          4 A      \n 4 1950: Brazil    Rio … Final Brazil    Sweden             7          1 H      \n 5 1950: Brazil    São … Final Spain     Uruguay            2          2 D      \n 6 1950: Brazil    Rio … Final Brazil    Spain              6          1 H      \n 7 1950: Brazil    São … Final Sweden    Uruguay            2          3 A      \n 8 1950: Brazil    Rio … Final Brazil    Uruguay            1          2 A      \n 9 1950: Brazil    São … Final Spain     Sweden             1          3 A      \n10 1954: Switzerl… Berne Final West Ger… Hungary            3          2 H      \n# ℹ 16 more rows\n# ℹ 7 more variables: win_conditions &lt;chr&gt;, winning_team &lt;chr&gt;,\n#   losing_team &lt;chr&gt;, date &lt;date&gt;, month &lt;chr&gt;, dayofweek &lt;chr&gt;,\n#   score_diff &lt;dbl&gt;"
+  }
+]
